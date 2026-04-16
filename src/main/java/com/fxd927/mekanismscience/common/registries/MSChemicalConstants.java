@@ -1,4 +1,4 @@
-package com.fxd927.mekanismscience.common.gas;
+package com.fxd927.mekanismscience.common.registries;
 
 import mekanism.common.base.IChemicalConstant;
 
@@ -22,7 +22,14 @@ public enum MSChemicalConstants implements IChemicalConstant {
     SEAWATER("seawater",0xFF06C9E6,0,373.15F,1000F),
     TETRODOTOXIN("tetrodotoxin",0xFF5DC86F,0,593.15F,1000F),
     WHEY("whey",0xFFF7FFA2,0,373.15F,1030F),
-    YTTRIUM("yttrium", 0xFFCCE5FF, 0, 1799.15F, 4240F);
+    YTTRIUM("yttrium", 0xFFCCE5FF, 0, 1799.15F, 4240F),
+    PHOSPHORYL_CHLORIDE("phosphoryl_chloride", 0xFF46F675, 0, 378.45F, 1675F),
+    PHOSPHORUS_TRICHLORIDE("phosphorus_trichloride", 0xFF92F646, 0, 351.15F, 1574),
+    ISOOCTANOL("isooctanol", 0xFF542700, 0, 457.15F, 833F),
+    _2_ETHYL_2_HEXENAL("_2_ethyl_2_hexenal", 0xFFD0701D, 0, 448.15F, 850F),
+    N_BUTYRALDEHYDE("n_butyraldehyde", 0xFFEC724D, 0, 348.15F, 817F),
+    PROPYLENE("propylene", 0xFF943417, 0, 225.45F, 1914F),
+    _2_BUTENE("_2_butene", 0xFFDFBD4D, 0, 274.15F, 621F);
 
     private final String name;
     private final int color;

@@ -5,6 +5,7 @@ import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolymerizingChamber;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.Attributes;
@@ -28,12 +29,22 @@ public class MSBlockTypes {
             .withComputerSupport("organicLiquidExtractor")
             .replace(Attributes.ACTIVE)
             .build();
+
     public static final MSMachine<TileEntitySeawaterPump> SEAWATER_PUMP = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.SEAWATER_PUMP, MSLang.DESCRIPTION_SEAWATER_PUMP)
             .withGui(() -> MSContainerTypes.SEAWATER_PUMP)
             .withEnergyConfig(MSConfig.usageConfig.seawaterPump, MSConfig.storageConfig.seawaterPump)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
             .withComputerSupport("seawaterPump")
+            .replace(Attributes.ACTIVE)
+            .build();
+
+    public static final MSMachine<TileEntityPressurizedPolymerizingChamber> PRESSURIZED_POLYMERIZING_CHAMBER = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.PRESSURIZED_POLYMERIZING_CHAMBER, MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER)
+            .withGui(() -> MSContainerTypes.PRESSURIZED_POLYMERIZING_CHAMBER)
+            .withEnergyConfig(MSConfig.usageConfig.pressurizedPolymerizingChamber, MSConfig.storageConfig.pressurizedPolymerizingChamber)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
+            .withComputerSupport("pressurizedPolymerizingChamber")
             .replace(Attributes.ACTIVE)
             .build();
 
