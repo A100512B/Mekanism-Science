@@ -26,10 +26,10 @@ public enum MSChemicalConstants implements IChemicalConstant {
     PHOSPHORYL_CHLORIDE("phosphoryl_chloride", 0xFF46F675, 0, 378.45F, 1675F),
     PHOSPHORUS_TRICHLORIDE("phosphorus_trichloride", 0xFF92F646, 0, 351.15F, 1574),
     ISOOCTANOL("isooctanol", 0xFF542700, 0, 457.15F, 833F),
-    _2_ETHYL_2_HEXENAL("_2_ethyl_2_hexenal", 0xFFD0701D, 0, 448.15F, 850F),
-    N_BUTYRALDEHYDE("n_butyraldehyde", 0xFFEC724D, 0, 348.15F, 817F),
+    _2_ETHYL_2_HEXENAL("2-ethyl-2-hexenal", 0xFFD0701D, 0, 448.15F, 850F),
+    N_BUTYRALDEHYDE("n-butyraldehyde", 0xFFEC724D, 0, 348.15F, 817F),
     PROPYLENE("propylene", 0xFF943417, 0, 225.45F, 1914F),
-    _2_BUTENE("_2_butene", 0xFFDFBD4D, 0, 274.15F, 621F);
+    _2_BUTENE("2-butene", 0xFFDFBD4D, 0, 274.15F, 621F);
 
     private final String name;
     private final int color;
