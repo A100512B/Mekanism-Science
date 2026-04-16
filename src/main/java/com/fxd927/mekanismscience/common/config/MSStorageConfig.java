@@ -12,6 +12,7 @@ public class MSStorageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue adsorptionTypeSeawaterMetalExtractor;
     public final CachedFloatingLongValue seawaterPump;
     public final CachedFloatingLongValue organicLiquidExtractor;
+    public final CachedFloatingLongValue pressurizedPolymerizingChamber;
 
     MSStorageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -19,12 +20,12 @@ public class MSStorageConfig extends BaseMekanismConfig {
 
         adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "adsorptionTypeSeawaterMetalExtractor",
                 FloatingLong.createConst(40_000));
-
         organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "organicLiquidExtractor",
                 FloatingLong.createConst(40_000));
-
         seawaterPump = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "seawaterPump",
                 FloatingLong.createConst(40_000));
+        pressurizedPolymerizingChamber = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "pressurizedPolymerizingChamber",
+                FloatingLong.createConst(100_000));
 
         builder.pop();
         configSpec = builder.build();
