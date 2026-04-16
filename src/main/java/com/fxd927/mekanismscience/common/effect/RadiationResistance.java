@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
 public class RadiationResistance extends MobEffect {
+
     public RadiationResistance(MobEffectCategory mobEffectCategory, int color) {
         super(mobEffectCategory, color);
     }

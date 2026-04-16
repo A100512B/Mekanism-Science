@@ -6,24 +6,24 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import org.jetbrains.annotations.NotNull;
 
 public class SensoryParalysis extends MobEffect {
+
     public SensoryParalysis(MobEffectCategory mobEffectCategory, int color) {
         super(mobEffectCategory, color);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
         if (entity instanceof Player player) {
-            if (!player.isInvulnerable()) {
-                player.setInvulnerable(true);
-            }
+            player.setInvulnerable(true);
         }
     }
 
     @Override
-    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+    public void removeAttributeModifiers(@NotNull LivingEntity entity, @NotNull AttributeMap attributeMap, int amplifier) {
         super.removeAttributeModifiers(entity, attributeMap, amplifier);
 
         if (entity instanceof Player player) {
