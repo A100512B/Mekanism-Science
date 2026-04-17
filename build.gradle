@@ -66,6 +66,10 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    // These two are only for Chinese developers
+    maven { url "https://lss233.littleservice.cn/minecraft/" }
+    maven { url "https://maven.fastmirror.net/" }
+
     maven {
         name = 'tterrag maven'
         url = 'https://maven.tterrag.com/'
