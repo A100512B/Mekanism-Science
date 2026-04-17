@@ -5,6 +5,10 @@ import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSe
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolymerizingChamber;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
+import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantController;
+import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
+import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
 import mekanism.common.tile.base.TileEntityMekanism;
@@ -16,6 +20,10 @@ public class MSTileEntityTypes {
     public static final TileEntityTypeRegistryObject<TileEntityOrganicLiquidExtractor> ORGANIC_LIQUID_EXTRACTOR = TILE_ENTITY_TYPES.register(MSBlocks.ORGANIC_LIQUID_EXTRACTOR, TileEntityOrganicLiquidExtractor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntitySeawaterPump> SEAWATER_PUMP = TILE_ENTITY_TYPES.register(MSBlocks.SEAWATER_PUMP, TileEntitySeawaterPump::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityPressurizedPolymerizingChamber> PRESSURIZED_POLYMERIZING_CHAMBER = TILE_ENTITY_TYPES.register(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER, TileEntityPressurizedPolymerizingChamber::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityExtractingPlantCasing> EXTRACTING_PLANT_CASING = TILE_ENTITY_TYPES.register(MSBlocks.EXTRACTING_PLANT_CASING, TileEntityExtractingPlantCasing::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityExtractingPlantController> EXTRACTING_PLANT_CONTROLLER = TILE_ENTITY_TYPES.register(MSBlocks.EXTRACTING_PLANT_CONTROLLER, TileEntityExtractingPlantController::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityExtractingPlantExtractingPillar> EXTRACTING_PILLAR = TILE_ENTITY_TYPES.register(MSBlocks.EXTRACTING_PILLAR, TileEntityExtractingPlantExtractingPillar::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityExtractingPlantPort> EXTRACTING_PLANT_PORT = TILE_ENTITY_TYPES.register(MSBlocks.EXTRACTING_PLANT_PORT, TileEntityExtractingPlantPort::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
 
     private MSTileEntityTypes(){
     }

@@ -3,9 +3,11 @@ package com.fxd927.mekanismscience.common.mixin;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.chemical.ChemicalToChemicalRecipe;
+import mekanism.api.recipes.chemical.FluidChemicalToChemicalRecipe;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.FluidChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -30,5 +32,6 @@ public abstract class MixinMekanismRecipeType<RECIPE extends MekanismRecipe, INP
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void ms$initRecipeType(CallbackInfo ci) {
         MSRecipeType.PRESSURIZED_POLYMERIZING = register("pressurized_polymerizing", recipeType -> new SingleChemical<>(recipeType, ChemicalToChemicalRecipe::getInput));
+        MSRecipeType.EXTRACTING = register("extracting", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToChemicalRecipe::getFluidInput, FluidChemicalToChemicalRecipe::getChemicalInput));
     }
 }

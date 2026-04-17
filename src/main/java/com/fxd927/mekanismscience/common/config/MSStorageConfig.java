@@ -7,6 +7,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
 
 public class MSStorageConfig extends BaseMekanismConfig {
+
     private final ForgeConfigSpec configSpec;
 
     public final CachedFloatingLongValue adsorptionTypeSeawaterMetalExtractor;

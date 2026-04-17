@@ -1,9 +1,12 @@
 package com.fxd927.mekanismscience.common;
 
-import com.fxd927.mekanismscience.common.advancements.MSAdvancements;
 import com.fxd927.mekanismscience.common.config.MSConfig;
+import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
+import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantValidator;
 import com.fxd927.mekanismscience.common.registries.*;
 import com.mojang.logging.LogUtils;
+import mekanism.common.lib.multiblock.MultiblockCache;
+import mekanism.common.lib.multiblock.MultiblockManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,7 +15,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -24,6 +26,8 @@ public class MekanismScience {
     public static final String MODID = "mekanismscience";
     public static final String MOD_NAME = "Mekanism: Science";
     public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static final MultiblockManager<ExtractingPlantMultiblockData> extractingPlantManager = new MultiblockManager<>("extractingPlant", MultiblockCache::new, ExtractingPlantValidator::new);
 
     public MekanismScience() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

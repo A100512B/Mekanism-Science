@@ -13,6 +13,17 @@ public enum MSLang implements ILangEntry {
     DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR("description","organic_liquid_extractor"),
     DESCRIPTION_SEAWATER_PUMP("description", "seawater_pump"),
     DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER("description", "pressurized_polymerizing_chamber"),
+    DESCRIPTION_EXTRACTING_PLANT_CASING("description", "extracting_plant_casing"),
+    DESCRIPTION_EXTRACTING_PLANT_CONTROLLER("description", "extracting_plant_controller"),
+    DESCRIPTION_EXTRACTING_PILLAR("description", "extracting_pillar"),
+    DESCRIPTION_EXTRACTING_PLANT_PORT("description", "extracting_plant_port"),
+
+    EXTRACTING_PLANT_PORT_MODE_INPUT_EXTRACTANT("extracting_plant", "port_mode_input_extractant"),
+    EXTRACTING_PLANT_PORT_MODE_INPUT_LEACHATE("extracting_plant", "port_mode_input_leachate"),
+    EXTRACTING_PLANT_PORT_MODE_OUTPUT("extracting_plant", "port_mode_output"),
+    EXTRACTING_PLANT_INVALID_EVEN_LENGTH("extracting_plant", "invalid_even_length"),
+    EXTRACTING_PLANT_INVALID_NOT_SQUARE("extracting_plant", "invalid_not_square"),
+    EXTRACTING_PLANT_INVALID_MALFORMED_EXTRACTING_PILLARS("extracting_plant", "invalid_malformed_extracting_pillars"),
 
     MEKANISM_SCIENCE("constants","mod_name");
 

@@ -5,9 +5,11 @@ import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModLoadingContext;
 
 public class MSConfig {
+
     private MSConfig() {
     }
 
+    public static final MSGeneralConfig generalConfig = new MSGeneralConfig();
     public static final MSStorageConfig storageConfig = new MSStorageConfig();
     public static final MSUsageConfig usageConfig = new MSUsageConfig();
 
@@ -15,5 +17,6 @@ public class MSConfig {
         ModContainer modContainer = modLoadingContext.getActiveContainer();
         MekanismConfigHelper.registerConfig(modContainer, storageConfig);
         MekanismConfigHelper.registerConfig(modContainer, usageConfig);
+        MekanismConfigHelper.registerConfig(modContainer, generalConfig);
     }
 }
