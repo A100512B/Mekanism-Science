@@ -160,8 +160,14 @@ public class ExtractingPlantMultiblockData
         }
     }
 
-    public void setExtractantTankCapacity(long extractantTankCapacity) {
-        this.extractantTankCapacity = extractantTankCapacity;
+    public void setExtractantTankCapacity(long capacity) {
+        this.extractantTankCapacity = capacity;
+    }
+
+    @Override
+    @NotNull
+    public IMekanismRecipeTypeProvider<FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>, InputRecipeCache.FluidChemical<Gas, GasStack, FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
+        return MSRecipeType.EXTRACTING;
     }
 
     @Override
@@ -182,12 +188,6 @@ public class ExtractingPlantMultiblockData
                 .setActive(active -> lastGain = active ? expectToExtract : 0)
                 .setRequiredTicks(() -> 1)
                 .setBaselineMaxOperations(() -> Math.toIntExact(expectToExtract));
-    }
-
-    @Override
-    @NotNull
-    public IMekanismRecipeTypeProvider<FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>, InputRecipeCache.FluidChemical<Gas, GasStack, FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
-        return MSRecipeType.EXTRACTING;
     }
 
     public boolean hasWarning(RecipeError error) {

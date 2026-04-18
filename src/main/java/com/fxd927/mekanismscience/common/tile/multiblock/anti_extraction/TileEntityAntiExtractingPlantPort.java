@@ -1,7 +1,9 @@
-package com.fxd927.mekanismscience.common.tile.multiblock.extraction;
+package com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction;
 
+import com.fxd927.mekanismscience.common.block.attribute.AttributeStateAntiExtractingPortMode;
+import com.fxd927.mekanismscience.common.block.attribute.AttributeStateAntiExtractingPortMode.AntiExtractingPortMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode;
-import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode.ExtractingPortMode;
+import com.fxd927.mekanismscience.common.content.anti_extraction.AntiExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import mekanism.api.Action;
@@ -16,6 +18,7 @@ import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.lib.multiblock.IMultiblockEjector;
 import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.util.ChemicalUtil;
+import mekanism.common.util.FluidUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -28,22 +31,23 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import java.util.Set;
 
-public class TileEntityExtractingPlantPort
-        extends TileEntityExtractingPlantCasing
+public class TileEntityAntiExtractingPlantPort
+        extends TileEntityAntiExtractingPlantCasing
         implements IMultiblockEjector {
 
     private Set<Direction> outputDirections = Collections.emptySet();
 
-    public TileEntityExtractingPlantPort(BlockPos pos, BlockState state) {
-        super(MSBlocks.EXTRACTING_PLANT_PORT, pos, state);
+    public TileEntityAntiExtractingPlantPort(BlockPos pos, BlockState state) {
+        super(MSBlocks.ANTI_EXTRACTING_PLANT_PORT, pos, state);
     }
 
     @Override
-    protected boolean onUpdateServer(ExtractingPlantMultiblockData multiblock) {
+    protected boolean onUpdateServer(AntiExtractingPlantMultiblockData multiblock) {
         boolean needsPacket = super.onUpdateServer(multiblock);
         if (multiblock.isFormed()) {
-            if (getMode() == ExtractingPortMode.OUTPUT) {
-                ChemicalUtil.emit(outputDirections, multiblock.outputTank, this);
+            switch (getMode()) {
+                case OUTPUT_EXTRACTANT -> ChemicalUtil.emit(outputDirections, multiblock.extractantTank, this);
+                case OUTPUT_CONCENTRATE -> FluidUtils.emit(outputDirections, multiblock.concentrateTank, this);
             }
         }
         return needsPacket;
@@ -74,20 +78,20 @@ public class TileEntityExtractingPlantPort
         outputDirections = sides;
     }
 
-    private ExtractingPortMode getMode() {
-        return getBlockState().getValue(AttributeStateExtractingPortMode.modeProperty);
+    private AntiExtractingPortMode getMode() {
+        return getBlockState().getValue(AttributeStateAntiExtractingPortMode.modeProperty);
     }
 
-    private void setMode(ExtractingPortMode mode) {
+    private void setMode(AntiExtractingPortMode mode) {
         if (mode != getMode()) {
-            level.setBlockAndUpdate(worldPosition, getBlockState().setValue(AttributeStateExtractingPortMode.modeProperty, mode));
+            level.setBlockAndUpdate(worldPosition, getBlockState().setValue(AttributeStateAntiExtractingPortMode.modeProperty, mode));
         }
     }
 
     @Override
     public InteractionResult onSneakRightClick(Player player) {
         if (!isRemote()) {
-            ExtractingPortMode mode = getMode().getNext();
+            AntiExtractingPortMode mode = getMode().getNext();
             setMode(mode);
             player.displayClientMessage(MekanismLang.BOILER_VALVE_MODE_CHANGE.translateColored(EnumColor.GRAY, mode), true);
         }
@@ -106,7 +110,8 @@ public class TileEntityExtractingPlantPort
 
     @Override
     public boolean insertGasCheck(int tank, @Nullable Direction side) {
-        if (getMode() != ExtractingPortMode.INPUT_EXTRACTANT) {
+        AntiExtractingPortMode mode = getMode();
+        if (mode == AntiExtractingPortMode.OUTPUT_EXTRACTANT || mode == AntiExtractingPortMode.OUTPUT_CONCENTRATE) {
             return false;
         }
         return super.insertGasCheck(tank, side);
@@ -114,7 +119,8 @@ public class TileEntityExtractingPlantPort
 
     @Override
     public boolean extractGasCheck(int tank, @Nullable Direction side) {
-        if (getMode() != ExtractingPortMode.OUTPUT) {
+        AntiExtractingPortMode mode = getMode();
+        if (mode == AntiExtractingPortMode.INPUT_ANTI_EXTRACTANT || mode == AntiExtractingPortMode.INPUT_EXTRACT) {
             return false;
         }
         return super.extractGasCheck(tank, side);

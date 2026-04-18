@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.common.mixin;
 
+import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.chemical.ChemicalToChemicalRecipe;
@@ -33,5 +34,6 @@ public abstract class MixinMekanismRecipeType<RECIPE extends MekanismRecipe, INP
     private static void ms$initRecipeType(CallbackInfo ci) {
         MSRecipeType.PRESSURIZED_POLYMERIZING = register("pressurized_polymerizing", recipeType -> new SingleChemical<>(recipeType, ChemicalToChemicalRecipe::getInput));
         MSRecipeType.EXTRACTING = register("extracting", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToChemicalRecipe::getFluidInput, FluidChemicalToChemicalRecipe::getChemicalInput));
+        MSRecipeType.ANTI_EXTRACTING = register("anti_extracting", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidChemicalRecipe::getFluidInput, FluidChemicalToFluidChemicalRecipe::getChemicalInput));
     }
 }

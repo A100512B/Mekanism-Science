@@ -12,6 +12,8 @@ public class MSGeneralConfig extends BaseMekanismConfig {
 
     public final CachedLongValue extractionExtractantPerTank;
     public final CachedIntValue extractionLeachatePerTank;
+    public final CachedLongValue antiExtractionAntiExtractantPerTank;
+    public final CachedIntValue antiExtractionExtractPerTank;
 
     MSGeneralConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -22,6 +24,13 @@ public class MSGeneralConfig extends BaseMekanismConfig {
                 .define("extractantPerTank", 500L));
         extractionLeachatePerTank = CachedIntValue.wrap(this, builder.comment("Amount of fluid (mB) that each block of the extracting plant contributes to the leachate tank capacity. Max = volume * fluidPerTank")
                 .define("leachatePerTank", 2000));
+        builder.pop();
+
+        builder.comment("Anti Extracting Plant Settings").push("anti_extracting_plant");
+        antiExtractionAntiExtractantPerTank = CachedLongValue.wrap(this, builder.comment("Amount of gas (mB) that each block of the anti extracting plant contributes to the anti extractant tank capacity. Max = volume * gasPerTank")
+                .define("antiExtractantPerTank", 500L));
+        antiExtractionExtractPerTank = CachedIntValue.wrap(this, builder.comment("Amount of fluid (mB) that each block of the extracting plant contributes to the extract tank capacity. Max = volume * fluidPerTank")
+                .define("extractPerTank", 2000));
         builder.pop();
 
         builder.pop();

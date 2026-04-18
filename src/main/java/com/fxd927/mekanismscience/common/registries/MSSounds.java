@@ -12,4 +12,5 @@ public class MSSounds {
     public static final SoundEventDeferredRegister SOUND_EVENTS = new SoundEventDeferredRegister(MekanismScience.MODID);
 
     public static final SoundEventRegistryObject<SoundEvent> EXTRACTING_PLANT = SOUND_EVENTS.register("tile.machine.extracting_plant");
+    public static final SoundEventRegistryObject<SoundEvent> ANTI_EXTRACTING_PLANT = SOUND_EVENTS.register("tile.machine.anti_extracting_plant");
 }
