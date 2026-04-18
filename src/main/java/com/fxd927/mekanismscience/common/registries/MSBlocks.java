@@ -6,6 +6,10 @@ import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSe
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolymerizingChamber;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
+import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
+import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantController;
+import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantPort;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantController;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
@@ -36,6 +40,10 @@ public class MSBlocks {
     public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityExtractingPlantController>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityExtractingPlantController>>> EXTRACTING_PLANT_CONTROLLER = registerTooltipBlock("extracting_plant_controller", () -> new BlockBasicMultiblock<>(MSBlockTypes.EXTRACTING_PLANT_CONTROLLER, properties -> properties.mapColor(MapColor.LAPIS)));
     public static final BlockRegistryObject<BlockTileModel<TileEntityExtractingPlantExtractingPillar, BlockTypeTile<TileEntityExtractingPlantExtractingPillar>>, ItemBlockTooltip<BlockTileModel<TileEntityExtractingPlantExtractingPillar, BlockTypeTile<TileEntityExtractingPlantExtractingPillar>>>> EXTRACTING_PILLAR = registerTooltipBlock("extracting_pillar", () -> new BlockTileModel<>(MSBlockTypes.EXTRACTING_PILLAR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())));
     public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityExtractingPlantPort>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityExtractingPlantPort>>> EXTRACTING_PLANT_PORT = registerTooltipBlock("extracting_plant_port", () -> new BlockBasicMultiblock<>(MSBlockTypes.EXTRACTING_PLANT_PORT, properties -> properties.mapColor(MapColor.LAPIS)));
+    public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityAntiExtractingPlantCasing>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityAntiExtractingPlantCasing>>> ANTI_EXTRACTING_PLANT_CASING = registerTooltipBlock("anti_extracting_plant_casing", () -> new BlockBasicMultiblock<>(MSBlockTypes.ANTI_EXTRACTING_PLANT_CASING, properties -> properties.mapColor(MapColor.COLOR_RED)));
+    public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityAntiExtractingPlantController>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityAntiExtractingPlantController>>> ANTI_EXTRACTING_PLANT_CONTROLLER = registerTooltipBlock("anti_extracting_plant_controller", () -> new BlockBasicMultiblock<>(MSBlockTypes.ANTI_EXTRACTING_PLANT_CONTROLLER, properties -> properties.mapColor(MapColor.COLOR_RED)));
+    public static final BlockRegistryObject<BlockTileModel<TileEntityAntiExtractingPlantAntiExtractingPillar, BlockTypeTile<TileEntityAntiExtractingPlantAntiExtractingPillar>>, ItemBlockTooltip<BlockTileModel<TileEntityAntiExtractingPlantAntiExtractingPillar, BlockTypeTile<TileEntityAntiExtractingPlantAntiExtractingPillar>>>> ANTI_EXTRACTING_PILLAR = registerTooltipBlock("anti_extracting_pillar", () -> new BlockTileModel<>(MSBlockTypes.ANTI_EXTRACTING_PILLAR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())));
+    public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityAntiExtractingPlantPort>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityAntiExtractingPlantPort>>> ANTI_EXTRACTING_PLANT_PORT = registerTooltipBlock("anti_extracting_plant_port", () -> new BlockBasicMultiblock<>(MSBlockTypes.ANTI_EXTRACTING_PLANT_PORT, properties -> properties.mapColor(MapColor.COLOR_RED)));
 
     private MSBlocks() {
     }
