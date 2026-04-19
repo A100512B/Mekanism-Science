@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MSLang;
+import com.fxd927.mekanismscience.common.block.attribute.AttributeStateAntiExtractingPortMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
@@ -58,7 +59,7 @@ public class MSBlockTypes {
             .createMSMachine(() -> MSTileEntityTypes.PRESSURIZED_POLYMERIZING_CHAMBER, MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER)
             .withGui(() -> MSContainerTypes.PRESSURIZED_POLYMERIZING_CHAMBER)
             .withEnergyConfig(MSConfig.usageConfig.pressurizedPolymerizingChamber, MSConfig.storageConfig.pressurizedPolymerizingChamber)
-            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.ANCHOR, Upgrade.MUFFLING))
             .withComputerSupport("pressurizedPolymerizingChamber")
             .replace(Attributes.ACTIVE)
             .build();
@@ -114,7 +115,7 @@ public class MSBlockTypes {
 
     public static final BlockTypeTile<TileEntityAntiExtractingPlantPort> ANTI_EXTRACTING_PLANT_PORT = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.ANTI_EXTRACTING_PLANT_PORT, MSLang.DESCRIPTION_ANTI_EXTRACTING_PLANT_PORT)
-            .with(new AttributeStateExtractingPortMode())
+            .with(new AttributeStateAntiExtractingPortMode())
             .withSound(MSSounds.ANTI_EXTRACTING_PLANT)
             .externalMultiblock()
             .build();
