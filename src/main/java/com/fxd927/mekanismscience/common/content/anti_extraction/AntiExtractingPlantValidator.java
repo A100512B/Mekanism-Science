@@ -1,13 +1,21 @@
 package com.fxd927.mekanismscience.common.content.anti_extraction;
 
+import com.fxd927.mekanismscience.common.MSLang;
+import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.registries.MSBlockTypes;
+import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
+import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import mekanism.common.content.blocktype.BlockType;
 import mekanism.common.lib.math.voxel.VoxelCuboid;
 import mekanism.common.lib.multiblock.CuboidStructureValidator;
+import mekanism.common.lib.multiblock.FormationProtocol;
 import mekanism.common.lib.multiblock.FormationProtocol.CasingType;
+import mekanism.common.lib.multiblock.FormationProtocol.FormationResult;
+import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 
@@ -38,5 +46,26 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
             return true;
         }
         return BlockType.is(state.getBlock(), MSBlockTypes.EXTRACTING_PILLAR);
+    }
+
+    @Override
+    public FormationResult postcheck(AntiExtractingPlantMultiblockData structure, Long2ObjectMap<ChunkAccess> chunkMap) {
+        if (cuboid.length() != cuboid.width()) return FormationResult.fail(MSLang.ANTI_EXTRACTING_PLANT_INVALID_NOT_SQUARE);
+        if ((cuboid.length() & 1) == 0 || (cuboid.width() & 1) == 0) return FormationResult.fail(MSLang.ANTI_EXTRACTING_PLANT_INVALID_EVEN_LENGTH);
+        for (BlockPos pos : structure.internalLocations) {
+            BlockEntity tile = WorldUtils.getTileEntity(TileEntityAntiExtractingPlantAntiExtractingPillar.class, world, chunkMap, pos);
+            if (shouldPosBePillar(pos) && tile == null
+                    || (!shouldPosBePillar(pos) && tile != null))
+                return FormationResult.fail(MSLang.ANTI_EXTRACTING_PLANT_INVALID_MALFORMED_ANTI_EXTRACTING_PILLARS);
+        }
+        structure.setAntiExtractantTankCapacity(pillars * MSConfig.generalConfig.extractionExtractantPerTank.get());
+        return FormationResult.SUCCESS;
+    }
+
+    private boolean shouldPosBePillar(BlockPos pos) {
+        BlockPos relative = pos.subtract(cuboid.getMinPos());
+        int x = relative.getX(), y = relative.getY(), z = relative.getZ(), l = cuboid.length();
+        // Similar to extracting plant, just invert the first condition
+        return !(x == z || x + z == l - 1) && (0 < x && x < l) && (0 < z && z < l);
     }
 }

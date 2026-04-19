@@ -13,8 +13,11 @@ import mekanism.common.lib.multiblock.FormationProtocol.FormationResult;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
+
+import java.util.stream.Collectors;
 
 public class ExtractingPlantValidator extends CuboidStructureValidator<ExtractingPlantMultiblockData> {
 
@@ -49,10 +52,11 @@ public class ExtractingPlantValidator extends CuboidStructureValidator<Extractin
     public FormationResult postcheck(ExtractingPlantMultiblockData structure, Long2ObjectMap<ChunkAccess> chunkMap) {
         if (cuboid.length() != cuboid.width()) return FormationResult.fail(MSLang.EXTRACTING_PLANT_INVALID_NOT_SQUARE);
         if ((cuboid.length() & 1) == 0 || (cuboid.width() & 1) == 0) return FormationResult.fail(MSLang.EXTRACTING_PLANT_INVALID_EVEN_LENGTH);
-        if (structure.internalLocations.stream().filter(this::shouldPosBePillar)
-                .peek(pos -> pillars += 1)
-                .anyMatch(pos -> WorldUtils.getTileEntity(TileEntityExtractingPlantExtractingPillar.class, world, chunkMap, pos) == null)) {
-            return FormationResult.fail(MSLang.EXTRACTING_PLANT_INVALID_MALFORMED_EXTRACTING_PILLARS);
+        for (BlockPos pos : structure.internalLocations) {
+            BlockEntity tile = WorldUtils.getTileEntity(TileEntityExtractingPlantExtractingPillar.class, world, chunkMap, pos);
+            if (shouldPosBePillar(pos) && tile == null
+                    || (!shouldPosBePillar(pos) && tile != null))
+                return FormationResult.fail(MSLang.EXTRACTING_PLANT_INVALID_MALFORMED_EXTRACTING_PILLARS);
         }
         structure.setExtractantTankCapacity(pillars * MSConfig.generalConfig.extractionExtractantPerTank.get());
         return FormationResult.SUCCESS;
@@ -60,7 +64,7 @@ public class ExtractingPlantValidator extends CuboidStructureValidator<Extractin
 
     private boolean shouldPosBePillar(BlockPos pos) {
         BlockPos relative = pos.subtract(cuboid.getMinPos());
-        int x = relative.getX(), y = relative.getY(), z = relative.getZ(), l = cuboid.length();
+        int x = relative.getX(), z = relative.getZ(), l = cuboid.length();
         // If we set the relative (0, 0) on the XZ Plane as the original point,
         // the pillars should be on the line z = x or z = length() - x
         // Remember that a block's pos is floor of its center pos
