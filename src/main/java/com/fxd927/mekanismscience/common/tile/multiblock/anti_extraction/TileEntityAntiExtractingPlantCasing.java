@@ -2,7 +2,6 @@ package com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.content.anti_extraction.AntiExtractingPlantMultiblockData;
-import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import mekanism.api.NBTConstants;
 import mekanism.api.providers.IBlockProvider;
@@ -50,7 +49,15 @@ public class TileEntityAntiExtractingPlantCasing extends TileEntityMultiblock<An
     @NotNull
     public CompoundTag getReducedUpdateTag() {
         CompoundTag tag = super.getReducedUpdateTag();
-        NBTUtils.setBooleanIfPresent(tag, NBTConstants.HANDLE_SOUND, value -> handleSound = value);
+        AntiExtractingPlantMultiblockData multiblock = getMultiblock();
+        tag.putBoolean(NBTConstants.HANDLE_SOUND, multiblock.isFormed() && multiblock.handlesSound(this));
         return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(@NotNull CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        AntiExtractingPlantMultiblockData multiblock = getMultiblock();
+        NBTUtils.setBooleanIfPresent(tag, NBTConstants.HANDLE_SOUND, value -> handleSound = value);
     }
 }

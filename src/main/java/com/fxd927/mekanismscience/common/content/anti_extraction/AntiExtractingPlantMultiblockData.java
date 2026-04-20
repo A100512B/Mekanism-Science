@@ -254,6 +254,10 @@ public class AntiExtractingPlantMultiblockData
         this.antiExtractantTankCapacity = capacity;
     }
 
+    public boolean handlesSound(TileEntityAntiExtractingPlantCasing tile) {
+        return getBounds().isOnCorner(tile.getBlockPos());
+    }
+
     @Override
     @NotNull
     public IMekanismRecipeTypeProvider<FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>, FluidChemical<Gas, GasStack, FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {

@@ -17,8 +17,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 
-import java.util.stream.Collectors;
-
 public class ExtractingPlantValidator extends CuboidStructureValidator<ExtractingPlantMultiblockData> {
 
     private int pillars;
@@ -34,8 +32,6 @@ public class ExtractingPlantValidator extends CuboidStructureValidator<Extractin
             return CasingType.FRAME;
         } else if (BlockType.is(block, MSBlockTypes.EXTRACTING_PLANT_PORT)) {
             return CasingType.VALVE;
-        } else if (BlockType.is(block, MSBlockTypes.EXTRACTING_PLANT_CONTROLLER)) {
-            return CasingType.OTHER;
         }
         return CasingType.INVALID;
     }

@@ -4,12 +4,10 @@ import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.registries.MSBlockTypes;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
-import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import mekanism.common.content.blocktype.BlockType;
 import mekanism.common.lib.math.voxel.VoxelCuboid;
 import mekanism.common.lib.multiblock.CuboidStructureValidator;
-import mekanism.common.lib.multiblock.FormationProtocol;
 import mekanism.common.lib.multiblock.FormationProtocol.CasingType;
 import mekanism.common.lib.multiblock.FormationProtocol.FormationResult;
 import mekanism.common.util.WorldUtils;
@@ -34,8 +32,6 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
             return CasingType.FRAME;
         } else if (BlockType.is(block, MSBlockTypes.EXTRACTING_PLANT_PORT)) {
             return CasingType.VALVE;
-        } else if (BlockType.is(block, MSBlockTypes.EXTRACTING_PLANT_CONTROLLER)) {
-            return CasingType.OTHER;
         }
         return CasingType.INVALID;
     }

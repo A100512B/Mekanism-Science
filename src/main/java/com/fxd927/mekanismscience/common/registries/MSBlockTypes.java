@@ -11,14 +11,11 @@ import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolym
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
-import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantController;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantPort;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
-import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantController;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
 import mekanism.api.Upgrade;
-import mekanism.common.block.attribute.AttributeStateFacing;
 import mekanism.common.block.attribute.Attributes;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.generators.common.content.blocktype.BlockShapes;
@@ -66,15 +63,8 @@ public class MSBlockTypes {
 
     public static final BlockTypeTile<TileEntityExtractingPlantCasing> EXTRACTING_PLANT_CASING = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.EXTRACTING_PLANT_CASING, MSLang.DESCRIPTION_EXTRACTING_PLANT_CASING)
+            .withGui(() -> MSContainerTypes.EXTRACTING_PLANT, MSLang.EXTRACTING_PLANT)
             .withSound(MSSounds.EXTRACTING_PLANT)
-            .externalMultiblock()
-            .build();
-
-    public static final BlockTypeTile<TileEntityExtractingPlantController> EXTRACTING_PLANT_CONTROLLER = BlockTypeTile.BlockTileBuilder
-            .createBlock(() -> MSTileEntityTypes.EXTRACTING_PLANT_CONTROLLER, MSLang.DESCRIPTION_EXTRACTING_PLANT_CONTROLLER)
-            .withSound(MSSounds.EXTRACTING_PLANT)
-            .withGui(() -> MSContainerTypes.EXTRACTING_PLANT)
-            .with(Attributes.ACTIVE, Attributes.ACTIVE_MELT_LIGHT, new AttributeStateFacing())
             .externalMultiblock()
             .build();
 
@@ -88,21 +78,15 @@ public class MSBlockTypes {
     public static final BlockTypeTile<TileEntityExtractingPlantPort> EXTRACTING_PLANT_PORT = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.EXTRACTING_PLANT_PORT, MSLang.DESCRIPTION_EXTRACTING_PLANT_PORT)
             .with(new AttributeStateExtractingPortMode())
+            .withGui(() -> MSContainerTypes.EXTRACTING_PLANT, MSLang.EXTRACTING_PLANT)
             .withSound(MSSounds.EXTRACTING_PLANT)
             .externalMultiblock()
             .build();
 
     public static final BlockTypeTile<TileEntityAntiExtractingPlantCasing> ANTI_EXTRACTING_PLANT_CASING = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.ANTI_EXTRACTING_PLANT_CASING, MSLang.DESCRIPTION_ANTI_EXTRACTING_PLANT_CASING)
+            .withGui(() -> MSContainerTypes.ANTI_EXTRACTING_PLANT, MSLang.ANTI_EXTRACTING_PLANT)
             .withSound(MSSounds.ANTI_EXTRACTING_PLANT)
-            .externalMultiblock()
-            .build();
-
-    public static final BlockTypeTile<TileEntityAntiExtractingPlantController> ANTI_EXTRACTING_PLANT_CONTROLLER = BlockTypeTile.BlockTileBuilder
-            .createBlock(() -> MSTileEntityTypes.ANTI_EXTRACTING_PLANT_CONTROLLER, MSLang.DESCRIPTION_ANTI_EXTRACTING_PLANT_CONTROLLER)
-            .withSound(MSSounds.ANTI_EXTRACTING_PLANT)
-            .withGui(() -> MSContainerTypes.ANTI_EXTRACTING_PLANT)
-            .with(Attributes.ACTIVE, Attributes.ACTIVE_MELT_LIGHT, new AttributeStateFacing())
             .externalMultiblock()
             .build();
 
@@ -116,6 +100,7 @@ public class MSBlockTypes {
     public static final BlockTypeTile<TileEntityAntiExtractingPlantPort> ANTI_EXTRACTING_PLANT_PORT = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.ANTI_EXTRACTING_PLANT_PORT, MSLang.DESCRIPTION_ANTI_EXTRACTING_PLANT_PORT)
             .with(new AttributeStateAntiExtractingPortMode())
+            .withGui(() -> MSContainerTypes.ANTI_EXTRACTING_PLANT, MSLang.ANTI_EXTRACTING_PLANT)
             .withSound(MSSounds.ANTI_EXTRACTING_PLANT)
             .externalMultiblock()
             .build();
