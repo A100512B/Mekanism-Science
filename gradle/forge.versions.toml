@@ -1,0 +1,41 @@
+[versions]
+mixinExtras = "0.5.0-rc.3"
+mekanism = "1.20.1-10.4.16.80"
+
+jei = "15.20.0.121"
+emi = "1.1.22+1.20.1"
+
+## modrinth maven ##
+jade = "11.13.2+forge"
+embeddium = "0.3.31+mc1.20.1"
+oculus = "1.20.1-1.8.0"
+ferritecore = "6.0.1"
+modernui = "6ksT8CWg" #3.12.0.1
+modernfix = "5.24.4+mc1.20.1"
+
+## curseforge maven ##
+jech = "7411324"
+
+## libs ##
+
+
+[libraries]
+mixinExtras-common  = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixinExtras" }
+
+jei-common-api      = { module = "mezz.jei:jei-1.20.1-common-api", version.ref = "jei" }
+jei-forge-api       = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }
+jei-forge-impl      = { module = "mezz.jei:jei-1.20.1-forge", version.ref = "jei" }
+emi                 = { module = "dev.emi:emi-forge", version.ref = "emi" }
+
+mekanism            = { module = "mekanism:Mekanism", version.ref = "mekanism" }
+jade                = { module = "maven.modrinth:jade", version.ref = "jade" }
+embeddium           = { module = "maven.modrinth:embeddium", version.ref = "embeddium" }
+oculus              = { module = "maven.modrinth:oculus", version.ref = "oculus" }
+ferritecore         = { module = "maven.modrinth:uXXizFIs", version.ref = "ferritecore" }
+modernfix           = { module = "maven.modrinth:modernfix", version.ref = "modernfix" }
+modernui            = { module = "maven.modrinth:modern-ui", version.ref = "modernui" }
+
+
+jecharacters        = { module = "curse.maven:just-enough-characters-250702", version.ref = "jech" }
+[bundles]
+jei = ["jei-common-api", "jei-forge-api", "jei-forge-impl"]

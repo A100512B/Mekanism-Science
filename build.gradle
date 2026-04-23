@@ -1,148 +1,140 @@
 plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'jacoco'
+    alias libs.plugins.modDevGradle
+    alias libs.plugins.spotless
+    alias libs.plugins.lombok
 }
 
-version = mod_version
-group = mod_group_id
+group = maven_group
+boolean isSnapshot = System.getenv("SNAPSHOT")
+version = "${mod_version}" + (isSnapshot ? "-SNAPSHOT" : "")
+boolean isCI = System.getenv("CI") != null
 
-base {
-    archivesName = mod_id
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+sourceSets {
+    main.resources {
+        srcDir 'src/generated/resources'
+    }
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
+    client {
+        compileClasspath += main.output
+        runtimeClasspath += main.output + main.runtimeClasspath
+    }
 
-    copyIdeResources = true
+    test {
+        compileClasspath += main.output
+        runtimeClasspath += main.output + main.runtimeClasspath
+    }
 
-    runs {
-        configureEach {
-            workingDirectory project.file('run')
+    extra {
+        compileClasspath += main.output
+        runtimeClasspath += main.output + main.runtimeClasspath
+    }
 
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-        }
-
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        data {
-            workingDirectory project.file('run-data')
-
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-        }
+    clientExtra {
+        compileClasspath += client.output + extra.compileClasspath
+        runtimeClasspath += client.output + client.runtimeClasspath + extra.runtimeClasspath
     }
 }
 
-mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-    config "${mod_id}.mixins.json"
-}
+configurations {
+    // set these as unresolvable so we don't accidentally force all dependents to use them with us
+    clientRuntimeOnly.canBeResolved = false
+    extraRuntimeOnly.canBeResolved = false
+    clientExtraRuntimeOnly.canBeResolved = false
 
+    runtimeClasspath.extendsFrom localRuntime
+    extraRuntimeClasspath.extendsFrom extraLocalRuntime
+    clientRuntimeClasspath.extendsFrom clientLocalRuntime
+    extraClientRuntimeClasspath.extendsFrom clientExtraLocalRuntime
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-repositories {
-    // These two are only for Chinese developers
-    maven { url "https://lss233.littleservice.cn/minecraft/" }
-    maven { url "https://maven.fastmirror.net/" }
-
-    maven {
-        name = 'tterrag maven'
-        url = 'https://maven.tterrag.com/'
-    }
-    maven {
-        name "JEI"
-        url "https://dvs1.progwml6.com/files/maven"
-    }
-    maven {
-        name "ModMaven"
-        url "https://modmaven.dev"
+    renderNurseCfg {
+        canBeConsumed = false
     }
 }
 
-dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
-    implementation fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:additions")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:generators")
-    compileOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:generators")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:tools")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [
-            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-            forge_version: forge_version, forge_version_range: forge_version_range,
-            loader_version_range: loader_version_range,
-            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
-    ]
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
+afterEvaluate {
+    configurations {
+        // same as above but for the modRuntimeOnly configurations
+        modClientRuntimeOnly.canBeResolved = false
+        modExtraRuntimeOnly.canBeResolved = false
+        modClientExtraRuntimeOnly.canBeResolved = false
     }
 }
 
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                'Specification-Title'     : mod_id,
-                'Specification-Vendor'    : mod_authors,
-                'Specification-Version'   : '1', // We are version 1 of ourselves
-                'Implementation-Title'    : project.name,
-                'Implementation-Version'  : project.jar.archiveVersion,
-                'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+obfuscation {
+    createRemappingConfiguration(configurations.localRuntime)
+    createRemappingConfiguration(configurations.clientLocalRuntime)
 
-    finalizedBy 'reobfJar'
+    createRemappingConfiguration(configurations.extraLocalRuntime)
+    createRemappingConfiguration(configurations.clientExtraLocalRuntime)
 }
 
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
+apply from: "$rootDir/gradle/scripts/jars.gradle"
+apply from: "$rootDir/gradle/scripts/moddevgradle.gradle"
+apply from: "$rootDir/gradle/scripts/repositories.gradle"
+apply from: "$rootDir/dependencies.gradle"
+apply from: "$rootDir/gradle/scripts/resources.gradle"
+apply from: "$rootDir/gradle/scripts/publishing.gradle"
+apply from: "$rootDir/gradle/scripts/spotless.gradle"
+
+generateModMetadata.doFirst {
+    mkdir('run/client')
+    mkdir('run/server')
+    mkdir('run/gametest')
+    mkdir('run/data')
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    options.encoding = "UTF-8"
+    options.compilerArgs << "-Xlint:-removal"
+    options.compilerArgs << "-Aquiet=true"// 忽略删除和过时，真删了报错再说吧
+}
+
+tasks.named('compileJava', JavaCompile) {
+    dependsOn tasks.named('compileKotlin')
+    classpath += files(tasks.named('compileKotlin').map { it.destinationDirectory })
+}
+
+lombok {
+    version = "1.18.38"
+}
+
+jacoco {
+    applyTo runGameTestServer
+}
+
+jacocoTestReport {
+    doFirst {
+        try {
+            runGameTestServer.exec()
+        } catch (RuntimeException ignored) {}
+    }
+    doLast {
+        println "Coverage report location:"
+        println " - file://${layout.buildDirectory.dir('coverage').map(a -> a.file('index.html')).get()}"
+        println " - file://${layout.buildDirectory.dir('coverage').map(a -> a.file('coverage.xml')).get()}"
+    }
+    executionData runGameTestServer
+    sourceSets sourceSets.test
+    reports {
+        csv.required = false
+        xml.required = true
+        html.outputLocation = layout.buildDirectory.dir('coverage')
+        xml.outputLocation = layout.buildDirectory.dir('coverage').map(a -> a.file('coverage.xml'))
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: '**/client/**')
+            fileTree(dir: it, exclude: '**/mixins/**')
+        }))
+    }
 }
