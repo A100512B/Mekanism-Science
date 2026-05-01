@@ -53,6 +53,7 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
             if (shouldPosBePillar(pos) && tile == null
                     || (!shouldPosBePillar(pos) && tile != null))
                 return FormationResult.fail(MSLang.ANTI_EXTRACTING_PLANT_INVALID_MALFORMED_ANTI_EXTRACTING_PILLARS);
+            if (tile != null) pillars += 1;
         }
         structure.setAntiExtractantTankCapacity(pillars * MSConfig.generalConfig.antiExtractionAntiExtractantPerTank.get());
         return FormationResult.SUCCESS;
@@ -60,7 +61,7 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
 
     private boolean shouldPosBePillar(BlockPos pos) {
         BlockPos relative = pos.subtract(cuboid.getMinPos());
-        int x = relative.getX(), y = relative.getY(), z = relative.getZ(), l = cuboid.length();
+        int x = relative.getX(), z = relative.getZ(), l = cuboid.length();
         // Similar to extracting plant, just invert the first condition
         return !(x == z || x + z == l - 1) && (0 < x && x < l) && (0 < z && z < l);
     }

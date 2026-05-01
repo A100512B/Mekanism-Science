@@ -53,6 +53,7 @@ public class ExtractingPlantValidator extends CuboidStructureValidator<Extractin
             if (shouldPosBePillar(pos) && tile == null
                     || (!shouldPosBePillar(pos) && tile != null))
                 return FormationResult.fail(MSLang.EXTRACTING_PLANT_INVALID_MALFORMED_EXTRACTING_PILLARS);
+            if (tile != null) pillars += 1;
         }
         structure.setExtractantTankCapacity(pillars * MSConfig.generalConfig.extractionExtractantPerTank.get());
         return FormationResult.SUCCESS;
