@@ -5,15 +5,12 @@ import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe.FluidChemicalOutput;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
-import com.fxd927.mekanismscience.common.registries.MSGases;
-import com.fxd927.mekanismscience.common.registries.MSGases.Extractant;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.NBTConstants;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.IChemicalTank;
-import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
@@ -28,7 +25,6 @@ import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredie
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.chemical.multiblock.MultiblockChemicalTankBuilder;
 import mekanism.common.capabilities.fluid.VariableCapacityFluidTank;
 import mekanism.common.inventory.container.sync.dynamic.ContainerSync;
@@ -36,7 +32,6 @@ import mekanism.common.lib.multiblock.IValveHandler;
 import mekanism.common.lib.multiblock.MultiblockData;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler.FluidChemicalRecipeLookupHandler;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.FluidChemical;
 import mekanism.common.recipe.lookup.monitor.RecipeCacheLookupMonitor;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
@@ -246,7 +241,7 @@ public class AntiExtractingPlantMultiblockData
     public void setVolume(int volume) {
         if (getVolume() != volume) {
             super.setVolume(volume);
-            extractTankCapacity = volume * MSConfig.generalConfig.extractionLeachatePerTank.get();
+            extractTankCapacity = volume * MSConfig.generalConfig.antiExtractionExtractPerTank.get();
         }
     }
 
@@ -261,7 +256,7 @@ public class AntiExtractingPlantMultiblockData
     @Override
     @NotNull
     public IMekanismRecipeTypeProvider<FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>, FluidChemical<Gas, GasStack, FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
-        return MSRecipeType.ANTI_EXTRACTING;
+        return MSRecipeType.ANTI_EXTRACTION;
     }
 
     @Override

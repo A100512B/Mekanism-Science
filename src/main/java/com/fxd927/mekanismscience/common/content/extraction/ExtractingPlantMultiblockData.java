@@ -1,10 +1,13 @@
 package com.fxd927.mekanismscience.common.content.extraction;
 
+import com.fxd927.mekanismscience.api.MSNBTConstants;
+import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.MSGases.Extractant;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import mekanism.api.NBTConstants;
+import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -26,6 +29,7 @@ import mekanism.common.lib.multiblock.MultiblockData;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler.FluidChemicalRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.FluidChemical;
 import mekanism.common.recipe.lookup.monitor.RecipeCacheLookupMonitor;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import mekanism.common.util.MekanismUtils;
@@ -41,7 +45,7 @@ import java.util.function.BooleanSupplier;
 
 public class ExtractingPlantMultiblockData
         extends MultiblockData
-        implements IValveHandler, FluidChemicalRecipeLookupHandler<Gas, GasStack, FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>> {
+        implements IValveHandler, FluidChemicalRecipeLookupHandler<Gas, GasStack, FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>> {
 
     public static final RecipeError NOT_ENOUGH_GAS_INPUT = RecipeError.create();
     public static final RecipeError NOT_ENOUGH_FLUID_INPUT = RecipeError.create();
@@ -53,7 +57,7 @@ public class ExtractingPlantMultiblockData
     );
 
     @ContainerSync
-    private long extractantTankCapacity;
+    private int extractantTankCapacity;
     @ContainerSync
     private int leachateTankCapacity;
 
@@ -62,18 +66,18 @@ public class ExtractingPlantMultiblockData
     @ContainerSync
     public VariableCapacityFluidTank leachateTank;
     @ContainerSync
-    public IGasTank outputTank;
+    public VariableCapacityFluidTank outputTank;
 
     @ContainerSync
     public long lastGain;
     private long expectToExtract = 0;
 
-    private final RecipeCacheLookupMonitor<FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>> recipeCacheLookupMonitor;
+    private final RecipeCacheLookupMonitor<FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>> recipeCacheLookupMonitor;
     private final BooleanSupplier recheckAllRecipeErrors;
     @ContainerSync
     private final boolean[] trackedErrors = new boolean[TRACKED_ERROR_TYPES.size()];
 
-    private final IOutputHandler<@NotNull GasStack> outputHandler;
+    private final IOutputHandler<@NotNull FluidStack> outputHandler;
     private final IInputHandler<@NotNull GasStack> extractantInputHandler;
     private final IInputHandler<@NotNull FluidStack> leachateInputHandler;
 
@@ -89,8 +93,8 @@ public class ExtractingPlantMultiblockData
                 this::containsRecipeB, ChemicalAttributeValidator.create(Extractant.class), this));
         fluidTanks.add(leachateTank = VariableCapacityFluidTank.input(this, () -> leachateTankCapacity,
                 this::containsRecipeA, this));
-        gasTanks.add(outputTank = MultiblockChemicalTankBuilder.GAS.output(this, () -> extractantTankCapacity,
-                gas -> true, this));
+        fluidTanks.add(outputTank = VariableCapacityFluidTank.output(this, () -> extractantTankCapacity,
+                fluid -> true, this));
         extractantInputHandler = InputHelper.getInputHandler(extractantTank, NOT_ENOUGH_GAS_INPUT);
         leachateInputHandler = InputHelper.getInputHandler(leachateTank, NOT_ENOUGH_FLUID_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
@@ -99,7 +103,7 @@ public class ExtractingPlantMultiblockData
     @Override
     public boolean tick(Level world) {
         boolean needsPacket = super.tick(world);
-        long outputStored = outputTank.getStored();
+        int outputStored = outputTank.getFluidAmount();
         long total = outputStored + leachateTank.getFluidAmount();
         if ((double) outputStored / total < extractantTank.getType().get(Extractant.class).getExtractionEfficiency()) {
             long waterPhaseAmount = leachateTank.getFluidAmount();
@@ -135,7 +139,7 @@ public class ExtractingPlantMultiblockData
         NBTUtils.setIntIfPresent(tag, NBTConstants.VOLUME, this::setVolume);
         NBTUtils.setGasStackIfPresent(tag, NBTConstants.GAS_STORED, stack -> extractantTank.setStack(stack));
         NBTUtils.setFluidStackIfPresent(tag, NBTConstants.FLUID_STORED, stack -> leachateTank.setStack(stack));
-        NBTUtils.setGasStackIfPresent(tag, NBTConstants.GAS_STORED_ALT, stack -> outputTank.setStack(stack));
+        NBTUtils.setFluidStackIfPresent(tag, MSNBTConstants.FLUID_STORED_ALT, stack -> outputTank.setStack(stack));
         readValves(tag);
     }
 
@@ -148,7 +152,7 @@ public class ExtractingPlantMultiblockData
         tag.putInt(NBTConstants.VOLUME, getVolume());
         tag.put(NBTConstants.GAS_STORED, extractantTank.getStack().write(new CompoundTag()));
         tag.put(NBTConstants.FLUID_STORED, leachateTank.getFluid().writeToNBT(new CompoundTag()));
-        tag.put(NBTConstants.GAS_STORED_ALT, outputTank.getStack().write(new CompoundTag()));
+        tag.put(MSNBTConstants.FLUID_STORED_ALT, outputTank.getFluid().writeToNBT(new CompoundTag()));
         writeValves(tag);
     }
 
@@ -160,26 +164,28 @@ public class ExtractingPlantMultiblockData
         }
     }
 
-    public void setExtractantTankCapacity(long capacity) {
+    public void setExtractantTankCapacity(int capacity) {
         this.extractantTankCapacity = capacity;
     }
 
     @Override
     @NotNull
-    public IMekanismRecipeTypeProvider<FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>, InputRecipeCache.FluidChemical<Gas, GasStack, FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
-        return MSRecipeType.EXTRACTING;
+    public IMekanismRecipeTypeProvider<FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>, FluidChemical<Gas, GasStack, FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
+        return MSRecipeType.EXTRACTION;
     }
 
     @Override
     @Nullable
-    public FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient> getRecipe(int cacheIndex) {
+    public FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient> getRecipe(int cacheIndex) {
         return findFirstRecipe(leachateInputHandler, extractantInputHandler);
     }
 
     @Override
     @NotNull
-    public CachedRecipe<FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient>> createNewCachedRecipe(@NotNull FluidChemicalToChemicalRecipe<Gas, GasStack, GasStackIngredient> recipe, int cacheIndex) {
-        return TwoInputCachedRecipe.fluidChemicalToChemical(recipe, recheckAllRecipeErrors, leachateInputHandler, extractantInputHandler, outputHandler)
+    public CachedRecipe<FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>> createNewCachedRecipe(@NotNull FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient> recipe, int cacheIndex) {
+        return new TwoInputCachedRecipe<>(recipe, recheckAllRecipeErrors, leachateInputHandler, extractantInputHandler,
+                outputHandler, recipe::getFluidInput, recipe::getChemicalInput, recipe::getOutput, FluidStack::isEmpty,
+                ChemicalStack::isEmpty, FluidStack::isEmpty) {}
                 .setErrorsChanged(errors -> {
                     for (int i = 0; i < trackedErrors.length; i++) {
                         trackedErrors[i] = errors.contains(TRACKED_ERROR_TYPES.get(i));

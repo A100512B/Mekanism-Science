@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.mixin;
 
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe;
+import com.fxd927.mekanismscience.api.recipes.MetalElectrolysisRecipe;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.chemical.ChemicalToChemicalRecipe;
@@ -10,6 +11,7 @@ import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.FluidChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleFluid;
 import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,7 +35,8 @@ public abstract class MixinMekanismRecipeType<RECIPE extends MekanismRecipe, INP
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void ms$initRecipeType(CallbackInfo ci) {
         MSRecipeType.PRESSURIZED_POLYMERIZING = register("pressurized_polymerizing", recipeType -> new SingleChemical<>(recipeType, ChemicalToChemicalRecipe::getInput));
-        MSRecipeType.EXTRACTING = register("extracting", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToChemicalRecipe::getFluidInput, FluidChemicalToChemicalRecipe::getChemicalInput));
-        MSRecipeType.ANTI_EXTRACTING = register("anti_extracting", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidChemicalRecipe::getFluidInput, FluidChemicalToFluidChemicalRecipe::getChemicalInput));
+        MSRecipeType.EXTRACTION = register("extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToChemicalRecipe::getFluidInput, FluidChemicalToChemicalRecipe::getChemicalInput));
+        MSRecipeType.ANTI_EXTRACTION = register("anti_extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidChemicalRecipe::getFluidInput, FluidChemicalToFluidChemicalRecipe::getChemicalInput));
+        MSRecipeType.METAL_ELECTROLYSIS = register("metal_electrolysis", recipeType -> new SingleFluid<>(recipeType, MetalElectrolysisRecipe::getInput));
     }
 }

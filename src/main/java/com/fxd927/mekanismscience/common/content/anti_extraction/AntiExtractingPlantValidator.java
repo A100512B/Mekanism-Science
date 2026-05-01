@@ -54,7 +54,7 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
                     || (!shouldPosBePillar(pos) && tile != null))
                 return FormationResult.fail(MSLang.ANTI_EXTRACTING_PLANT_INVALID_MALFORMED_ANTI_EXTRACTING_PILLARS);
         }
-        structure.setAntiExtractantTankCapacity(pillars * MSConfig.generalConfig.extractionExtractantPerTank.get());
+        structure.setAntiExtractantTankCapacity(pillars * MSConfig.generalConfig.antiExtractionAntiExtractantPerTank.get());
         return FormationResult.SUCCESS;
     }
 

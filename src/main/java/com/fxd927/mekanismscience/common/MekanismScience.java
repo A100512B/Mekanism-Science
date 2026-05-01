@@ -32,6 +32,7 @@ public class MekanismScience {
     public static final MultiblockManager<ExtractingPlantMultiblockData> extractingPlantManager = new MultiblockManager<>("extractingPlant", MultiblockCache::new, ExtractingPlantValidator::new);
     public static final MultiblockManager<AntiExtractingPlantMultiblockData> antiExtractingPlantManager = new MultiblockManager<>("antiExtractingPlant", MultiblockCache::new, AntiExtractingPlantValidator::new);
 
+    @SuppressWarnings("removal")
     public MekanismScience() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -43,6 +44,8 @@ public class MekanismScience {
         MSFluids.FLUIDS.register(modEventBus);
         MSGases.GASES.register(modEventBus);
         MSItems.ITEMS.register(modEventBus);
+        MSRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        MSSounds.SOUND_EVENTS.register(modEventBus);
         MSTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
@@ -50,6 +53,7 @@ public class MekanismScience {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    @SuppressWarnings("removal")
     public static ResourceLocation rl(String path) {
         return new ResourceLocation(MekanismScience.MODID, path);
     }

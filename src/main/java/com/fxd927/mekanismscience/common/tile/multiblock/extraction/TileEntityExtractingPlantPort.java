@@ -16,6 +16,7 @@ import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.lib.multiblock.IMultiblockEjector;
 import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.util.ChemicalUtil;
+import mekanism.common.util.FluidUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -43,7 +44,7 @@ public class TileEntityExtractingPlantPort
         boolean needsPacket = super.onUpdateServer(multiblock);
         if (multiblock.isFormed()) {
             if (getMode() == ExtractingPortMode.OUTPUT) {
-                ChemicalUtil.emit(outputDirections, multiblock.outputTank, this);
+                FluidUtils.emit(outputDirections, multiblock.outputTank, this);
             }
         }
         return needsPacket;
@@ -110,13 +111,5 @@ public class TileEntityExtractingPlantPort
             return false;
         }
         return super.insertGasCheck(tank, side);
-    }
-
-    @Override
-    public boolean extractGasCheck(int tank, @Nullable Direction side) {
-        if (getMode() != ExtractingPortMode.OUTPUT) {
-            return false;
-        }
-        return super.extractGasCheck(tank, side);
     }
 }
