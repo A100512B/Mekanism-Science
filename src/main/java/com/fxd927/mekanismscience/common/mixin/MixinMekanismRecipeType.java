@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.mixin;
 
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe;
+import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidRecipe;
 import com.fxd927.mekanismscience.api.recipes.MetalElectrolysisRecipe;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
@@ -35,7 +36,7 @@ public abstract class MixinMekanismRecipeType<RECIPE extends MekanismRecipe, INP
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void ms$initRecipeType(CallbackInfo ci) {
         MSRecipeType.PRESSURIZED_POLYMERIZING = register("pressurized_polymerizing", recipeType -> new SingleChemical<>(recipeType, ChemicalToChemicalRecipe::getInput));
-        MSRecipeType.EXTRACTION = register("extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToChemicalRecipe::getFluidInput, FluidChemicalToChemicalRecipe::getChemicalInput));
+        MSRecipeType.EXTRACTION = register("extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidRecipe::getFluidInput, FluidChemicalToFluidRecipe::getChemicalInput));
         MSRecipeType.ANTI_EXTRACTION = register("anti_extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidChemicalRecipe::getFluidInput, FluidChemicalToFluidChemicalRecipe::getChemicalInput));
         MSRecipeType.METAL_ELECTROLYSIS = register("metal_electrolysis", recipeType -> new SingleFluid<>(recipeType, MetalElectrolysisRecipe::getInput));
     }
