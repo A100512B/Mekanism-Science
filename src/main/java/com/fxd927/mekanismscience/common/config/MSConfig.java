@@ -4,6 +4,7 @@ import mekanism.common.config.MekanismConfigHelper;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModLoadingContext;
 
+@SuppressWarnings("removal")
 public class MSConfig {
 
     private MSConfig() {

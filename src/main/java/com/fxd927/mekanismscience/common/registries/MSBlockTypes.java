@@ -2,8 +2,10 @@ package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateAntiExtractingPortMode;
+import com.fxd927.mekanismscience.common.block.attribute.AttributeStateElectrolyzingRodMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode;
 import com.fxd927.mekanismscience.common.config.MSConfig;
+import com.fxd927.mekanismscience.common.content.blocktype.MSBlockShapes;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
@@ -12,13 +14,22 @@ import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantPort;
+import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberCasing;
+import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberLaserAcceptor;
+import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberPort;
+import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolyzingRod;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
 import mekanism.api.Upgrade;
+import mekanism.common.block.attribute.AttributeStateActive;
+import mekanism.common.block.attribute.AttributeStateFacing;
 import mekanism.common.block.attribute.Attributes;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.generators.common.content.blocktype.BlockShapes;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 import java.util.EnumSet;
 
@@ -102,6 +113,34 @@ public class MSBlockTypes {
             .with(new AttributeStateAntiExtractingPortMode())
             .withGui(() -> MSContainerTypes.ANTI_EXTRACTING_PLANT, MSLang.ANTI_EXTRACTING_PLANT)
             .withSound(MSSounds.ANTI_EXTRACTING_PLANT)
+            .externalMultiblock()
+            .build();
+
+    public static final BlockTypeTile<TileEntityMetalElectrolysisChamberCasing> METAL_ELECTROLYSIS_CHAMBER_CASING = BlockTypeTile.BlockTileBuilder
+            .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_CASING, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_CASING)
+            .withGui(() -> MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, MSLang.METAL_ELECTROLYSIS_CHAMBER)
+            .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
+            .externalMultiblock()
+            .build();
+
+    public static final BlockTypeTile<TileEntityMetalElectrolysisChamberPort> METAL_ELECTROLYSIS_CHAMBER_PORT = BlockTypeTile.BlockTileBuilder
+            .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_PORT, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_PORT)
+            .with(Attributes.ACTIVE)
+            .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
+            .externalMultiblock()
+            .build();
+
+    public static final BlockTypeTile<TileEntityMetalElectrolyzingRod> METAL_ELECTROLYZING_ROD = BlockTypeTile.BlockTileBuilder
+            .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYZING_ROD, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_ROD)
+            .with(new AttributeStateElectrolyzingRodMode(), new AttributeStateFacing(BlockStateProperties.HORIZONTAL_FACING))
+            .withCustomShape(MSBlockShapes.METAL_ELECTROLYSIS_ROD)
+            .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
+            .internalMultiblock()
+            .build();
+
+    public static final BlockTypeTile<TileEntityMetalElectrolysisChamberLaserAcceptor> METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR = BlockTypeTile.BlockTileBuilder
+            .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR)
+            .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
             .externalMultiblock()
             .build();
 }
