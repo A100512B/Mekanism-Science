@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<MetalElectrolysisChamberMultiblockData> {
@@ -67,11 +66,9 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
     @Override
     public FormationResult postcheck(MetalElectrolysisChamberMultiblockData structure, Long2ObjectMap<ChunkAccess> chunkMap) {
         BlockPos minPos = structure.getMinPos();
-        int dx = cuboid.length() - 2, dy = cuboid.height() - 2, dz = cuboid.width() - 2;
         Direction.Axis globalAxis = WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberCasing.class, world, chunkMap,
                 minPos.offset(1, 1, 0)) != null ? Direction.Axis.Z : Direction.Axis.X;
         List<RodData> rodDataList = new ObjectArrayList<>();
-        List<BlockPos> posShouldNotBeRods = new ArrayList<>();
         // Check the middle layers one by one
         for (int y = 1; y < cuboid.height() - 1; y++) {
             if (globalAxis == Direction.Axis.Z) {
