@@ -87,11 +87,13 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                                     return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.Z, 1);
-                            if (WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberPort.class, world, chunkMap, posToCheck) == null) {
+                            TileEntityMetalElectrolysisChamberPort tile1 = WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberPort.class, world, chunkMap, posToCheck);
+                            if (tile1 == null) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             rodDataList.add(new RodData(minPos.offset(x, y, 0), posToCheck, false, false));
                             ((TileEntityMetalElectrolysisChamberPort) tile).index = rodDataList.size() - 1;
+                            tile1.index = rodDataList.size() - 1;
                         } else if (tile instanceof TileEntityMetalElectrolysisChamberLaserAcceptor) {
                             if (shouldNotBeRods(rodDataList, posToCheck)) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD_TOO_CLOSE, posToCheck);
@@ -102,11 +104,13 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                                     return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.Z, 1);
+                            TileEntityMetalElectrolysisChamberLaserAcceptor tile1 = WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberLaserAcceptor.class, world, chunkMap, posToCheck);
                             if (WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberLaserAcceptor.class, world, chunkMap, posToCheck) == null) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             rodDataList.add(new RodData(minPos.offset(x, y, 0), posToCheck, true, false));
                             ((TileEntityMetalElectrolysisChamberLaserAcceptor) tile).index = rodDataList.size() - 1;
+                            tile1.index = rodDataList.size() - 1;
                         } else {
                             // Shouldn't be rods
                             for (int z = 1; z < cuboid.width() - 2; z++) {
@@ -115,7 +119,7 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                                     return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.Z, 1);
-                            var tile1 = WorldUtils.getTileEntity(world, chunkMap, posToCheck);
+                            BlockEntity tile1 = WorldUtils.getTileEntity(world, chunkMap, posToCheck);
                             if (tile1 instanceof TileEntityMetalElectrolysisChamberPort
                                     || tile1 instanceof TileEntityMetalElectrolysisChamberLaserAcceptor) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
@@ -141,11 +145,13 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                                     return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.X, 1);
-                            if (WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberPort.class, world, chunkMap, posToCheck) == null) {
+                            TileEntityMetalElectrolysisChamberPort tile1 = WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberPort.class, world, chunkMap, posToCheck);
+                            if (tile1 == null) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             rodDataList.add(new RodData(minPos.offset(0, y, z), posToCheck, false, false));
                             ((TileEntityMetalElectrolysisChamberPort) tile).index = rodDataList.size() - 1;
+                            tile1.index = rodDataList.size() - 1;
                         } else if (tile instanceof TileEntityMetalElectrolysisChamberLaserAcceptor) {
                             if (shouldNotBeRods(rodDataList, posToCheck)) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD_TOO_CLOSE, posToCheck);
@@ -156,10 +162,12 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                                     return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.X, 1);
-                            if (WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberLaserAcceptor.class, world, chunkMap, posToCheck) == null) {
+                            TileEntityMetalElectrolysisChamberLaserAcceptor tile1 = WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberLaserAcceptor.class, world, chunkMap, posToCheck);
+                            if (tile1 == null) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             ((TileEntityMetalElectrolysisChamberLaserAcceptor) tile).index = rodDataList.size() - 1;
+                            tile1.index = rodDataList.size() - 1;
                         } else {
                             // Shouldn't be rods
                             for (int x = 1; x < cuboid.length() - 2; x++) {
@@ -168,7 +176,7 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                                     return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.Z, 1);
-                            var tile1 = WorldUtils.getTileEntity(world, chunkMap, posToCheck);
+                            BlockEntity tile1 = WorldUtils.getTileEntity(world, chunkMap, posToCheck);
                             if (tile1 instanceof TileEntityMetalElectrolysisChamberPort
                                     || tile1 instanceof TileEntityMetalElectrolysisChamberLaserAcceptor) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
