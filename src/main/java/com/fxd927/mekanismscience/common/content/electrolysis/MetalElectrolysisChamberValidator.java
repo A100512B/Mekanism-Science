@@ -105,7 +105,7 @@ public class MetalElectrolysisChamberValidator extends CuboidStructureValidator<
                             }
                             posToCheck = posToCheck.relative(Direction.Axis.Z, 1);
                             TileEntityMetalElectrolysisChamberLaserAcceptor tile1 = WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberLaserAcceptor.class, world, chunkMap, posToCheck);
-                            if (WorldUtils.getTileEntity(TileEntityMetalElectrolysisChamberLaserAcceptor.class, world, chunkMap, posToCheck) == null) {
+                            if (tile1 == null) {
                                 return FormationResult.fail(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, posToCheck);
                             }
                             rodDataList.add(new RodData(minPos.offset(x, y, 0), posToCheck, true, false));
