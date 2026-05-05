@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.api.recipes;
 
+import lombok.Getter;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.chemical.Chemical;
 import mekanism.api.chemical.ChemicalStack;
@@ -22,7 +23,9 @@ import java.util.function.BiPredicate;
 public abstract class FluidChemicalToFluidChemicalRecipe<CHEMICAL extends Chemical<CHEMICAL>, STACK extends ChemicalStack<CHEMICAL>,
         INGREDIENT extends ChemicalStackIngredient<CHEMICAL, STACK>> extends MekanismRecipe implements BiPredicate<@NotNull FluidStack, @NotNull STACK> {
 
+    @Getter
     private final FluidStackIngredient fluidInput;
+    @Getter
     private final INGREDIENT chemicalInput;
     protected final FluidStack fluidOutput;
     protected final STACK chemicalOutput;
@@ -45,20 +48,6 @@ public abstract class FluidChemicalToFluidChemicalRecipe<CHEMICAL extends Chemic
     @Override
     public boolean test(FluidStack fluidStack, STACK chemicalStack) {
         return fluidInput.test(fluidStack) && chemicalInput.test(chemicalStack);
-    }
-
-    /**
-     * Gets the input fluid ingredient.
-     */
-    public FluidStackIngredient getFluidInput() {
-        return fluidInput;
-    }
-
-    /**
-     * Gets the input chemical ingredient.
-     */
-    public INGREDIENT getChemicalInput() {
-        return chemicalInput;
     }
 
     /**

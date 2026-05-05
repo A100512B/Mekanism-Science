@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.api.recipes;
 
+import lombok.Getter;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.recipes.MekanismRecipe;
@@ -17,8 +18,10 @@ import java.util.function.Predicate;
 @NothingNullByDefault
 public abstract class MetalElectrolysisRecipe extends MekanismRecipe implements Predicate<FluidStack> {
 
+    @Getter
     private final FluidStackIngredient input;
     protected final ItemStack output;
+    @Getter
     private final FloatingLong energyRequired;
 
     protected MetalElectrolysisRecipe(ResourceLocation id, FluidStackIngredient input, ItemStack output, FloatingLong energyRequired) {
@@ -36,14 +39,6 @@ public abstract class MetalElectrolysisRecipe extends MekanismRecipe implements 
     @Override
     public boolean test(FluidStack stack) {
         return input.test(stack);
-    }
-
-    public FluidStackIngredient getInput() {
-        return input;
-    }
-
-    public FloatingLong getEnergyRequired() {
-        return energyRequired;
     }
 
     /**

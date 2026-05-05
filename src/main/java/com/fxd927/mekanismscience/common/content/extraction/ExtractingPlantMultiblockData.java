@@ -6,6 +6,7 @@ import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.MSGases.Extractant;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
+import lombok.Setter;
 import mekanism.api.NBTConstants;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
@@ -54,6 +55,7 @@ public class ExtractingPlantMultiblockData
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
     );
 
+    @Setter
     @ContainerSync
     private int extractantTankCapacity;
     @ContainerSync
@@ -160,10 +162,6 @@ public class ExtractingPlantMultiblockData
             super.setVolume(volume);
             leachateTankCapacity = volume * MSConfig.generalConfig.extractionLeachatePerTank.get();
         }
-    }
-
-    public void setExtractantTankCapacity(int capacity) {
-        this.extractantTankCapacity = capacity;
     }
 
     @Override

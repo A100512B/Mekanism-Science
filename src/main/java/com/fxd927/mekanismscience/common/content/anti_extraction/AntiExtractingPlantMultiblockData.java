@@ -6,6 +6,7 @@ import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
+import lombok.Setter;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.NBTConstants;
@@ -62,6 +63,7 @@ public class AntiExtractingPlantMultiblockData
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
     );
 
+    @Setter
     @ContainerSync
     private long antiExtractantTankCapacity;
     @ContainerSync
@@ -243,10 +245,6 @@ public class AntiExtractingPlantMultiblockData
             super.setVolume(volume);
             extractTankCapacity = volume * MSConfig.generalConfig.antiExtractionExtractPerTank.get();
         }
-    }
-
-    public void setAntiExtractantTankCapacity(long capacity) {
-        this.antiExtractantTankCapacity = capacity;
     }
 
     public boolean handlesSound(TileEntityAntiExtractingPlantCasing tile) {
