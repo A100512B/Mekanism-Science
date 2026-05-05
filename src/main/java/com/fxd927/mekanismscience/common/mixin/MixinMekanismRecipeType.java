@@ -2,15 +2,16 @@ package com.fxd927.mekanismscience.common.mixin;
 
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe;
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidRecipe;
+import com.fxd927.mekanismscience.api.recipes.ItemStackChemicalToFluidRecipe;
 import com.fxd927.mekanismscience.api.recipes.MetalElectrolysisRecipe;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.chemical.ChemicalToChemicalRecipe;
-import mekanism.api.recipes.chemical.FluidChemicalToChemicalRecipe;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.FluidChemical;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleFluid;
 import mekanism.common.registration.impl.RecipeTypeRegistryObject;

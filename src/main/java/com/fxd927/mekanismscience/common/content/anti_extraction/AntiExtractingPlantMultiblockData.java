@@ -3,6 +3,7 @@ package com.fxd927.mekanismscience.common.content.anti_extraction;
 import com.fxd927.mekanismscience.api.MSNBTConstants;
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe;
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe.FluidChemicalOutput;
+import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidGasRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
@@ -49,7 +50,7 @@ import java.util.function.BooleanSupplier;
 
 public class AntiExtractingPlantMultiblockData
         extends MultiblockData
-        implements IValveHandler, FluidChemicalRecipeLookupHandler<Gas, GasStack, FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>> {
+        implements IValveHandler, FluidChemicalRecipeLookupHandler<Gas, GasStack, FluidGasToFluidGasRecipe> {
 
     public static final RecipeError NOT_ENOUGH_GAS_INPUT = RecipeError.create();
     public static final RecipeError NOT_ENOUGH_FLUID_INPUT = RecipeError.create();
@@ -82,7 +83,7 @@ public class AntiExtractingPlantMultiblockData
     public long lastGain;
     private long expectToAntiExtract = 0;
 
-    private final RecipeCacheLookupMonitor<FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>> recipeCacheLookupMonitor;
+    private final RecipeCacheLookupMonitor<FluidGasToFluidGasRecipe> recipeCacheLookupMonitor;
     private final BooleanSupplier recheckAllRecipeErrors;
     @ContainerSync
     private final boolean[] trackedErrors = new boolean[TRACKED_ERROR_TYPES.size()];
@@ -253,19 +254,19 @@ public class AntiExtractingPlantMultiblockData
 
     @Override
     @NotNull
-    public IMekanismRecipeTypeProvider<FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>, FluidChemical<Gas, GasStack, FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
+    public IMekanismRecipeTypeProvider<FluidGasToFluidGasRecipe, FluidChemical<Gas, GasStack, FluidGasToFluidGasRecipe>> getRecipeType() {
         return MSRecipeType.ANTI_EXTRACTION;
     }
 
     @Override
     @Nullable
-    public FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient> getRecipe(int cacheIndex) {
+    public FluidGasToFluidGasRecipe getRecipe(int cacheIndex) {
         return findFirstRecipe(extractInputHandler, antiExtractantInputHandler);
     }
 
     @Override
     @NotNull
-    public CachedRecipe<FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient>> createNewCachedRecipe(@NotNull FluidChemicalToFluidChemicalRecipe<Gas, GasStack, GasStackIngredient> recipe, int cacheIndex) {
+    public CachedRecipe<FluidGasToFluidGasRecipe> createNewCachedRecipe(@NotNull FluidGasToFluidGasRecipe recipe, int cacheIndex) {
         return new TwoInputCachedRecipe<>(recipe, recheckAllRecipeErrors, extractInputHandler, antiExtractantInputHandler, outputHandler,
                 recipe::getFluidInput, recipe::getChemicalInput, recipe::getOutput, FluidStack::isEmpty, ChemicalStack::isEmpty,
                 ConstantPredicates.alwaysFalse()) {}

@@ -2,6 +2,7 @@ package com.fxd927.mekanismscience.common.content.extraction;
 
 import com.fxd927.mekanismscience.api.MSNBTConstants;
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidRecipe;
+import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.MSGases.Extractant;
@@ -44,7 +45,7 @@ import java.util.function.BooleanSupplier;
 
 public class ExtractingPlantMultiblockData
         extends MultiblockData
-        implements IValveHandler, FluidChemicalRecipeLookupHandler<Gas, GasStack, FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>> {
+        implements IValveHandler, FluidChemicalRecipeLookupHandler<Gas, GasStack, FluidGasToFluidRecipe> {
 
     public static final RecipeError NOT_ENOUGH_GAS_INPUT = RecipeError.create();
     public static final RecipeError NOT_ENOUGH_FLUID_INPUT = RecipeError.create();
@@ -72,7 +73,7 @@ public class ExtractingPlantMultiblockData
     public long lastGain;
     private long expectToExtract = 0;
 
-    private final RecipeCacheLookupMonitor<FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>> recipeCacheLookupMonitor;
+    private final RecipeCacheLookupMonitor<FluidGasToFluidRecipe> recipeCacheLookupMonitor;
     private final BooleanSupplier recheckAllRecipeErrors;
     @ContainerSync
     private final boolean[] trackedErrors = new boolean[TRACKED_ERROR_TYPES.size()];
@@ -166,19 +167,19 @@ public class ExtractingPlantMultiblockData
 
     @Override
     @NotNull
-    public IMekanismRecipeTypeProvider<FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>, FluidChemical<Gas, GasStack, FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>>> getRecipeType() {
+    public IMekanismRecipeTypeProvider<FluidGasToFluidRecipe, FluidChemical<Gas, GasStack, FluidGasToFluidRecipe>> getRecipeType() {
         return MSRecipeType.EXTRACTION;
     }
 
     @Override
     @Nullable
-    public FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient> getRecipe(int cacheIndex) {
+    public FluidGasToFluidRecipe getRecipe(int cacheIndex) {
         return findFirstRecipe(leachateInputHandler, extractantInputHandler);
     }
 
     @Override
     @NotNull
-    public CachedRecipe<FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient>> createNewCachedRecipe(@NotNull FluidChemicalToFluidRecipe<Gas, GasStack, GasStackIngredient> recipe, int cacheIndex) {
+    public CachedRecipe<FluidGasToFluidRecipe> createNewCachedRecipe(@NotNull FluidGasToFluidRecipe recipe, int cacheIndex) {
         return new TwoInputCachedRecipe<>(recipe, recheckAllRecipeErrors, leachateInputHandler, extractantInputHandler,
                 outputHandler, recipe::getFluidInput, recipe::getChemicalInput, recipe::getOutput, FluidStack::isEmpty,
                 ChemicalStack::isEmpty, FluidStack::isEmpty) {}
