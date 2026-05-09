@@ -62,6 +62,7 @@ public class MetalElectrolysisChamberMultiblockData
     public List<RodData> rodsList = new ObjectArrayList<>();
     public int parallel;
     private FloatingLong baseEnergyRequired;
+    public FloatingLong lastEnergyUsed;
 
     @ContainerSync
     public VariableCapacityFluidTank inputTank;
@@ -78,15 +79,15 @@ public class MetalElectrolysisChamberMultiblockData
     private final IOutputHandler<ItemStack> outputHandler;
     private final IInputHandler<FluidStack> inputHandler;
 
-    private float prevScale;
+    public float prevScale;
 
     public MetalElectrolysisChamberMultiblockData(TileEntityMetalElectrolysisChamberCasing tile) {
         super(tile);
         recipeCacheLookupMonitor = new RecipeCacheLookupMonitor<>(this);
         recheckAllRecipeErrors = TileEntityRecipeMachine.shouldRecheckAllErrors(tile);
         fluidTanks.add(inputTank = VariableCapacityFluidTank.input(this, () -> inputCapacity, this::containsRecipe, this));
-        inventorySlots.add(new BasicInventorySlot(OUTPUT_CAPACITY, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.internalOnly,
-                BasicInventorySlot.alwaysTrue, this, 12, 24) {
+        inventorySlots.add(outputSlot = new BasicInventorySlot(OUTPUT_CAPACITY, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.internalOnly,
+                BasicInventorySlot.alwaysTrue, this, 131, 26) {
         });
         inputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
@@ -98,7 +99,7 @@ public class MetalElectrolysisChamberMultiblockData
         parallel = 0;
         rodsList.stream().filter(rod -> rod.active)
                         .forEach(rod -> parallel += rod.laser ? 2 : 1);
-        recipeCacheLookupMonitor.updateAndProcess(energyContainer);
+        lastEnergyUsed = recipeCacheLookupMonitor.updateAndProcess(energyContainer);
         float scale = MekanismUtils.getScale(prevScale, inputTank);
         if (scale != prevScale) {
             prevScale = scale;
@@ -194,6 +195,15 @@ public class MetalElectrolysisChamberMultiblockData
         return getBounds().isOnCorner(tile.getBlockPos());
     }
 
+    public boolean hasWarning(RecipeError error) {
+        int errorIndex = TRACKED_ERROR_TYPES.indexOf(error);
+        if (errorIndex == -1) {
+            //Something went wrong
+            return false;
+        }
+        return trackedErrors[errorIndex];
+    }
+
     public static final class RodData {
 
         public final BlockPos minPos;
@@ -248,6 +258,5 @@ public class MetalElectrolysisChamberMultiblockData
                     "laser=" + laser + ", " +
                     "active=" + active + ']';
         }
-
     }
 }

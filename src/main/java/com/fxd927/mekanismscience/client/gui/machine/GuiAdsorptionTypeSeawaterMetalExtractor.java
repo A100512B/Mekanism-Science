@@ -6,8 +6,6 @@ import mekanism.client.gui.element.GuiRightArrow;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
-import mekanism.client.gui.element.slot.GuiSlot;
-import mekanism.client.gui.element.slot.SlotType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
@@ -19,6 +17,7 @@ import net.minecraft.world.entity.player.Inventory;
 import javax.annotation.Nonnull;
 
 public class GuiAdsorptionTypeSeawaterMetalExtractor extends GuiConfigurableTile<TileEntityAdsorptionTypeSeawaterMetalExtractor, MekanismTileContainer<TileEntityAdsorptionTypeSeawaterMetalExtractor>> {
+
     public GuiAdsorptionTypeSeawaterMetalExtractor(MekanismTileContainer<TileEntityAdsorptionTypeSeawaterMetalExtractor> container, Inventory inv, Component title) {
         super(container, inv, title);
         inventoryLabelY += 2;

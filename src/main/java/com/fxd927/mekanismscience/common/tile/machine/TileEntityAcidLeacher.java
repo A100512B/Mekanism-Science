@@ -86,22 +86,27 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
             RecipeError.NOT_ENOUGH_SECONDARY_INPUT,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
     );
+
     private static final long MAX_GAS = 18 * FluidType.BUCKET_VOLUME * FluidType.BUCKET_VOLUME;
     private static final int MAX_ITEM = 16 * 64;
     private static final int MAX_FLUID = 9 * FluidType.BUCKET_VOLUME * FluidType.BUCKET_VOLUME;
-
     private static final int BASE_BASELINE_MAX_OPERATION = MSConfig.generalConfig.acidLeacherRecipeMultiplier.get();
+
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final IInputHandler<@NotNull GasStack> gasInputHandler;
     private final IOutputHandler<@NotNull FluidStack> outputHandler;
+
     public IGasTank gasInputTank;
     public BasicInventorySlot itemInputSlot;
     public BasicFluidTank outputTank;
+
     GasInventorySlot inputGasSlot;
     FluidInventorySlot outputFluidSlot;
     EnergyInventorySlot energySlot;
+
     private int baselineMaxOperation = BASE_BASELINE_MAX_OPERATION;
     private FloatingLong clientEnergyUsed;
+
     @Getter
     private MachineEnergyContainer<TileEntityAcidLeacher> energyContainer;
 
@@ -163,15 +168,17 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
         // TODO set the pos of inventory slots
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection, side -> side == RelativeSide.LEFT || side == RelativeSide.BACK, side -> side == RelativeSide.LEFT);
         itemInputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.notExternal, (stack, automationType) -> containsRecipeAB(stack, gasInputTank.getStack()),
-                this::containsRecipeA, this, 0, 0) {
+                this::containsRecipeA, recipeCacheListener, 26, 36) {
         };
         itemInputSlot.setSlotType(ContainerSlotType.INPUT);
         itemInputSlot.setSlotOverlay(SlotOverlay.MINUS);
         itemInputSlot.tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(itemInputSlot);
-        builder.addSlot(inputGasSlot = GasInventorySlot.fillOrConvert(gasInputTank, this::getLevel, this, 0, 0), RelativeSide.LEFT);
-        builder.addSlot(outputFluidSlot = FluidInventorySlot.drain(outputTank, this, 0, 0), RelativeSide.BACK);
+        builder.addSlot(inputGasSlot = GasInventorySlot.fillOrConvert(gasInputTank, this::getLevel, listener, 26, 55), RelativeSide.LEFT);
+        builder.addSlot(outputFluidSlot = FluidInventorySlot.drain(outputTank, this, 152, 55), RelativeSide.BACK);
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
         inputGasSlot.setSlotOverlay(SlotOverlay.MINUS);
+        outputFluidSlot.setSlotOverlay(SlotOverlay.PLUS);
         return builder.build();
     }
 
