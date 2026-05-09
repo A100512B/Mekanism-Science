@@ -1,17 +1,14 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolymerizingChamber;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.machine.*;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantPort;
-import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolyzingRod;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberLaserAcceptor;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberPort;
+import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolyzingRod;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
@@ -36,6 +33,7 @@ public class MSTileEntityTypes {
     public static final TileEntityTypeRegistryObject<TileEntityMetalElectrolysisChamberPort> METAL_ELECTROLYSIS_CHAMBER_PORT = TILE_ENTITY_TYPES.register(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, TileEntityMetalElectrolysisChamberPort::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityMetalElectrolysisChamberLaserAcceptor> METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR = TILE_ENTITY_TYPES.register(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, TileEntityMetalElectrolysisChamberLaserAcceptor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityMetalElectrolyzingRod> METAL_ELECTROLYZING_ROD = TILE_ENTITY_TYPES.register(MSBlocks.METAL_ELECTROLYZING_ROD, TileEntityMetalElectrolyzingRod::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityAcidLeacher> ACID_LEACHER = TILE_ENTITY_TYPES.register(MSBlocks.ACID_LEACHER, TileEntityAcidLeacher::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
 
     private MSTileEntityTypes(){
     }

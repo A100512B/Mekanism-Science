@@ -1,0 +1,26 @@
+package com.fxd927.mekanismscience.api;
+
+import mekanism.common.capabilities.resolver.manager.ChemicalHandlerManager.GasHandlerManager;
+import mekanism.common.capabilities.resolver.manager.ChemicalHandlerManager.InfusionHandlerManager;
+import mekanism.common.capabilities.resolver.manager.ChemicalHandlerManager.PigmentHandlerManager;
+import mekanism.common.capabilities.resolver.manager.ChemicalHandlerManager.SlurryHandlerManager;
+import mekanism.common.capabilities.resolver.manager.EnergyHandlerManager;
+import mekanism.common.capabilities.resolver.manager.FluidHandlerManager;
+import mekanism.common.capabilities.resolver.manager.HeatHandlerManager;
+
+public interface ITileEntityMekanismAccessor {
+
+    GasHandlerManager getGasHandlerManager();
+
+    InfusionHandlerManager getInfusionHandlerManager();
+
+    PigmentHandlerManager getPigmentHandlerManager();
+
+    SlurryHandlerManager getSlurryHandlerManager();
+
+    FluidHandlerManager getFluidHandlerManager();
+
+    EnergyHandlerManager getEnergyHandlerManager();
+
+    HeatHandlerManager getHeatHandlerManager();
+}

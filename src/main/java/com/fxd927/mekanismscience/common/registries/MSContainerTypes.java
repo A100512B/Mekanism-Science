@@ -1,10 +1,7 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolymerizingChamber;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.machine.*;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
@@ -22,6 +19,7 @@ public class MSContainerTypes {
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityExtractingPlantCasing>> EXTRACTING_PLANT = CONTAINER_TYPES.register("extracting_plant", TileEntityExtractingPlantCasing.class);
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAntiExtractingPlantCasing>> ANTI_EXTRACTING_PLANT = CONTAINER_TYPES.register("anti_extracting_plant", TileEntityAntiExtractingPlantCasing.class);
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityMetalElectrolysisChamberCasing>> METAL_ELECTROLYSIS_CHAMBER = CONTAINER_TYPES.register("metal_electrolysis_chamber", TileEntityMetalElectrolysisChamberCasing.class);
+    public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAcidLeacher>> ACID_LEACHER = CONTAINER_TYPES.register("acid_leacher", TileEntityAcidLeacher.class);
 
     private MSContainerTypes(){
     }

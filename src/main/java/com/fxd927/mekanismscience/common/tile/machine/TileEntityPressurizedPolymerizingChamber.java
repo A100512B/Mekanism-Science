@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.tile.machine;
 
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
+import lombok.Getter;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.Upgrade;
@@ -79,6 +80,7 @@ public class TileEntityPressurizedPolymerizingChamber
     private final IInputHandler<@NotNull GasStack> inputHandler;
     private final IOutputHandler<@NotNull GasStack> outputHandler;
 
+    @Getter
     private MachineEnergyContainer<TileEntityPressurizedPolymerizingChamber> energyContainer;
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getInputItem", docPlaceholder = "item input slot")
     GasInventorySlot inputSlot;
@@ -179,10 +181,6 @@ public class TileEntityPressurizedPolymerizingChamber
         if (upgrade == Upgrade.SPEED) {
             baselineMaxOperations = (int) Math.pow(2, upgradeComponent.getUpgrades(Upgrade.SPEED));
         }
-    }
-
-    public MachineEnergyContainer<TileEntityPressurizedPolymerizingChamber> getEnergyContainer() {
-        return energyContainer;
     }
 
     @Override

@@ -40,5 +40,6 @@ public abstract class MixinMekanismRecipeType<RECIPE extends MekanismRecipe, INP
         MSRecipeType.EXTRACTION = register("extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidRecipe::getFluidInput, FluidChemicalToFluidRecipe::getChemicalInput));
         MSRecipeType.ANTI_EXTRACTION = register("anti_extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidChemicalRecipe::getFluidInput, FluidChemicalToFluidChemicalRecipe::getChemicalInput));
         MSRecipeType.METAL_ELECTROLYSIS = register("metal_electrolysis", recipeType -> new SingleFluid<>(recipeType, MetalElectrolysisRecipe::getInput));
+        MSRecipeType.ACID_LEACHING = register("acid_leaching", recipeType -> new ItemChemical<>(recipeType, ItemStackChemicalToFluidRecipe::getItemInput, ItemStackChemicalToFluidRecipe::getChemicalInput));
     }
 }

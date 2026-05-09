@@ -1,11 +1,12 @@
 package com.fxd927.mekanismscience.common.recipe;
 
-import com.fxd927.mekanismscience.api.recipes.*;
+import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidGasRecipe;
+import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidRecipe;
+import com.fxd927.mekanismscience.api.recipes.ItemStackGasToFluidRecipe;
+import com.fxd927.mekanismscience.api.recipes.MetalElectrolysisRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.GasToGasRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.FluidChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
@@ -19,4 +20,5 @@ public class MSRecipeType {
     public static RecipeTypeRegistryObject<FluidGasToFluidRecipe, FluidChemical<Gas, GasStack, FluidGasToFluidRecipe>> EXTRACTION;
     public static RecipeTypeRegistryObject<FluidGasToFluidGasRecipe, FluidChemical<Gas, GasStack, FluidGasToFluidGasRecipe>> ANTI_EXTRACTION;
     public static RecipeTypeRegistryObject<MetalElectrolysisRecipe, SingleFluid<MetalElectrolysisRecipe>> METAL_ELECTROLYSIS;
+    public static RecipeTypeRegistryObject<ItemStackGasToFluidRecipe, ItemChemical<Gas, GasStack, ItemStackGasToFluidRecipe>> ACID_LEACHING;
 }

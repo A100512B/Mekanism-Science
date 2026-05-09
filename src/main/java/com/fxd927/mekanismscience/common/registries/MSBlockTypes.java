@@ -7,10 +7,7 @@ import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractin
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSBlockShapes;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityPressurizedPolymerizingChamber;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.machine.*;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantPort;
@@ -22,14 +19,11 @@ import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityEx
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
 import mekanism.api.Upgrade;
-import mekanism.common.block.attribute.AttributeStateActive;
 import mekanism.common.block.attribute.AttributeStateFacing;
 import mekanism.common.block.attribute.Attributes;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.generators.common.content.blocktype.BlockShapes;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 import java.util.EnumSet;
 
@@ -142,5 +136,24 @@ public class MSBlockTypes {
             .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR)
             .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
             .externalMultiblock()
+            .build();
+
+    public static final MSMachine<TileEntityAcidLeacher> ACID_LEACHER = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.ACID_LEACHER, MSLang.DESCRIPTION_ACID_LEACHER)
+            .withGui(() -> MSContainerTypes.ACID_LEACHER)
+            .withEnergyConfig(MSConfig.usageConfig.acidLeacher, MSConfig.storageConfig.acidLeacher)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.GAS, Upgrade.ANCHOR, Upgrade.MUFFLING))
+            .withCustomShape(MSBlockShapes.ACID_LEACHER)
+            .withBounding((pos, state, builder) -> {
+                for (int x = -1; x <= 1; x++) {
+                    for (int y = 0; y <= 1; y++) {
+                        for (int z = -1; z <= 1; z++) {
+                            if (x != 0 || y != 0 || z != 0) {
+                                builder.add(pos.offset(x, y, z));
+                            }
+                        }
+                    }
+                }
+            })
             .build();
 }
