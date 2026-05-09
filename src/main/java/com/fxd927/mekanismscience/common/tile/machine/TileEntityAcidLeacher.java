@@ -165,7 +165,6 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
     @Override
     @NotNull
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener) {
-        // TODO set the pos of inventory slots
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection, side -> side == RelativeSide.LEFT || side == RelativeSide.BACK, side -> side == RelativeSide.LEFT);
         itemInputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.notExternal, (stack, automationType) -> containsRecipeAB(stack, gasInputTank.getStack()),
                 this::containsRecipeA, recipeCacheListener, 26, 36) {
