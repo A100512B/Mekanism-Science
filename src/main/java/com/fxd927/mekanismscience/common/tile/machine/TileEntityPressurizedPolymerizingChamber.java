@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.common.tile.machine;
 
+import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import lombok.Getter;
 import mekanism.api.IContentsListener;
@@ -39,7 +40,6 @@ import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
-import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.ChemicalRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.tile.base.SubstanceType;
@@ -154,7 +154,7 @@ public class TileEntityPressurizedPolymerizingChamber
     @NotNull
     @Override
     public IMekanismRecipeTypeProvider<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> getRecipeType() {
-        return MekanismRecipeType.ACTIVATING;
+        return MSRecipeType.PRESSURIZED_POLYMERIZING;
     }
 
     @Nullable
