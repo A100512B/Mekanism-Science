@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
+import com.fxd927.mekanismscience.common.block.BlockMetalElectrolysisRod;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.*;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantAntiExtractingPillar;
@@ -9,7 +10,6 @@ import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEnt
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberLaserAcceptor;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberPort;
-import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolyzingRod;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantExtractingPillar;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
@@ -43,7 +43,7 @@ public class MSBlocks {
     public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberCasing>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberCasing>>> METAL_ELECTROLYSIS_CHAMBER_CASING = registerTooltipBlock("metal_electrolysis_chamber_casing", () -> new BlockBasicMultiblock<>(MSBlockTypes.METAL_ELECTROLYSIS_CHAMBER_CASING, properties -> properties.mapColor(MapColor.METAL)));
     public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberPort>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberPort>>> METAL_ELECTROLYSIS_CHAMBER_PORT = registerTooltipBlock("metal_electrolysis_chamber_port", () -> new BlockBasicMultiblock<>(MSBlockTypes.METAL_ELECTROLYSIS_CHAMBER_PORT, properties -> properties.mapColor(MapColor.METAL)));
     public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberLaserAcceptor>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberLaserAcceptor>>> METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR = registerTooltipBlock("metal_electrolysis_chamber_laser_acceptor", () -> new BlockBasicMultiblock<>(MSBlockTypes.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, properties -> properties.mapColor(MapColor.NONE)));
-    public static final BlockRegistryObject<BlockTileModel<TileEntityMetalElectrolyzingRod, BlockTypeTile<TileEntityMetalElectrolyzingRod>>, ItemBlockTooltip<BlockTileModel<TileEntityMetalElectrolyzingRod, BlockTypeTile<TileEntityMetalElectrolyzingRod>>>> METAL_ELECTROLYZING_ROD = registerTooltipBlock("metal_electrolyzing_rod", () -> new BlockTileModel<>(MSBlockTypes.METAL_ELECTROLYZING_ROD, properties -> properties.mapColor(MapColor.METAL)));
+    public static final BlockRegistryObject<BlockMetalElectrolysisRod, ItemBlockTooltip<BlockMetalElectrolysisRod>> METAL_ELECTROLYZING_ROD = registerTooltipBlock("metal_electrolyzing_rod", BlockMetalElectrolysisRod::new);
     public static final BlockRegistryObject<BlockTileModel<TileEntityAcidLeacher, MSMachine<TileEntityAcidLeacher>>, ItemBlockMachine> ACID_LEACHER = BLOCKS.register("acid_leacher", () -> new BlockTileModel<>(MSBlockTypes.ACID_LEACHER, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
 
     private MSBlocks() {

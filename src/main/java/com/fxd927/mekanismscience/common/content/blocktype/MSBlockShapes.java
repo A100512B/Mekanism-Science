@@ -20,7 +20,8 @@ public final class MSBlockShapes {
         VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
                 box(4, 4, 0, 12, 12, 2), // port1
                 box(4, 4, 14, 12, 12, 16), // port2
-                box(5, 5, 2, 11, 11, 14) // middle
+                box(5, 5, 2, 11, 11, 14), // middle
+                box(6, 6, 3, 10, 10, 13) // inner
         ), METAL_ELECTROLYSIS_ROD);
 
         VoxelShapeUtils.setShape(VoxelShapeUtils.rotate(VoxelShapeUtils.combine(

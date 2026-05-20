@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.block.attribute;
 
 import com.fxd927.mekanismscience.common.MSLang;
+import lombok.Getter;
 import mekanism.api.IIncrementalEnum;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.math.MathUtils;
@@ -41,23 +42,26 @@ public class AttributeStateElectrolyzingRodMode implements AttributeState {
     public void fillBlockStateContainer(Block block, List<Property<?>> properties) {
         properties.add(modeProperty);
     }
-    
+
     @NothingNullByDefault
     public enum MetalElectrolyzingRodMode implements StringRepresentable, IHasTextComponent, IIncrementalEnum<MetalElectrolyzingRodMode> {
-        IDLE("idle", MSLang.METAL_ELECTROLYZING_ROD_MODE_IDLE, EnumColor.GRAY),
-        ACTIVE("active", MSLang.METAL_ELECTROLYZING_ROD_MODE_ACTIVE, EnumColor.INDIGO),
-        ACTIVE_LASER("active_laser", MSLang.METAL_ELECTROLYZING_ROD_MODE_ACTIVE_LASER, EnumColor.RED);
+        IDLE("idle", MSLang.METAL_ELECTROLYZING_ROD_MODE_IDLE, EnumColor.GRAY, 0),
+        ACTIVE("active", MSLang.METAL_ELECTROLYZING_ROD_MODE_ACTIVE, EnumColor.INDIGO, 8),
+        ACTIVE_LASER("active_laser", MSLang.METAL_ELECTROLYZING_ROD_MODE_ACTIVE_LASER, EnumColor.RED, 15);
         
         private static final MetalElectrolyzingRodMode[] MODES = values();
 
         private final String name;
         private final ILangEntry langEntry;
         private final EnumColor color;
+        @Getter
+        private final int light;
 
-        MetalElectrolyzingRodMode(String name, ILangEntry langEntry, EnumColor color) {
+        MetalElectrolyzingRodMode(String name, ILangEntry langEntry, EnumColor color, int light) {
             this.name = name;
             this.langEntry = langEntry;
             this.color = color;
+            this.light = light;
         }
 
         @Override

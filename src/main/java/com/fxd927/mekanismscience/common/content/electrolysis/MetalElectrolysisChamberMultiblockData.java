@@ -7,7 +7,6 @@ import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.tile.multiblock.electrolysis.TileEntityMetalElectrolysisChamberCasing;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import mekanism.api.NBTConstants;
-import mekanism.api.energy.IEnergyContainer;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -40,7 +39,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
 public class MetalElectrolysisChamberMultiblockData
@@ -61,15 +59,12 @@ public class MetalElectrolysisChamberMultiblockData
 
     public List<RodData> rodsList = new ObjectArrayList<>();
     public int parallel;
-    private FloatingLong baseEnergyRequired;
     public FloatingLong lastEnergyUsed;
 
     @ContainerSync
     public VariableCapacityFluidTank inputTank;
     @ContainerSync
     public BasicInventorySlot outputSlot;
-    @ContainerSync
-    public IEnergyContainer energyContainer;
 
     private final RecipeCacheLookupMonitor<MetalElectrolysisRecipe> recipeCacheLookupMonitor;
     private final BooleanSupplier recheckAllRecipeErrors;
@@ -97,9 +92,13 @@ public class MetalElectrolysisChamberMultiblockData
     public boolean tick(Level world) {
         boolean needsPacket = super.tick(world);
         parallel = 0;
+        lastEnergyUsed = FloatingLong.ZERO;
         rodsList.stream().filter(rod -> rod.active)
-                        .forEach(rod -> parallel += rod.laser ? 2 : 1);
-        lastEnergyUsed = recipeCacheLookupMonitor.updateAndProcess(energyContainer);
+                .forEach(rod -> {
+                    parallel += rod.laser ? 2 : 1;
+                    lastEnergyUsed = lastEnergyUsed.plusEqual(rod.lastEnergyUsed);
+                });
+        recipeCacheLookupMonitor.updateAndProcess();
         float scale = MekanismUtils.getScale(prevScale, inputTank);
         if (scale != prevScale) {
             prevScale = scale;
@@ -177,18 +176,7 @@ public class MetalElectrolysisChamberMultiblockData
                     }
                 })
                 .setActive(active -> this.active = active)
-                .setEnergyRequirements(() -> this.baseEnergyRequired, energyContainer)
                 .setBaselineMaxOperations(() -> parallel);
-    }
-
-    @Override
-    public void onCachedRecipeChanged(@Nullable CachedRecipe<MetalElectrolysisRecipe> cachedRecipe, int cacheIndex) {
-        FluidRecipeLookupHandler.super.onCachedRecipeChanged(cachedRecipe, cacheIndex);
-        if (cachedRecipe == null) {
-            baseEnergyRequired = FloatingLong.ZERO;
-        } else {
-            baseEnergyRequired = cachedRecipe.getRecipe().getEnergyRequired();
-        }
     }
 
     public boolean handlesSound(TileEntityMetalElectrolysisChamberCasing tile) {
@@ -210,12 +198,20 @@ public class MetalElectrolysisChamberMultiblockData
         public final BlockPos maxPos;
         public final boolean laser;
         public boolean active;
+        public int operations;
+        public FloatingLong lastEnergyUsed;
 
-        public RodData(BlockPos minPos, BlockPos maxPos, boolean laser, boolean active) {
+        public RodData(BlockPos minPos, BlockPos maxPos, boolean laser) {
+            this(minPos, maxPos, laser, false, 0, FloatingLong.ZERO);
+        }
+
+        private RodData(BlockPos minPos, BlockPos maxPos, boolean laser, boolean active, int operations, FloatingLong lastEnergyUsed) {
             this.minPos = minPos;
             this.maxPos = maxPos;
             this.laser = laser;
             this.active = active;
+            this.operations = operations;
+            this.lastEnergyUsed = lastEnergyUsed;
         }
 
         public CompoundTag write() {
@@ -224,6 +220,8 @@ public class MetalElectrolysisChamberMultiblockData
             tag.put(NBTConstants.MAX, NbtUtils.writeBlockPos(maxPos));
             tag.putBoolean(MSNBTConstants.LASER, laser);
             tag.putBoolean(NBTConstants.ACTIVE, active);
+            tag.putInt(MSNBTConstants.OPERATIONS, operations);
+            tag.putString(MSNBTConstants.LAST_ENERGY_USED, lastEnergyUsed.toString());
             return tag;
         }
 
@@ -231,32 +229,9 @@ public class MetalElectrolysisChamberMultiblockData
             return new RodData(NbtUtils.readBlockPos(tag.getCompound(NBTConstants.MIN)),
                     NbtUtils.readBlockPos(tag.getCompound(NBTConstants.MAX)),
                     tag.getBoolean(MSNBTConstants.LASER),
-                    tag.getBoolean(NBTConstants.ACTIVE));
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this) return true;
-            if (obj == null || obj.getClass() != this.getClass()) return false;
-            var that = (RodData) obj;
-            return Objects.equals(this.minPos, that.minPos) &&
-                    Objects.equals(this.maxPos, that.maxPos) &&
-                    this.laser == that.laser &&
-                    this.active == that.active;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(minPos, maxPos, laser, active);
-        }
-
-        @Override
-        public String toString() {
-            return "RodData[" +
-                    "minPos=" + minPos + ", " +
-                    "maxPos=" + maxPos + ", " +
-                    "laser=" + laser + ", " +
-                    "active=" + active + ']';
+                    tag.getBoolean(NBTConstants.ACTIVE),
+                    tag.getInt(MSNBTConstants.OPERATIONS),
+                    FloatingLong.parseFloatingLong(tag.getString(MSNBTConstants.LAST_ENERGY_USED)));
         }
     }
 }

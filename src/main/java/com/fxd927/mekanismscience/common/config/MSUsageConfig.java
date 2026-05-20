@@ -22,13 +22,20 @@ public class MSUsageConfig extends BaseMekanismConfig {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("MS Energy Usage Config. This config is synced from server to client.").push("storage");
 
-        adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor", FloatingLong.createConst(100));
-        organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "organicLiquidExtractor", FloatingLong.createConst(100));
-        seawaterPump = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "seawaterPump", FloatingLong.createConst(100));
-        pressurizedPolymerizingChamber = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "pressurizedPolymerizingChamber", FloatingLong.createConst(200));
-        metalElectrolyzingRod = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolyzingRod", FloatingLong.createConst(2500));
-        metalElectrolyzingLaserRod = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolyzingLaserRod", FloatingLong.createConst(4000));
-        acidLeacher = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "acidLeacher", FloatingLong.createConst(3000));
+        adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor",
+                FloatingLong.createConst(100));
+        organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "organicLiquidExtractor",
+                FloatingLong.createConst(100));
+        seawaterPump = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "seawaterPump",
+                FloatingLong.createConst(100));
+        pressurizedPolymerizingChamber = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "pressurizedPolymerizingChamber",
+                FloatingLong.createConst(200));
+        metalElectrolyzingRod = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolyzingRod",
+                FloatingLong.createConst(2500));
+        metalElectrolyzingLaserRod = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolyzingLaserRod",
+                FloatingLong.createConst(4000));
+        acidLeacher = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "acidLeacher",
+                FloatingLong.createConst(3000));
 
         builder.pop();
         configSpec = builder.build();

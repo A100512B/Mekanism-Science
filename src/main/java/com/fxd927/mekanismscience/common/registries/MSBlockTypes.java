@@ -119,6 +119,8 @@ public class MSBlockTypes {
 
     public static final BlockTypeTile<TileEntityMetalElectrolysisChamberPort> METAL_ELECTROLYSIS_CHAMBER_PORT = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_PORT, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_PORT)
+            .withGui(() -> MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, MSLang.METAL_ELECTROLYSIS_CHAMBER)
+            .withEnergyConfig(MSConfig.storageConfig.metalElectrolysisChamberPort)
             .with(Attributes.ACTIVE)
             .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
             .externalMultiblock()
@@ -134,6 +136,8 @@ public class MSBlockTypes {
 
     public static final BlockTypeTile<TileEntityMetalElectrolysisChamberLaserAcceptor> METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR = BlockTypeTile.BlockTileBuilder
             .createBlock(() -> MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR)
+            .withGui(() -> MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, MSLang.METAL_ELECTROLYSIS_CHAMBER)
+            .withEnergyConfig(MSConfig.storageConfig.metalElectrolysisChamberLaserAcceptor)
             .withSound(MSSounds.METAL_ELECTROLYSIS_CHAMBER)
             .externalMultiblock()
             .build();

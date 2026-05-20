@@ -8,4 +8,6 @@ public final class MSNBTConstants {
     public static final String LASER = "laser";
     public static final String RODS = "rods";
     public static final String PARALLEL = "parallel";
+    public static final String OPERATIONS = "operations";
+    public static final String LAST_ENERGY_USED = "lastEnergyUsed";
 }
