@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:reaction",
+  "gasInput": {
+    "amount": 600,
+    "gas": "mekanism:chloride"
+  },
+  "itemInput": {
+    "amount": 1,
+    "item": "mekanismscience:bone_ashes_with_carbon"
+  },
+  "duration": 200,
+  "energyRequired": 750,
+  "itemOutput": {
+    "item": "mekanismscience:calcium_chloride",
+    "amount": 3
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:impure_phosphoryl_chloride",
+    "amount": 200
+  }
+}

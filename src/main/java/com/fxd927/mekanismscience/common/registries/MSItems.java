@@ -1,19 +1,24 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
+import com.fxd927.mekanismscience.common.item.HighDensityNeutronSourcePellet;
+import com.fxd927.mekanismscience.common.item.NeutronSourcePellet;
 import com.fxd927.mekanismscience.common.item.tablet.*;
+import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
+@SuppressWarnings("unused")
 public class MSItems {
+
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(MekanismScience.MODID);
 
-    //public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
-    //public static final ItemRegistryObject<Item> HIGH_DENSITY_NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_high-density_neutron_source", () -> new HighDensityNeutronSourcePellet(new Item.Properties(), EnumColor.PURPLE));
-    //public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
-    //public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", EnumColor.ORANGE);
+    public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
+    public static final ItemRegistryObject<Item> HIGH_DENSITY_NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_high-density_neutron_source", () -> new HighDensityNeutronSourcePellet(new Item.Properties(), EnumColor.PURPLE));
+    public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
+    public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", EnumColor.ORANGE);
     public static final ItemRegistryObject<Item> EXCIPIENT = ITEMS.register("excipient");
     public static final ItemRegistryObject<Item> TABLET_ANESTHETIC = ITEMS.register("tablet_anesthetic", () -> new AnestheticTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> TABLET_FIRE_RESISTANCE = ITEMS.register("tablet_fire_resistance", () -> new FireResistanceTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
@@ -21,7 +26,12 @@ public class MSItems {
     public static final ItemRegistryObject<Item> TABLET_MUSCLE_ENHANCEMENT = ITEMS.register("tablet_muscle_enhancement", () -> new MuscleEnhancementTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> TABLET_POISON = ITEMS.register("tablet_poison", () -> new PoisonTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> TABLET_SLEEP_INDUCING = ITEMS.register("tablet_sleep_inducing", () -> new SleepInducingTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
+    public static final ItemRegistryObject<Item> ACIDIC_SUBSTRATE = ITEMS.register("acidic_substrate");
+    public static final ItemRegistryObject<Item> ALKALINE_SUBSTRATE = ITEMS.register("alkaline_substrate");
+    public static final ItemRegistryObject<Item> BONE_ASHES = ITEMS.register("bone_ashes");
+    public static final ItemRegistryObject<Item> BONE_ASHES_WITH_CARBON = ITEMS.register("bone_ashes_with_carbon");
+    public static final ItemRegistryObject<Item> CALCIUM_CHLORIDE = ITEMS.register("calcium_chloride");
 
-    private MSItems(){
+    private MSItems() {
     }
 }

@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:reaction",
+  "fluidInput": {
+    "amount": 50,
+    "tag": "minecraft:water"
+  },
+  "gasInput": {
+    "amount": 50,
+    "gas": "mekanismscience:n_butyraldehyde"
+  },
+  "itemInput": {
+    "amount": 1,
+    "item": "mekanismscience:alkaline_substrate"
+  },
+  "duration": 100,
+  "energyRequired": 300,
+  "itemOutput": {
+    "item": "mekanism:substrate"
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:isobutyraldehyde",
+    "amount": 100
+  }
+}

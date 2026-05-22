@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:injecting",
+  "chemicalInput": {
+    "amount": 25,
+    "gas": "mekanism:sulfuric_acid"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "mekanism:substrate"
+    }
+  },
+  "output": {
+    "item": "mekanismscience:acidic_substrate"
+  }
+}

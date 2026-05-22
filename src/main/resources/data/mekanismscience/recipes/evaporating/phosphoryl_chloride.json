@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:evaporating",
+  "input": {
+    "amount": 1,
+    "fluid": "mekanismscience:impure_phosphoryl_chloride"
+  },
+  "output": {
+    "amount": 1,
+    "fluid": "mekanismscience:phosphoryl_chloride"
+  }
+}

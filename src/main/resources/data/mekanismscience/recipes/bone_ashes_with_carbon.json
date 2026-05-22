@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mekanismscience:bone_ashes"
+    },
+    {
+      "item": "mekanismscience:bone_ashes"
+    },
+    {
+      "item": "mekanismscience:bone_ashes"
+    },
+    {
+      "item": "mekanismscience:bone_ashes"
+    },
+    {
+      "tag": "minecraft:coals"
+    },
+    {
+      "tag": "minecraft:coals"
+    },
+    {
+      "tag": "minecraft:coals"
+    },
+    {
+      "tag": "minecraft:coals"
+    }
+  ],
+  "result": {
+    "item": "mekanismscience:bone_ashes_with_carbon"
+  }
+}

@@ -3,6 +3,7 @@ package com.fxd927.mekanismscience.common.registries;
 import mekanism.common.base.IChemicalConstant;
 
 public enum MSChemicalConstants implements IChemicalConstant {
+
     AMMONIA("ammonia",0xFFC8B3FF,0,240F,0.6942F),
     BENZODIAZEPINE("benzodiazepine",0xFF66D0BA,0,573F,900F),
     BERYLLIUM("beryllium",0xFF00DB1B,0,1560.15F,1850F),
@@ -24,12 +25,14 @@ public enum MSChemicalConstants implements IChemicalConstant {
     WHEY("whey",0xFFF7FFA2,0,373.15F,1030F),
     YTTRIUM("yttrium", 0xFFCCE5FF, 0, 1799.15F, 4240F),
     PHOSPHORYL_CHLORIDE("phosphoryl_chloride", 0xFF46F675, 0, 378.45F, 1675F),
-    PHOSPHORUS_TRICHLORIDE("phosphorus_trichloride", 0xFF92F646, 0, 351.15F, 1574),
     ISOOCTANOL("isooctanol", 0xFF542700, 0, 457.15F, 833F),
-    _2_ETHYL_2_HEXENAL("2-ethyl-2-hexenal", 0xFFD0701D, 0, 448.15F, 850F),
-    N_BUTYRALDEHYDE("n-butyraldehyde", 0xFFEC724D, 0, 348.15F, 817F),
+    _2_ETHYL_2_HEXENAL("2_ethyl_2_hexenal", 0xFFD0701D, 0, 448.15F, 850F),
+    N_BUTYRALDEHYDE("n_butyraldehyde", 0xFFEC724D, 0, 348.15F, 817F),
+    ISOBUTYRALDEHYDE("isobutyraldehyde", 0xFFEC724D, 0, 337.15F, 790F),
     PROPYLENE("propylene", 0xFF943417, 0, 225.45F, 1914F),
-    _2_BUTENE("2-butene", 0xFFDFBD4D, 0, 274.15F, 621F);
+    _2_BUTENE("2_butene", 0xFFDFBD4D, 0, 274.15F, 621F),
+    HYDRAZINE("hydrazine", 0xFF180F00, 0, 386.65F, 1011F),
+    SODIUM_HYDROXIDE("sodium_hydroxide", 0xFF36FF73, 0, 1663.15F, 2130F);
 
     private final String name;
     private final int color;

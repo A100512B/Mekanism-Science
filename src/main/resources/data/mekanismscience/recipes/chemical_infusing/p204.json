@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "mekanismscience:phosphoryl_chloride"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "mekanismscience:2_ethyl_2_hexenal"
+  },
+  "output": {
+    "amount": 2,
+    "gas": "mekanismscience:p204"
+  }
+}

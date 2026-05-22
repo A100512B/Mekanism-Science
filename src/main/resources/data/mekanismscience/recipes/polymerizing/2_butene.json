@@ -1,0 +1,11 @@
+{
+  "type": "mekanismscience:pressurized_polymerizing",
+  "input": {
+    "amount": 2,
+    "gas": "mekanism:ethylene"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mekanismscience:2_butene"
+  }
+}

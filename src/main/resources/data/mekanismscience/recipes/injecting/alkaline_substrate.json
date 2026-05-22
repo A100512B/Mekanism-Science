@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:injecting",
+  "chemicalInput": {
+    "amount": 25,
+    "gas": "mekanismscience:sodium_hydroxide"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "mekanism:substrate"
+    }
+  },
+  "output": {
+    "item": "mekanismscience:acidic_substrate"
+  }
+}
