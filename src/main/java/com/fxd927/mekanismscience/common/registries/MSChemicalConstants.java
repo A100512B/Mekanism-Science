@@ -32,7 +32,8 @@ public enum MSChemicalConstants implements IChemicalConstant {
     PROPYLENE("propylene", 0xFF943417, 0, 225.45F, 1914F),
     _2_BUTENE("2_butene", 0xFFDFBD4D, 0, 274.15F, 621F),
     HYDRAZINE("hydrazine", 0xFF180F00, 0, 386.65F, 1011F),
-    SODIUM_HYDROXIDE("sodium_hydroxide", 0xFF36FF73, 0, 1663.15F, 2130F);
+    SODIUM_HYDROXIDE("sodium_hydroxide", 0xFF36FF73, 0, 1663.15F, 2130F),
+    COMPRESSED_AIR("compressed_air", 0xFFFFFFFF, 0, 78.80F, 870F);
 
     private final String name;
     private final int color;
