@@ -60,6 +60,7 @@ public class MSBlockTypes {
     public static final MSMachine<TileEntityPressurizedPolymerizingChamber> PRESSURIZED_POLYMERIZING_CHAMBER = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.PRESSURIZED_POLYMERIZING_CHAMBER, MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER)
             .withGui(() -> MSContainerTypes.PRESSURIZED_POLYMERIZING_CHAMBER)
+            .withSound(MSSounds.PRESSURIZED_POLYMERIZING_CHAMBER)
             .withEnergyConfig(MSConfig.usageConfig.pressurizedPolymerizingChamber, MSConfig.storageConfig.pressurizedPolymerizingChamber)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.ANCHOR, Upgrade.MUFFLING))
             .withComputerSupport("pressurizedPolymerizingChamber")
@@ -159,5 +160,15 @@ public class MSBlockTypes {
                     }
                 }
             })
+            .replace(Attributes.ACTIVE)
+            .build();
+
+    public static final MSMachine<TileEntityAirCompressor> AIR_COMPRESSOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.AIR_COMPRESSOR, MSLang.DESCRIPTION_AIR_COMPRESSOR)
+            .withGui(() -> MSContainerTypes.AIR_COMPRESSOR)
+            .withSound(MSSounds.AIR_COMPRESSOR)
+            .withEnergyConfig(MSConfig.usageConfig.airCompressor, MSConfig.storageConfig.airCompressor)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.ANCHOR, Upgrade.MUFFLING))
+            .replace(Attributes.ACTIVE)
             .build();
 }

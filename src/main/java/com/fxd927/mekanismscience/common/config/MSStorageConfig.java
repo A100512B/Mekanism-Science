@@ -17,6 +17,7 @@ public class MSStorageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue metalElectrolysisChamberPort;
     public final CachedFloatingLongValue metalElectrolysisChamberLaserAcceptor;
     public final CachedFloatingLongValue acidLeacher;
+    public final CachedFloatingLongValue airCompressor;
 
     MSStorageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -36,6 +37,8 @@ public class MSStorageConfig extends BaseMekanismConfig {
                 FloatingLong.createConst(10_000_000));
         acidLeacher = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "acidLeacher",
                 FloatingLong.createConst(25_000_000));
+        airCompressor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "airCompressor",
+                FloatingLong.createConst(40_000));
 
         builder.pop();
         configSpec = builder.build();

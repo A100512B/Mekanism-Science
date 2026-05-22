@@ -34,6 +34,7 @@ public class MSTileEntityTypes {
     public static final TileEntityTypeRegistryObject<TileEntityMetalElectrolysisChamberLaserAcceptor> METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR = TILE_ENTITY_TYPES.register(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, TileEntityMetalElectrolysisChamberLaserAcceptor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityMetalElectrolyzingRod> METAL_ELECTROLYZING_ROD = TILE_ENTITY_TYPES.register(MSBlocks.METAL_ELECTROLYZING_ROD, TileEntityMetalElectrolyzingRod::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityAcidLeacher> ACID_LEACHER = TILE_ENTITY_TYPES.register(MSBlocks.ACID_LEACHER, TileEntityAcidLeacher::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityAirCompressor> AIR_COMPRESSOR = TILE_ENTITY_TYPES.register(MSBlocks.AIR_COMPRESSOR, TileEntityAirCompressor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
 
     private MSTileEntityTypes(){
     }

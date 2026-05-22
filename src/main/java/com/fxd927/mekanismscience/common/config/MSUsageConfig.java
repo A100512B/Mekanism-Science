@@ -15,6 +15,7 @@ public class MSUsageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue metalElectrolyzingRod;
     public final CachedFloatingLongValue metalElectrolyzingLaserRod;
     public final CachedFloatingLongValue acidLeacher;
+    public final CachedFloatingLongValue airCompressor;
 
     private final ForgeConfigSpec configSpec;
 
@@ -36,6 +37,8 @@ public class MSUsageConfig extends BaseMekanismConfig {
                 FloatingLong.createConst(4000));
         acidLeacher = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "acidLeacher",
                 FloatingLong.createConst(3000));
+        airCompressor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor",
+                FloatingLong.createConst(100));
 
         builder.pop();
         configSpec = builder.build();

@@ -45,6 +45,7 @@ public class MSBlocks {
     public static final BlockRegistryObject<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberLaserAcceptor>, ItemBlockTooltip<BlockBasicMultiblock<TileEntityMetalElectrolysisChamberLaserAcceptor>>> METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR = registerTooltipBlock("metal_electrolysis_chamber_laser_acceptor", () -> new BlockBasicMultiblock<>(MSBlockTypes.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, properties -> properties.mapColor(MapColor.NONE)));
     public static final BlockRegistryObject<BlockMetalElectrolysisRod, ItemBlockTooltip<BlockMetalElectrolysisRod>> METAL_ELECTROLYZING_ROD = registerTooltipBlock("metal_electrolyzing_rod", BlockMetalElectrolysisRod::new);
     public static final BlockRegistryObject<BlockTileModel<TileEntityAcidLeacher, MSMachine<TileEntityAcidLeacher>>, ItemBlockMachine> ACID_LEACHER = BLOCKS.register("acid_leacher", () -> new BlockTileModel<>(MSBlockTypes.ACID_LEACHER, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
+    public static final BlockRegistryObject<BlockTileModel<TileEntityAirCompressor, MSMachine<TileEntityAirCompressor>>, ItemBlockMachine> AIR_COMPRESSOR = BLOCKS.register("air_compressor", () -> new BlockTileModel<>(MSBlockTypes.AIR_COMPRESSOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
 
     private MSBlocks() {
     }

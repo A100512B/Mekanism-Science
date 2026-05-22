@@ -53,6 +53,7 @@ public class MSGases {
     public static final GasRegistryObject<Gas> HYDRAZINE = GASES.register(MSChemicalConstants.HYDRAZINE, new GasAttributes.Fuel(75, FloatingLong.createConst(37_500)));
     public static final GasRegistryObject<Gas> WATER_GAS = GASES.register("water_gas", 0xFF002E57, new GasAttributes.Fuel(25, FloatingLong.createConst(1_500)));
     public static final GasRegistryObject<Gas> SODIUM_HYDROXIDE = GASES.register(MSChemicalConstants.SODIUM_HYDROXIDE);
+    public static final GasRegistryObject<Gas> COMPRESSED_AIR = GASES.register(MSChemicalConstants.COMPRESSED_AIR);
 
     @Getter
     public static class Extractant extends ChemicalAttribute {

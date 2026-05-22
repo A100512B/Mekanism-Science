@@ -20,6 +20,7 @@ public class MSContainerTypes {
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAntiExtractingPlantCasing>> ANTI_EXTRACTING_PLANT = CONTAINER_TYPES.register("anti_extracting_plant", TileEntityAntiExtractingPlantCasing.class);
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityMetalElectrolysisChamberCasing>> METAL_ELECTROLYSIS_CHAMBER = CONTAINER_TYPES.register("metal_electrolysis_chamber", TileEntityMetalElectrolysisChamberCasing.class);
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAcidLeacher>> ACID_LEACHER = CONTAINER_TYPES.register("acid_leacher", TileEntityAcidLeacher.class);
+    public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAirCompressor>> AIR_COMPRESSOR = CONTAINER_TYPES.register("air_compressor", TileEntityAirCompressor.class);
 
     private MSContainerTypes(){
     }
