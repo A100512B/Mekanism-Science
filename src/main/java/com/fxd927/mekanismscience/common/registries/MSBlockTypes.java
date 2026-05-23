@@ -31,14 +31,6 @@ public class MSBlockTypes {
 
     private MSBlockTypes() {}
 
-    public static final MSMachine<TileEntityAdsorptionTypeSeawaterMetalExtractor> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = MSMachine.MSMachineBuilder
-            .createMSMachine(() -> MSTileEntityTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, MSLang.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)
-            .withGui(() -> MSContainerTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)
-            .withEnergyConfig(MSConfig.usageConfig.adsorptionTypeSeawaterMetalExtractor, MSConfig.storageConfig.adsorptionTypeSeawaterMetalExtractor)
-            .withComputerSupport("adsorptionTypeSeawaterMetalExtractor")
-            .replace(Attributes.ACTIVE)
-            .build();
-
     public static final MSMachine<TileEntityOrganicLiquidExtractor> ORGANIC_LIQUID_EXTRACTOR = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.ORGANIC_LIQUID_EXTRACTOR, MSLang.DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR)
             .withGui(() -> MSContainerTypes.ORGANIC_LIQUID_EXTRACTOR)

@@ -34,7 +34,6 @@ public class MSClientRegistration {
     @SubscribeEvent
     public static void registerContainers(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {
-            ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, GuiAdsorptionTypeSeawaterMetalExtractor::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ORGANIC_LIQUID_EXTRACTOR, GuiOrganicLiquidExtractor::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.SEAWATER_PUMP, GuiSeawaterPump::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.PRESSURIZED_POLYMERIZING_CHAMBER, GuiPressurizedPolymerizerChamber::new);
