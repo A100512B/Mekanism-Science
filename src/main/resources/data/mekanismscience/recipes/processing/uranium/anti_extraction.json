@@ -1,0 +1,19 @@
+{
+  "type": "mekanismscience:anti_extraction",
+  "fluidInput": {
+    "fluid": "mekanismscience:uranium_p204_extract",
+    "amount": 15
+  },
+  "chemicalInput": {
+    "gas": "mekanism:sulfuric_acid",
+    "amount": 5
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:uranium_concentrate",
+    "amount": 5
+  },
+  "chemicalOutput": {
+    "gas": "mekanismscience:p204",
+    "amount": 10
+  }
+}

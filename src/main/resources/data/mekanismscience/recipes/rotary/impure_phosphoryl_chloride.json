@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "fluid": "mekanismscience:impure_phosphoryl_chloride",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:impure_phosphoryl_chloride",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:impure_phosphoryl_chloride",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:impure_phosphoryl_chloride",
+    "amount": 1
+  }
+}

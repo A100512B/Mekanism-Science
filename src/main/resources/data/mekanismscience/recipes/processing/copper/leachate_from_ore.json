@@ -1,0 +1,14 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "itemInput": {
+    "tag": "forge:ores/copper"
+  },
+  "chemicalInput": {
+    "gas": "mekanism:sulfuric_acid",
+    "amount": 1000
+  },
+  "output": {
+    "fluid": "mekanismscience:copper_leachate",
+    "amount": 1000
+  }
+}

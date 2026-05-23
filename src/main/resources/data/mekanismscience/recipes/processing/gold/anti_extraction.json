@@ -1,0 +1,19 @@
+{
+  "type": "mekanismscience:anti_extraction",
+  "fluidInput": {
+    "fluid": "mekanismscience:gold_p204_extract",
+    "amount": 15
+  },
+  "chemicalInput": {
+    "gas": "mekanismscience:aqua_regia",
+    "amount": 5
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:gold_concentrate",
+    "amount": 5
+  },
+  "chemicalOutput": {
+    "gas": "mekanismscience:p204",
+    "amount": 10
+  }
+}

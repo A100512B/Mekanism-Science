@@ -24,6 +24,7 @@ public enum MSLang implements ILangEntry {
     DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR("description", "metal_electrolysis_chamber_laser_acceptor"),
     DESCRIPTION_METAL_ELECTROLYSIS_ROD("description", "metal_electrolysis_rod"),
     DESCRIPTION_ACID_LEACHER("description", "acid_leacher"),
+    DESCRIPTION_AIR_COMPRESSOR("description", "air_compressor"),
 
     EXTRACTING_PLANT("extracting_plant", "extracting_plant"),
     EXTRACTING_PLANT_PORT_MODE_INPUT_EXTRACTANT("extracting_plant", "port_mode_input_extractant"),

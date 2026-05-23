@@ -42,7 +42,7 @@ public abstract class FluidChemicalToFluidRecipeSerializer<CHEMICAL extends Chem
         JsonElement chemicalInput = GsonHelper.isArrayNode(json, JsonConstants.CHEMICAL_INPUT) ? GsonHelper.getAsJsonArray(json, JsonConstants.CHEMICAL_INPUT) :
                 GsonHelper.getAsJsonObject(json, JsonConstants.CHEMICAL_INPUT);
         INGREDIENT chemicalIngredient = getDeserializer().deserialize(chemicalInput);
-        FluidStack output = SerializerHelper.getFluidStack(json, JsonConstants.FLUID_OUTPUT);
+        FluidStack output = SerializerHelper.getFluidStack(json, JsonConstants.OUTPUT);
         if (output.isEmpty())
             throw new JsonSyntaxException("Recipe fluid output must not be empty.");
         return factory.create(id, fluidIngredient, chemicalIngredient, output);

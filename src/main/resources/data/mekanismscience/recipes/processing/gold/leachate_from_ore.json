@@ -1,0 +1,14 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "itemInput": {
+    "tag": "forge:ores/gold"
+  },
+  "chemicalInput": {
+    "gas": "mekanismscience:aqua_regia",
+    "amount": 1000
+  },
+  "output": {
+    "fluid": "mekanismscience:gold_leachate",
+    "amount": 1000
+  }
+}

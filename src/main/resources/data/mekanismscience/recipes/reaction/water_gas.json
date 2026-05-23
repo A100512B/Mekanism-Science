@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:reaction",
+  "itemInput": {
+    "ingredient": {
+      "tag": "minecraft:coals"
+    }
+  },
+  "gasInput": {
+    "amount": 100,
+    "gas": "mekanism:water_vapor"
+  },
+  "duration": 100,
+  "gasOutput": {
+    "gas": "mekanismscience:water_gas",
+    "amount": 100
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "mekanismscience:extraction",
+  "fluidInput": {
+    "fluid": "mekanismscience:iron_leachate",
+    "amount": 10
+  },
+  "chemicalInput": {
+    "gas": "mekanismscience:p204",
+    "amount": 5
+  },
+  "output": {
+    "fluid": "mekanismscience:iron_p204_extract",
+    "amount": 15
+  }
+}

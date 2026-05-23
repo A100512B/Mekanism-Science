@@ -6,12 +6,12 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:ores/emerald"
+      "tag": "forge:gunpowder"
     }
   },
   "output": {
-    "amount": 100,
+    "amount": 200,
     "chemicalType": "gas",
-    "gas": "mekanismscience:beryllium"
+    "gas": "mekanismscience:potassium_nitrate"
   }
 }

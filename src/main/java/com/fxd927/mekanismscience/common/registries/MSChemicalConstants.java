@@ -33,7 +33,13 @@ public enum MSChemicalConstants implements IChemicalConstant {
     _2_BUTENE("2_butene", 0xFFDFBD4D, 0, 274.15F, 621F),
     HYDRAZINE("hydrazine", 0xFF180F00, 0, 386.65F, 1011F),
     SODIUM_HYDROXIDE("sodium_hydroxide", 0xFF36FF73, 0, 1663.15F, 2130F),
-    COMPRESSED_AIR("compressed_air", 0xFFFFFFFF, 0, 78.80F, 870F);
+    COMPRESSED_AIR("compressed_air", 0xFFFFFFFF, 0, 78.80F, 870F),
+    NITROGEN("nitrogen", 0xFFFA8FF0, 0, 77.36F, 1251F),
+    NITRIC_OXIDE("nitric_oxide", 0xFFE19DF2, 0, 121F, 1340F),
+    NITROGEN_DIOXIDE("nitrogen_dioxide", 0xFFD6A3F3, 0, 294F, 1449F),
+    NITRIC_ACID("nitric_acid", 0xFFB5BCFF, 0, 363.7F, 4933F),
+    POTASSIUM_NITRATE("potassium_nitrate", 0xFF129B32, 0, 607.15F, 2109F),
+    ;
 
     private final String name;
     private final int color;
@@ -41,7 +47,7 @@ public enum MSChemicalConstants implements IChemicalConstant {
     private final float temperature;
     private final float density;
 
-    MSChemicalConstants(String name,int color,int lightLevel,float temperature,float density){
+    MSChemicalConstants(String name, int color, int lightLevel, float temperature, float density) {
         this.name = name;
         this.color = color;
         this.lightLevel = lightLevel;

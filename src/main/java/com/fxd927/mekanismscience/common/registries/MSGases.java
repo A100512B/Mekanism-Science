@@ -42,7 +42,7 @@ public class MSGases {
     public static final GasRegistryObject<Gas> YTTRIUM = GASES.register(MSChemicalConstants.YTTRIUM);
     public static final GasRegistryObject<Gas> P204 = GASES.register("p204", 0xFF9A6414, new Extractant(0.8));
     public static final GasRegistryObject<Gas> PHOSPHORYL_CHLORIDE = GASES.register(MSChemicalConstants.PHOSPHORYL_CHLORIDE);
-    public static final GasRegistryObject<Gas> IMPURE_PHOSPHORYL_CHLORIDE = GASES.register(MSChemicalConstants.PHOSPHORYL_CHLORIDE);
+    public static final GasRegistryObject<Gas> IMPURE_PHOSPHORYL_CHLORIDE = GASES.register("impure_phosphoryl_chloride", 0xFF46F675);
     public static final GasRegistryObject<Gas> ISOOCTANOL = GASES.register(MSChemicalConstants.ISOOCTANOL);
     public static final GasRegistryObject<Gas> _2_ETHYL_2_HEXENAL = GASES.register(MSChemicalConstants._2_ETHYL_2_HEXENAL);
     public static final GasRegistryObject<Gas> N_BUTYRALDEHYDE = GASES.register(MSChemicalConstants.N_BUTYRALDEHYDE, new GasAttributes.Fuel(45, FloatingLong.createConst(32_000)));
@@ -54,6 +54,11 @@ public class MSGases {
     public static final GasRegistryObject<Gas> WATER_GAS = GASES.register("water_gas", 0xFF002E57, new GasAttributes.Fuel(25, FloatingLong.createConst(1_500)));
     public static final GasRegistryObject<Gas> SODIUM_HYDROXIDE = GASES.register(MSChemicalConstants.SODIUM_HYDROXIDE);
     public static final GasRegistryObject<Gas> COMPRESSED_AIR = GASES.register(MSChemicalConstants.COMPRESSED_AIR);
+    public static final GasRegistryObject<Gas> NITROGEN = GASES.register(MSChemicalConstants.NITROGEN);
+    public static final GasRegistryObject<Gas> NITRIC_OXIDE = GASES.register(MSChemicalConstants.NITRIC_OXIDE);
+    public static final GasRegistryObject<Gas> NITROGEN_DIOXIDE = GASES.register(MSChemicalConstants.NITROGEN_DIOXIDE);
+    public static final GasRegistryObject<Gas> NITRIC_ACID = GASES.register(MSChemicalConstants.NITRIC_ACID);
+    public static final GasRegistryObject<Gas> AQUA_REGIA = GASES.register("aqua_regia", 0xFFEB5414);
 
     @Getter
     public static class Extractant extends ChemicalAttribute {
