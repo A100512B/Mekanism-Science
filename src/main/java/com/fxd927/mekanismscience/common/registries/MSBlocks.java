@@ -15,6 +15,7 @@ import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityEx
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantPort;
 import mekanism.common.block.interfaces.IHasDescription;
 import mekanism.common.block.prefab.BlockBasicMultiblock;
+import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.item.block.ItemBlockTooltip;
@@ -45,6 +46,8 @@ public class MSBlocks {
     public static final BlockRegistryObject<BlockMetalElectrolysisRod, ItemBlockTooltip<BlockMetalElectrolysisRod>> METAL_ELECTROLYZING_ROD = registerTooltipBlock("metal_electrolyzing_rod", BlockMetalElectrolysisRod::new);
     public static final BlockRegistryObject<BlockTileModel<TileEntityAcidLeacher, MSMachine<TileEntityAcidLeacher>>, ItemBlockMachine> ACID_LEACHER = BLOCKS.register("acid_leacher", () -> new BlockTileModel<>(MSBlockTypes.ACID_LEACHER, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
     public static final BlockRegistryObject<BlockTileModel<TileEntityAirCompressor, MSMachine<TileEntityAirCompressor>>, ItemBlockMachine> AIR_COMPRESSOR = BLOCKS.register("air_compressor", () -> new BlockTileModel<>(MSBlockTypes.AIR_COMPRESSOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
+    public static final BlockRegistryObject<BlockTileModel<TileEntityAdsorptionSeparator, MSMachine<TileEntityAdsorptionSeparator>>, ItemBlockMachine> ADSORPTION_SEPARATOR = BLOCKS.register("adsorption_separator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.ADSORPTION_SEPARATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
+    public static final BlockRegistryObject<BlockTileModel<TileEntityIrradiator, MSMachine<TileEntityIrradiator>>, ItemBlockMachine> IRRADIATOR = BLOCKS.register("irradiator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.IRRADIATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
 
     private MSBlocks() {
     }

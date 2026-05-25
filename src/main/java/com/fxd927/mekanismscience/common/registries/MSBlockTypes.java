@@ -23,6 +23,7 @@ import mekanism.common.block.attribute.AttributeStateFacing;
 import mekanism.common.block.attribute.Attributes;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.generators.common.content.blocktype.BlockShapes;
+import mekanism.generators.common.registries.GeneratorsSounds;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.EnumSet;
@@ -162,5 +163,26 @@ public class MSBlockTypes {
             .withEnergyConfig(MSConfig.usageConfig.airCompressor, MSConfig.storageConfig.airCompressor)
             .withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.ANCHOR, Upgrade.MUFFLING))
             .replace(Attributes.ACTIVE)
+            .build();
+
+    public static final MSMachine<TileEntityAdsorptionSeparator> ADSORPTION_SEPARATOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.ADSORPTION_SEPARATOR, MSLang.DESCRIPTION_ADSORPTION_SEPARATOR)
+            .withGui(() -> MSContainerTypes.ADSORPTION_SEPARATOR)
+            .withSound(MSSounds.AIR_COMPRESSOR)
+            .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator, MSConfig.storageConfig.adsorptionSeparator)
+            .withCustomShape(MSBlockShapes.ADSORPTION_SEPARATOR)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.ANCHOR, Upgrade.MUFFLING))
+            .withComputerSupport("adsorptionSeparator")
+            .replace(Attributes.ACTIVE_LIGHT)
+            .build();
+
+    public static final MSMachine<TileEntityIrradiator> IRRADIATOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.RADIATION_IRRADIATOR, MSLang.DESCRIPTION_IRRADIATOR)
+            .withGui(() -> MSContainerTypes.IRRADIATOR)
+            .withSound(GeneratorsSounds.FISSION_REACTOR)
+            .withEnergyConfig(MSConfig.usageConfig.irradiator, MSConfig.storageConfig.irradiator)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.ANCHOR, Upgrade.MUFFLING))
+            .withComputerSupport("irradiator")
+            .replace(Attributes.ACTIVE_FULL_LIGHT)
             .build();
 }

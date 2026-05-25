@@ -10,7 +10,6 @@ public class MSStorageConfig extends BaseMekanismConfig {
 
     private final ForgeConfigSpec configSpec;
 
-    public final CachedFloatingLongValue adsorptionTypeSeawaterMetalExtractor;
     public final CachedFloatingLongValue seawaterPump;
     public final CachedFloatingLongValue organicLiquidExtractor;
     public final CachedFloatingLongValue pressurizedPolymerizingChamber;
@@ -18,13 +17,13 @@ public class MSStorageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue metalElectrolysisChamberLaserAcceptor;
     public final CachedFloatingLongValue acidLeacher;
     public final CachedFloatingLongValue airCompressor;
+    public final CachedFloatingLongValue adsorptionSeparator;
+    public final CachedFloatingLongValue irradiator;
 
     MSStorageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Science Energy Storage Config. This config is synced from server to client.").push("storage");
 
-        adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "adsorptionTypeSeawaterMetalExtractor",
-                FloatingLong.createConst(40_000));
         organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "organicLiquidExtractor",
                 FloatingLong.createConst(40_000));
         seawaterPump = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "seawaterPump",
@@ -38,6 +37,10 @@ public class MSStorageConfig extends BaseMekanismConfig {
         acidLeacher = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "acidLeacher",
                 FloatingLong.createConst(25_000_000));
         airCompressor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "airCompressor",
+                FloatingLong.createConst(40_000));
+        adsorptionSeparator = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "adsorptionTypeSeawaterMetalExtractor",
+                FloatingLong.createConst(40_000));
+        irradiator = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "airCompressor",
                 FloatingLong.createConst(40_000));
 
         builder.pop();

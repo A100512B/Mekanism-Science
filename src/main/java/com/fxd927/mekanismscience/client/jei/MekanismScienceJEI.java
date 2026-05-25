@@ -1,9 +1,6 @@
 package com.fxd927.mekanismscience.client.jei;
 
-import com.fxd927.mekanismscience.client.jei.machine.AcidLeachingRecipeCategory;
-import com.fxd927.mekanismscience.client.jei.machine.AntiExtractionRecipeCategory;
-import com.fxd927.mekanismscience.client.jei.machine.ExtractionRecipeCategory;
-import com.fxd927.mekanismscience.client.jei.machine.MetalElectrolysisRecipeCategory;
+import com.fxd927.mekanismscience.client.jei.machine.*;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
@@ -36,6 +33,8 @@ public class MekanismScienceJEI implements IModPlugin {
         registry.addRecipeCategories(new ExtractionRecipeCategory(helper, MSJEIRecipeType.EXTRACTION));
         registry.addRecipeCategories(new AntiExtractionRecipeCategory(helper, MSJEIRecipeType.ANTI_EXTRACTION));
         registry.addRecipeCategories(new MetalElectrolysisRecipeCategory(helper, MSJEIRecipeType.METAL_ELECTROLYSIS));
+        registry.addRecipeCategories(new AdsorptionRecipeCategory(helper, MSJEIRecipeType.ADSORPTION));
+        registry.addRecipeCategories(new IrradiatingRecipeCategory(helper, MSJEIRecipeType.IRRADIATING));
     }
 
     @Override
@@ -45,6 +44,8 @@ public class MekanismScienceJEI implements IModPlugin {
         RecipeRegistryHelper.register(registry, MSJEIRecipeType.EXTRACTION, MSRecipeType.EXTRACTION);
         RecipeRegistryHelper.register(registry, MSJEIRecipeType.ANTI_EXTRACTION, MSRecipeType.ANTI_EXTRACTION);
         RecipeRegistryHelper.register(registry, MSJEIRecipeType.METAL_ELECTROLYSIS, MSRecipeType.METAL_ELECTROLYSIS);
+        RecipeRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION, MSRecipeType.ADSORPTION);
+        RecipeRegistryHelper.register(registry, MSJEIRecipeType.IRRADIATING, MSRecipeType.IRRADIATING);
     }
 
     @Override
@@ -57,5 +58,7 @@ public class MekanismScienceJEI implements IModPlugin {
                 MSBlocks.ANTI_EXTRACTING_PILLAR);
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.METAL_ELECTROLYSIS, MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING, MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT,
                 MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, MSBlocks.METAL_ELECTROLYZING_ROD);
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION, MSBlocks.ADSORPTION_SEPARATOR);
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.IRRADIATING, MSBlocks.IRRADIATOR);
     }
 }

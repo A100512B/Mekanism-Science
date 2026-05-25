@@ -8,7 +8,6 @@ import net.minecraftforge.fml.config.ModConfig;
 
 public class MSUsageConfig extends BaseMekanismConfig {
 
-    public final CachedFloatingLongValue adsorptionTypeSeawaterMetalExtractor;
     public final CachedFloatingLongValue seawaterPump;
     public final CachedFloatingLongValue organicLiquidExtractor;
     public final CachedFloatingLongValue pressurizedPolymerizingChamber;
@@ -16,6 +15,9 @@ public class MSUsageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue metalElectrolyzingLaserRod;
     public final CachedFloatingLongValue acidLeacher;
     public final CachedFloatingLongValue airCompressor;
+    public final CachedFloatingLongValue adsorptionSeparator;
+    public final CachedFloatingLongValue irradiator;
+
 
     private final ForgeConfigSpec configSpec;
 
@@ -23,8 +25,6 @@ public class MSUsageConfig extends BaseMekanismConfig {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("MS Energy Usage Config. This config is synced from server to client.").push("storage");
 
-        adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor",
-                FloatingLong.createConst(100));
         organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "organicLiquidExtractor",
                 FloatingLong.createConst(100));
         seawaterPump = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "seawaterPump",
@@ -39,6 +39,10 @@ public class MSUsageConfig extends BaseMekanismConfig {
                 FloatingLong.createConst(3000));
         airCompressor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor",
                 FloatingLong.createConst(100));
+        adsorptionSeparator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor",
+                FloatingLong.createConst(500));
+        irradiator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "radiationIrradiator",
+                FloatingLong.createConst(1_000));
 
         builder.pop();
         configSpec = builder.build();

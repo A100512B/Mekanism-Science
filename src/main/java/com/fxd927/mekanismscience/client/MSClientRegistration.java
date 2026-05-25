@@ -42,6 +42,8 @@ public class MSClientRegistration {
             ClientRegistrationUtil.registerScreen(MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, GuiMetalElectrolysisChamber::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ACID_LEACHER, GuiAcidLeacher::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.AIR_COMPRESSOR, GuiAirCompressor::new);
+            ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_SEPARATOR, GuiAdsorptionSeparator::new);
+            ClientRegistrationUtil.registerScreen(MSContainerTypes.IRRADIATOR, GuiIrradiator::new);
         });
     }
 

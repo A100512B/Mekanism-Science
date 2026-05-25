@@ -17,6 +17,7 @@ import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
 import mekanism.common.tile.base.TileEntityMekanism;
 
 public class MSTileEntityTypes {
+
     public static final TileEntityTypeDeferredRegister TILE_ENTITY_TYPES = new TileEntityTypeDeferredRegister(MekanismScience.MODID);
 
     public static final TileEntityTypeRegistryObject<TileEntityOrganicLiquidExtractor> ORGANIC_LIQUID_EXTRACTOR = TILE_ENTITY_TYPES.register(MSBlocks.ORGANIC_LIQUID_EXTRACTOR, TileEntityOrganicLiquidExtractor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
@@ -34,6 +35,8 @@ public class MSTileEntityTypes {
     public static final TileEntityTypeRegistryObject<TileEntityMetalElectrolyzingRod> METAL_ELECTROLYZING_ROD = TILE_ENTITY_TYPES.register(MSBlocks.METAL_ELECTROLYZING_ROD, TileEntityMetalElectrolyzingRod::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityAcidLeacher> ACID_LEACHER = TILE_ENTITY_TYPES.register(MSBlocks.ACID_LEACHER, TileEntityAcidLeacher::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityAirCompressor> AIR_COMPRESSOR = TILE_ENTITY_TYPES.register(MSBlocks.AIR_COMPRESSOR, TileEntityAirCompressor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityAdsorptionSeparator> ADSORPTION_SEPARATOR = TILE_ENTITY_TYPES.register(MSBlocks.ADSORPTION_SEPARATOR, TileEntityAdsorptionSeparator::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityIrradiator> RADIATION_IRRADIATOR = TILE_ENTITY_TYPES.register(MSBlocks.IRRADIATOR, TileEntityIrradiator::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
 
     private MSTileEntityTypes(){
     }
