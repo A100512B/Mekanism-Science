@@ -15,10 +15,9 @@ modernfix = "5.24.4+mc1.20.1"
 
 ## curseforge maven ##
 jech = "7411324"
+atm = "7142820"
 
 ## libs ##
-
-
 [libraries]
 mixinExtras-common  = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixinExtras" }
 
@@ -34,7 +33,7 @@ oculus              = { module = "maven.modrinth:oculus", version.ref = "oculus"
 ferritecore         = { module = "maven.modrinth:uXXizFIs", version.ref = "ferritecore" }
 modernfix           = { module = "maven.modrinth:modernfix", version.ref = "modernfix" }
 modernui            = { module = "maven.modrinth:modern-ui", version.ref = "modernui" }
-
+allthemodium = { module = "curse.maven:allthemodium-364466", version.ref = "atm" }
 
 jecharacters        = { module = "curse.maven:just-enough-characters-250702", version.ref = "jech" }
 [bundles]

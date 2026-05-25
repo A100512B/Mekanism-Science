@@ -16,6 +16,8 @@ dependencies {
     modCompileOnly(variantOf(forge.mekanism) { classifier("generators") })
     modCompileOnly(variantOf(forge.mekanism) { classifier("tools") })
 
+    // Compatibility
+    modCompileOnly(forge.allthemodium)
 
     // WAILA-likes
     modCompileOnly(forge.jade)
@@ -26,12 +28,10 @@ dependencies {
     modLocalRuntime(variantOf(forge.mekanism) { classifier("generators") })
     modLocalRuntime(variantOf(forge.mekanism) { classifier("tools") })
 
-
     // Standard runtime mods //
     modLocalRuntime(forge.jade)
     modLocalRuntime(forge.modernfix)
     modLocalRuntime(forge.ferritecore)
-
 
     // Runtime Recipe Viewers - uncomment whichever one you want to use //
 //    modLocalRuntime(forge.emi)

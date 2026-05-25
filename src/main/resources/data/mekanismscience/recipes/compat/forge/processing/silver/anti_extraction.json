@@ -1,0 +1,28 @@
+{
+  "type": "mekanismscience:anti_extraction",
+  "fluidInput": {
+    "fluid": "mekanismscience:silver_p204_extract",
+    "amount": 15
+  },
+  "chemicalInput": {
+    "gas": "mekanism:nitric_acid",
+    "amount": 5
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:silver_concentrate",
+    "amount": 5
+  },
+  "chemicalOutput": {
+    "gas": "mekanismscience:p204",
+    "amount": 10
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ores/silver"
+      }
+    }
+  ]
+}

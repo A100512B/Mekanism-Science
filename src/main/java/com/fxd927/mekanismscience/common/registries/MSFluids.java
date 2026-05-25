@@ -1,6 +1,8 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
+import com.fxd927.mekanismscience.common.resource.ForgeResource;
+import com.thevortex.allthemodium.registry.mek_reg.ATMResource;
 import mekanism.common.registration.impl.FluidDeferredRegister;
 import mekanism.common.registration.impl.FluidDeferredRegister.MekanismFluidType;
 import mekanism.common.registration.impl.FluidRegistryObject;
@@ -12,6 +14,7 @@ import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
+import net.minecraftforge.fml.ModList;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,6 +22,9 @@ import java.util.function.UnaryOperator;
 
 @SuppressWarnings("unused")
 public class MSFluids {
+
+    private MSFluids() {
+    }
 
     public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MekanismScience.MODID);
 
@@ -68,18 +74,27 @@ public class MSFluids {
 
     static {
         for (PrimaryResource resource : EnumUtils.PRIMARY_RESOURCES) {
-            PROCESSED_LEACHATE_RESOURCES.put(resource, FLUIDS.register(resource.getRegistrySuffix() + "_leachate", UnaryOperator.identity(), props -> props.tint(resource.getTint())));
-            PROCESSED_EXTRACT_RESOURCES.put(resource, FLUIDS.register(resource.getRegistrySuffix() + "_p204_extract", UnaryOperator.identity(), props -> props.tint(resource.getTint())));
-            PROCESSED_CONCENTRATE_RESOURCES.put(resource, FLUIDS.register(resource.getRegistrySuffix() + "_concentrate", UnaryOperator.identity(), props -> props.tint(resource.getTint())));
+            registerProcessing(resource, resource.getTint());
         }
-        PROCESSED_LEACHATE_RESOURCES.put(MiscResource.NETHERITE, FLUIDS.register(MiscResource.NETHERITE.getRegistrySuffix() + "_leachate", UnaryOperator.identity(), props -> props.tint(0xFF513600)));
-        PROCESSED_EXTRACT_RESOURCES.put(MiscResource.NETHERITE, FLUIDS.register(MiscResource.NETHERITE.getRegistrySuffix() + "_p204_extract", UnaryOperator.identity(), props -> props.tint(0xFF513600)));
-        PROCESSED_CONCENTRATE_RESOURCES.put(MiscResource.NETHERITE, FLUIDS.register(MiscResource.NETHERITE.getRegistrySuffix() + "_concentrate", UnaryOperator.identity(), props -> props.tint(0xFF513600)));
-        PROCESSED_LEACHATE_RESOURCES.put(MiscResource.REDSTONE, FLUIDS.register(MiscResource.REDSTONE.getRegistrySuffix() + "_leachate", UnaryOperator.identity(), props -> props.tint(0xFFC01A1A)));
-        PROCESSED_EXTRACT_RESOURCES.put(MiscResource.REDSTONE, FLUIDS.register(MiscResource.REDSTONE.getRegistrySuffix() + "_p204_extract", UnaryOperator.identity(), props -> props.tint(0xFFC01A1A)));
-        PROCESSED_CONCENTRATE_RESOURCES.put(MiscResource.REDSTONE, FLUIDS.register(MiscResource.REDSTONE.getRegistrySuffix() + "_concentrate", UnaryOperator.identity(), props -> props.tint(0xFFC01A1A)));
+        registerProcessing(MiscResource.NETHERITE, 0xFF513600);
+        registerProcessing(MiscResource.REDSTONE, 0xFFC01A1A);
+
+        // Compatibility
+        if (ModList.get().isLoaded("allthemodium")) {
+            // ATM
+            for (ATMResource resource : ATMResource.values()) {
+                registerProcessing(resource, resource.getTint());
+            }
+            // Other metals contained by forge common tags
+            for (ForgeResource resource : ForgeResource.values()) {
+                registerProcessing(resource, resource.getTint());
+            }
+        }
     }
 
-    private MSFluids(){
+    private static void registerProcessing(IResource resource, int color) {
+        PROCESSED_LEACHATE_RESOURCES.put(resource, FLUIDS.register(resource.getRegistrySuffix() + "_leachate", UnaryOperator.identity(), props -> props.tint(color)));
+        PROCESSED_EXTRACT_RESOURCES.put(resource, FLUIDS.register(resource.getRegistrySuffix() + "_p204_extract", UnaryOperator.identity(), props -> props.tint(color)));
+        PROCESSED_CONCENTRATE_RESOURCES.put(resource, FLUIDS.register(resource.getRegistrySuffix() + "_concentrate", UnaryOperator.identity(), props -> props.tint(color)));
     }
 }

@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "input": {
+    "fluid": "mekanismscience:vibranium_concentrate",
+    "amount": 10
+  },
+  "energyRequired": 250,
+  "output": {
+    "item": "allthemodium:vibranium_dust"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "input": {
+    "fluid": "mekanismscience:platinum_concentrate",
+    "amount": 10
+  },
+  "energyRequired": 250,
+  "output": {
+    "item": "mekanism:dust_platinum"
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ores/platinum"
+      }
+    }
+  ]
+}

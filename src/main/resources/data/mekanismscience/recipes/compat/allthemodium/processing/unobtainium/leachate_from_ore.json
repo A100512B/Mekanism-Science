@@ -1,0 +1,20 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "itemInput": {
+    "tag": "forge:ores/unobtainium"
+  },
+  "chemicalInput": {
+    "gas": "mekanismscience:potassium_nitrate",
+    "amount": 1000
+  },
+  "output": {
+    "fluid": "mekanismscience:unobtainium_leachate",
+    "amount": 1000
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "input": {
+    "fluid": "mekanismscience:iridium_concentrate",
+    "amount": 10
+  },
+  "energyRequired": 250,
+  "output": {
+    "item": "mekanism:dust_iridium"
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ores/iridium"
+      }
+    }
+  ]
+}

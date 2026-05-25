@@ -1,0 +1,23 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "itemInput": {
+    "tag": "forge:ores/silver"
+  },
+  "chemicalInput": {
+    "gas": "mekanism:nitric_acid",
+    "amount": 1000
+  },
+  "output": {
+    "fluid": "mekanismscience:silver_leachate",
+    "amount": 1000
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ores/silver"
+      }
+    }
+  ]
+}

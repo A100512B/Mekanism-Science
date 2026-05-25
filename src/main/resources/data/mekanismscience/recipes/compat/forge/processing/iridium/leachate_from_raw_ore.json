@@ -1,0 +1,24 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "itemInput": {
+    "tag": "forge:raw_materials/iridium",
+    "amount": 3
+  },
+  "chemicalInput": {
+    "gas": "mekanism:potassium_nitrate",
+    "amount": 1000
+  },
+  "output": {
+    "fluid": "mekanismscience:iridium_leachate",
+    "amount": 1000
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ores/iridium"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "itemInput": {
+    "tag": "forge:raw_materials/nickel",
+    "amount": 3
+  },
+  "chemicalInput": {
+    "gas": "mekanism:sulfuric_acid",
+    "amount": 1000
+  },
+  "output": {
+    "fluid": "mekanismscience:nickel_leachate",
+    "amount": 1000
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ores/nickel"
+      }
+    }
+  ]
+}
