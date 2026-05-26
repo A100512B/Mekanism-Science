@@ -1,11 +1,11 @@
 {
   "type": "mekanismscience:pressurized_polymerizing",
   "input": {
-    "amount": 2,
-    "gas": "mekanism:ethene"
+    "amount": 50,
+    "gas": "mekanismscience:tetrafluoroethylene"
   },
   "output": {
     "amount": 1,
-    "gas": "mekanismscience:2_butene"
+    "gas": "mekanismscience:ptfe"
   }
 }

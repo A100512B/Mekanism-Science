@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "amount": 4,
+    "ingredient": {
+      "item": "mekanismscience:ptfe_pellet"
+    }
+  },
+  "output": {
+    "item": "mekanismscience:ptfe_sheet"
+  }
+}

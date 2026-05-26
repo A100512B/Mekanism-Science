@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:metal_electrolysis_rod"
+  },
+  "pattern": [
+    "PPP",
+    "CLC",
+    "PPP"
+  ],
+  "key": {
+    "C": {
+      "item": "mekanism:ultimate_universal_cable"
+    },
+    "L": {
+      "item": "mekanism:electrolytic_core"
+    },
+    "P": {
+      "item": "mekanismscience:ptfe_sheet"
+    }
+  }
+}

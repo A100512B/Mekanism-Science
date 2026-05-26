@@ -2,7 +2,7 @@
   "type": "mekanismscience:pressurized_polymerizing",
   "input": {
     "amount": 2,
-    "gas": "mekanism:ammonia"
+    "gas": "mekanismscience:ammonia"
   },
   "output": {
     "amount": 1,

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:extracting_plant_port"
+  },
+  "pattern": [
+    "CAC"
+  ],
+  "key": {
+    "C": {
+      "item": "mekanismscience:extracting_plant_casing"
+    },
+    "A": {
+      "item": "mekanism:advanced_control_circuit"
+    }
+  }
+}

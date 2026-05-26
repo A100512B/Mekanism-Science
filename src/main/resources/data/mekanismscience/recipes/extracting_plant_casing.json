@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:extracting_plant_casing"
+  },
+  "pattern": [
+    " S ",
+    "SXS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "mekanismscience:ptfe_sheet"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  }
+}

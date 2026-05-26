@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:acid_leacher"
+  },
+  "pattern": [
+    "PUP",
+    "DID",
+    "BBB"
+  ],
+  "key": {
+    "P": {
+      "item": "mekanismscience:ptfe_sheet"
+    },
+    "U": {
+      "item": "mekanism:ultimate_control_circuit"
+    },
+    "B": {
+      "tag": "forge:storage_blocks/steel"
+    },
+    "I": {
+      "item": "mekanism:chemical_infuser"
+    }
+  }
+}

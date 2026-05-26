@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:organic_liquid_extractor"
+  },
+  "pattern": [
+    "IGI",
+    "WSW",
+    "IGI"
+  ],
+  "keys": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "W": {
+      "item": "minecraft:iron_sword"
+    },
+    "S": {
+      "item": "mekanism:steel_casing"
+    }
+  }
+}

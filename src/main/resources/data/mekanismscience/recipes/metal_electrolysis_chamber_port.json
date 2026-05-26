@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:metal_electrolysis_chamber_port"
+  },
+  "pattern": [
+    "CUC"
+  ],
+  "key": {
+    "C": {
+      "item": "mekanismscience:metal_electrolysis_chamber_casing"
+    },
+    "U": {
+      "item": "mekanism:ultimate_control_circuit"
+    }
+  }
+}

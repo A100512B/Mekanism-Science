@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mekanismscience:pressurized_polymerizing_chamber"
+  },
+  "pattern": [
+    "SSS",
+    "EPE",
+    "SSS"
+  ],
+  "keys": {
+    "S": {
+      "tag": "forge:ingots/steel"
+    },
+    "E": {
+      "item": "mekanism:elite_control_circuit"
+    },
+    "P": {
+      "item": "mekanism:pressurized_reaction_chamber"
+    }
+  }
+}

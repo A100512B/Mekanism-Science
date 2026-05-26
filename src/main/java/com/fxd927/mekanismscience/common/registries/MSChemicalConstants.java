@@ -39,6 +39,7 @@ public enum MSChemicalConstants implements IChemicalConstant {
     NITROGEN_DIOXIDE("nitrogen_dioxide", 0xFFD6A3F3, 0, 294F, 1449F),
     NITRIC_ACID("nitric_acid", 0xFFB5BCFF, 0, 363.7F, 4933F),
     POTASSIUM_NITRATE("potassium_nitrate", 0xFF129B32, 0, 607.15F, 2109F),
+    TETRAFLUOROETHYLENE("tetrafluoroethylene", 0xFFAB46C4, 0, 196.85F, 1519F)
     ;
 
     private final String name;
