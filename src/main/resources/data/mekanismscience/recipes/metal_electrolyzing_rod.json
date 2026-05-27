@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "result": {
-    "item": "mekanismscience:metal_electrolysis_rod"
+    "item": "mekanismscience:metal_electrolyzing_rod"
   },
   "pattern": [
     "PPP",
