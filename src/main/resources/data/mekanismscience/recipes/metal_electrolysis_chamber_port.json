@@ -11,7 +11,7 @@
       "item": "mekanismscience:metal_electrolysis_chamber_casing"
     },
     "U": {
-      "item": "mekanism:ultimate_control_circuit"
+      "item": "forge:circuits/ultimate"
     }
   }
 }

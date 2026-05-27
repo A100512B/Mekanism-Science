@@ -13,7 +13,7 @@
       "item": "mekanismscience:ptfe_sheet"
     },
     "U": {
-      "item": "mekanism:ultimate_control_circuit"
+      "item": "forge:circuits/ultimate"
     },
     "B": {
       "tag": "forge:storage_blocks/steel"

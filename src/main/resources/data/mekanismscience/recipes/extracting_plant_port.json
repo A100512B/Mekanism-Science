@@ -11,7 +11,7 @@
       "item": "mekanismscience:extracting_plant_casing"
     },
     "A": {
-      "item": "mekanism:advanced_control_circuit"
+      "item": "forge:circuits/advanced"
     }
   }
 }

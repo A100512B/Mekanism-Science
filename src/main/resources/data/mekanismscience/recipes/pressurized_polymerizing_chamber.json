@@ -13,7 +13,7 @@
       "tag": "forge:ingots/steel"
     },
     "E": {
-      "item": "mekanism:elite_control_circuit"
+      "item": "forge:circuits/elite"
     },
     "P": {
       "item": "mekanism:pressurized_reaction_chamber"
