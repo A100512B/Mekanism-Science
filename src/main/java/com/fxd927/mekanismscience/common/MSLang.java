@@ -6,8 +6,6 @@ import org.jetbrains.annotations.NotNull;
 
 public enum MSLang implements ILangEntry {
 
-    ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR("description", "adsorption_type_seawater_metal_extractor"),
-
     CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY("chemical", "attribute.extraction_efficiency"),
 
     DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR("description","organic_liquid_extractor"),
