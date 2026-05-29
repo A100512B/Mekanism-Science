@@ -5,6 +5,7 @@ import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.datagen.client.lang.MSEnUsLangProvider;
 import com.fxd927.mekanismscience.datagen.client.lang.MSZhCnLangProvider;
 import com.fxd927.mekanismscience.datagen.client.sound.MSSoundProvider;
+import com.fxd927.mekanismscience.datagen.client.state.MSBlockStateProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -27,6 +28,7 @@ public class MSDataGenerator {
         generator.addProvider(event.includeClient(), new MSEnUsLangProvider(output));
         generator.addProvider(event.includeClient(), new MSZhCnLangProvider(output));
         generator.addProvider(event.includeClient(), new MSSoundProvider(output, helper));
+        generator.addProvider(event.includeClient(), new MSBlockStateProvider(output, helper));
     }
 
     public static void bootstrapConfigs(String modid) {
