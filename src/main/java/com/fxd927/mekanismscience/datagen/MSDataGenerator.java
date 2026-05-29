@@ -2,8 +2,9 @@ package com.fxd927.mekanismscience.datagen;
 
 import com.electronwill.nightconfig.core.CommentedConfig;
 import com.fxd927.mekanismscience.common.MekanismScience;
-import com.fxd927.mekanismscience.datagen.client.MSEnUsLangProvider;
-import com.fxd927.mekanismscience.datagen.client.MSZhCnLangProvider;
+import com.fxd927.mekanismscience.datagen.client.lang.MSEnUsLangProvider;
+import com.fxd927.mekanismscience.datagen.client.lang.MSZhCnLangProvider;
+import com.fxd927.mekanismscience.datagen.client.sound.MSSoundProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,6 +26,7 @@ public class MSDataGenerator {
         ExistingFileHelper helper = event.getExistingFileHelper();
         generator.addProvider(event.includeClient(), new MSEnUsLangProvider(output));
         generator.addProvider(event.includeClient(), new MSZhCnLangProvider(output));
+        generator.addProvider(event.includeClient(), new MSSoundProvider(output, helper));
     }
 
     public static void bootstrapConfigs(String modid) {

@@ -1,4 +1,4 @@
-package com.fxd927.mekanismscience.datagen.client;
+package com.fxd927.mekanismscience.datagen.client.lang;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
 import mekanism.api.providers.IBlockProvider;
