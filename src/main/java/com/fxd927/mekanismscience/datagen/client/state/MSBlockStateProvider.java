@@ -54,7 +54,10 @@ public class MSBlockStateProvider extends BlockStateProvider {
     }
 
     private void cubeAll(BlockRegistryObject<? extends Block, ? extends Item> blockRO) {
-        cubeAll(blockRO.getBlock());
+        String name = blockRO.getName();
+        ModelFile model = models().cubeAll(name, modLoc("block/" + blockRO.getName()));
+        simpleBlock(blockRO.getBlock(), model);
+        simpleBlockItem(blockRO.getBlock(), model);
     }
 
     private void cubeMachine(BlockRegistryObject<?, ?> blockRO) {
@@ -79,6 +82,7 @@ public class MSBlockStateProvider extends BlockStateProvider {
                 .modelFile(Attribute.isActive(state) ? on : off)
                 .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
                 .build());
+        simpleBlockItem(blockRO.getBlock(), off);
     }
 
     private void irregularMachine(BlockRegistryObject<?, ?> blockRO) {
@@ -89,13 +93,15 @@ public class MSBlockStateProvider extends BlockStateProvider {
                 .modelFile(Attribute.isActive(state) ? on : off)
                 .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
                 .build());
+        simpleBlockItem(blockRO.getBlock(), off);
     }
 
     private <E extends Enum<E> & StringRepresentable> void port(BlockRegistryObject<?, ?> blockRO, EnumProperty<E> modeProperty) {
         String name = blockRO.getName();
         getVariantBuilder(blockRO.getBlock()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(models().cubeAll(name, modLoc("block/" + name + "/" + state.getValue(modeProperty).getSerializedName())))
+                .modelFile(models().withExistingParent(name, modLoc("block/" + name + "/" + state.getValue(modeProperty).getSerializedName())))
                 .build());
+        simpleBlockItem(blockRO.getBlock(), models().withExistingParent(name, modLoc("block/" + name + "/" + blockRO.getBlock().defaultBlockState().getValue(modeProperty).getSerializedName())));
     }
 
     private void port(BlockRegistryObject<?, ?> blockRO, BooleanProperty activeProperty) {
@@ -103,5 +109,6 @@ public class MSBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(blockRO.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(models().cubeAll(name, modLoc("block/" + name + "/" + (state.getValue(activeProperty) ? "output" : "input"))))
                 .build());
+        simpleBlockItem(blockRO.getBlock(), models().cubeAll(name, modLoc("block/" + name + "/input")));
     }
 }
