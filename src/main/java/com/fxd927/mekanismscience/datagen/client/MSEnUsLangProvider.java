@@ -1,24 +1,13 @@
 package com.fxd927.mekanismscience.datagen.client;
 
 import com.fxd927.mekanismscience.common.MSLang;
-import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.registries.*;
-import mekanism.api.providers.IBlockProvider;
-import mekanism.api.text.IHasTranslationKey;
-import mekanism.common.block.attribute.Attribute;
-import mekanism.common.block.attribute.AttributeGui;
-import mekanism.common.registration.impl.FluidRegistryObject;
-import mekanism.common.util.RegistryUtils;
-import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.LanguageProvider;
-import org.jetbrains.annotations.NotNull;
 
-public class MSEnUsLangProvider extends LanguageProvider {
+public class MSEnUsLangProvider extends MSBaseLangProvider {
 
     public MSEnUsLangProvider(PackOutput output) {
-        super(output, MekanismScience.MODID, "en_us");
+        super(output, "en_us");
     }
 
     @Override
@@ -28,6 +17,7 @@ public class MSEnUsLangProvider extends LanguageProvider {
         addFluids();
         addGases();
         addSubtitles();
+        addMisc();
     }
 
     private void addItems() {
@@ -175,7 +165,7 @@ public class MSEnUsLangProvider extends LanguageProvider {
     public void addMisc() {
         // Descriptions
         add(MSLang.DESCRIPTION_ACID_LEACHER, "A giant and chemical-inert machine that can safely contain tons of dangerous acids and use them to leach most metals.");
-        add(MSLang.DESCRIPTION_ADSORPTION_SEPARATOR, "A simple machine used to extract certain substances with specific adsorbents");
+        add(MSLang.DESCRIPTION_ADSORPTION_SEPARATOR, "A simple machine used to extract certain substances with specific adsorbents.");
         add(MSLang.DESCRIPTION_AIR_COMPRESSOR, "A well-sealed machine that pumps in ambient air and safely compresses it into a high-pressure state.");
         add(MSLang.DESCRIPTION_ANTI_EXTRACTING_PILLAR, "A chemical-inert pillar holding acids to anti-extract metal ions from the extract.");
         add(MSLang.DESCRIPTION_ANTI_EXTRACTING_PLANT_CASING, "A chemical-inert casing used in the structure of Anti-Extracting Plants, securing your base from being eroded by the acids.");
@@ -192,8 +182,9 @@ public class MSEnUsLangProvider extends LanguageProvider {
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "An advanced machine that polymerizes organic chemicals at a very high pressure.");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "A pump specifically made for extracting seawater from Ocean biomes.");
         // Chemical Attributes
-        add(MSLang.CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY, "Extraction Efficiency: %.2f");
+        add(MSLang.CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY, "Extraction Efficiency: %1$.2f");
         // Extracting Plant
+        add(MSLang.EXTRACTING_PLANT, "Extracting Plant");
         add(MSLang.EXTRACTING_PLANT_INVALID_EVEN_LENGTH, "Couldn't form, width and length of structure must be odd.");
         add(MSLang.EXTRACTING_PLANT_INVALID_MALFORMED_EXTRACTING_PILLARS, "Couldn't form, one of the Extracting Pillars didn't appear in the right place.");
         add(MSLang.EXTRACTING_PLANT_INVALID_NOT_SQUARE, "Couldn't form, width and length must be equal.");
@@ -201,6 +192,7 @@ public class MSEnUsLangProvider extends LanguageProvider {
         add(MSLang.EXTRACTING_PLANT_PORT_MODE_INPUT_LEACHATE, "Input Leachate");
         add(MSLang.EXTRACTING_PLANT_PORT_MODE_OUTPUT, "Output");
         // Anti-Extracting Plant
+        add(MSLang.ANTI_EXTRACTING_PLANT, "Anti-Extracting Plant");
         add(MSLang.ANTI_EXTRACTING_PLANT_INVALID_EVEN_LENGTH, "Couldn't form, width and length of structure must be odd.");
         add(MSLang.ANTI_EXTRACTING_PLANT_INVALID_MALFORMED_ANTI_EXTRACTING_PILLARS, "Couldn't form, one of the Anti-Extracting Pillars doesn't appear in the right place.");
         add(MSLang.ANTI_EXTRACTING_PLANT_INVALID_NOT_SQUARE, "Couldn't form, width and length must be equal.");
@@ -209,47 +201,8 @@ public class MSEnUsLangProvider extends LanguageProvider {
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_CONCENTRATE, "Output Concentrate");
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_EXTRACTANT, "Output Extractant");
         // Metal Electrolysis Chamber
+        add(MSLang.METAL_ELECTROLYSIS_CHAMBER, "Metal Electrolysis Chamber");
         add(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, "Couldn't form, one of the Metal Electrolyzing Rods didn't appear in the right place.");
         add(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD_TOO_CLOSE, "Couldn't form, at least two lines of Metal Electrolyzing Rods were too close to each other.");
-    }
-
-    protected void add(IHasTranslationKey key, String value) {
-        if (key instanceof IBlockProvider blockProvider) {
-            Block block = blockProvider.getBlock();
-            if (Attribute.matches(block, AttributeGui.class, attribute -> !attribute.hasCustomName())) {
-                add(Util.makeDescriptionId("container", RegistryUtils.getName(block)), value);
-            }
-        }
-        add(key.getTranslationKey(), value);
-    }
-
-    protected void add(IBlockProvider blockProvider, String value, String containerName) {
-        Block block = blockProvider.getBlock();
-        if (Attribute.matches(block, AttributeGui.class, attribute -> !attribute.hasCustomName())) {
-            add(Util.makeDescriptionId("container", RegistryUtils.getName(block)), containerName);
-            add(blockProvider.getTranslationKey(), value);
-        } else {
-            throw new IllegalArgumentException("Block " + blockProvider.getRegistryName() + " does not have a container name set.");
-        }
-    }
-
-    protected void addFluid(FluidRegistryObject<?, ?, ?, ?, ?> fluidRO, String name) {
-        add(fluidRO, name);
-        add(fluidRO.getBucket(), name + " Bucket");
-    }
-
-    @Override
-    public void add(@NotNull String key, @NotNull String value) {
-        if (value.contains("%s")) {
-            throw new IllegalArgumentException("Values containing substitutions should use explicit numbered indices: " + key + " - " + value);
-        }
-        super.add(key, value);
-    }
-
-    /**
-     * @param s Input string. Should only contain 1 word.
-     */
-    private static String capitalize(String s) {
-        return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 }

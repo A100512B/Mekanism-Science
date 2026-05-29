@@ -47,7 +47,6 @@ public enum MSLang implements ILangEntry {
     METAL_ELECTROLYZING_ROD_MODE_IDLE("metal_electrolysis_chamber", "rod_mode_idle"),
     METAL_ELECTROLYZING_ROD_MODE_ACTIVE("metal_electrolysis_chamber", "rod_mode_active"),
     METAL_ELECTROLYZING_ROD_MODE_ACTIVE_LASER("metal_electrolysis_chamber", "rod_mode_active_laser"),
-    METAL_ELECTROLYSIS_CHAMBER_PORT_MODE("metal_electrolysis_chamber", "port_mode"),
     METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD("metal_electrolysis_chamber", "invalid_rod"),
     METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD_TOO_CLOSE("metal_electrolysis_chamber", "invalid_rod_too_close"),
 

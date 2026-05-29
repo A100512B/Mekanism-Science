@@ -1,6 +1,5 @@
 package com.fxd927.mekanismscience.common.tile.multiblock.electrolysis;
 
-import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateElectrolyzingRodMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateElectrolyzingRodMode.MetalElectrolyzingRodMode;
@@ -14,6 +13,7 @@ import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.text.EnumColor;
+import mekanism.common.MekanismLang;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
@@ -134,7 +134,7 @@ public class TileEntityMetalElectrolysisChamberPort
         if (!isRemote()) {
             boolean oldMode = getActive();
             setActive(!oldMode);
-            player.displayClientMessage(MSLang.METAL_ELECTROLYSIS_CHAMBER_PORT_MODE.translateColored(EnumColor.GRAY, InputOutput.of(oldMode, true)), true);
+            player.displayClientMessage(MekanismLang.BOILER_VALVE_MODE_CHANGE.translateColored(EnumColor.GRAY, InputOutput.of(oldMode, true)), true);
         }
         return InteractionResult.SUCCESS;
     }
