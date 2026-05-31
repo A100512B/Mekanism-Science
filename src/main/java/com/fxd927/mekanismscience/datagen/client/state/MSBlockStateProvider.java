@@ -6,13 +6,11 @@ import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractin
 import com.fxd927.mekanismscience.common.mixin.AttributeStateActiveAccessor;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
+import mekanism.api.providers.IBlockProvider;
 import mekanism.common.block.attribute.Attribute;
-import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.util.RegistryUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -42,26 +40,30 @@ public class MSBlockStateProvider extends BlockStateProvider {
         // Extracting Plant
         cubeAll(MSBlocks.EXTRACTING_PLANT_CASING);
         port(MSBlocks.EXTRACTING_PLANT_PORT, AttributeStateExtractingPortMode.modeProperty);
-        irregularMachine(MSBlocks.EXTRACTING_PILLAR);
+        simple(MSBlocks.EXTRACTING_PILLAR);
         // Anti-Extracting Plant
         cubeAll(MSBlocks.ANTI_EXTRACTING_PLANT_CASING);
         port(MSBlocks.ANTI_EXTRACTING_PLANT_PORT, AttributeStateAntiExtractingPortMode.modeProperty);
-        irregularMachine(MSBlocks.ANTI_EXTRACTING_PILLAR);
+        simple(MSBlocks.ANTI_EXTRACTING_PILLAR);
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING);
         port(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, AttributeStateActiveAccessor.getActiveProperty());
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
         irregularMachine(MSBlocks.METAL_ELECTROLYZING_ROD);
     }
 
-    private void cubeAll(BlockRegistryObject<? extends Block, ? extends Item> blockRO) {
-        String name = blockRO.getName();
-        ModelFile model = models().cubeAll(name, modLoc("block/" + blockRO.getName()));
-        simpleBlock(blockRO.getBlock(), model);
-        simpleBlockItem(blockRO.getBlock(), model);
+    private void simple(IBlockProvider block) {
+        simpleBlock(block.getBlock(), models().withExistingParent(block.getName(), "block/" + block.getName()));
     }
 
-    private void cubeMachine(BlockRegistryObject<?, ?> blockRO) {
-        String name = blockRO.getName();
+    private void cubeAll(IBlockProvider block) {
+        String name = block.getName();
+        ModelFile model = models().cubeAll(name, modLoc("block/" + block.getName()));
+        simpleBlock(block.getBlock(), model);
+        simpleBlockItem(block.getBlock(), model);
+    }
+
+    private void cubeMachine(IBlockProvider block) {
+        String name = block.getName();
         ModelFile off = models().cube(name,
                         modLoc("block/" + name + "/bottom"),
                         modLoc("block/" + name + "/top"),
@@ -78,37 +80,37 @@ public class MSBlockStateProvider extends BlockStateProvider {
                         modLoc("block/" + name + "/left"),
                         modLoc("block/" + name + "/right"))
                 .texture("particle", "block/" + name + "/bottom");
-        getVariantBuilder(blockRO.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(Attribute.isActive(state) ? on : off)
                 .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
                 .build());
-        simpleBlockItem(blockRO.getBlock(), off);
+        simpleBlockItem(block.getBlock(), off);
     }
 
-    private void irregularMachine(BlockRegistryObject<?, ?> blockRO) {
-        String name = blockRO.getName();
+    private void irregularMachine(IBlockProvider block) {
+        String name = block.getName();
         ModelFile off = models().withExistingParent(name, modLoc("block/" + name + "/off"));
         ModelFile on = models().withExistingParent(name, modLoc("block/" + name + "/on"));
-        getVariantBuilder(blockRO.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(Attribute.isActive(state) ? on : off)
                 .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
                 .build());
-        simpleBlockItem(blockRO.getBlock(), off);
+        simpleBlockItem(block.getBlock(), off);
     }
 
-    private <E extends Enum<E> & StringRepresentable> void port(BlockRegistryObject<?, ?> blockRO, EnumProperty<E> modeProperty) {
-        String name = blockRO.getName();
-        getVariantBuilder(blockRO.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+    private <E extends Enum<E> & StringRepresentable> void port(IBlockProvider block, EnumProperty<E> modeProperty) {
+        String name = block.getName();
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(models().withExistingParent(name, modLoc("block/" + name + "/" + state.getValue(modeProperty).getSerializedName())))
                 .build());
-        simpleBlockItem(blockRO.getBlock(), models().withExistingParent(name, modLoc("block/" + name + "/" + blockRO.getBlock().defaultBlockState().getValue(modeProperty).getSerializedName())));
+        simpleBlockItem(block.getBlock(), models().withExistingParent(name, modLoc("block/" + name + "/" + block.getBlock().defaultBlockState().getValue(modeProperty).getSerializedName())));
     }
 
-    private void port(BlockRegistryObject<?, ?> blockRO, BooleanProperty activeProperty) {
-        String name = blockRO.getName();
-        getVariantBuilder(blockRO.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+    private void port(IBlockProvider block, BooleanProperty activeProperty) {
+        String name = block.getName();
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(models().cubeAll(name, modLoc("block/" + name + "/" + (state.getValue(activeProperty) ? "output" : "input"))))
                 .build());
-        simpleBlockItem(blockRO.getBlock(), models().cubeAll(name, modLoc("block/" + name + "/input")));
+        simpleBlockItem(block.getBlock(), models().cubeAll(name, modLoc("block/" + name + "/input")));
     }
 }
