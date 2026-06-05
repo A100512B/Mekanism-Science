@@ -8,6 +8,7 @@ import com.fxd927.mekanismscience.datagen.client.model.MSItemModelProvider;
 import com.fxd927.mekanismscience.datagen.client.sound.MSSoundProvider;
 import com.fxd927.mekanismscience.datagen.client.state.MSBlockStateProvider;
 import com.fxd927.mekanismscience.datagen.common.loot.MSLootTableProvider;
+import com.fxd927.mekanismscience.datagen.common.recipe.MSRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -33,6 +34,7 @@ public class MSDataGenerator {
         generator.addProvider(event.includeClient(), new MSBlockStateProvider(output, helper));
         generator.addProvider(event.includeClient(), new MSItemModelProvider(output, helper));
         generator.addProvider(event.includeServer(), new MSLootTableProvider(output));
+        generator.addProvider(event.includeServer(), new MSRecipeProvider(output));
     }
 
     public static void bootstrapConfigs(String modid) {

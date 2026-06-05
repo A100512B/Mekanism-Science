@@ -10,7 +10,7 @@
   },
   "itemInput": {
     "amount": 1,
-    "item": "mekanismscience:acid_substrate"
+    "item": "mekanismscience:acidic_substrate"
   },
   "duration": 100,
   "energyRequired": 400,

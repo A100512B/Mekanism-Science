@@ -71,6 +71,7 @@ public class MSFluids {
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NITROGEN_DIOXIDE = FLUIDS.registerLiquidChemical(MSChemicalConstants.NITROGEN_DIOXIDE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NITRIC_ACID = FLUIDS.registerLiquidChemical(MSChemicalConstants.NITRIC_ACID);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> AQUA_REGIA = FLUIDS.register("aqua_regia", UnaryOperator.identity(), props -> props.tint(0xFFEB5414));
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> POTASSIUM_NITRATE = FLUIDS.registerLiquidChemical(MSChemicalConstants.POTASSIUM_NITRATE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> TETRAFLUOROETHYLENE = FLUIDS.registerLiquidChemical(MSChemicalConstants.TETRAFLUOROETHYLENE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> PTFE = FLUIDS.register("ptfe", UnaryOperator.identity(), props -> props.tint(0xFF86239F));
 

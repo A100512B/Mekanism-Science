@@ -18,7 +18,7 @@
     "item": "mekanism:substrate"
   },
   "gasOutput": {
-    "gas": "mekanismscience:isobutyraldehyde",
+    "gas": "mekanismscience:2_ethyl_2_hexenal",
     "amount": 100
   }
 }

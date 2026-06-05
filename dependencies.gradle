@@ -18,6 +18,7 @@ dependencies {
 
     // Compatibility
     modCompileOnly(forge.allthemodium)
+    localRuntime(forge.allthemodium)
 
     // WAILA-likes
     modCompileOnly(forge.jade)

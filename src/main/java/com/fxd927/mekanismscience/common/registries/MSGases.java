@@ -59,6 +59,7 @@ public class MSGases {
     public static final GasRegistryObject<Gas> NITROGEN_DIOXIDE = GASES.register(MSChemicalConstants.NITROGEN_DIOXIDE);
     public static final GasRegistryObject<Gas> NITRIC_ACID = GASES.register(MSChemicalConstants.NITRIC_ACID);
     public static final GasRegistryObject<Gas> AQUA_REGIA = GASES.register("aqua_regia", 0xFFEB5414);
+    public static final GasRegistryObject<Gas> POTASSIUM_NITRATE = GASES.register(MSChemicalConstants.POTASSIUM_NITRATE);
     public static final GasRegistryObject<Gas> TETRAFLUOROETHYLENE = GASES.register(MSChemicalConstants.TETRAFLUOROETHYLENE);
     public static final GasRegistryObject<Gas> PTFE = GASES.register("ptfe", 0xFF86239F);
 
