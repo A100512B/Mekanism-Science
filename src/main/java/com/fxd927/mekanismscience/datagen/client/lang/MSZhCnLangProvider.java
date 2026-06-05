@@ -12,7 +12,7 @@ import net.minecraft.data.PackOutput;
 public class MSZhCnLangProvider extends MSBaseLangProvider {
 
     public MSZhCnLangProvider(PackOutput output) {
-        super(output, "zh-cn");
+        super(output, "zh_cn");
     }
 
     @Override

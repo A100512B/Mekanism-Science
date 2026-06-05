@@ -29,6 +29,9 @@ dependencies {
     modLocalRuntime(variantOf(forge.mekanism) { classifier("tools") })
 
     // Standard runtime mods //
+    modLocalRuntime(forge.geckolib)
+    modLocalRuntime(forge.alltheores)
+    modLocalRuntime(forge.allthemodium)
     modLocalRuntime(forge.jade)
     modLocalRuntime(forge.modernfix)
     modLocalRuntime(forge.ferritecore)

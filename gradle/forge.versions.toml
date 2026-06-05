@@ -16,6 +16,8 @@ modernfix = "5.24.4+mc1.20.1"
 ## curseforge maven ##
 jech = "7411324"
 atm = "7142820"
+ato = "5348605"
+geckolib = "7553267"
 
 ## libs ##
 [libraries]
@@ -33,8 +35,10 @@ oculus              = { module = "maven.modrinth:oculus", version.ref = "oculus"
 ferritecore         = { module = "maven.modrinth:uXXizFIs", version.ref = "ferritecore" }
 modernfix           = { module = "maven.modrinth:modernfix", version.ref = "modernfix" }
 modernui            = { module = "maven.modrinth:modern-ui", version.ref = "modernui" }
-allthemodium = { module = "curse.maven:allthemodium-364466", version.ref = "atm" }
 
+geckolib            = { module = "curse.maven:geckolib-388172", version.ref = "geckolib" }
+alltheores          = { module = "curse.maven:ato-405593", version.ref = "ato" }
+allthemodium        = { module = "curse.maven:allthemodium-364466", version.ref = "atm" }
 jecharacters        = { module = "curse.maven:just-enough-characters-250702", version.ref = "jech" }
 [bundles]
 jei = ["jei-common-api", "jei-forge-api", "jei-forge-impl"]
