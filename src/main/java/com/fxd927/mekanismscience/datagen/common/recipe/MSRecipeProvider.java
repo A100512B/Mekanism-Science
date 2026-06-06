@@ -7,6 +7,7 @@ import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSGases;
 import com.fxd927.mekanismscience.common.registries.MSItems;
+import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.datagen.recipe.builder.*;
 import mekanism.api.math.FloatingLong;
@@ -35,13 +36,13 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 import static com.fxd927.mekanismscience.common.MekanismScience.rl;
 import static mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess.*;
 
+@NothingNullByDefault
 public class MSRecipeProvider extends RecipeProvider {
 
     public MSRecipeProvider(PackOutput output) {
@@ -49,7 +50,7 @@ public class MSRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> writer) {
         activating(writer);
         centrifuging(writer);
         chemicalInfusing(writer);
