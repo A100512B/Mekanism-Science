@@ -8,6 +8,7 @@ import com.fxd927.mekanismscience.common.content.electrolysis.MetalElectrolysisC
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantValidator;
 import com.fxd927.mekanismscience.common.registries.*;
+import com.fxd927.mekanismscience.common.tags.MSTags;
 import com.mojang.logging.LogUtils;
 import mekanism.common.lib.multiblock.MultiblockCache;
 import mekanism.common.lib.multiblock.MultiblockManager;
@@ -62,6 +63,7 @@ public class MekanismScience {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(MSTags::init);
     }
 
     @SubscribeEvent

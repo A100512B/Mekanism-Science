@@ -25,7 +25,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSItems.ALKALINE_SUBSTRATE, "Alkaline Substrate");
         add(MSItems.BONE_ASHES, "Bone Ashes");
         add(MSItems.BONE_ASHES_WITH_CARBON, "Bone Ashes With Carbon");
-        add(MSItems.CALCIUM_CHLORIDE, "Calcium Chloride");
+        add(MSItems.DUST_CALCIUM_CHLORIDE, "Calcium Chloride");
         add(MSItems.DUST_CALCIUM_OXIDE, "Calcium Oxide Dust");
         add(MSItems.EXCIPIENT, "Excipient");
         add(MSItems.HIGH_DENSITY_NEUTRON_SOURCE_PELLET, "High Density Neutron Source Pellet");

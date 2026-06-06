@@ -11,6 +11,7 @@ import com.fxd927.mekanismscience.datagen.common.loot.MSLootTableProvider;
 import com.fxd927.mekanismscience.datagen.common.recipe.MSRecipeProvider;
 import com.fxd927.mekanismscience.datagen.common.recipe.compat.ATMRecipeProvider;
 import com.fxd927.mekanismscience.datagen.common.recipe.compat.ForgeRecipeProvider;
+import com.fxd927.mekanismscience.datagen.common.tag.MSTagProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -42,6 +43,7 @@ public class MSDataGenerator {
             generator.addProvider(event.includeServer(), new ATMRecipeProvider(output));
         if (ModList.get().isLoaded("alltheores"))
             generator.addProvider(event.includeServer(), new ForgeRecipeProvider(output));
+        generator.addProvider(event.includeServer(), new MSTagProvider(output, event.getLookupProvider(), helper));
     }
 
     public static void bootstrapConfigs(String modid) {

@@ -714,7 +714,7 @@ public class MSRecipeProvider extends RecipeProvider {
                         fluid().from(FluidStack.EMPTY),
                         gas().from(MekanismGases.CHLORINE, 600),
                         200,
-                        MSItems.CALCIUM_CHLORIDE.getItemStack(3),
+                        MSItems.DUST_CALCIUM_CHLORIDE.getItemStack(3),
                         MSGases.IMPURE_PHOSPHORYL_CHLORIDE.getStack(200))
                 .energyRequired(FloatingLong.createConst(750))
                 .build(writer, rl(basePath + "impure_phosphoryl_chloride"));

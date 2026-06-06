@@ -30,7 +30,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSItems.ALKALINE_SUBSTRATE, "碱性基片");
         add(MSItems.BONE_ASHES, "骨灰");
         add(MSItems.BONE_ASHES_WITH_CARBON, "含碳骨灰");
-        add(MSItems.CALCIUM_CHLORIDE, "氯化钙");
+        add(MSItems.DUST_CALCIUM_CHLORIDE, "氯化钙");
         add(MSItems.DUST_CALCIUM_OXIDE, "生石灰粉");
         add(MSItems.EXCIPIENT, "赋形剂");
         add(MSItems.HIGH_DENSITY_NEUTRON_SOURCE_PELLET, "高密度中子源靶丸");

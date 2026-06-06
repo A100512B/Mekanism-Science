@@ -30,7 +30,7 @@ public class MSItems {
     public static final ItemRegistryObject<Item> ALKALINE_SUBSTRATE = ITEMS.register("alkaline_substrate");
     public static final ItemRegistryObject<Item> BONE_ASHES = ITEMS.register("bone_ashes");
     public static final ItemRegistryObject<Item> BONE_ASHES_WITH_CARBON = ITEMS.register("bone_ashes_with_carbon");
-    public static final ItemRegistryObject<Item> CALCIUM_CHLORIDE = ITEMS.register("calcium_chloride");
+    public static final ItemRegistryObject<Item> DUST_CALCIUM_CHLORIDE = ITEMS.register("dust_calcium_chloride");
     public static final ItemRegistryObject<Item> PTFE_PELLET = ITEMS.register("ptfe_pellet");
     public static final ItemRegistryObject<Item> PTFE_SHEET = ITEMS.register("ptfe_sheet");
 
