@@ -2,11 +2,11 @@ package com.fxd927.mekanismscience.datagen.client.lang;
 
 import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.registries.*;
-import com.fxd927.mekanismscience.common.resource.ForgeResource;
 import com.thevortex.allthemodium.registry.mek_reg.ATMResource;
 import mekanism.common.resource.IResource;
 import mekanism.common.resource.MiscResource;
 import mekanism.common.resource.PrimaryResource;
+import net.allthemods.alltheores.blocks.mek_reg.ATOResource;
 import net.minecraft.data.PackOutput;
 
 public class MSZhCnLangProvider extends MSBaseLangProvider {
@@ -247,7 +247,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
                 case VIB -> "振金";
                 case UNOB -> "难得素";
             };
-        } else if (resource instanceof ForgeResource res) {
+        } else if (resource instanceof ATOResource res) {
             return switch (res) {
                 case ALUMINUM -> "铝";
                 case NICKEL -> "镍";

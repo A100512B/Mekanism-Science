@@ -1,7 +1,6 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
-import com.fxd927.mekanismscience.common.resource.ForgeResource;
 import com.thevortex.allthemodium.registry.mek_reg.ATMResource;
 import mekanism.common.registration.impl.FluidDeferredRegister;
 import mekanism.common.registration.impl.FluidDeferredRegister.MekanismFluidType;
@@ -10,6 +9,7 @@ import mekanism.common.resource.IResource;
 import mekanism.common.resource.MiscResource;
 import mekanism.common.resource.PrimaryResource;
 import mekanism.common.util.EnumUtils;
+import net.allthemods.alltheores.blocks.mek_reg.ATOResource;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
@@ -88,8 +88,9 @@ public class MSFluids {
             for (ATMResource resource : ATMResource.values()) {
                 registerProcessing(resource, resource.getTint());
             }
-            // Other metals contained by forge common tags
-            for (ForgeResource resource : ForgeResource.values()) {
+        }
+        if (ModList.get().isLoaded("alltheores")) {
+            for (ATOResource resource : ATOResource.values()) {
                 registerProcessing(resource, resource.getTint());
             }
         }
