@@ -32,11 +32,10 @@ public class MSBlockStateProvider extends BlockStateProvider {
         // Single block tiles
         irregularMachine(MSBlocks.ADSORPTION_SEPARATOR);
         irregularMachine(MSBlocks.AIR_COMPRESSOR);
-        cubeMachine(MSBlocks.IRRADIATOR);
+        irregularMachine(MSBlocks.IRRADIATOR);
         cubeMachine(MSBlocks.ORGANIC_LIQUID_EXTRACTOR);
         cubeMachine(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
-        // Large tiles
-        irregularMachine(MSBlocks.ACID_LEACHER);
+        irregularMachine(MSBlocks.SEAWATER_PUMP);
         // Extracting Plant
         cubeAll(MSBlocks.EXTRACTING_PLANT_CASING);
         port(MSBlocks.EXTRACTING_PLANT_PORT, AttributeStateExtractingPortMode.modeProperty);
@@ -48,7 +47,6 @@ public class MSBlockStateProvider extends BlockStateProvider {
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING);
         port(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, AttributeStateActiveAccessor.getActiveProperty());
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
-        irregularMachine(MSBlocks.METAL_ELECTROLYZING_ROD);
     }
 
     private void simple(IBlockProvider block) {
@@ -57,9 +55,22 @@ public class MSBlockStateProvider extends BlockStateProvider {
 
     private void cubeAll(IBlockProvider block) {
         String name = block.getName();
-        ModelFile model = models().cubeAll(name, modLoc("block/" + block.getName()));
+        ModelFile model = models().cubeAll(name, modLoc("block/" + name));
         simpleBlock(block.getBlock(), model);
         simpleBlockItem(block.getBlock(), model);
+    }
+
+    private void irregularMachine(IBlockProvider block) {
+        String name = block.getName();
+        ModelFile off = models().withExistingParent(name, modLoc("block/" + name))
+                .texture("particle", "block/" + name);
+        ModelFile on = models().withExistingParent(name, modLoc("block/" + name + "_active"))
+                .texture("particle", "block/" + name);
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(Attribute.isActive(state) ? on : off)
+                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
+                .build());
+        simpleBlockItem(block.getBlock(), off);
     }
 
     private void cubeMachine(IBlockProvider block) {
@@ -80,17 +91,6 @@ public class MSBlockStateProvider extends BlockStateProvider {
                         modLoc("block/" + name + "/left"),
                         modLoc("block/" + name + "/right"))
                 .texture("particle", "block/" + name + "/bottom");
-        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(Attribute.isActive(state) ? on : off)
-                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
-                .build());
-        simpleBlockItem(block.getBlock(), off);
-    }
-
-    private void irregularMachine(IBlockProvider block) {
-        String name = block.getName();
-        ModelFile off = models().withExistingParent(name, modLoc("block/" + name + "/off"));
-        ModelFile on = models().withExistingParent(name, modLoc("block/" + name + "/on"));
         getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(Attribute.isActive(state) ? on : off)
                 .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
