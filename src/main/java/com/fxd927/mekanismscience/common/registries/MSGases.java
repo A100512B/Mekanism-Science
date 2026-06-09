@@ -14,7 +14,6 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class MSGases {
 
     public static final GasDeferredRegister GASES = new GasDeferredRegister(MekanismScience.MODID);

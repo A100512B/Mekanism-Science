@@ -55,6 +55,7 @@ public class MSBlockTypes {
             .withGui(() -> MSContainerTypes.PRESSURIZED_POLYMERIZING_CHAMBER)
             .withSound(MSSounds.PRESSURIZED_POLYMERIZING_CHAMBER)
             .withEnergyConfig(MSConfig.usageConfig.pressurizedPolymerizingChamber, MSConfig.storageConfig.pressurizedPolymerizingChamber)
+            .withCustomShape(mekanism.common.content.blocktype.BlockShapes.PRESSURIZED_REACTION_CHAMBER)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.ANCHOR, Upgrade.MUFFLING))
             .withComputerSupport("pressurizedPolymerizingChamber")
             .replace(Attributes.ACTIVE)

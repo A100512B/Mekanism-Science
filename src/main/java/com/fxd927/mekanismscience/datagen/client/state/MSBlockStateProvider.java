@@ -30,26 +30,26 @@ public class MSBlockStateProvider extends BlockStateProvider {
         MSFluids.FLUIDS.getAllFluids().forEach(fluidRO -> simpleBlock(fluidRO.getBlock(),
                 models().getBuilder(RegistryUtils.getPath(fluidRO.getBlock())).texture("particle", fluidRO.getFluidType().stillTexture)));
         // Single block tiles
-        irregularMachine(MSBlocks.ADSORPTION_SEPARATOR);
-        irregularMachine(MSBlocks.AIR_COMPRESSOR);
-        irregularMachine(MSBlocks.IRRADIATOR);
+        existingActive(MSBlocks.ADSORPTION_SEPARATOR);
+        existingActive(MSBlocks.AIR_COMPRESSOR);
+        existingActive(MSBlocks.IRRADIATOR);
         cubeMachine(MSBlocks.ORGANIC_LIQUID_EXTRACTOR);
-        cubeMachine(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
-        irregularMachine(MSBlocks.SEAWATER_PUMP);
+        existing(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
+        existingActive(MSBlocks.SEAWATER_PUMP);
         // Extracting Plant
         cubeAll(MSBlocks.EXTRACTING_PLANT_CASING);
         port(MSBlocks.EXTRACTING_PLANT_PORT, AttributeStateExtractingPortMode.modeProperty);
-        simple(MSBlocks.EXTRACTING_PILLAR);
+        existing(MSBlocks.EXTRACTING_PILLAR);
         // Anti-Extracting Plant
         cubeAll(MSBlocks.ANTI_EXTRACTING_PLANT_CASING);
         port(MSBlocks.ANTI_EXTRACTING_PLANT_PORT, AttributeStateAntiExtractingPortMode.modeProperty);
-        simple(MSBlocks.ANTI_EXTRACTING_PILLAR);
+        existing(MSBlocks.ANTI_EXTRACTING_PILLAR);
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING);
         port(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, AttributeStateActiveAccessor.getActiveProperty());
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
     }
 
-    private void simple(IBlockProvider block) {
+    private void existing(IBlockProvider block) {
         simpleBlock(block.getBlock(), models().withExistingParent(block.getName(), "block/" + block.getName()));
     }
 
@@ -60,7 +60,7 @@ public class MSBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block.getBlock(), model);
     }
 
-    private void irregularMachine(IBlockProvider block) {
+    private void existingActive(IBlockProvider block) {
         String name = block.getName();
         ModelFile off = models().withExistingParent(name, modLoc("block/" + name))
                 .texture("particle", "block/" + name);

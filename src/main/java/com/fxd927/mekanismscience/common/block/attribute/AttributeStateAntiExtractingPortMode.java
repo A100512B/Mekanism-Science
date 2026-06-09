@@ -44,7 +44,7 @@ public class AttributeStateAntiExtractingPortMode implements AttributeState {
 
     @NothingNullByDefault
     public enum AntiExtractingPortMode implements StringRepresentable, IHasTextComponent, IIncrementalEnum<AntiExtractingPortMode> {
-        INPUT_ANTI_EXTRACTANT("input_extractant", MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_INPUT_ANTI_EXTRACTANT, EnumColor.BRIGHT_GREEN),
+        INPUT_ANTI_EXTRACTANT("input_anti_extractant", MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_INPUT_ANTI_EXTRACTANT, EnumColor.BRIGHT_GREEN),
         INPUT_EXTRACT("input_extract", MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_INPUT_EXTRACT, EnumColor.YELLOW),
         OUTPUT_EXTRACTANT("output_extractant", MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_EXTRACTANT, EnumColor.PINK),
         OUTPUT_CONCENTRATE("output_concentrate", MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_CONCENTRATE, EnumColor.AQUA);

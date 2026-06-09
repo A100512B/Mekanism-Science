@@ -10,7 +10,6 @@ import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
-@SuppressWarnings("unused")
 public class MSItems {
 
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(MekanismScience.MODID);

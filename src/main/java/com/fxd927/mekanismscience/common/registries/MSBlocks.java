@@ -29,6 +29,7 @@ import net.minecraft.world.level.material.MapColor;
 import java.util.function.Supplier;
 
 public class MSBlocks {
+
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismScience.MODID);
 
     public static final BlockRegistryObject<BlockTileModel<TileEntityOrganicLiquidExtractor, MSMachine<TileEntityOrganicLiquidExtractor>>, ItemBlockMachine> ORGANIC_LIQUID_EXTRACTOR = BLOCKS.register("organic_liquid_extractor", () -> new BlockTileModel<>(MSBlockTypes.ORGANIC_LIQUID_EXTRACTOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);

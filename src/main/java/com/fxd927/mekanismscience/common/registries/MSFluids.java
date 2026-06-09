@@ -20,7 +20,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.UnaryOperator;
 
-@SuppressWarnings("unused")
 public class MSFluids {
 
     private MSFluids() {
