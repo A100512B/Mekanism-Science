@@ -111,7 +111,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
     private void addGases() {
         add(MSGases._2_BUTENE, "2-Butene");
         add(MSGases._2_ETHYL_2_HEXENAL, "2-Ethyl-2-Hexenal");
-        add(MSGases.AMERICIUM, "Americium");
+        add(MSGases.AMERICIUM, "Americium (WIP)");
         add(MSGases.AMMONIA, "Ammonia");
         add(MSGases.AQUA_REGIA, "Aqua Regia");
         add(MSGases.BENZODIAZEPINE, "Benzodiazepine");
@@ -132,7 +132,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSGases.LACTOSE, "Lactose");
         add(MSGases.METHANOL, "Methanol");
         add(MSGases.METHYLAMINE, "Methylamine");
-        add(MSGases.METHYLAMMONIUM_LEAD_IODIDE, "Methylammonium Lead Iodine");
+        add(MSGases.METHYLAMMONIUM_LEAD_IODIDE, "Methylammonium Lead Iodine (WIP)");
         add(MSGases.N_BUTYRALDEHYDE, "n-Butyraldehyde");
         add(MSGases.NITRIC_ACID, "Nitric Acid");
         add(MSGases.NITRIC_OXIDE, "Nitric Oxide");
@@ -144,13 +144,13 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSGases.PTFE, "PTFE");
         add(MSGases.SEAWATER, "Seawater");
         add(MSGases.SODIUM_HYDROXIDE, "Sodium Hydroxide");
-        add(MSGases.STRONTIUM, "Strontium");
+        add(MSGases.STRONTIUM, "Strontium (WIP)");
         add(MSGases.SUPERHEATED_HELIUM, "Superheated Helium");
         add(MSGases.TETRAFLUOROETHYLENE, "Tetrafluoroethylene");
         add(MSGases.TETRODOTOXIN, "Tetrodotoxin");
         add(MSGases.WATER_GAS, "Water Gas");
         add(MSGases.WHEY, "Whey");
-        add(MSGases.YTTRIUM, "Yttrium");
+        add(MSGases.YTTRIUM, "Yttrium (WIP)");
     }
 
     private void addSubtitles() {

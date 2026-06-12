@@ -116,7 +116,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
     private void addGases() {
         add(MSGases._2_BUTENE, "2-丁烯");
         add(MSGases._2_ETHYL_2_HEXENAL, "2-乙基-2-己醛");
-        add(MSGases.AMERICIUM, "镅");
+        add(MSGases.AMERICIUM, "镅（WIP）");
         add(MSGases.AMMONIA, "氨气");
         add(MSGases.AQUA_REGIA, "王水");
         add(MSGases.BENZODIAZEPINE, "苯二氮卓类药物");
@@ -137,7 +137,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSGases.LACTOSE, "乳糖");
         add(MSGases.METHANOL, "甲醇");
         add(MSGases.METHYLAMINE, "甲胺");
-        add(MSGases.METHYLAMMONIUM_LEAD_IODIDE, "甲基碘化铅胺");
+        add(MSGases.METHYLAMMONIUM_LEAD_IODIDE, "甲基碘化铅胺（WIP）");
         add(MSGases.N_BUTYRALDEHYDE, "正丁醛");
         add(MSGases.NITRIC_ACID, "硝酸");
         add(MSGases.NITRIC_OXIDE, "一氧化氮");
@@ -149,13 +149,13 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSGases.PTFE, "聚四氟乙烯");
         add(MSGases.SEAWATER, "海水");
         add(MSGases.SODIUM_HYDROXIDE, "氢氧化钠");
-        add(MSGases.STRONTIUM, "锶");
-        add(MSGases.SUPERHEATED_HELIUM, "过热氦气");
+        add(MSGases.STRONTIUM, "锶（WIP）");
+        add(MSGases.SUPERHEATED_HELIUM, "过热氦");
         add(MSGases.TETRAFLUOROETHYLENE, "四氟乙烯");
         add(MSGases.TETRODOTOXIN, "河豚毒素");
         add(MSGases.WATER_GAS, "水煤气");
         add(MSGases.WHEY, "乳清");
-        add(MSGases.YTTRIUM, "钇");
+        add(MSGases.YTTRIUM, "钇（WIP)");
     }
 
     private void addSubtitles() {
