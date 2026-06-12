@@ -1,14 +1,15 @@
 package com.fxd927.mekanismscience.datagen.common.recipe;
 
+import com.fxd927.mekanismscience.api.datagen.recipe.builder.*;
 import com.fxd927.mekanismscience.api.datagen.recipe.builder.BaseRecipeBuilder.RecipePattern;
 import com.fxd927.mekanismscience.api.datagen.recipe.builder.BaseRecipeBuilder.RecipePattern.TripleLine;
-import com.fxd927.mekanismscience.api.datagen.recipe.builder.*;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSGases;
 import com.fxd927.mekanismscience.common.registries.MSItems;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.chemical.gas.Gas;
+import mekanism.api.chemical.merged.BoxedChemicalStack;
 import mekanism.api.datagen.recipe.builder.*;
 import mekanism.api.math.FloatingLong;
 import mekanism.common.registration.impl.FluidDeferredRegister.MekanismFluidType;
@@ -22,6 +23,7 @@ import mekanism.common.resource.PrimaryResource;
 import mekanism.common.resource.ResourceType;
 import mekanism.common.resource.ore.OreType;
 import mekanism.common.tags.MekanismTags;
+import mekanism.generators.common.registries.GeneratorsGases;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -52,6 +54,7 @@ public class MSRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> writer) {
         activating(writer);
+        adsorption(writer);
         centrifuging(writer);
         chemicalInfusing(writer);
         crafting(writer);
@@ -60,6 +63,7 @@ public class MSRecipeProvider extends RecipeProvider {
         enriching(writer);
         evaporating(writer);
         injecting(writer);
+        irradiating(writer);
         nucleosynthesizing(writer);
         oxidizing(writer);
         polymerizing(writer);
@@ -80,6 +84,15 @@ public class MSRecipeProvider extends RecipeProvider {
                 gas().from(MekanismGases.URANIUM_HEXAFLUORIDE, 2),
                 MSGases.STRONTIUM.getStack(1)
         ).build(writer, rl(basePath + "strontium"));
+    }
+
+    private void adsorption(Consumer<FinishedRecipe> writer) {
+        String basePath = "adsorption/";
+        AdsorptionRecipeBuilder.adsorption(
+                item().from(ItemTags.COALS, 1),
+                fluid().from(MSFluids.COMPRESSED_AIR, 50),
+                BoxedChemicalStack.box(MSGases.NITROGEN.getStack(400))
+        ).build(writer, rl(basePath + "nitrogen"));
     }
 
     private void centrifuging(Consumer<FinishedRecipe> writer) {
@@ -427,6 +440,40 @@ public class MSRecipeProvider extends RecipeProvider {
         ).build(writer, rl(basePath + "tablet_poison"));
     }
 
+    private void irradiating(Consumer<FinishedRecipe> writer) {
+        String basePath = "irradiating/";
+        IrradiatingRecipeBuilder.irradiating(
+                item().from(MSItems.NEUTRON_SOURCE_PELLET, 1),
+                gas().from(MekanismGases.NUCLEAR_WASTE, 200),
+                BoxedChemicalStack.box(MekanismGases.POLONIUM.getStack(200))
+        ).build(writer, rl(basePath + "polonium"));
+        IrradiatingRecipeBuilder.irradiating(
+                item().from(MSItems.NEUTRON_SOURCE_PELLET, 2),
+                gas().from(MekanismGases.URANIUM_HEXAFLUORIDE, 200),
+                BoxedChemicalStack.box(MekanismGases.NUCLEAR_WASTE.getStack(200))
+        ).build(writer, rl(basePath + "nuclear_waste"));
+        IrradiatingRecipeBuilder.irradiating(
+                item().from(MSItems.NEUTRON_SOURCE_PELLET, 3),
+                gas().from(MekanismGases.URANIUM_HEXAFLUORIDE, 200),
+                BoxedChemicalStack.box(MekanismGases.PLUTONIUM.getStack(200))
+        ).build(writer, rl(basePath + "plutonium"));
+        IrradiatingRecipeBuilder.irradiating(
+                item().from(MSItems.NEUTRON_SOURCE_PELLET, 1),
+                gas().from(MekanismGases.HYDROGEN, 1000),
+                BoxedChemicalStack.box(GeneratorsGases.DEUTERIUM.getStack(1000))
+        ).build(writer, rl(basePath + "deuterium"));
+        IrradiatingRecipeBuilder.irradiating(
+                item().from(MSItems.NEUTRON_SOURCE_PELLET, 2),
+                gas().from(MekanismGases.LITHIUM, 1000),
+                BoxedChemicalStack.box(GeneratorsGases.TRITIUM.getStack(1000))
+        ).build(writer, rl(basePath + "tritium"));
+        IrradiatingRecipeBuilder.irradiating(
+                item().from(MSItems.HIGH_DENSITY_NEUTRON_SOURCE_PELLET, 1),
+                gas().from(MekanismGases.PLUTONIUM, 1000),
+                BoxedChemicalStack.box(MSGases.CALIFORNIUM.getStack(500))
+        ).build(writer, rl(basePath + "californium"));
+    }
+
     private void nucleosynthesizing(Consumer<FinishedRecipe> writer) {
         String basePath = "nucleosynthesizing";
         NucleosynthesizingRecipeBuilder.nucleosynthesizing(
@@ -745,8 +792,8 @@ public class MSRecipeProvider extends RecipeProvider {
                 .build(writer, rl(basePath + "methylammonium_lead_iodine"));
         PressurizedReactionRecipeBuilder.reaction(
                         item().from(MekanismItems.YELLOW_CAKE_URANIUM, 2),
-                        fluid().from(MSFluids.BERYLLIUM, 1_000),
-                        gas().from(MSGases.CALIFORNIUM, 1_000),
+                        fluid().from(MSFluids.BERYLLIUM, 50),
+                        gas().from(MSGases.CALIFORNIUM, 10),
                         50,
                         MSItems.NEUTRON_SOURCE_PELLET.getItemStack(1))
                 .build(writer, rl(basePath + "neutron_source_pellet"));
@@ -810,7 +857,7 @@ public class MSRecipeProvider extends RecipeProvider {
         bidirectionalRotary(writer, MSGases.YTTRIUM, MSFluids.YTTRIUM);
         RotaryRecipeBuilder.rotary(
                 fluid().from(Tags.Fluids.MILK, 2),
-                MSGases.YTTRIUM.getStack(1)
+                MSGases.WHEY.getStack(1)
         ).build(writer, rl("rotary/whey_from_milk"));
     }
 
