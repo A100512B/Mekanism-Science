@@ -323,16 +323,6 @@ public class MSRecipeProvider extends RecipeProvider {
                 .key('C', MekanismBlocks.ULTIMATE_UNIVERSAL_CABLE)
                 .key('O', MekanismItems.ELECTROLYTIC_CORE)
                 .build(writer);
-        MekDataShapedRecipeBuilder.shapedRecipe(MSBlocks.ORGANIC_LIQUID_EXTRACTOR)
-                .pattern(RecipePattern.createPattern(
-                        TripleLine.of('I', 'G', 'I'),
-                        TripleLine.of('W', 'X', 'W'),
-                        TripleLine.of('I', 'G', 'I')))
-                .key('I', Tags.Items.INGOTS_IRON)
-                .key('G', Tags.Items.GLASS)
-                .key('W', Items.IRON_SWORD)
-                .key('X', MekanismBlocks.STEEL_CASING)
-                .build(writer);
         MekDataShapedRecipeBuilder.shapedRecipe(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER)
                 .pattern(RecipePattern.createPattern(
                         TripleLine.of('S', 'S', 'S'),
@@ -415,11 +405,6 @@ public class MSRecipeProvider extends RecipeProvider {
         ).build(writer, rl(basePath + "alkaline_substrate"));
         ItemStackChemicalToItemStackRecipeBuilder.injecting(
                 item().from(MSItems.EXCIPIENT, 1),
-                gas().from(MSGases.BENZODIAZEPINE, 20),
-                MSItems.TABLET_SLEEP_INDUCING.getItemStack(1)
-        ).build(writer, rl(basePath + "tablet_sleep_inducing"));
-        ItemStackChemicalToItemStackRecipeBuilder.injecting(
-                item().from(MSItems.EXCIPIENT, 1),
                 gas().from(MSGases.CHLOROMETHANE, 20),
                 MSItems.TABLET_ANESTHETIC.getItemStack(1)
         ).build(writer, rl(basePath + "tablet_anesthetic"));
@@ -433,11 +418,6 @@ public class MSRecipeProvider extends RecipeProvider {
                 gas().from(MSGases.IODINE, 20),
                 MSItems.TABLET_IODINE.getItemStack(1)
         ).build(writer, rl(basePath + "tablet_iodine"));
-        ItemStackChemicalToItemStackRecipeBuilder.injecting(
-                item().from(MSItems.EXCIPIENT, 1),
-                gas().from(MSGases.TETRODOTOXIN, 20),
-                MSItems.TABLET_POISON.getItemStack(1)
-        ).build(writer, rl(basePath + "tablet_poison"));
     }
 
     private void irradiating(Consumer<FinishedRecipe> writer) {
@@ -783,14 +763,6 @@ public class MSRecipeProvider extends RecipeProvider {
                 .energyRequired(FloatingLong.createConst(400))
                 .build(writer, rl(basePath + "isobutyraldehyde"));
         PressurizedReactionRecipeBuilder.reaction(
-                        item().from(MekanismItems.PROCESSED_RESOURCES.get(ResourceType.DUST, PrimaryResource.LEAD), 1),
-                        fluid().from(MSFluids.IODINE, 100),
-                        gas().from(MSGases.METHYLAMINE, 100),
-                        50,
-                        ItemStack.EMPTY,
-                        MSGases.METHYLAMMONIUM_LEAD_IODIDE.getStack(50))
-                .build(writer, rl(basePath + "methylammonium_lead_iodine"));
-        PressurizedReactionRecipeBuilder.reaction(
                         item().from(MekanismItems.YELLOW_CAKE_URANIUM, 2),
                         fluid().from(MSFluids.BERYLLIUM, 50),
                         gas().from(MSGases.CALIFORNIUM, 10),
@@ -819,7 +791,6 @@ public class MSRecipeProvider extends RecipeProvider {
         bidirectionalRotary(writer, MSGases._2_ETHYL_2_HEXENAL, MSFluids._2_ETHYL_2_HEXENAL);
         bidirectionalRotary(writer, MSGases.AMMONIA, MSFluids.AMMONIA);
         bidirectionalRotary(writer, MSGases.AQUA_REGIA, MSFluids.AQUA_REGIA);
-        bidirectionalRotary(writer, MSGases.BENZODIAZEPINE, MSFluids.BENZODIAZEPINE);
         bidirectionalRotary(writer, MSGases.BERYLLIUM, MSFluids.BERYLLIUM);
         bidirectionalRotary(writer, MSGases.BROMINE, MSFluids.BROMINE);
         bidirectionalRotary(writer, MSGases.BUTYRALDEHYDE_MIXTURE, MSFluids.BUTYRALDEHYDE_MIXTURE);
@@ -836,7 +807,6 @@ public class MSRecipeProvider extends RecipeProvider {
         bidirectionalRotary(writer, MSGases.LACTOSE, MSFluids.LACTOSE);
         bidirectionalRotary(writer, MSGases.METHANOL, MSFluids.METHANOL);
         bidirectionalRotary(writer, MSGases.METHYLAMINE, MSFluids.METHYLAMINE);
-        bidirectionalRotary(writer, MSGases.METHYLAMMONIUM_LEAD_IODIDE, MSFluids.METHYLAMMONIUM_LEAD_IODIDE);
         bidirectionalRotary(writer, MSGases.N_BUTYRALDEHYDE, MSFluids.N_BUTYRALDEHYDE);
         bidirectionalRotary(writer, MSGases.NITRIC_ACID, MSFluids.NITRIC_ACID);
         bidirectionalRotary(writer, MSGases.NITRIC_OXIDE, MSFluids.NITRIC_OXIDE);
@@ -852,7 +822,6 @@ public class MSRecipeProvider extends RecipeProvider {
         bidirectionalRotary(writer, MSGases.STRONTIUM, MSFluids.STRONTIUM);
         bidirectionalRotary(writer, MSGases.SUPERHEATED_HELIUM, MSFluids.SUPERHEATED_HELIUM);
         bidirectionalRotary(writer, MSGases.TETRAFLUOROETHYLENE, MSFluids.TETRAFLUOROETHYLENE);
-        bidirectionalRotary(writer, MSGases.TETRODOTOXIN, MSFluids.TETRODOTOXIN);
         bidirectionalRotary(writer, MSGases.WHEY, MSFluids.WHEY);
         bidirectionalRotary(writer, MSGases.YTTRIUM, MSFluids.YTTRIUM);
         RotaryRecipeBuilder.rotary(

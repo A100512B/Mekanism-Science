@@ -5,7 +5,6 @@ import mekanism.common.base.IChemicalConstant;
 public enum MSChemicalConstants implements IChemicalConstant {
 
     AMMONIA("ammonia",0xFFC8B3FF,0,240F,0.6942F),
-    BENZODIAZEPINE("benzodiazepine",0xFF66D0BA,0,573F,900F),
     BERYLLIUM("beryllium",0xFF00DB1B,0,1560.15F,1850F),
     BROMINE("bromine",0xFFBA1A08,0,332F,3102.8F),
     CHLOROMETHANE("chloromethane",0xFF87E7C3,0,249.3F,2.22F),
@@ -18,10 +17,8 @@ public enum MSChemicalConstants implements IChemicalConstant {
     LACTOSE("lactose",0xFFFFFFEF,0,941.05F,1525F),
     METHANOL("methanol",0xFF66DE9E,0, 338F,791.8F),
     METHYLAMINE("methylamine",0xFFA7CDE1,0,267.15F,700F),
-    METHYLAMMONIUM_LEAD_IODIDE("methylammonium_lead_iodide",0xFFC3B4B1,0,358.15F,4160F),
     MILK("milk",0xFFFFFFFF,0,373.7F,1040F),
     SEAWATER("seawater",0xFF06C9E6,0,373.15F,1000F),
-    TETRODOTOXIN("tetrodotoxin",0xFF5DC86F,0,593.15F,1000F),
     WHEY("whey",0xFFF7FFA2,0,373.15F,1030F),
     YTTRIUM("yttrium", 0xFFCCE5FF, 0, 1799.15F, 4240F),
     PHOSPHORYL_CHLORIDE("phosphoryl_chloride", 0xFF46F675, 0, 378.45F, 1675F),

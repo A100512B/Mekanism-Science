@@ -33,7 +33,6 @@ public class MSBlockStateProvider extends BlockStateProvider {
         existingActive(MSBlocks.ADSORPTION_SEPARATOR);
         existingActive(MSBlocks.AIR_COMPRESSOR);
         existingActive(MSBlocks.IRRADIATOR);
-        cubeMachine(MSBlocks.ORGANIC_LIQUID_EXTRACTOR);
         existing(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
         existingActive(MSBlocks.SEAWATER_PUMP);
         // Extracting Plant

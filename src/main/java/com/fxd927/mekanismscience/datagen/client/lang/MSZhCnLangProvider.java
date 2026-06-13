@@ -43,7 +43,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSItems.TABLET_IODINE, "碘片");
         add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "肌肉强化药片");
         add(MSItems.TABLET_POISON, "毒药片");
-        add(MSItems.TABLET_SLEEP_INDUCING, "安眠药片");
     }
 
     private void addBlocks() {
@@ -61,7 +60,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "金属电解池激光接收器");
         add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, "金属电解池端口");
         add(MSBlocks.METAL_ELECTROLYZING_ROD, "金属电解柱");
-        add(MSBlocks.ORGANIC_LIQUID_EXTRACTOR, "有机液体提取器");
         add(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER, "加压聚合室");
         add(MSBlocks.SEAWATER_PUMP, "海水泵");
     }
@@ -71,7 +69,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids._2_ETHYL_2_HEXENAL, "液态 2-乙基-2-己醛");
         addFluid(MSFluids.AMMONIA, "液氨");
         addFluid(MSFluids.AQUA_REGIA, "液态王水");
-        addFluid(MSFluids.BENZODIAZEPINE, "液态苯二氮卓类药物");
         addFluid(MSFluids.BERYLLIUM, "液态铍");
         addFluid(MSFluids.BROMINE, "液溴");
         addFluid(MSFluids.BUTYRALDEHYDE_MIXTURE, "液态丁醛混合物");
@@ -88,7 +85,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.LACTOSE, "液态乳糖");
         addFluid(MSFluids.METHANOL, "液态甲醇");
         addFluid(MSFluids.METHYLAMINE, "液态甲胺");
-        addFluid(MSFluids.METHYLAMMONIUM_LEAD_IODIDE, "液态甲基碘化铅铵");
         addFluid(MSFluids.MILK, "牛奶");
         addFluid(MSFluids.N_BUTYRALDEHYDE, "液态正丁醛");
         addFluid(MSFluids.NITRIC_ACID, "液态硝酸");
@@ -104,7 +100,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.STRONTIUM, "液态锶");
         addFluid(MSFluids.SUPERHEATED_HELIUM, "液态过热氦");
         addFluid(MSFluids.TETRAFLUOROETHYLENE, "液态四氟乙烯");
-        addFluid(MSFluids.TETRODOTOXIN, "液态河豚毒素");
         addFluid(MSFluids.WATER_GAS, "液态水煤气");
         addFluid(MSFluids.WHEY, "液态乳清");
         addFluid(MSFluids.YTTRIUM, "液态钇");
@@ -119,7 +114,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSGases.AMERICIUM, "镅（WIP）");
         add(MSGases.AMMONIA, "氨气");
         add(MSGases.AQUA_REGIA, "王水");
-        add(MSGases.BENZODIAZEPINE, "苯二氮卓类药物");
         add(MSGases.BERYLLIUM, "铍");
         add(MSGases.BROMINE, "溴");
         add(MSGases.BUTYRALDEHYDE_MIXTURE, "丁醛混合物");
@@ -137,7 +131,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSGases.LACTOSE, "乳糖");
         add(MSGases.METHANOL, "甲醇");
         add(MSGases.METHYLAMINE, "甲胺");
-        add(MSGases.METHYLAMMONIUM_LEAD_IODIDE, "甲基碘化铅胺（WIP）");
         add(MSGases.N_BUTYRALDEHYDE, "正丁醛");
         add(MSGases.NITRIC_ACID, "硝酸");
         add(MSGases.NITRIC_OXIDE, "一氧化氮");
@@ -152,7 +145,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSGases.STRONTIUM, "锶（WIP）");
         add(MSGases.SUPERHEATED_HELIUM, "过热氦");
         add(MSGases.TETRAFLUOROETHYLENE, "四氟乙烯");
-        add(MSGases.TETRODOTOXIN, "河豚毒素");
         add(MSGases.WATER_GAS, "水煤气");
         add(MSGases.WHEY, "乳清");
         add(MSGases.YTTRIUM, "钇（WIP)");
@@ -183,7 +175,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "导电性更好的能量端口，能使金属电解柱更高效工作。");
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_PORT, "导电性很好的稳定端口，用于建造金属电解池，使液体和化学品在其中迅速流动。");
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_ROD, "金属电解池内部的核心，只在两边都是端口或激光接收器时才工作。");
-        add(MSLang.DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR, "一台简单的自动从周围生物中抽取有机液体的机器。");
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "一台高级的用于高压聚合有机化合物的机器。");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "一台专为在海洋群系抽取海水而设计的泵。");
         // Chemical Attributes

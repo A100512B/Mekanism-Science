@@ -32,7 +32,6 @@ public class MSFluids {
     public static final Map<IResource, FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem>> PROCESSED_CONCENTRATE_RESOURCES = new LinkedHashMap<>();
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> AMMONIA = FLUIDS.registerLiquidChemical(MSChemicalConstants.AMMONIA);
-    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> BENZODIAZEPINE = FLUIDS.registerLiquidChemical(MSChemicalConstants.BENZODIAZEPINE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> BERYLLIUM = FLUIDS.registerLiquidChemical(MSChemicalConstants.BERYLLIUM);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> BROMINE = FLUIDS.registerLiquidChemical(MSChemicalConstants.BROMINE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> CHLOROMETHANE = FLUIDS.registerLiquidChemical(MSChemicalConstants.CHLOROMETHANE);
@@ -44,11 +43,9 @@ public class MSFluids {
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> LACTOSE = FLUIDS.registerLiquidChemical(MSChemicalConstants.LACTOSE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> METHANOL = FLUIDS.registerLiquidChemical(MSChemicalConstants.METHANOL);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> METHYLAMINE = FLUIDS.registerLiquidChemical(MSChemicalConstants.METHYLAMINE);
-    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> METHYLAMMONIUM_LEAD_IODIDE = FLUIDS.registerLiquidChemical(MSChemicalConstants.METHYLAMMONIUM_LEAD_IODIDE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> MILK = FLUIDS.registerLiquidChemical(MSChemicalConstants.MILK);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> SEAWATER = FLUIDS.registerLiquidChemical(MSChemicalConstants.SEAWATER);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> STRONTIUM = FLUIDS.registerLiquidChemical(MSChemicalConstants.STRONTIUM);
-    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> TETRODOTOXIN = FLUIDS.registerLiquidChemical(MSChemicalConstants.TETRODOTOXIN);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> WHEY = FLUIDS.registerLiquidChemical(MSChemicalConstants.WHEY);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> YTTRIUM = FLUIDS.registerLiquidChemical(MSChemicalConstants.YTTRIUM);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> P204 = FLUIDS.register("p204", UnaryOperator.identity(), props -> props.tint(0xFF9A6414));

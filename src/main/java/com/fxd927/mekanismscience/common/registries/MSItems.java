@@ -24,7 +24,6 @@ public class MSItems {
     public static final ItemRegistryObject<Item> TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> TABLET_MUSCLE_ENHANCEMENT = ITEMS.register("tablet_muscle_enhancement", () -> new MuscleEnhancementTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> TABLET_POISON = ITEMS.register("tablet_poison", () -> new PoisonTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
-    public static final ItemRegistryObject<Item> TABLET_SLEEP_INDUCING = ITEMS.register("tablet_sleep_inducing", () -> new SleepInducingTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> ACIDIC_SUBSTRATE = ITEMS.register("acidic_substrate");
     public static final ItemRegistryObject<Item> ALKALINE_SUBSTRATE = ITEMS.register("alkaline_substrate");
     public static final ItemRegistryObject<Item> BONE_ASHES = ITEMS.register("bone_ashes");

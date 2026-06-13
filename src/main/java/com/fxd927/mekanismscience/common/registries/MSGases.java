@@ -20,7 +20,6 @@ public class MSGases {
 
     public static final GasRegistryObject<Gas> AMERICIUM = GASES.register("americium", 0xD56060, new GasAttributes.Radiation(0.05));
     public static final GasRegistryObject<Gas> AMMONIA = GASES.register(MSChemicalConstants.AMMONIA, new GasAttributes.Fuel(50, FloatingLong.createConst(20_000)));
-    public static final GasRegistryObject<Gas> BENZODIAZEPINE = GASES.register(MSChemicalConstants.BENZODIAZEPINE);
     public static final GasRegistryObject<Gas> BROMINE = GASES.register(MSChemicalConstants.BROMINE);
     public static final GasRegistryObject<Gas> BERYLLIUM = GASES.register(MSChemicalConstants.BERYLLIUM);
     public static final GasRegistryObject<Gas> CALIFORNIUM = GASES.register("californium", 0xFFF08B00, new GasAttributes.Radiation(0.1));
@@ -33,10 +32,8 @@ public class MSGases {
     public static final GasRegistryObject<Gas> LACTOSE = GASES.register(MSChemicalConstants.LACTOSE);
     public static final GasRegistryObject<Gas> METHANOL = GASES.register(MSChemicalConstants.METHANOL);
     public static final GasRegistryObject<Gas> METHYLAMINE = GASES.register(MSChemicalConstants.METHYLAMINE);
-    public static final GasRegistryObject<Gas> METHYLAMMONIUM_LEAD_IODIDE = GASES.register(MSChemicalConstants.METHYLAMMONIUM_LEAD_IODIDE);
     public static final GasRegistryObject<Gas> SEAWATER = GASES.register(MSChemicalConstants.SEAWATER);
     public static final GasRegistryObject<Gas> STRONTIUM = GASES.register(MSChemicalConstants.STRONTIUM);
-    public static final GasRegistryObject<Gas> TETRODOTOXIN = GASES.register(MSChemicalConstants.TETRODOTOXIN);
     public static final GasRegistryObject<Gas> WHEY = GASES.register(MSChemicalConstants.WHEY);
     public static final GasRegistryObject<Gas> YTTRIUM = GASES.register(MSChemicalConstants.YTTRIUM);
     public static final GasRegistryObject<Gas> P204 = GASES.register("p204", 0xFF9A6414, new Extractant(0.8));

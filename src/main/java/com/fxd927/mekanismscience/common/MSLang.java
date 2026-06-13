@@ -8,7 +8,6 @@ public enum MSLang implements ILangEntry {
 
     CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY("chemical", "attribute.extraction_efficiency"),
 
-    DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR("description","organic_liquid_extractor"),
     DESCRIPTION_SEAWATER_PUMP("description", "seawater_pump"),
     DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER("description", "pressurized_polymerizing_chamber"),
     DESCRIPTION_EXTRACTING_PLANT_CASING("description", "extracting_plant_casing"),

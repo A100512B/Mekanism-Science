@@ -38,7 +38,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSItems.TABLET_IODINE, "Iodine Tablet");
         add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "Muscle Enhancement Tablet");
         add(MSItems.TABLET_POISON, "Tablet Poison");
-        add(MSItems.TABLET_SLEEP_INDUCING, "Sleep Inducing Tablet");
     }
 
     private void addBlocks() {
@@ -56,7 +55,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "Metal Electrolysis Chamber Laser Acceptor");
         add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, "Metal Electrolysis Chamber Port");
         add(MSBlocks.METAL_ELECTROLYZING_ROD, "Metal Electrolyzing Rod");
-        add(MSBlocks.ORGANIC_LIQUID_EXTRACTOR, "Organic Liquid Extractor");
         add(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER, "Pressurized Polymerizing Chamber");
         add(MSBlocks.SEAWATER_PUMP, "Seawater Pump");
     }
@@ -66,7 +64,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids._2_ETHYL_2_HEXENAL, "Liquid 2-Ethyl-2-Hexenal");
         addFluid(MSFluids.AMMONIA, "Liquid Ammonia");
         addFluid(MSFluids.AQUA_REGIA, "Liquid Aqua Regia");
-        addFluid(MSFluids.BENZODIAZEPINE, "Liquid Benzodiazepine");
         addFluid(MSFluids.BERYLLIUM, "Liquid Beryllium");
         addFluid(MSFluids.BROMINE, "Liquid Bromine");
         addFluid(MSFluids.BUTYRALDEHYDE_MIXTURE, "Liquid Butyraldehyde Mixture");
@@ -83,7 +80,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.LACTOSE, "Liquid Lactose");
         addFluid(MSFluids.METHANOL, "Liquid Methanol");
         addFluid(MSFluids.METHYLAMINE, "Liquid Methylamine");
-        addFluid(MSFluids.METHYLAMMONIUM_LEAD_IODIDE, "Liquid Methylammonium Lead Iodine");
         addFluid(MSFluids.MILK, "Milk");
         addFluid(MSFluids.N_BUTYRALDEHYDE, "Liquid n-Butyraldehyde");
         addFluid(MSFluids.NITRIC_ACID, "Liquid Nitric Acid");
@@ -99,7 +95,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.STRONTIUM, "Liquid Strontium");
         addFluid(MSFluids.SUPERHEATED_HELIUM, "Liquid Superheated Helium");
         addFluid(MSFluids.TETRAFLUOROETHYLENE, "Liquid Tetrafluoroethylene");
-        addFluid(MSFluids.TETRODOTOXIN, "Liquid Tetrodotoxin");
         addFluid(MSFluids.WATER_GAS, "Liquid Water Gas");
         addFluid(MSFluids.WHEY, "Liquid Whey");
         addFluid(MSFluids.YTTRIUM, "Liquid Yttrium");
@@ -114,7 +109,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSGases.AMERICIUM, "Americium (WIP)");
         add(MSGases.AMMONIA, "Ammonia");
         add(MSGases.AQUA_REGIA, "Aqua Regia");
-        add(MSGases.BENZODIAZEPINE, "Benzodiazepine");
         add(MSGases.BERYLLIUM, "Beryllium");
         add(MSGases.BROMINE, "Bromine");
         add(MSGases.BUTYRALDEHYDE_MIXTURE, "Butyraldehyde Mixture");
@@ -132,7 +126,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSGases.LACTOSE, "Lactose");
         add(MSGases.METHANOL, "Methanol");
         add(MSGases.METHYLAMINE, "Methylamine");
-        add(MSGases.METHYLAMMONIUM_LEAD_IODIDE, "Methylammonium Lead Iodine (WIP)");
         add(MSGases.N_BUTYRALDEHYDE, "n-Butyraldehyde");
         add(MSGases.NITRIC_ACID, "Nitric Acid");
         add(MSGases.NITRIC_OXIDE, "Nitric Oxide");
@@ -147,7 +140,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSGases.STRONTIUM, "Strontium (WIP)");
         add(MSGases.SUPERHEATED_HELIUM, "Superheated Helium");
         add(MSGases.TETRAFLUOROETHYLENE, "Tetrafluoroethylene");
-        add(MSGases.TETRODOTOXIN, "Tetrodotoxin");
         add(MSGases.WATER_GAS, "Water Gas");
         add(MSGases.WHEY, "Whey");
         add(MSGases.YTTRIUM, "Yttrium (WIP)");
@@ -178,7 +170,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "An even more conductive energy port that allows Metal Electrolyzing Rods to process more effectively.");
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_PORT, "A very conductive and stable port used in the structure of Metal Electrolysis Chamber to transfer items, fluids and energy effectively.");
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_ROD, "The core inside a Metal Electrolysis Chamber. Only works when both of the sides are plugged with the ports or the laser acceptors.");
-        add(MSLang.DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR, "A simple machine that automatically extracts organic liquids from nearby mobs.");
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "An advanced machine that polymerizes organic chemicals at a very high pressure.");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "A pump specifically made for extracting seawater from Ocean biomes.");
         // Chemical Attributes
