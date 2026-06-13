@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 5,
+    "gas": "mekanism:hydrogen"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mekanismscience:isooctanol"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "mekanismscience:2_ethyl_2_hexenal"
+  }
+}

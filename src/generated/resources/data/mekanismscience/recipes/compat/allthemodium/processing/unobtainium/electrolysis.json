@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "energyRequired": 250,
+  "input": {
+    "amount": 10,
+    "fluid": "mekanismscience:unobtainium_concentrate"
+  },
+  "output": {
+    "item": "allthemodium:unobtainium_dust"
+  }
+}

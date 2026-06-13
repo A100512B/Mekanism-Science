@@ -1,0 +1,28 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "B": {
+      "tag": "forge:storage_blocks/steel"
+    },
+    "D": {
+      "item": "mekanism:dynamic_tank"
+    },
+    "I": {
+      "item": "mekanism:chemical_injection_chamber"
+    },
+    "P": {
+      "item": "mekanismscience:ptfe_sheet"
+    },
+    "U": {
+      "tag": "forge:circuits/ultimate"
+    }
+  },
+  "pattern": [
+    "PUP",
+    "DID",
+    "BBB"
+  ],
+  "result": {
+    "item": "mekanismscience:acid_leacher"
+  }
+}

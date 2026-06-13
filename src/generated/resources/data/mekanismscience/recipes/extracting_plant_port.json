@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "tag": "forge:circuits/advanced"
+    },
+    "C": {
+      "item": "mekanismscience:extracting_plant_casing"
+    }
+  },
+  "pattern": [
+    "CAC"
+  ],
+  "result": {
+    "count": 2,
+    "item": "mekanismscience:extracting_plant_port"
+  }
+}

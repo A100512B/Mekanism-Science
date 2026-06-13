@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "mekanismscience:water_gas"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mekanismscience:butyraldehyde_mixture"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "mekanismscience:propylene"
+  }
+}

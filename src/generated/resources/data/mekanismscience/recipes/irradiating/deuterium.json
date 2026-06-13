@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:irradiating",
+  "gasInput": {
+    "amount": 1000,
+    "gas": "mekanism:hydrogen"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "mekanismscience:pellet_neutron_source"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "chemicalType": "gas",
+    "gas": "mekanismgenerators:deuterium"
+  }
+}

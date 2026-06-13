@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:sodium_hydroxide"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:sodium_hydroxide"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:sodium_hydroxide"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:sodium_hydroxide"
+  }
+}

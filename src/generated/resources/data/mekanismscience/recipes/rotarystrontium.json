@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:strontium"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:strontium"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:strontium"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:strontium"
+  }
+}

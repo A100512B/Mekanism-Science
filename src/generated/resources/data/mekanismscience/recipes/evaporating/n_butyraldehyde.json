@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:evaporating",
+  "input": {
+    "amount": 2,
+    "fluid": "mekanismscience:butyraldehyde_mixture"
+  },
+  "output": {
+    "amount": 1,
+    "fluid": "mekanismscience:n_butyraldehyde"
+  }
+}

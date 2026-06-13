@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:tetrafluoroethylene"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:tetrafluoroethylene"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:tetrafluoroethylene"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:tetrafluoroethylene"
+  }
+}

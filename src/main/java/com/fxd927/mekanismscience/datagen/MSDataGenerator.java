@@ -9,15 +9,12 @@ import com.fxd927.mekanismscience.datagen.client.sound.MSSoundProvider;
 import com.fxd927.mekanismscience.datagen.client.state.MSBlockStateProvider;
 import com.fxd927.mekanismscience.datagen.common.loot.MSLootTableProvider;
 import com.fxd927.mekanismscience.datagen.common.recipe.MSRecipeProvider;
-import com.fxd927.mekanismscience.datagen.common.recipe.compat.ATMRecipeProvider;
-import com.fxd927.mekanismscience.datagen.common.recipe.compat.ForgeRecipeProvider;
 import com.fxd927.mekanismscience.datagen.common.tag.MSTagProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.config.ConfigTracker;
@@ -39,10 +36,6 @@ public class MSDataGenerator {
         generator.addProvider(event.includeClient(), new MSItemModelProvider(output, helper));
         generator.addProvider(event.includeServer(), new MSLootTableProvider(output));
         generator.addProvider(event.includeServer(), new MSRecipeProvider(output));
-        if (ModList.get().isLoaded("allthemodium"))
-            generator.addProvider(event.includeServer(), new ATMRecipeProvider(output));
-        if (ModList.get().isLoaded("alltheores"))
-            generator.addProvider(event.includeServer(), new ForgeRecipeProvider(output));
         generator.addProvider(event.includeServer(), new MSTagProvider(output, event.getLookupProvider(), helper));
     }
 

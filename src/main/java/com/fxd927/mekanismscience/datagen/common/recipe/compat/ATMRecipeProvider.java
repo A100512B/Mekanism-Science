@@ -6,14 +6,13 @@ import com.fxd927.mekanismscience.api.datagen.recipe.builder.ItemStackChemicalTo
 import com.fxd927.mekanismscience.api.datagen.recipe.builder.MetalElectrolysisRecipeBuilder;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSGases;
+import com.fxd927.mekanismscience.datagen.common.recipe.IMSCompatRecipeProvider;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.mek_reg.ATMResource;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.math.FloatingLong;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
@@ -24,16 +23,12 @@ import static com.fxd927.mekanismscience.common.MekanismScience.rl;
 import static mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess.*;
 
 @NothingNullByDefault
-public class ATMRecipeProvider extends RecipeProvider {
+public class ATMRecipeProvider implements IMSCompatRecipeProvider {
 
     private static final ICondition modLoaded = new ModLoadedCondition("allthemodium");
 
-    public ATMRecipeProvider(PackOutput output) {
-        super(output);
-    }
-
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> writer) {
+    public void buildRecipes(Consumer<FinishedRecipe> writer) {
         processing(writer);
     }
 

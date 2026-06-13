@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alltheores"
+    }
+  ],
+  "energyRequired": 250,
+  "input": {
+    "amount": 10,
+    "fluid": "mekanismscience:nickel_concentrate"
+  },
+  "output": {
+    "item": "alltheores:nickel_dust"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "energyRequired": 250,
+  "input": {
+    "amount": 10,
+    "fluid": "mekanismscience:copper_concentrate"
+  },
+  "output": {
+    "item": "mekanism:dust_copper"
+  }
+}

@@ -36,8 +36,8 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSItems.TABLET_ANESTHETIC, "Anesthetic Tablet");
         add(MSItems.TABLET_FIRE_RESISTANCE, "Fire Resistance Tablet");
         add(MSItems.TABLET_IODINE, "Iodine Tablet");
-        add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "Muscle Enhancement Tablet");
-        add(MSItems.TABLET_POISON, "Tablet Poison");
+        add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "Muscle Enhancement Tablet (WIP)");
+        add(MSItems.TABLET_POISON, "Tablet Poison (WIP)");
     }
 
     private void addBlocks() {

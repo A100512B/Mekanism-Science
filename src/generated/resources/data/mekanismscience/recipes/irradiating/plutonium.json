@@ -1,0 +1,18 @@
+{
+  "type": "mekanismscience:irradiating",
+  "gasInput": {
+    "amount": 200,
+    "gas": "mekanism:uranium_hexafluoride"
+  },
+  "itemInput": {
+    "amount": 3,
+    "ingredient": {
+      "item": "mekanismscience:pellet_neutron_source"
+    }
+  },
+  "output": {
+    "amount": 200,
+    "chemicalType": "gas",
+    "gas": "mekanism:plutonium"
+  }
+}

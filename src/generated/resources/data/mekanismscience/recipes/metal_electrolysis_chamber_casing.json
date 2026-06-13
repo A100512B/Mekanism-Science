@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "tag": "forge:storage_blocks/copper"
+    },
+    "S": {
+      "item": "mekanismscience:ptfe_sheet"
+    },
+    "W": {
+      "item": "mekanism:ultimate_universal_cable"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  },
+  "pattern": [
+    "SCS",
+    "WXW",
+    "SCS"
+  ],
+  "result": {
+    "item": "mekanismscience:metal_electrolysis_chamber_casing"
+  }
+}

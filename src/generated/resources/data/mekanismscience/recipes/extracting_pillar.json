@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "tag": "mekanism:alloys/infused"
+    },
+    "C": {
+      "tag": "forge:circuits/advanced"
+    },
+    "P": {
+      "item": "mekanismscience:extracting_plant_casing"
+    },
+    "T": {
+      "item": "mekanism:basic_chemical_tank"
+    }
+  },
+  "pattern": [
+    "PCP",
+    "PTP",
+    "PAP"
+  ],
+  "result": {
+    "count": 3,
+    "item": "mekanismscience:extracting_pillar"
+  }
+}

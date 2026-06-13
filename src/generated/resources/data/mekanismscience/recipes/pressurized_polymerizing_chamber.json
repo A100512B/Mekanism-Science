@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "E": {
+      "tag": "forge:circuits/elite"
+    },
+    "P": {
+      "item": "mekanism:pressurized_reaction_chamber"
+    },
+    "S": {
+      "tag": "forge:ingots/steel"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "EPE",
+    "SSS"
+  ],
+  "result": {
+    "item": "mekanismscience:pressurized_polymerizing_chamber"
+  }
+}

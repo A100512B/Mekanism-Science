@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "mekanism:ethene"
+  },
+  "output": {
+    "amount": 2,
+    "gas": "mekanismscience:propylene"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "mekanismscience:2_butene"
+  }
+}

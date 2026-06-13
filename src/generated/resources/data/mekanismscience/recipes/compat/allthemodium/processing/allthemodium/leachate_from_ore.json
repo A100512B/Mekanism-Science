@@ -1,0 +1,22 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "chemicalInput": {
+    "amount": 1000,
+    "gas": "mekanismscience:aqua_regia"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ores/allthemodium"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "fluid": "mekanismscience:allthemodium_leachate"
+  }
+}

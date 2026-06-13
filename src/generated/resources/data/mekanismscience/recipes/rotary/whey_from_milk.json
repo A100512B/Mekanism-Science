@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 2,
+    "tag": "forge:milk"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:whey"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "mekanismscience:polymerizing",
+  "input": {
+    "amount": 64,
+    "gas": "mekanismscience:tetrafluoroethylene"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mekanismscience:ptfe"
+  }
+}

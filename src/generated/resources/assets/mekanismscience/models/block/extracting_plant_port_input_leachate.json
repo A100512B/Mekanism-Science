@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mekanismscience:block/extracting_plant_port/input_leachate"
+  }
+}

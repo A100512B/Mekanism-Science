@@ -1,0 +1,28 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "E": {
+      "tag": "forge:circuits/elite"
+    },
+    "P": {
+      "item": "mekanism:electric_pump"
+    },
+    "S": {
+      "tag": "forge:ingots/steel"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  },
+  "pattern": [
+    "SBS",
+    "EXE",
+    "SPS"
+  ],
+  "result": {
+    "item": "mekanismscience:seawater_pump"
+  }
+}

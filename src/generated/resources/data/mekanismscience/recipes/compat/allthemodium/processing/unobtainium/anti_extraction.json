@@ -1,0 +1,25 @@
+{
+  "type": "mekanismscience:anti_extraction",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "mekanismscience:potassium_nitrate"
+  },
+  "chemicalOutput": {
+    "amount": 10,
+    "gas": "mekanismscience:p204"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "fluidInput": {
+    "amount": 15,
+    "fluid": "mekanismscience:unobtainium_p204_extract"
+  },
+  "fluidOutput": {
+    "amount": 5,
+    "fluid": "mekanismscience:allthemodium_concentrate"
+  }
+}

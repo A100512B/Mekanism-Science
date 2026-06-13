@@ -1,0 +1,25 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "A": {
+      "tag": "mekanism:alloys/reinforced"
+    },
+    "C": {
+      "tag": "forge:circuits/elite"
+    },
+    "S": {
+      "item": "minecraft:iron_bars"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "SXS",
+    "ACA"
+  ],
+  "result": {
+    "item": "mekanismscience:adsorption_separator"
+  }
+}

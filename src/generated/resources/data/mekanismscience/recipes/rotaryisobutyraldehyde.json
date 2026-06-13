@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:isobutyraldehyde"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:isobutyraldehyde"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:isobutyraldehyde"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:isobutyraldehyde"
+  }
+}

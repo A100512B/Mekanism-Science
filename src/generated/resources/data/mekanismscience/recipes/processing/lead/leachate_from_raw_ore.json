@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "chemicalInput": {
+    "amount": 1000,
+    "gas": "mekanism:sulfuric_acid"
+  },
+  "itemInput": {
+    "amount": 3,
+    "ingredient": {
+      "tag": "forge:raw_materials/lead"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "fluid": "mekanismscience:lead_leachate"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "chemicalInput": {
+    "amount": 1000,
+    "gas": "mekanism:sulfuric_acid"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ores/tin"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "fluid": "mekanismscience:tin_leachate"
+  }
+}

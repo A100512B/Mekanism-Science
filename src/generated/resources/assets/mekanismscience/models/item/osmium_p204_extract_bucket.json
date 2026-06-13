@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:osmium_p204_extract",
+  "loader": "forge:fluid_container"
+}

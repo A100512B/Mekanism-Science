@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:injecting",
+  "chemicalInput": {
+    "amount": 20,
+    "gas": "mekanismscience:iodine"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "mekanismscience:excipient"
+    }
+  },
+  "output": {
+    "item": "mekanismscience:tablet_iodine"
+  }
+}

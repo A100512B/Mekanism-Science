@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:compressed_air",
+  "loader": "forge:fluid_container"
+}

@@ -7,7 +7,7 @@ license = "${mod_license}"
 modId="${mod_id}"
 version="${version}"
 displayName="${mod_name}"
-authors="FixedDolphin927, code-onigiri"
+authors = "${mod_authors}"
 description = "${mod_description}"
 displayURL = "${mod_url}"
 credits = ""
@@ -24,4 +24,25 @@ modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version}"
 ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "mekanism"
+mandatory = true
+versionRange = "[10.4.16,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "allthemodium"
+mandatory = false
+versionRange = "[0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "alltheores"
+mandatory = false
+versionRange = "[0,)"
+ordering = "AFTER"
 side = "BOTH"

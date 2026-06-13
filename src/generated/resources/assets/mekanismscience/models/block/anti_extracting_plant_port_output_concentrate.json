@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mekanismscience:block/anti_extracting_plant_port/output_concentrate"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:reaction",
+  "duration": 50,
+  "fluidInput": {
+    "amount": 50,
+    "fluid": "mekanismscience:beryllium"
+  },
+  "gasInput": {
+    "amount": 10,
+    "gas": "mekanismscience:californium"
+  },
+  "itemInput": {
+    "amount": 2,
+    "ingredient": {
+      "item": "mekanism:yellow_cake_uranium"
+    }
+  },
+  "itemOutput": {
+    "item": "mekanismscience:pellet_neutron_source"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "mode=input_extractant": {
+      "model": "mekanismscience:block/extracting_plant_port_input_extractant"
+    },
+    "mode=input_leachate": {
+      "model": "mekanismscience:block/extracting_plant_port_input_leachate"
+    },
+    "mode=output": {
+      "model": "mekanismscience:block/extracting_plant_port_output"
+    }
+  }
+}

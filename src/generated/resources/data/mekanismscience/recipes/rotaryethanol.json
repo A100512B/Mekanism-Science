@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:ethanol"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:ethanol"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:ethanol"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:ethanol"
+  }
+}

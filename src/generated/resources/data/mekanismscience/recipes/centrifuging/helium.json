@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:centrifuging",
+  "input": {
+    "amount": 50,
+    "gas": "mekanismscience:compressed_air"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mekanismscience:helium"
+  }
+}

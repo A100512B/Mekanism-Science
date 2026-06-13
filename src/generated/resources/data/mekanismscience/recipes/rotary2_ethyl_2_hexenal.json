@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:2_ethyl_2_hexenal"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:2_ethyl_2_hexenal"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:2_ethyl_2_hexenal"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:2_ethyl_2_hexenal"
+  }
+}

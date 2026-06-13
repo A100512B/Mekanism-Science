@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:lead_leachate",
+  "loader": "forge:fluid_container"
+}

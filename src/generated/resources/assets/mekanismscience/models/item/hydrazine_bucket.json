@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:hydrazine",
+  "loader": "forge:fluid_container"
+}

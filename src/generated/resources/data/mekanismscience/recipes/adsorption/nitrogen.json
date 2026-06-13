@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:adsorption",
+  "fluidInput": {
+    "amount": 50,
+    "fluid": "mekanismscience:compressed_air"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "minecraft:coals"
+    }
+  },
+  "output": {
+    "amount": 400,
+    "chemicalType": "gas",
+    "gas": "mekanismscience:nitrogen"
+  }
+}

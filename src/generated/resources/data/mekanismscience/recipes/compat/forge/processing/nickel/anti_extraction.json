@@ -1,0 +1,25 @@
+{
+  "type": "mekanismscience:anti_extraction",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "mekanism:sulfuric_acid"
+  },
+  "chemicalOutput": {
+    "amount": 10,
+    "gas": "mekanismscience:p204"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alltheores"
+    }
+  ],
+  "fluidInput": {
+    "amount": 15,
+    "fluid": "mekanismscience:nickel_p204_extract"
+  },
+  "fluidOutput": {
+    "amount": 5,
+    "fluid": "mekanismscience:nickel_concentrate"
+  }
+}

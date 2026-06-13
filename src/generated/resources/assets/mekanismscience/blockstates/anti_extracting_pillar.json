@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "fluid_logged=empty": {
+      "model": "mekanismscience:block/anti_extracting_pillar"
+    },
+    "fluid_logged=lava": {
+      "model": "mekanismscience:block/anti_extracting_pillar"
+    },
+    "fluid_logged=water": {
+      "model": "mekanismscience:block/anti_extracting_pillar"
+    }
+  }
+}

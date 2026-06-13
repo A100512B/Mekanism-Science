@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "mekanismscience:isooctanol"
+  },
+  "output": {
+    "amount": 2,
+    "gas": "mekanismscience:p204"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "mekanismscience:phosphoryl_chloride"
+  }
+}

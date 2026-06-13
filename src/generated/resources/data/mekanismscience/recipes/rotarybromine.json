@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:bromine"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:bromine"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:bromine"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:bromine"
+  }
+}

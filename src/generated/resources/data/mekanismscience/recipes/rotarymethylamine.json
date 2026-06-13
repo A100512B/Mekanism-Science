@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:methylamine"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:methylamine"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:methylamine"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:methylamine"
+  }
+}

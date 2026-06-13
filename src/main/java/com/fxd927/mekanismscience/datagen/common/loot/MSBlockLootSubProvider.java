@@ -16,6 +16,7 @@ import mekanism.common.tile.interfaces.ISustainedData;
 import mekanism.common.util.EnumUtils;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.items.IItemHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -55,9 +57,14 @@ public class MSBlockLootSubProvider extends BlockLootSubProvider {
         dropSelfWithContents(MSBlocks.ADSORPTION_SEPARATOR);
         dropSelfWithContents(MSBlocks.IRRADIATOR);
         dropSelfWithContents(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT);
-        dropSelfWithContents(MSBlocks.ORGANIC_LIQUID_EXTRACTOR);
         dropSelfWithContents(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
         dropSelfWithContents(MSBlocks.SEAWATER_PUMP);
+    }
+
+    @Override
+    @NotNull
+    protected Iterable<Block> getKnownBlocks() {
+        return MSBlocks.BLOCKS.getAllBlocks().stream().map(IBlockProvider::getBlock).toList();
     }
 
     private void dropSelf(IBlockProvider block) {

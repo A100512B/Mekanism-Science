@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mekanismscience:block/metal_electrolysis_chamber_port/input"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:reaction",
+  "duration": 50,
+  "fluidInput": {
+    "amount": 1000,
+    "tag": "forge:hydrofluoric_acid"
+  },
+  "gasInput": {
+    "amount": 1000,
+    "gas": "mekanismscience:californium"
+  },
+  "gasOutput": {
+    "amount": 1000,
+    "gas": "mekanism:spent_nuclear_waste"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ingots/lead"
+    }
+  },
+  "itemOutput": {
+    "item": "mekanismscience:ingot_refined_californium"
+  }
+}

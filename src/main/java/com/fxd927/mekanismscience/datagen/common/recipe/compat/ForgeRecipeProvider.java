@@ -6,15 +6,14 @@ import com.fxd927.mekanismscience.api.datagen.recipe.builder.ItemStackChemicalTo
 import com.fxd927.mekanismscience.api.datagen.recipe.builder.MetalElectrolysisRecipeBuilder;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSGases;
+import com.fxd927.mekanismscience.datagen.common.recipe.IMSCompatRecipeProvider;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.math.FloatingLong;
 import mekanism.common.registries.MekanismGases;
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.blocks.mek_reg.ATOResource;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
@@ -25,16 +24,12 @@ import static com.fxd927.mekanismscience.common.MekanismScience.rl;
 import static mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess.*;
 
 @NothingNullByDefault
-public class ForgeRecipeProvider extends RecipeProvider {
+public class ForgeRecipeProvider implements IMSCompatRecipeProvider {
 
     private static final ICondition modLoaded = new ModLoadedCondition("alltheores");
 
-    public ForgeRecipeProvider(PackOutput output) {
-        super(output);
-    }
-
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> writer) {
+    public void buildRecipes(Consumer<FinishedRecipe> writer) {
         processing(writer);
     }
 

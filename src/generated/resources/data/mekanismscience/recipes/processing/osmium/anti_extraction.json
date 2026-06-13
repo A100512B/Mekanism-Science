@@ -1,0 +1,19 @@
+{
+  "type": "mekanismscience:anti_extraction",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "mekanismscience:potassium_nitrate"
+  },
+  "chemicalOutput": {
+    "amount": 10,
+    "gas": "mekanismscience:p204"
+  },
+  "fluidInput": {
+    "amount": 15,
+    "fluid": "mekanismscience:osmium_p204_extract"
+  },
+  "fluidOutput": {
+    "amount": 5,
+    "fluid": "mekanismscience:osmium_concentrate"
+  }
+}

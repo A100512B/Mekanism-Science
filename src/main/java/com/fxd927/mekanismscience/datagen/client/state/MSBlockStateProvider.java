@@ -2,8 +2,8 @@ package com.fxd927.mekanismscience.datagen.client.state;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateAntiExtractingPortMode;
+import com.fxd927.mekanismscience.common.block.attribute.AttributeStateElectrolyzingRodMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode;
-import com.fxd927.mekanismscience.common.mixin.AttributeStateActiveAccessor;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import mekanism.api.providers.IBlockProvider;
@@ -29,12 +29,14 @@ public class MSBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         MSFluids.FLUIDS.getAllFluids().forEach(fluidRO -> simpleBlock(fluidRO.getBlock(),
                 models().getBuilder(RegistryUtils.getPath(fluidRO.getBlock())).texture("particle", fluidRO.getFluidType().stillTexture)));
+        final BooleanProperty activeProperty = BooleanProperty.create("active");
         // Single block tiles
-        existingActive(MSBlocks.ADSORPTION_SEPARATOR);
-        existingActive(MSBlocks.AIR_COMPRESSOR);
-        existingActive(MSBlocks.IRRADIATOR);
-        existing(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
-        existingActive(MSBlocks.SEAWATER_PUMP);
+        existing(MSBlocks.ACID_LEACHER, activeProperty);
+        existingDirectional(MSBlocks.ADSORPTION_SEPARATOR);
+        cubeMachine(MSBlocks.AIR_COMPRESSOR);
+        existing(MSBlocks.IRRADIATOR, activeProperty);
+        existingDirectional(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
+        existingDirectional(MSBlocks.SEAWATER_PUMP);
         // Extracting Plant
         cubeAll(MSBlocks.EXTRACTING_PLANT_CASING);
         port(MSBlocks.EXTRACTING_PLANT_PORT, AttributeStateExtractingPortMode.modeProperty);
@@ -43,13 +45,17 @@ public class MSBlockStateProvider extends BlockStateProvider {
         cubeAll(MSBlocks.ANTI_EXTRACTING_PLANT_CASING);
         port(MSBlocks.ANTI_EXTRACTING_PLANT_PORT, AttributeStateAntiExtractingPortMode.modeProperty);
         existing(MSBlocks.ANTI_EXTRACTING_PILLAR);
+        // Metal Electrolysis Chamber
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING);
-        port(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, AttributeStateActiveAccessor.getActiveProperty());
+        port(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, activeProperty);
         cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
-    }
-
-    private void existing(IBlockProvider block) {
-        simpleBlock(block.getBlock(), models().withExistingParent(block.getName(), "block/" + block.getName()));
+        // Since the rod uses axis property, we can't use the existing() method. But I will
+        // keep it as I believe I may use it in later versions.
+        getVariantBuilder(MSBlocks.METAL_ELECTROLYZING_ROD.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(models().getExistingFile(modLoc("block/metal_electrolyzing_rod_" + state.getValue(AttributeStateElectrolyzingRodMode.modeProperty).getSerializedName())))
+                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
+                .build());
+        simpleBlockItem(MSBlocks.METAL_ELECTROLYZING_ROD.getBlock(), models().getExistingFile(modLoc("block/metal_electrolyzing_rod_idle")));
     }
 
     private void cubeAll(IBlockProvider block) {
@@ -59,19 +65,6 @@ public class MSBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block.getBlock(), model);
     }
 
-    private void existingActive(IBlockProvider block) {
-        String name = block.getName();
-        ModelFile off = models().withExistingParent(name, modLoc("block/" + name))
-                .texture("particle", "block/" + name);
-        ModelFile on = models().withExistingParent(name, modLoc("block/" + name + "_active"))
-                .texture("particle", "block/" + name);
-        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(Attribute.isActive(state) ? on : off)
-                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
-                .build());
-        simpleBlockItem(block.getBlock(), off);
-    }
-
     private void cubeMachine(IBlockProvider block) {
         String name = block.getName();
         ModelFile off = models().cube(name,
@@ -79,16 +72,16 @@ public class MSBlockStateProvider extends BlockStateProvider {
                         modLoc("block/" + name + "/top"),
                         modLoc("block/" + name + "/front"),
                         modLoc("block/" + name + "/back"),
-                        modLoc("block/" + name + "/left"),
-                        modLoc("block/" + name + "/right"))
+                        modLoc("block/" + name + "/side"),
+                        modLoc("block/" + name + "/side"))
                 .texture("particle", "block/" + name + "/bottom");
-        ModelFile on = models().cube(name,
+        ModelFile on = models().cube(name + "_active",
                         modLoc("block/" + name + "/bottom"),
                         modLoc("block/" + name + "/top"),
                         modLoc("block/" + name + "/front_active"),
                         modLoc("block/" + name + "/back"),
-                        modLoc("block/" + name + "/left"),
-                        modLoc("block/" + name + "/right"))
+                        modLoc("block/" + name + "/side"),
+                        modLoc("block/" + name + "/side"))
                 .texture("particle", "block/" + name + "/bottom");
         getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(Attribute.isActive(state) ? on : off)
@@ -97,18 +90,57 @@ public class MSBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block.getBlock(), off);
     }
 
+    private void existing(IBlockProvider block) {
+        String name = block.getName();
+        ModelFile model = models().getExistingFile(modLoc("block/" + name));
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(model)
+                .build());
+        simpleBlockItem(block.getBlock(), model);
+    }
+
+    private void existingDirectional(IBlockProvider block) {
+        String name = block.getName();
+        ModelFile model = models().getExistingFile(modLoc("block/" + name));
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(model)
+                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
+                .build());
+        simpleBlockItem(block.getBlock(), model);
+    }
+
+    private void existing(IBlockProvider block, BooleanProperty activeProperty) {
+        String name = block.getName();
+        ModelFile model = models().getExistingFile(modLoc("block/" + name));
+        ModelFile modelActive = models().getExistingFile(modLoc("block/" + name + "_active"));
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(state.getValue(activeProperty) ? modelActive : model)
+                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
+                .build());
+        simpleBlockItem(block.getBlock(), model);
+    }
+
+    private <E extends Enum<E> & StringRepresentable> void existing(IBlockProvider block, EnumProperty<E> modeProperty) {
+        String name = block.getName();
+        getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(models().getExistingFile(modLoc("block/" + name + "_" + state.getValue(modeProperty).getSerializedName())))
+                .rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot())
+                .build());
+        simpleBlockItem(block.getBlock(), models().getExistingFile(modLoc("block/" + name + "_" + block.getBlock().defaultBlockState().getValue(modeProperty).getSerializedName())));
+    }
+
     private <E extends Enum<E> & StringRepresentable> void port(IBlockProvider block, EnumProperty<E> modeProperty) {
         String name = block.getName();
         getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(models().withExistingParent(name, modLoc("block/" + name + "/" + state.getValue(modeProperty).getSerializedName())))
+                .modelFile(models().cubeAll(name + "_" + state.getValue(modeProperty).getSerializedName(), modLoc("block/" + name + "/" + state.getValue(modeProperty).getSerializedName())))
                 .build());
-        simpleBlockItem(block.getBlock(), models().withExistingParent(name, modLoc("block/" + name + "/" + block.getBlock().defaultBlockState().getValue(modeProperty).getSerializedName())));
+        simpleBlockItem(block.getBlock(), models().cubeAll(name, modLoc("block/" + name + "/" + block.getBlock().defaultBlockState().getValue(modeProperty).getSerializedName())));
     }
 
     private void port(IBlockProvider block, BooleanProperty activeProperty) {
         String name = block.getName();
         getVariantBuilder(block.getBlock()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(models().cubeAll(name, modLoc("block/" + name + "/" + (state.getValue(activeProperty) ? "output" : "input"))))
+                .modelFile(models().cubeAll(name + "_" + (state.getValue(activeProperty) ? "output" : "input"), modLoc("block/" + name + "/" + (state.getValue(activeProperty) ? "output" : "input"))))
                 .build());
         simpleBlockItem(block.getBlock(), models().cubeAll(name, modLoc("block/" + name + "/input")));
     }

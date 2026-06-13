@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:butyraldehyde_mixture"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:butyraldehyde_mixture"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:butyraldehyde_mixture"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:butyraldehyde_mixture"
+  }
+}

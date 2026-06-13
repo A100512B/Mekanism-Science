@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "mode=input_anti_extractant": {
+      "model": "mekanismscience:block/anti_extracting_plant_port_input_anti_extractant"
+    },
+    "mode=input_extract": {
+      "model": "mekanismscience:block/anti_extracting_plant_port_input_extract"
+    },
+    "mode=output_concentrate": {
+      "model": "mekanismscience:block/anti_extracting_plant_port_output_concentrate"
+    },
+    "mode=output_extractant": {
+      "model": "mekanismscience:block/anti_extracting_plant_port_output_extractant"
+    }
+  }
+}

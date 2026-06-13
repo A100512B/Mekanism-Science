@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "mekanismscience:block/air_compressor/bottom",
+    "east": "mekanismscience:block/air_compressor/side",
+    "north": "mekanismscience:block/air_compressor/front",
+    "particle": "mekanismscience:block/air_compressor/bottom",
+    "south": "mekanismscience:block/air_compressor/back",
+    "up": "mekanismscience:block/air_compressor/top",
+    "west": "mekanismscience:block/air_compressor/side"
+  }
+}

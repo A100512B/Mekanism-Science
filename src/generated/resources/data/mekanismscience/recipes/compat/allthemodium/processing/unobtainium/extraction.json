@@ -1,0 +1,21 @@
+{
+  "type": "mekanismscience:extraction",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "mekanismscience:p204"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "fluidInput": {
+    "amount": 10,
+    "fluid": "mekanismscience:unobtainium_leachate"
+  },
+  "output": {
+    "amount": 15,
+    "fluid": "mekanismscience:allthemodium_p204_extract"
+  }
+}

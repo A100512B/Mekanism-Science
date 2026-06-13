@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:2_butene",
+  "loader": "forge:fluid_container"
+}

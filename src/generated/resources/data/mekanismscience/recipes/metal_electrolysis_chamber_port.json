@@ -1,0 +1,18 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "C": {
+      "item": "mekanismscience:metal_electrolysis_chamber_casing"
+    },
+    "U": {
+      "tag": "forge:circuits/ultimate"
+    }
+  },
+  "pattern": [
+    "CUC"
+  ],
+  "result": {
+    "count": 2,
+    "item": "mekanismscience:metal_electrolysis_chamber_port"
+  }
+}

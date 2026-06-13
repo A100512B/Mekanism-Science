@@ -1,0 +1,38 @@
+{
+  "tile.machine.acid_leacher": {
+    "sounds": [
+      "mekanismscience:tile/acid_leacher"
+    ],
+    "subtitle": "sound_event.mekanismscience.tile.machine.acid_leacher"
+  },
+  "tile.machine.air_compressor": {
+    "sounds": [
+      "mekanismscience:tile/air_compressor"
+    ],
+    "subtitle": "sound_event.mekanismscience.tile.machine.air_compressor"
+  },
+  "tile.machine.anti_extracting_plant": {
+    "sounds": [
+      "mekanismscience:tile/anti_extracting_plant"
+    ],
+    "subtitle": "sound_event.mekanismscience.tile.machine.anti_extracting_plant"
+  },
+  "tile.machine.extracting_plant": {
+    "sounds": [
+      "mekanismscience:tile/extracting_plant"
+    ],
+    "subtitle": "sound_event.mekanismscience.tile.machine.extracting_plant"
+  },
+  "tile.machine.metal_electrolysis_chamber": {
+    "sounds": [
+      "mekanismscience:tile/metal_electrolysis_chamber"
+    ],
+    "subtitle": "sound_event.mekanismscience.tile.machine.metal_electrolysis_chamber"
+  },
+  "tile.machine.pressurized_polymerizing_chamber": {
+    "sounds": [
+      "mekanismscience:tile/pressurized_polymerizing_chamber"
+    ],
+    "subtitle": "sound_event.mekanismscience.tile.machine.pressurized_polymerizing_chamber"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:irradiating",
+  "gasInput": {
+    "amount": 1000,
+    "gas": "mekanism:plutonium"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "mekanismscience:pellet_high-density_neutron_source"
+    }
+  },
+  "output": {
+    "amount": 500,
+    "chemicalType": "gas",
+    "gas": "mekanismscience:californium"
+  }
+}

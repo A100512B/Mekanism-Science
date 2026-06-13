@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:aluminum_concentrate",
+  "loader": "forge:fluid_container"
+}

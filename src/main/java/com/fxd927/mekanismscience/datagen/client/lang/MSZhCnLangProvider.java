@@ -41,8 +41,8 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSItems.TABLET_ANESTHETIC, "麻醉药片");
         add(MSItems.TABLET_FIRE_RESISTANCE, "抗火药片");
         add(MSItems.TABLET_IODINE, "碘片");
-        add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "肌肉强化药片");
-        add(MSItems.TABLET_POISON, "毒药片");
+        add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "肌肉强化药片（WIP）");
+        add(MSItems.TABLET_POISON, "毒药片（WIP）");
     }
 
     private void addBlocks() {

@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:potassium_nitrate"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:potassium_nitrate"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:potassium_nitrate"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:potassium_nitrate"
+  }
+}

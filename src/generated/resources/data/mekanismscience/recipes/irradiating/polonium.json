@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:irradiating",
+  "gasInput": {
+    "amount": 200,
+    "gas": "mekanism:nuclear_waste"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "mekanismscience:pellet_neutron_source"
+    }
+  },
+  "output": {
+    "amount": 200,
+    "chemicalType": "gas",
+    "gas": "mekanism:polonium"
+  }
+}

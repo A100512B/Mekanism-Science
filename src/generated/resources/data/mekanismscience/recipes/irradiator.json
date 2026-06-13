@@ -1,0 +1,28 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "C": {
+      "tag": "forge:circuits/ultimate"
+    },
+    "L": {
+      "tag": "forge:storage_blocks/lead"
+    },
+    "P": {
+      "item": "mekanism:pellet_polonium"
+    },
+    "S": {
+      "item": "mekanism:laser"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  },
+  "pattern": [
+    "LSL",
+    "CXC",
+    "LPL"
+  ],
+  "result": {
+    "item": "mekanismscience:irradiator"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:nitrogen"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:nitrogen"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:nitrogen"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:nitrogen"
+  }
+}

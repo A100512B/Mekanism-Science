@@ -1,0 +1,5 @@
+{
+  "parent": "forge:item/bucket",
+  "fluid": "mekanismscience:platinum_p204_extract",
+  "loader": "forge:fluid_container"
+}

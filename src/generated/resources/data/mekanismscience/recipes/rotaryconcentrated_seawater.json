@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "mekanismscience:concentrated_seawater"
+  },
+  "fluidOutput": {
+    "amount": 1,
+    "fluid": "mekanismscience:concentrated_seawater"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanismscience:concentrated_seawater"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "mekanismscience:concentrated_seawater"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:smelting",
+  "input": {
+    "ingredient": {
+      "tag": "forge:bones"
+    }
+  },
+  "output": {
+    "count": 4,
+    "item": "mekanismscience:bone_ashes"
+  }
+}

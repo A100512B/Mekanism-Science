@@ -1,0 +1,23 @@
+{
+  "type": "mekanismscience:acid_leaching",
+  "chemicalInput": {
+    "amount": 1000,
+    "gas": "mekanismscience:potassium_nitrate"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alltheores"
+    }
+  ],
+  "itemInput": {
+    "amount": 3,
+    "ingredient": {
+      "tag": "forge:raw_materials/platinum"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "fluid": "mekanismscience:platinum_leachate"
+  }
+}

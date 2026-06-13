@@ -7,6 +7,8 @@ import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSGases;
 import com.fxd927.mekanismscience.common.registries.MSItems;
+import com.fxd927.mekanismscience.datagen.common.recipe.compat.ATMRecipeProvider;
+import com.fxd927.mekanismscience.datagen.common.recipe.compat.ForgeRecipeProvider;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.merged.BoxedChemicalStack;
@@ -16,6 +18,7 @@ import mekanism.common.registration.impl.FluidDeferredRegister.MekanismFluidType
 import mekanism.common.registration.impl.FluidRegistryObject;
 import mekanism.common.registration.impl.GasRegistryObject;
 import mekanism.common.registries.MekanismBlocks;
+import mekanism.common.registries.MekanismFluids;
 import mekanism.common.registries.MekanismGases;
 import mekanism.common.registries.MekanismItems;
 import mekanism.common.resource.MiscResource;
@@ -35,9 +38,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
+import net.minecraftforge.fml.ModList;
 
 import java.util.function.Consumer;
 
@@ -72,6 +75,12 @@ public class MSRecipeProvider extends RecipeProvider {
         rotary(writer);
         separating(writer);
         smelting(writer);
+        if (ModList.get().isLoaded("allthemodium")) {
+            new ATMRecipeProvider().buildRecipes(writer);
+        }
+        if (ModList.get().isLoaded("alltheores")) {
+            new ForgeRecipeProvider().buildRecipes(writer);
+        }
     }
 
     private void activating(Consumer<FinishedRecipe> writer) {
@@ -104,7 +113,7 @@ public class MSRecipeProvider extends RecipeProvider {
     }
 
     private void chemicalInfusing(Consumer<FinishedRecipe> writer) {
-        String basePath = "chemical_infusing";
+        String basePath = "chemical_infusing/";
         ChemicalChemicalToChemicalRecipeBuilder.chemicalInfusing(
                 gas().from(MSGases.NITROGEN, 1),
                 gas().from(MekanismGases.HYDROGEN, 3),
@@ -350,7 +359,7 @@ public class MSRecipeProvider extends RecipeProvider {
                         TripleLine.of('G', 'G', 'G')))
                 .key('G', Tags.Items.GLASS)
                 .key('C', MSItems.DUST_CALCIUM_OXIDE)
-                .build(writer);
+                .build(writer, rl("structural_glass"));
     }
 
     private void dissolution(Consumer<FinishedRecipe> writer) {
@@ -392,7 +401,7 @@ public class MSRecipeProvider extends RecipeProvider {
     }
 
     private void injecting(Consumer<FinishedRecipe> writer) {
-        String basePath = "injecting";
+        String basePath = "injecting/";
         ItemStackChemicalToItemStackRecipeBuilder.injecting(
                 item().from(MekanismItems.SUBSTRATE, 1),
                 gas().from(MekanismGases.SULFURIC_ACID, 25),
@@ -738,8 +747,8 @@ public class MSRecipeProvider extends RecipeProvider {
                 .build(writer, rl(basePath + "2_ethyl_2_hexenal"));
         PressurizedReactionRecipeBuilder.reaction(
                         item().from(MSItems.BONE_ASHES_WITH_CARBON),
-                        fluid().from(FluidStack.EMPTY),
-                        gas().from(MekanismGases.CHLORINE, 600),
+                        fluid().from(MekanismFluids.CHLORINE, 300),
+                        gas().from(MekanismGases.CHLORINE, 300),
                         200,
                         MSItems.DUST_CALCIUM_CHLORIDE.getItemStack(3),
                         MSGases.IMPURE_PHOSPHORYL_CHLORIDE.getStack(200))
@@ -779,7 +788,7 @@ public class MSRecipeProvider extends RecipeProvider {
                 .build(writer, rl(basePath + "ptfe_pellet"));
         PressurizedReactionRecipeBuilder.reaction(
                         item().from(ItemTags.COALS, 1),
-                        fluid().from(FluidStack.EMPTY),
+                        fluid().from(FluidTags.WATER, 100),
                         gas().from(MekanismGases.WATER_VAPOR, 100),
                         100,
                         MSGases.WATER_GAS.getStack(100))

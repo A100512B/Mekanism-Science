@@ -77,11 +77,21 @@ legacyForge {
             ideName = "Data Generation"
 
             gameDirectory.set(file('run/data'))
-            programArguments.addAll('--mod', project.mod_id)
-            programArguments.addAll('--all')
-            programArguments.addAll('--output', file('src/generated/resources/').getAbsolutePath())
-            programArguments.addAll('--existing', file('src/main/resources/').getAbsolutePath())
-            programArguments.addAll('--existing-mod', 'gtceu')
+
+            def args = programArguments
+            args.addAll('--mod', project.mod_id)
+            args.addAll('--all')
+            args.addAll('--output', file('src/generated/resources/').getAbsolutePath())
+            args.addAll('--existing', file('src/main/resources/').getAbsolutePath())
+
+            // 将 classpath 上所有 jar 都添加为资源来源，这样 Mekanism 的纹理就能被找到
+            project.afterEvaluate {
+                project.configurations.runtimeClasspath.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                    if (artifact.file.name.endsWith('.jar')) {
+                        args.addAll('--existing', artifact.file.absolutePath)
+                    }
+                }
+            }
         }
 
         configureEach {
@@ -90,6 +100,14 @@ legacyForge {
             logLevel = org.slf4j.event.Level.INFO
         }
     }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 idea {

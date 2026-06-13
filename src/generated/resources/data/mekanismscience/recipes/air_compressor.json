@@ -1,0 +1,28 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "A": {
+      "tag": "mekanism:alloys/infused"
+    },
+    "C": {
+      "tag": "forge:circuits/advanced"
+    },
+    "S": {
+      "item": "mekanism:hdpe_pellet"
+    },
+    "T": {
+      "item": "mekanism:basic_chemical_tank"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "SXS",
+    "ATA"
+  ],
+  "result": {
+    "item": "mekanismscience:air_compressor"
+  }
+}

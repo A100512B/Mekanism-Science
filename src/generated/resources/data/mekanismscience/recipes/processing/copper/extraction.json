@@ -1,0 +1,15 @@
+{
+  "type": "mekanismscience:extraction",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "mekanismscience:p204"
+  },
+  "fluidInput": {
+    "amount": 10,
+    "fluid": "mekanismscience:copper_leachate"
+  },
+  "output": {
+    "amount": 15,
+    "fluid": "mekanismscience:copper_p204_extract"
+  }
+}
