@@ -21,7 +21,6 @@ import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
-import mekanism.common.capabilities.energy.PRCEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
@@ -94,7 +93,6 @@ public class TileEntityPressurizedPolymerizingChamber
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS);
         configComponent.setupIOConfig(TransmissionType.ITEM, inputSlot, outputSlot, RelativeSide.FRONT);
         configComponent.setupIOConfig(TransmissionType.GAS, inputTank, outputTank, RelativeSide.FRONT, false, true).setEjecting(true);
-        configComponent.addDisabledSides(RelativeSide.TOP);
 
         ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.GAS)
@@ -119,7 +117,7 @@ public class TileEntityPressurizedPolymerizingChamber
     @Override
     protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener, IContentsListener recipeCacheListener) {
         EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addContainer(energyContainer = PRCEnergyContainer.input(this, listener));
+        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
         return builder.build();
     }
 
@@ -129,6 +127,7 @@ public class TileEntityPressurizedPolymerizingChamber
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(inputSlot = GasInventorySlot.fill(inputTank, listener, 5, 56));
         builder.addSlot(outputSlot = GasInventorySlot.drain(outputTank, listener, 155, 56));
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 155, 14));
         inputSlot.setSlotType(ContainerSlotType.INPUT);
         inputSlot.setSlotOverlay(SlotOverlay.MINUS);
         outputSlot.setSlotType(ContainerSlotType.OUTPUT);
