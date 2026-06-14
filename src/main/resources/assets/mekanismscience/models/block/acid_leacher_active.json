@@ -1,6 +1,6 @@
 {
-  "format_version": "1.9.0",
   "credit": "Made with love by A100512B using Blockbench",
+  "render_type": "minecraft:cutout",
   "textures": {
     "0": "mekanismscience:block/acid_leacher/base",
     "3": "mekanism:block/models/digital_miner_screen_hello",

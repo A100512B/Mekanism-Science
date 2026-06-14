@@ -1,6 +1,9 @@
 {
   "format_version": "1.9.0",
   "credit": "Made with love by A100512B using Blockbench",
+  "render_type": "minecraft:translucent",
+  "gui_light": "side",
+  "parent": "block/block",
   "texture_size": [
     32,
     32
@@ -215,30 +218,7 @@
           "texture": "#0"
         }
       }
-    },
-    {
-      "name": "inner",
-      "from": [
-        6,
-        6,
-        3
-      ],
-      "to": [
-        10,
-        10,
-        13
-      ],
-      "rotation": {
-        "angle": 0,
-        "axis": "y",
-        "origin": [
-          9,
-          6,
-          3
-        ]
-      },
-      "faces": {
-      }
     }
-  ]
+  ],
+  "display": {}
 }

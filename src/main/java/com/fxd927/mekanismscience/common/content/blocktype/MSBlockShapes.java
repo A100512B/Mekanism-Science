@@ -3,7 +3,6 @@ package com.fxd927.mekanismscience.common.content.blocktype;
 import mekanism.common.util.EnumUtils;
 import mekanism.common.util.VoxelShapeUtils;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public final class MSBlockShapes {
@@ -24,7 +23,7 @@ public final class MSBlockShapes {
                 box(6, 6, 3, 10, 10, 13) // inner
         ), METAL_ELECTROLYSIS_ROD);
 
-        VoxelShapeUtils.setShape(VoxelShapeUtils.rotate(VoxelShapeUtils.combine(
+        VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
                 box(-15, 0, -15, 31, 5, 31), // body/base
                 box(17, 5, -5, 30, 24, 28), // body/tank1
                 box(2, 5, -5, 15, 24, 28), // body/tank2
@@ -81,7 +80,7 @@ public final class MSBlockShapes {
                 box(7, 26, 18, 10, 32, 21), // pipes/pipe3_1,
                 box(10, 29, 18, 22, 32, 21), // pipes/pipe3_2,
                 box(22, 26, 18, 25, 32, 21) // pipes/pipe3_3
-        ), Rotation.CLOCKWISE_90), ACID_LEACHER);
+        ), ACID_LEACHER);
 
         VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
                 box(0, 0, 0, 16, 4, 16), // base

@@ -15,7 +15,7 @@ public class MSRecipeSerializers {
 
     public static final RecipeSerializerDeferredRegister RECIPE_SERIALIZERS = new RecipeSerializerDeferredRegister(MekanismScience.MODID);
 
-    public static final RecipeSerializerRegistryObject<GasToGasRecipe> PRESSURIZED_POLYMERIZING = RECIPE_SERIALIZERS.register("pressurized_polymerizing", () -> new GasToGasRecipeSerializer<>(PressurizedPolymerizingIRecipe::new));
+    public static final RecipeSerializerRegistryObject<GasToGasRecipe> PRESSURIZED_POLYMERIZING = RECIPE_SERIALIZERS.register("polymerizing", () -> new GasToGasRecipeSerializer<>(PressurizedPolymerizingIRecipe::new));
     public static final RecipeSerializerRegistryObject<FluidGasToFluidRecipe> EXTRACTION = RECIPE_SERIALIZERS.register("extraction", () -> new FluidGasToFluidRecipeSerializer<>(ExtractionIRecipe::new));
     public static final RecipeSerializerRegistryObject<FluidGasToFluidGasRecipe> ANTI_EXTRACTION = RECIPE_SERIALIZERS.register("anti_extraction", () -> new FluidGasToFluidGasRecipeSerializer<>(AntiExtractionIRecipe::new));
     public static final RecipeSerializerRegistryObject<MetalElectrolysisRecipe> METAL_ELECTROLYSIS = RECIPE_SERIALIZERS.register("metal_electrolysis", () -> new MetalElectrolysisRecipeSerializer<>(MetalElectrolysisIRecipe::new));

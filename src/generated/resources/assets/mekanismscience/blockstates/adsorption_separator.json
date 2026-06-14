@@ -2,93 +2,93 @@
   "variants": {
     "active=false,facing=east,fluid_logged=empty": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 270
+      "y": 90
     },
     "active=false,facing=east,fluid_logged=lava": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 270
+      "y": 90
     },
     "active=false,facing=east,fluid_logged=water": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 270
+      "y": 90
     },
     "active=false,facing=north,fluid_logged=empty": {
-      "model": "mekanismscience:block/adsorption_separator",
-      "y": 180
+      "model": "mekanismscience:block/adsorption_separator"
     },
     "active=false,facing=north,fluid_logged=lava": {
-      "model": "mekanismscience:block/adsorption_separator",
-      "y": 180
+      "model": "mekanismscience:block/adsorption_separator"
     },
     "active=false,facing=north,fluid_logged=water": {
+      "model": "mekanismscience:block/adsorption_separator"
+    },
+    "active=false,facing=south,fluid_logged=empty": {
       "model": "mekanismscience:block/adsorption_separator",
       "y": 180
     },
-    "active=false,facing=south,fluid_logged=empty": {
-      "model": "mekanismscience:block/adsorption_separator"
-    },
     "active=false,facing=south,fluid_logged=lava": {
-      "model": "mekanismscience:block/adsorption_separator"
+      "model": "mekanismscience:block/adsorption_separator",
+      "y": 180
     },
     "active=false,facing=south,fluid_logged=water": {
-      "model": "mekanismscience:block/adsorption_separator"
+      "model": "mekanismscience:block/adsorption_separator",
+      "y": 180
     },
     "active=false,facing=west,fluid_logged=empty": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 90
+      "y": 270
     },
     "active=false,facing=west,fluid_logged=lava": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 90
+      "y": 270
     },
     "active=false,facing=west,fluid_logged=water": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 90
+      "y": 270
     },
     "active=true,facing=east,fluid_logged=empty": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 270
+      "y": 90
     },
     "active=true,facing=east,fluid_logged=lava": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 270
+      "y": 90
     },
     "active=true,facing=east,fluid_logged=water": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 270
+      "y": 90
     },
     "active=true,facing=north,fluid_logged=empty": {
-      "model": "mekanismscience:block/adsorption_separator",
-      "y": 180
+      "model": "mekanismscience:block/adsorption_separator"
     },
     "active=true,facing=north,fluid_logged=lava": {
-      "model": "mekanismscience:block/adsorption_separator",
-      "y": 180
+      "model": "mekanismscience:block/adsorption_separator"
     },
     "active=true,facing=north,fluid_logged=water": {
+      "model": "mekanismscience:block/adsorption_separator"
+    },
+    "active=true,facing=south,fluid_logged=empty": {
       "model": "mekanismscience:block/adsorption_separator",
       "y": 180
     },
-    "active=true,facing=south,fluid_logged=empty": {
-      "model": "mekanismscience:block/adsorption_separator"
-    },
     "active=true,facing=south,fluid_logged=lava": {
-      "model": "mekanismscience:block/adsorption_separator"
+      "model": "mekanismscience:block/adsorption_separator",
+      "y": 180
     },
     "active=true,facing=south,fluid_logged=water": {
-      "model": "mekanismscience:block/adsorption_separator"
+      "model": "mekanismscience:block/adsorption_separator",
+      "y": 180
     },
     "active=true,facing=west,fluid_logged=empty": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 90
+      "y": 270
     },
     "active=true,facing=west,fluid_logged=lava": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 90
+      "y": 270
     },
     "active=true,facing=west,fluid_logged=water": {
       "model": "mekanismscience:block/adsorption_separator",
-      "y": 90
+      "y": 270
     }
   }
 }

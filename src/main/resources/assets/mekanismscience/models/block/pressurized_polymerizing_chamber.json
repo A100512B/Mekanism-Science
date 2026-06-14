@@ -3,7 +3,7 @@
   "parent": "block/cube_all",
   "textures": {
     "1": "mekanismscience:block/pressurized_polymerizing_chamber/pressurized_polymerizing_chamber_elements",
-    "particle": "mekanism:block/models/pressurized_reaction_chamber_elements",
+    "particle": "mekanismscience:block/pressurized_polymerizing_chamber/pressurized_polymerizing_chamber_elements",
     "all": "mekanism:block/models/pressurized_reaction_chamber"
   },
   "elements": [
@@ -586,7 +586,7 @@
     "gui": {
       "rotation": [
         30,
-        225,
+        -135,
         0
       ],
       "scale": [
@@ -628,6 +628,7 @@
         16,
         9
       ],
+      "scope": 0,
       "color": 0,
       "children": [
         5,

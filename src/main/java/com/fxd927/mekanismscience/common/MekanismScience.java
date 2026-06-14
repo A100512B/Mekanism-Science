@@ -7,6 +7,7 @@ import com.fxd927.mekanismscience.common.content.electrolysis.MetalElectrolysisC
 import com.fxd927.mekanismscience.common.content.electrolysis.MetalElectrolysisChamberValidator;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantValidator;
+import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.*;
 import com.fxd927.mekanismscience.common.tags.MSTags;
 import com.mojang.logging.LogUtils;
@@ -48,6 +49,7 @@ public class MekanismScience {
         MSFluids.FLUIDS.register(modEventBus);
         MSGases.GASES.register(modEventBus);
         MSItems.ITEMS.register(modEventBus);
+        MSRecipeType.init();
         MSRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         MSSounds.SOUND_EVENTS.register(modEventBus);
         MSTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);

@@ -15,6 +15,13 @@ import static com.fxd927.mekanismscience.common.mixin.MekanismRecipeTypeInvoker.
 
 public class MSRecipeType {
 
+    private MSRecipeType() {
+    }
+
+    // Make sure this class gets loaded early enough
+    public static void init() {
+    }
+
     public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> PRESSURIZED_POLYMERIZING = invokeRegister("pressurized_polymerizing", recipeType -> new SingleChemical<>(recipeType, GasToGasRecipe::getInput));
     public static final RecipeTypeRegistryObject<FluidGasToFluidRecipe, FluidChemical<Gas, GasStack, FluidGasToFluidRecipe>> EXTRACTION = invokeRegister("extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidRecipe::getFluidInput, FluidChemicalToFluidRecipe::getChemicalInput));
     public static final RecipeTypeRegistryObject<FluidGasToFluidGasRecipe, FluidChemical<Gas, GasStack, FluidGasToFluidGasRecipe>> ANTI_EXTRACTION = invokeRegister("anti_extraction", recipeType -> new FluidChemical<>(recipeType, FluidChemicalToFluidChemicalRecipe::getFluidInput, FluidChemicalToFluidChemicalRecipe::getChemicalInput));
