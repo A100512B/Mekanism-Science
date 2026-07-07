@@ -22,7 +22,7 @@ public class ExtractingPlantValidator extends CuboidStructureValidator<Extractin
     private int pillars;
 
     public ExtractingPlantValidator() {
-        super(new VoxelCuboid(5, 5, 7), new VoxelCuboid(15, 15, 25));
+        super(new VoxelCuboid(5, 7, 5), new VoxelCuboid(15, 15, 25));
     }
 
     @Override

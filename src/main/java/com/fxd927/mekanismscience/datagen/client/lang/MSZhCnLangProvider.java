@@ -56,10 +56,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSBlocks.EXTRACTING_PLANT_CASING, "萃取工厂外壳");
         add(MSBlocks.EXTRACTING_PLANT_PORT, "萃取工厂端口");
         add(MSBlocks.IRRADIATOR, "辐照器");
-        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING, "金属电解池外壳");
-        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "金属电解池激光接收器");
-        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, "金属电解池端口");
-        add(MSBlocks.METAL_ELECTROLYZING_ROD, "金属电解柱");
+        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, "金属电解池");
         add(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER, "加压聚合室");
         add(MSBlocks.SEAWATER_PUMP, "海水泵");
     }
@@ -171,10 +168,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSLang.DESCRIPTION_EXTRACTING_PLANT_CASING, "化学惰性的外壳，用于建造萃取工厂，能保护你的基地免于被酸腐蚀。");
         add(MSLang.DESCRIPTION_EXTRACTING_PLANT_PORT, "化学惰性的端口，用于建造萃取工厂，使液体和化学品在其中迅速流动。");
         add(MSLang.DESCRIPTION_IRRADIATOR, "一台可快速辐照物品的机器。核电，轻而易举啊！");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_CASING, "用于金属电解池的铜合金外壳。");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "导电性更好的能量端口，能使金属电解柱更高效工作。");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_PORT, "导电性很好的稳定端口，用于建造金属电解池，使液体和化学品在其中迅速流动。");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_ROD, "金属电解池内部的核心，只在两边都是端口或激光接收器时才工作。");
+        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER, "一台用于强力电解溶液得到高纯金属的大型机器。");
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "一台高级的用于高压聚合有机化合物的机器。");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "一台专为在海洋群系抽取海水而设计的泵。");
         // Chemical Attributes
@@ -194,9 +188,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_INPUT_EXTRACT, "输入萃取液");
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_CONCENTRATE, "输出浓缩液");
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_EXTRACTANT, "输出萃取剂");
-        // Metal Electrolysis Chamber
-        add(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, "多方块结构无法成型，发现错误的金属电解柱位置。");
-        add(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD_TOO_CLOSE, "多方块结构无法成型，至少两列金属电解柱离得太近。");
     }
 
     private static String translateResource(IResource resource) {

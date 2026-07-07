@@ -19,7 +19,7 @@ public class MSGases {
     public static final GasDeferredRegister GASES = new GasDeferredRegister(MekanismScience.MODID);
 
     public static final GasRegistryObject<Gas> AMERICIUM = GASES.register("americium", 0xD56060, new GasAttributes.Radiation(0.05));
-    public static final GasRegistryObject<Gas> AMMONIA = GASES.register(MSChemicalConstants.AMMONIA, new GasAttributes.Fuel(50, FloatingLong.createConst(20_000)));
+    public static final GasRegistryObject<Gas> AMMONIA = GASES.register(MSChemicalConstants.AMMONIA, new GasAttributes.Fuel(25, FloatingLong.createConst(20_000)));
     public static final GasRegistryObject<Gas> BROMINE = GASES.register(MSChemicalConstants.BROMINE);
     public static final GasRegistryObject<Gas> BERYLLIUM = GASES.register(MSChemicalConstants.BERYLLIUM);
     public static final GasRegistryObject<Gas> CALIFORNIUM = GASES.register("californium", 0xFFF08B00, new GasAttributes.Radiation(0.1));
@@ -41,13 +41,13 @@ public class MSGases {
     public static final GasRegistryObject<Gas> IMPURE_PHOSPHORYL_CHLORIDE = GASES.register("impure_phosphoryl_chloride", 0xFF46F675);
     public static final GasRegistryObject<Gas> ISOOCTANOL = GASES.register(MSChemicalConstants.ISOOCTANOL);
     public static final GasRegistryObject<Gas> _2_ETHYL_2_HEXENAL = GASES.register(MSChemicalConstants._2_ETHYL_2_HEXENAL);
-    public static final GasRegistryObject<Gas> N_BUTYRALDEHYDE = GASES.register(MSChemicalConstants.N_BUTYRALDEHYDE, new GasAttributes.Fuel(45, FloatingLong.createConst(32_000)));
-    public static final GasRegistryObject<Gas> ISOBUTYRALDEHYDE = GASES.register(MSChemicalConstants.ISOBUTYRALDEHYDE, new GasAttributes.Fuel(45, FloatingLong.createConst(32_000)));
+    public static final GasRegistryObject<Gas> N_BUTYRALDEHYDE = GASES.register(MSChemicalConstants.N_BUTYRALDEHYDE, new GasAttributes.Fuel(32, FloatingLong.createConst(32_000)));
+    public static final GasRegistryObject<Gas> ISOBUTYRALDEHYDE = GASES.register(MSChemicalConstants.ISOBUTYRALDEHYDE, new GasAttributes.Fuel(32, FloatingLong.createConst(32_000)));
     public static final GasRegistryObject<Gas> BUTYRALDEHYDE_MIXTURE = GASES.register("butyraldehyde_mixture", 0xFFEC724D, new GasAttributes.Fuel(40, FloatingLong.createConst(28_000)));
     public static final GasRegistryObject<Gas> PROPYLENE = GASES.register(MSChemicalConstants.PROPYLENE);
     public static final GasRegistryObject<Gas> _2_BUTENE = GASES.register(MSChemicalConstants._2_BUTENE);
-    public static final GasRegistryObject<Gas> HYDRAZINE = GASES.register(MSChemicalConstants.HYDRAZINE, new GasAttributes.Fuel(75, FloatingLong.createConst(37_500)));
-    public static final GasRegistryObject<Gas> WATER_GAS = GASES.register("water_gas", 0xFF002E57, new GasAttributes.Fuel(25, FloatingLong.createConst(1_500)));
+    public static final GasRegistryObject<Gas> HYDRAZINE = GASES.register(MSChemicalConstants.HYDRAZINE, new GasAttributes.Fuel(12, FloatingLong.createConst(37_500)));
+    public static final GasRegistryObject<Gas> WATER_GAS = GASES.register("water_gas", 0xFF002E57, new GasAttributes.Fuel(10, FloatingLong.createConst(1_500)));
     public static final GasRegistryObject<Gas> SODIUM_HYDROXIDE = GASES.register(MSChemicalConstants.SODIUM_HYDROXIDE);
     public static final GasRegistryObject<Gas> COMPRESSED_AIR = GASES.register(MSChemicalConstants.COMPRESSED_AIR);
     public static final GasRegistryObject<Gas> NITROGEN = GASES.register(MSChemicalConstants.NITROGEN);

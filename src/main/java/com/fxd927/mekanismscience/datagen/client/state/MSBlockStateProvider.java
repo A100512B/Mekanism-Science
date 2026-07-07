@@ -2,7 +2,6 @@ package com.fxd927.mekanismscience.datagen.client.state;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateAntiExtractingPortMode;
-import com.fxd927.mekanismscience.common.block.attribute.AttributeStateElectrolyzingRodMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
@@ -30,11 +29,12 @@ public class MSBlockStateProvider extends BlockStateProvider {
         MSFluids.FLUIDS.getAllFluids().forEach(fluidRO -> simpleBlock(fluidRO.getBlock(),
                 models().getBuilder(RegistryUtils.getPath(fluidRO.getBlock())).texture("particle", fluidRO.getFluidType().stillTexture)));
         final BooleanProperty activeProperty = BooleanProperty.create("active");
-        // Single block tiles
+        // Block tiles
         existingCustomItem(MSBlocks.ACID_LEACHER, activeProperty);
         existingDirectional(MSBlocks.ADSORPTION_SEPARATOR);
         cubeMachine(MSBlocks.AIR_COMPRESSOR);
         existing(MSBlocks.IRRADIATOR, activeProperty);
+        existingCustomItem(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, activeProperty);
         existingDirectional(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
         existingDirectional(MSBlocks.SEAWATER_PUMP);
         // Extracting Plant
@@ -45,11 +45,6 @@ public class MSBlockStateProvider extends BlockStateProvider {
         cubeAll(MSBlocks.ANTI_EXTRACTING_PLANT_CASING);
         port(MSBlocks.ANTI_EXTRACTING_PLANT_PORT, AttributeStateAntiExtractingPortMode.modeProperty);
         existing(MSBlocks.ANTI_EXTRACTING_PILLAR);
-        // Metal Electrolysis Chamber
-        cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING);
-        port(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, activeProperty);
-        cubeAll(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
-        existing(MSBlocks.METAL_ELECTROLYZING_ROD, AttributeStateElectrolyzingRodMode.modeProperty);
     }
 
     private void cubeAll(IBlockProvider block) {

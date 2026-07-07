@@ -49,14 +49,11 @@ public class MSBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(MSBlocks.EXTRACTING_PLANT_CASING);
         dropSelf(MSBlocks.EXTRACTING_PILLAR);
         dropSelf(MSBlocks.EXTRACTING_PLANT_PORT);
-        dropSelf(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING);
-        dropSelf(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
-        dropSelf(MSBlocks.METAL_ELECTROLYZING_ROD);
         dropSelfWithContents(MSBlocks.AIR_COMPRESSOR);
         dropSelfWithContents(MSBlocks.ACID_LEACHER);
         dropSelfWithContents(MSBlocks.ADSORPTION_SEPARATOR);
         dropSelfWithContents(MSBlocks.IRRADIATOR);
-        dropSelfWithContents(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT);
+        dropSelfWithContents(MSBlocks.METAL_ELECTROLYSIS_CHAMBER);
         dropSelfWithContents(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
         dropSelfWithContents(MSBlocks.SEAWATER_PUMP);
     }

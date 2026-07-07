@@ -14,7 +14,7 @@ public class MSGeneralConfig extends BaseMekanismConfig {
     public final CachedIntValue extractionLeachatePerTank;
     public final CachedLongValue antiExtractionAntiExtractantPerTank;
     public final CachedIntValue antiExtractionExtractPerTank;
-    public final CachedIntValue electrolysisInputPerTank;
+    public final CachedIntValue electrolysisRecipeMultiplier;
     public final CachedIntValue acidLeacherRecipeMultiplier;
 
     MSGeneralConfig() {
@@ -36,8 +36,8 @@ public class MSGeneralConfig extends BaseMekanismConfig {
         builder.pop();
 
         builder.comment("Metal Electrolysis Chamber Settings").push("metal_electrolysis_chamber");
-        electrolysisInputPerTank = CachedIntValue.wrap(this, builder.comment("Amount of fluid (mB) that each block of the metal electrolysis chamber contributes to the input tank. Max = volume * fluidPerTank")
-                .define("inputPerTank", 8000));
+        electrolysisRecipeMultiplier = CachedIntValue.wrap(this, builder.comment("Recipes that acid leacher processes processes each operation.")
+                .define("recipeMultiplier", 36));
         builder.pop();
 
         builder.comment("Acid Leacher Settings").push("acid_leacher");

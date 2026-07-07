@@ -11,8 +11,7 @@ public class MSUsageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue seawaterPump;
     public final CachedFloatingLongValue organicLiquidExtractor;
     public final CachedFloatingLongValue pressurizedPolymerizingChamber;
-    public final CachedFloatingLongValue metalElectrolyzingRod;
-    public final CachedFloatingLongValue metalElectrolyzingLaserRod;
+    public final CachedFloatingLongValue metalElectrolysisChamber;
     public final CachedFloatingLongValue acidLeacher;
     public final CachedFloatingLongValue airCompressor;
     public final CachedFloatingLongValue adsorptionSeparator;
@@ -31,12 +30,10 @@ public class MSUsageConfig extends BaseMekanismConfig {
                 FloatingLong.createConst(100));
         pressurizedPolymerizingChamber = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "pressurizedPolymerizingChamber",
                 FloatingLong.createConst(200));
-        metalElectrolyzingRod = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolyzingRod",
-                FloatingLong.createConst(2500));
-        metalElectrolyzingLaserRod = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolyzingLaserRod",
-                FloatingLong.createConst(4000));
+        metalElectrolysisChamber = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "metalElectrolysisChamber",
+                FloatingLong.createConst(5_000));
         acidLeacher = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "acidLeacher",
-                FloatingLong.createConst(3000));
+                FloatingLong.createConst(3_000));
         airCompressor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor",
                 FloatingLong.createConst(100));
         adsorptionSeparator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor",

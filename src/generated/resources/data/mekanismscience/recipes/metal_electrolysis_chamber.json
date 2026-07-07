@@ -1,0 +1,28 @@
+{
+  "type": "mekanism:mek_data",
+  "key": {
+    "B": {
+      "tag": "forge:storage_blocks/steel"
+    },
+    "D": {
+      "item": "mekanism:dynamic_valve"
+    },
+    "P": {
+      "item": "mekanismscience:ptfe_sheet"
+    },
+    "U": {
+      "tag": "forge:circuits/ultimate"
+    },
+    "X": {
+      "item": "mekanism:electrolytic_separator"
+    }
+  },
+  "pattern": [
+    "PUP",
+    "DXD",
+    "BBB"
+  ],
+  "result": {
+    "item": "mekanismscience:metal_electrolysis_chamber"
+  }
+}

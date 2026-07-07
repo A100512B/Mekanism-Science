@@ -56,9 +56,8 @@ public class MekanismScienceJEI implements IModPlugin {
                 MSBlocks.EXTRACTING_PILLAR);
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.ANTI_EXTRACTION, MSBlocks.ANTI_EXTRACTING_PLANT_CASING, MSBlocks.ANTI_EXTRACTING_PLANT_PORT,
                 MSBlocks.ANTI_EXTRACTING_PILLAR);
-        CatalystRegistryHelper.register(registry, MSJEIRecipeType.METAL_ELECTROLYSIS, MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING, MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT,
-                MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, MSBlocks.METAL_ELECTROLYZING_ROD);
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION, MSBlocks.ADSORPTION_SEPARATOR);
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.IRRADIATING, MSBlocks.IRRADIATOR);
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.METAL_ELECTROLYSIS, MSBlocks.METAL_ELECTROLYSIS_CHAMBER);
     }
 }

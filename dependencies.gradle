@@ -47,12 +47,10 @@ dependencies {
     modClientLocalRuntime(forge.embeddium)
     modClientLocalRuntime(forge.oculus)
     modClientLocalRuntime(forge.modernui)
+//    modClientLocalRuntime(forge.imblocker)
     renderNurseCfg(libs.renderNurse)
 
 //    // Mouse Tweaks
 //    modRuntimeOnly("curse.maven:mouse-tweaks-60089:5338457")
-
-//    // WorldEdit
-//    modRuntimeOnly("curse.maven:worldedit-225608:4586218")
 
 }

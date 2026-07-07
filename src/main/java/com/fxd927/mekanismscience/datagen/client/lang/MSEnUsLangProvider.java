@@ -51,10 +51,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSBlocks.EXTRACTING_PLANT_CASING, "Extracting Plant Casing");
         add(MSBlocks.EXTRACTING_PLANT_PORT, "Extracting Plant Port");
         add(MSBlocks.IRRADIATOR, "Irradiator");
-        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING, "Metal Electrolysis Chamber Casing");
-        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "Metal Electrolysis Chamber Laser Acceptor");
-        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, "Metal Electrolysis Chamber Port");
-        add(MSBlocks.METAL_ELECTROLYZING_ROD, "Metal Electrolyzing Rod");
+        add(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, "Metal Electrolysis Chamber");
         add(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER, "Pressurized Polymerizing Chamber");
         add(MSBlocks.SEAWATER_PUMP, "Seawater Pump");
     }
@@ -98,9 +95,9 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.WATER_GAS, "Liquid Water Gas");
         addFluid(MSFluids.WHEY, "Liquid Whey");
         addFluid(MSFluids.YTTRIUM, "Liquid Yttrium");
-        MSFluids.PROCESSED_CONCENTRATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO, capitalize(resource.getRegistrySuffix()) + "Concentrate"));
-        MSFluids.PROCESSED_EXTRACT_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO, capitalize(resource.getRegistrySuffix()) + "P204 Extract"));
-        MSFluids.PROCESSED_LEACHATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO, capitalize(resource.getRegistrySuffix()) + "Leachate"));
+        MSFluids.PROCESSED_CONCENTRATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO, capitalize(resource.getRegistrySuffix()) + " Concentrate"));
+        MSFluids.PROCESSED_EXTRACT_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO, capitalize(resource.getRegistrySuffix()) + " P204 Extract"));
+        MSFluids.PROCESSED_LEACHATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO, capitalize(resource.getRegistrySuffix()) + " Leachate"));
     }
 
     private void addGases() {
@@ -166,10 +163,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSLang.DESCRIPTION_EXTRACTING_PLANT_CASING, "A chemical-inert casing used in the structure of Extracting Plants, securing your base from being eroded by the acids.");
         add(MSLang.DESCRIPTION_EXTRACTING_PLANT_PORT, "A chemical-inert valve that can be placed on an Extracting Plant multiblock to allow fluids and chemicals to flow efficiently.");
         add(MSLang.DESCRIPTION_IRRADIATOR, "A machine used to efficiently irradiate without any worry about nuclear leaks.");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_CASING, "A copper-alloyed casing used in the structure of Metal Electrolysis Chamber.");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR, "An even more conductive energy port that allows Metal Electrolyzing Rods to process more effectively.");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER_PORT, "A very conductive and stable port used in the structure of Metal Electrolysis Chamber to transfer items, fluids and energy effectively.");
-        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_ROD, "The core inside a Metal Electrolysis Chamber. Only works when both of the sides are plugged with the ports or the laser acceptors.");
+        add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER, "A machine used to efficiently electrolyze solutions to get highly pure metals.");
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "An advanced machine that polymerizes organic chemicals at a very high pressure.");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "A pump specifically made for extracting seawater from Ocean biomes.");
         // Chemical Attributes
@@ -191,9 +185,5 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_INPUT_EXTRACT, "Input Extract");
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_CONCENTRATE, "Output Concentrate");
         add(MSLang.ANTI_EXTRACTING_PLANT_PORT_MODE_OUTPUT_EXTRACTANT, "Output Extractant");
-        // Metal Electrolysis Chamber
-        add(MSLang.METAL_ELECTROLYSIS_CHAMBER, "Metal Electrolysis Chamber");
-        add(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD, "Couldn't form, one of the Metal Electrolyzing Rods didn't appear in the right place.");
-        add(MSLang.METAL_ELECTROLYSIS_CHAMBER_INVALID_ROD_TOO_CLOSE, "Couldn't form, at least two lines of Metal Electrolyzing Rods were too close to each other.");
     }
 }

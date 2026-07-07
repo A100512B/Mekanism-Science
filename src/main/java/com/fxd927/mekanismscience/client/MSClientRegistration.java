@@ -3,16 +3,18 @@ package com.fxd927.mekanismscience.client;
 import com.fxd927.mekanismscience.client.gui.machine.*;
 import com.fxd927.mekanismscience.client.gui.multiblock.GuiAntiExtractingPlant;
 import com.fxd927.mekanismscience.client.gui.multiblock.GuiExtractingPlant;
-import com.fxd927.mekanismscience.client.gui.multiblock.GuiMetalElectrolysisChamber;
 import com.fxd927.mekanismscience.client.model.baked.AcidLeacherModel;
+import com.fxd927.mekanismscience.client.model.baked.MetalElectrolysisChamberModel;
 import com.fxd927.mekanismscience.client.render.tileentity.RenderAntiExtractingPlant;
 import com.fxd927.mekanismscience.client.render.tileentity.RenderExtractingPlant;
-import com.fxd927.mekanismscience.client.render.tileentity.RenderMetalElectrolysisChamber;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSContainerTypes;
+import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSTileEntityTypes;
 import mekanism.client.ClientRegistrationUtil;
+import mekanism.common.registration.impl.FluidRegistryObject;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -28,7 +30,11 @@ public class MSClientRegistration {
 
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
+        for (FluidRegistryObject<?, ?, ?, ?, ?> fluidRO : MSFluids.FLUIDS.getAllFluids()) {
+            ClientRegistrationUtil.setRenderLayer(RenderType.translucent(), fluidRO);
+        }
         addCustomModel(MSBlocks.ACID_LEACHER, (orig, evt) -> new AcidLeacherModel(orig));
+        addCustomModel(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, (orig, evt) -> new MetalElectrolysisChamberModel(orig));
     }
 
     @SubscribeEvent
@@ -38,11 +44,11 @@ public class MSClientRegistration {
             ClientRegistrationUtil.registerScreen(MSContainerTypes.PRESSURIZED_POLYMERIZING_CHAMBER, GuiPressurizedPolymerizerChamber::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.EXTRACTING_PLANT, GuiExtractingPlant::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ANTI_EXTRACTING_PLANT, GuiAntiExtractingPlant::new);
-            ClientRegistrationUtil.registerScreen(MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, GuiMetalElectrolysisChamber::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ACID_LEACHER, GuiAcidLeacher::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.AIR_COMPRESSOR, GuiAirCompressor::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_SEPARATOR, GuiAdsorptionSeparator::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.IRRADIATOR, GuiIrradiator::new);
+            ClientRegistrationUtil.registerScreen(MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, GuiMetalElectrolysisChamber::new);
         });
     }
 
@@ -50,8 +56,6 @@ public class MSClientRegistration {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderExtractingPlant::new, MSTileEntityTypes.EXTRACTING_PLANT_CASING, MSTileEntityTypes.EXTRACTING_PLANT_PORT);
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderAntiExtractingPlant::new, MSTileEntityTypes.ANTI_EXTRACTING_PLANT_CASING, MSTileEntityTypes.ANTI_EXTRACTING_PLANT_PORT);
-        ClientRegistrationUtil.bindTileEntityRenderer(event, RenderMetalElectrolysisChamber::new, MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_CASING, MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_PORT,
-                MSTileEntityTypes.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR);
     }
 
     private MSClientRegistration(){

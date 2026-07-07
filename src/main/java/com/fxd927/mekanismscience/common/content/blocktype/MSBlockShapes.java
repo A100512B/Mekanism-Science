@@ -2,84 +2,68 @@ package com.fxd927.mekanismscience.common.content.blocktype;
 
 import mekanism.common.util.EnumUtils;
 import mekanism.common.util.VoxelShapeUtils;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import static net.minecraft.world.level.block.Block.box;
 
 public final class MSBlockShapes {
 
-    private static VoxelShape box(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
-        return Block.box(minX, minY, minZ, maxX, maxY, maxZ);
-    }
-
-    public static final VoxelShape[] METAL_ELECTROLYSIS_ROD = new VoxelShape[EnumUtils.HORIZONTAL_DIRECTIONS.length];
     public static final VoxelShape[] ACID_LEACHER = new VoxelShape[EnumUtils.HORIZONTAL_DIRECTIONS.length];
     public static final VoxelShape[] ADSORPTION_SEPARATOR = new VoxelShape[EnumUtils.HORIZONTAL_DIRECTIONS.length];
+    public static final VoxelShape[] METAL_ELECTROLYSIS_CHAMBER = new VoxelShape[EnumUtils.HORIZONTAL_DIRECTIONS.length];
 
     static {
         VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
-                box(4, 4, 0, 12, 12, 2), // port1
-                box(4, 4, 14, 12, 12, 16), // port2
-                box(5, 5, 2, 11, 11, 14), // middle
-                box(6, 6, 3, 10, 10, 13) // inner
-        ), METAL_ELECTROLYSIS_ROD);
-
-        VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
-                box(-15, 0, -15, 31, 5, 31), // body/base
-                box(17, 5, -5, 30, 24, 28), // body/tank1
-                box(2, 5, -5, 15, 24, 28), // body/tank2
-                box(-12, 5, -5, -3, 12, 28), // body/desk
-                box(20, 4, -16, 20, 12, -15), // ports/port_front1/port
-                box(21, 5, -15, 27, 11, -5), // ports/port_front1/connector
-                box(4, 4, -16, 12, 12, -15), // ports/port_front2/port
-                box(5, 5, -15, 11, 11, -5), // ports/port_front2/connector
-                box(-12, 4, -16, -4, 12, -15), // ports/port_front3/port
-                box(-11, 5, -15, -5, 11, -5), // ports/port_front3/connector
-                box(31, 4, 4, 32, 12, 12), // ports/port_east1/port
-                box(30, 5, 5, 31, 11, 11), // ports/port_east1/connector
-                box(31, 4, 19, 32, 12, 27), // ports/port_east2/port
-                box(30, 5, 21, 31, 11, 26), // ports/port_east2/connector
-                box(-11, 14, -6, -9, 22, 6), // controller/screen1
-                box(-6, 14, 5.25, -4, 22, 17.25), // controller/screen2
-                box(-6, 14, 17.5, -4, 22, 29.5), // controller/screen3
-                box(-12, 12, 4, -6, 13, 18), // controller/keyboard
-                box(-3, 7, 3, 2, 11, 7), // controller/connector1
-                box(-3, 7, 16, 2, 11, 20), // controller/connector2,
-                box(-4, 12, 10, -3, 17, 12), // controller/connector3
-                box(-4, 17, 4, -3, 19, 18), // controller/connector4
-                box(-6.25, 17, 17, -5.25, 19, 25), // controller/connector5
-                box(-7.25, 17, -3, -6.25, 19, 5), // controller/connector6
-                box(-5.75, 14.75, -7.5, -5.75, 21.25, 3), // screens/screen1
-                box(-5.75, 14.25, 5.5, -5.75, 21.25, 16.5), // screens/screen2
-                box(-11.5, 14.75, 18.25, -11.5, 21.25, 28.75), // screens/screen3
-                box(19, 24, -1, 28, 25, 24), // tank1_top/top_base/base1
-                box(19, 25, -1, 28, 26, 0), // tank1_top/top_base/base2_1
-                box(19, 25, 23, 28, 26, 24), // tank1_top/top_base/base2_2
-                box(19, 25, 0, 20, 26, 23), // tank1_top/top_base/base3_1
-                box(27, 25, 0, 28, 26, 23), // tank1_top/top_base/base3_2
-                box(20, 25, 15, 27, 26, 16), // tank1_top/top_base/base4_1
-                box(20, 25, 7, 27, 26, 8), // tank1_top/top_base/base4_2
-                box(20, 25, 16, 27, 26, 23), // tank1_top/top1
-                box(20, 25, 8, 27, 26, 15), // tank1_top/top2
-                box(20, 25, 0, 27, 26, 7), // tank1_top/top3
-                box(4, 24, -1, 13, 25, 24), // tank2_top/top_base/base1
-                box(4, 25, -1, 13, 26, 0), // tank2_top/top_base/base2_1
-                box(4, 25, 23, 13, 26, 24), // tank2_top/top_base/base2_2
-                box(4, 25, 0, 5, 26, 23), // tank2_top/top_base/base3_1
-                box(12, 25, 0, 13, 26, 23), // tank2_top/top_base/base3_2
-                box(5, 25, 15, 12, 26, 16), // tank2_top/top_base/base4_1
-                box(5, 25, 7, 12, 26, 8), // tank2_top/top_base/base4_2
-                box(5, 25, 16, 12, 26, 23), // tank2_top/top1
-                box(5, 25, 8, 12, 26, 15), // tank2_top/top2
-                box(5, 25, 0, 12, 26, 7), // tank2_top/top3
-                box(7, 26, 2, 10, 32, 5), // pipes/pipe1_1
-                box(10, 29, 2, 22, 32, 5), // pipes/pipe1_2
-                box(22, 26, 2, 25, 32, 5), // pipes/pipe1_3
-                box(7, 26, 10, 10, 32, 13), // pipes/pipe2_1
-                box(10, 29, 10, 22, 32, 13), // pipes/pipe2_2
-                box(22, 26, 10, 25, 32, 13), // pipes/pipe2_3
-                box(7, 26, 18, 10, 32, 21), // pipes/pipe3_1,
-                box(10, 29, 18, 22, 32, 21), // pipes/pipe3_2,
-                box(22, 26, 18, 25, 32, 21) // pipes/pipe3_3
+                box(-15, 0, -15, 31, 5, 31),
+                box(-12, 5, 17, 21, 24, 30),
+                box(-12, 5, 2, 21, 24, 15),
+                box(-12, 5, -12, 21, 12, -3),
+                box(31, 4, 20, 32, 12, 28),
+                box(21, 5, 21, 31, 11, 27),
+                box(31, 4, 4, 32, 12, 12),
+                box(21, 5, 5, 31, 11, 11),
+                box(31, 4, -12, 32, 12, -4),
+                box(21, 5, -11, 31, 11, -5),
+                box(4, 4, 31, 12, 12, 32),
+                box(5, 5, 30, 11, 11, 31),
+                box(-11, 4, 31, -3, 12, 32),
+                box(-10, 5, 30, -5, 11, 31),
+                box(-2, 12, -12, 12, 13, -6),
+                box(9, 7, -3, 13, 11, 2),
+                box(-4, 7, -3, 0, 11, 2),
+                box(4, 12, -4, 6, 17, -3),
+                box(-2, 17, -4, 12, 19, -3),
+                box(-0.5, 14.25, -5.75, 10.5, 21.25, -5.75),
+                box(-15.617316567634909, 14.750000000000021, -1.2895321333313632, -5.117316567634909, 21.25000000000002, -1.2895321333313632),
+                box(-8, 24, 19, 17, 25, 28),
+                box(16, 25, 19, 17, 26, 28),
+                box(-8, 25, 19, -7, 26, 28),
+                box(-7, 25, 19, 16, 26, 20),
+                box(-7, 25, 27, 16, 26, 28),
+                box(0, 25, 20, 1, 26, 27),
+                box(8, 25, 20, 9, 26, 27),
+                box(-7, 25, 20, 0, 26, 27),
+                box(1, 25, 20, 8, 26, 27),
+                box(9, 25, 20, 16, 26, 27),
+                box(-8, 24, 4, 17, 25, 13),
+                box(16, 25, 4, 17, 26, 13),
+                box(-8, 25, 4, -7, 26, 13),
+                box(-7, 25, 4, 16, 26, 5),
+                box(-7, 25, 12, 16, 26, 13),
+                box(0, 25, 5, 1, 26, 12),
+                box(8, 25, 5, 9, 26, 12),
+                box(-7, 25, 5, 0, 26, 12),
+                box(1, 25, 5, 8, 26, 12),
+                box(9, 25, 5, 16, 26, 12),
+                box(11, 26, 7, 14, 32, 10),
+                box(11, 29, 10, 14, 32, 22),
+                box(11, 26, 22, 14, 32, 25),
+                box(3, 26, 7, 6, 32, 10),
+                box(3, 29, 10, 6, 32, 22),
+                box(3, 26, 22, 6, 32, 25),
+                box(-5, 26, 7, -2, 32, 10),
+                box(-5, 29, 10, -2, 32, 22),
+                box(-5, 26, 22, -2, 32, 25)
         ), ACID_LEACHER);
 
         VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
@@ -99,6 +83,32 @@ public final class MSBlockShapes {
                 box(16, 5, 5, 16, 11, 11), // portLED1
                 box(0, 5, 5, 0, 11, 11) // portLED2
         ), ADSORPTION_SEPARATOR);
+
+        VoxelShapeUtils.setShape(VoxelShapeUtils.combine(
+                box(-15, -16, -15, 31, -12, 31),
+                box(-9, -10, -9, 25, 26, 25),
+                box(4, 26, 12, 12, 27, 20),
+                box(4, 26, 4, 12, 27, 12),
+                box(4, 26, -4, 12, 27, 4),
+                box(12, 26, 4, 20, 27, 12),
+                box(-4, 26, 4, 4, 27, 12),
+                box(-12, -12, 24, -8, 28, 28),
+                box(-12, -12, -12, -8, 28, -8),
+                box(-11, -11, -8, -9, 27, 24),
+                box(-16, 4, 4, -15, 12, 12),
+                box(-15, 5, 5, -11, 11, 11),
+                box(24, -12, 24, 28, 28, 28),
+                box(24, -12, -12, 28, 28, -8),
+                box(25, -11, -8, 27, 27, 24),
+                box(31, 4, 4, 32, 12, 12),
+                box(27, 5, 5, 31, 11, 11),
+                box(4, 4, 31, 12, 12, 32),
+                box(5, 5, 25, 11, 11, 31),
+                box(-6, 9, -12, 6, 17, -10),
+                box(-5, 9.75, -12, 5, 16, -12),
+                box(10, 9, -12, 22, 17, -10),
+                box(11, 9.75, -12, 21, 16, -12)
+        ).move(0, 1, 0), METAL_ELECTROLYSIS_CHAMBER);
     }
 
     private MSBlockShapes() {

@@ -167,13 +167,12 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection, side -> side == RelativeSide.LEFT || side == RelativeSide.BACK, side -> side == RelativeSide.LEFT);
         itemInputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.notExternal, (stack, automationType) -> containsRecipeAB(stack, gasInputTank.getStack()),
-                this::containsRecipeA, recipeCacheListener, 26, 36) {
+                this::containsRecipeA, recipeCacheListener, 7, 36) {
         };
         itemInputSlot.setSlotType(ContainerSlotType.INPUT);
-        itemInputSlot.setSlotOverlay(SlotOverlay.MINUS);
         itemInputSlot.tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(itemInputSlot);
-        builder.addSlot(inputGasSlot = GasInventorySlot.fillOrConvert(gasInputTank, this::getLevel, listener, 26, 55), RelativeSide.LEFT);
+        builder.addSlot(inputGasSlot = GasInventorySlot.fillOrConvert(gasInputTank, this::getLevel, listener, 7, 55), RelativeSide.LEFT);
         builder.addSlot(outputFluidSlot = FluidInventorySlot.drain(outputTank, this, 152, 55), RelativeSide.BACK);
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
         inputGasSlot.setSlotOverlay(SlotOverlay.MINUS);
@@ -250,6 +249,8 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
             return ((ITileEntityMekanismAccessor) this).getFluidHandlerManager().resolve(capability, side);
         } else if (capability == ForgeCapabilities.ITEM_HANDLER) {
             return itemHandlerManager.resolve(capability, side);
+        } else if (EnergyCompatUtils.isEnergyCapability(capability)) {
+            return ((ITileEntityMekanismAccessor) this).getEnergyHandlerManager().resolve(capability, side);
         }
         return getCapability(capability, side);
     }
@@ -293,6 +294,7 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
 
     private boolean notGasPort(Direction side, Vec3i offset) {
         Direction left = getLeftSide();
+        Direction back = getOppositeDirection();
         switch (getDirection()) {
             case NORTH, SOUTH -> {
                 if (offset.equals(new Vec3i(left.getStepX(), 0, 0)))

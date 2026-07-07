@@ -22,7 +22,7 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
     private int pillars;
 
     public AntiExtractingPlantValidator() {
-        super(new VoxelCuboid(5, 5, 7), new VoxelCuboid(15, 15, 25));
+        super(new VoxelCuboid(5, 7, 5), new VoxelCuboid(15, 15, 25));
     }
 
     @Override

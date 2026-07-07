@@ -2,6 +2,7 @@ package com.fxd927.mekanismscience.client.jei.machine;
 
 import com.fxd927.mekanismscience.api.recipes.ItemStackGasToFluidRecipe;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
+import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
@@ -12,6 +13,7 @@ import mekanism.client.gui.element.slot.SlotType;
 import mekanism.client.jei.BaseRecipeCategory;
 import mekanism.client.jei.MekanismJEI;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -25,11 +27,15 @@ public class AcidLeachingRecipeCategory extends BaseRecipeCategory<ItemStackGasT
     private final GuiGauge<?> output;
 
     public AcidLeachingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<ItemStackGasToFluidRecipe> recipeType) {
-        super(helper, recipeType, MSBlocks.ACID_LEACHER, 3, 10, 170, 62);
-        gasInput = GuiGasGauge.getDummy(GaugeType.STANDARD, this, 5, 13);
-        itemInput = addSlot(SlotType.INPUT, 26, 36);
-        addConstantProgress(ProgressType.LARGE_RIGHT, 64, 30);
-        output = GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 131, 13);
+        super(helper, recipeType, MSBlocks.ACID_LEACHER, 3, 10, 170, 75);
+        gasInput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 28, 13));
+        addSlot(SlotType.INPUT, 7, 55).with(SlotOverlay.MINUS);
+        itemInput = addSlot(SlotType.INPUT, 7, 36);
+        addConstantProgress(ProgressType.LARGE_RIGHT, 64, 40);
+        output = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 131, 13));
+        addSlot(SlotType.OUTPUT, 152, 55).with(SlotOverlay.PLUS);
+        addElement(new GuiHorizontalPowerBar(this, FULL_BAR, 115, 75));
+        addSlot(SlotType.INPUT, 152, 14).with(SlotOverlay.POWER);
     }
 
     @Override

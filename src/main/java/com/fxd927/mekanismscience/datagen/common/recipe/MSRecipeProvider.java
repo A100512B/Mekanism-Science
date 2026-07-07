@@ -211,7 +211,7 @@ public class MSRecipeProvider extends RecipeProvider {
                         TripleLine.of('D', 'I', 'D'),
                         TripleLine.of('B', 'B', 'B')))
                 .key('P', MSItems.PTFE_SHEET)
-                .key('U', ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "circuits/ultimate")))
+                .key('U', MekanismTags.Items.CIRCUITS_ULTIMATE)
                 .key('D', MekanismBlocks.DYNAMIC_TANK)
                 .key('I', MekanismBlocks.CHEMICAL_INJECTION_CHAMBER)
                 .key('B', MekanismTags.Items.STORAGE_BLOCKS_STEEL)
@@ -261,7 +261,7 @@ public class MSRecipeProvider extends RecipeProvider {
                 .key('C', MSBlocks.ANTI_EXTRACTING_PLANT_CASING)
                 .key('A', MekanismTags.Items.CIRCUITS_ADVANCED)
                 .build(writer);
-        ExtendedShapelessRecipeBuilder.shapelessRecipe(MSItems.BONE_ASHES, 4)
+        ExtendedShapelessRecipeBuilder.shapelessRecipe(MSItems.BONE_ASHES_WITH_CARBON, 4)
                 .addIngredient(MSItems.BONE_ASHES, 4)
                 .addIngredient(ItemTags.COALS)
                 .build(writer);
@@ -300,38 +300,6 @@ public class MSRecipeProvider extends RecipeProvider {
                 .key('P', MekanismItems.POLONIUM_PELLET)
                 .key('X', MekanismBlocks.STEEL_CASING)
                 .build(writer);
-        ExtendedShapedRecipeBuilder.shapedRecipe(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING)
-                .pattern(RecipePattern.createPattern(
-                        TripleLine.of('S', 'C', 'S'),
-                        TripleLine.of('W', 'X', 'W'),
-                        TripleLine.of('S', 'C', 'S')))
-                .key('S', MSItems.PTFE_SHEET)
-                .key('C', Tags.Items.STORAGE_BLOCKS_COPPER)
-                .key('W', MekanismBlocks.ULTIMATE_UNIVERSAL_CABLE)
-                .key('X', MekanismBlocks.STEEL_CASING)
-                .build(writer);
-        ExtendedShapedRecipeBuilder.shapedRecipe(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_LASER_ACCEPTOR)
-                .pattern(RecipePattern.createPattern(
-                        TripleLine.of(' ', 'C', ' '),
-                        TripleLine.of('C', 'R', 'C'),
-                        TripleLine.of(' ', 'C', ' ')))
-                .key('C', MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING)
-                .key('R', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                .build(writer);
-        MekDataShapedRecipeBuilder.shapedRecipe(MSBlocks.METAL_ELECTROLYSIS_CHAMBER_PORT, 2)
-                .pattern(RecipePattern.createPattern(TripleLine.of('C', 'U', 'C')))
-                .key('C', MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING)
-                .key('U', MekanismTags.Items.CIRCUITS_ULTIMATE)
-                .build(writer);
-        ExtendedShapedRecipeBuilder.shapedRecipe(MSBlocks.METAL_ELECTROLYZING_ROD, 3)
-                .pattern(RecipePattern.createPattern(
-                        TripleLine.of('S', 'S', 'S'),
-                        TripleLine.of('C', 'O', 'C'),
-                        TripleLine.of('S', 'S', 'S')))
-                .key('S', MSItems.PTFE_SHEET)
-                .key('C', MekanismBlocks.ULTIMATE_UNIVERSAL_CABLE)
-                .key('O', MekanismItems.ELECTROLYTIC_CORE)
-                .build(writer);
         MekDataShapedRecipeBuilder.shapedRecipe(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER)
                 .pattern(RecipePattern.createPattern(
                         TripleLine.of('S', 'S', 'S'),
@@ -360,6 +328,17 @@ public class MSRecipeProvider extends RecipeProvider {
                 .key('G', Tags.Items.GLASS)
                 .key('C', MSItems.DUST_CALCIUM_OXIDE)
                 .build(writer, rl("structural_glass"));
+        MekDataShapedRecipeBuilder.shapedRecipe(MSBlocks.METAL_ELECTROLYSIS_CHAMBER)
+                .pattern(RecipePattern.createPattern(
+                        TripleLine.of('P', 'U', 'P'),
+                        TripleLine.of('D', 'X', 'D'),
+                        TripleLine.of('B', 'B', 'B')))
+                .key('P', MSItems.PTFE_SHEET)
+                .key('U', MekanismTags.Items.CIRCUITS_ULTIMATE)
+                .key('D', MekanismBlocks.DYNAMIC_VALVE)
+                .key('X', MekanismBlocks.ELECTROLYTIC_SEPARATOR)
+                .key('B', MekanismTags.Items.STORAGE_BLOCKS_STEEL)
+                .build(writer);
     }
 
     private void dissolution(Consumer<FinishedRecipe> writer) {

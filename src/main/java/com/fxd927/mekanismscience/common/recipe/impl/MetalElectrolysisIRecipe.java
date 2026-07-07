@@ -31,11 +31,11 @@ public class MetalElectrolysisIRecipe extends MetalElectrolysisRecipe {
 
     @Override
     public String getGroup() {
-        return MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING.getName();
+        return MSBlocks.METAL_ELECTROLYSIS_CHAMBER.getName();
     }
 
     @Override
     public ItemStack getToastSymbol() {
-        return MSBlocks.METAL_ELECTROLYSIS_CHAMBER_CASING.getItemStack();
+        return MSBlocks.METAL_ELECTROLYSIS_CHAMBER.getItemStack();
     }
 }

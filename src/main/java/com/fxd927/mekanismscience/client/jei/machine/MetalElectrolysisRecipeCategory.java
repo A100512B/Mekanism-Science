@@ -1,8 +1,8 @@
 package com.fxd927.mekanismscience.client.jei.machine;
 
 import com.fxd927.mekanismscience.api.recipes.MetalElectrolysisRecipe;
-import com.fxd927.mekanismscience.common.MSLang;
-import com.fxd927.mekanismscience.common.MekanismScience;
+import com.fxd927.mekanismscience.common.registries.MSBlocks;
+import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.gauge.GuiGauge;
@@ -11,24 +11,26 @@ import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
 import mekanism.client.jei.BaseRecipeCategory;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public class MetalElectrolysisRecipeCategory extends BaseRecipeCategory<MetalElectrolysisRecipe> {
 
-    private static final ResourceLocation iconRL = MekanismScience.rl("gui/electrolysis.png");
     private final GuiGauge<?> input;
     private final GuiSlot output;
 
     public MetalElectrolysisRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<MetalElectrolysisRecipe> recipeType) {
-        super(helper, recipeType, MSLang.METAL_ELECTROLYSIS_CHAMBER.translate(), createIcon(helper, iconRL), 3, 12, 170, 62);
-        input = GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 26, 10);
-        addConstantProgress(ProgressType.LARGE_RIGHT, 64, 30);
-        output = addSlot(SlotType.OUTPUT, 131, 26);
+        super(helper, recipeType, MSBlocks.METAL_ELECTROLYSIS_CHAMBER, 3, 12, 170, 62);
+        input = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 42, 13));
+        addSlot(SlotType.INPUT, 21, 56).with(SlotOverlay.MINUS);
+        addConstantProgress(ProgressType.LARGE_RIGHT, 64, 40);
+        output = addSlot(SlotType.OUTPUT, 116, 36);
+        addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
+        addSlot(SlotType.INPUT, 144, 35).with(SlotOverlay.POWER);
     }
 
     @Override

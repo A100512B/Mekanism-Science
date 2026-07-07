@@ -3,8 +3,6 @@ package com.fxd927.mekanismscience.common;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.anti_extraction.AntiExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.content.anti_extraction.AntiExtractingPlantValidator;
-import com.fxd927.mekanismscience.common.content.electrolysis.MetalElectrolysisChamberMultiblockData;
-import com.fxd927.mekanismscience.common.content.electrolysis.MetalElectrolysisChamberValidator;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantValidator;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
@@ -35,7 +33,6 @@ public class MekanismScience {
 
     public static final MultiblockManager<ExtractingPlantMultiblockData> extractingPlantManager = new MultiblockManager<>("extractingPlant", MultiblockCache::new, ExtractingPlantValidator::new);
     public static final MultiblockManager<AntiExtractingPlantMultiblockData> antiExtractingPlantManager = new MultiblockManager<>("antiExtractingPlant", MultiblockCache::new, AntiExtractingPlantValidator::new);
-    public static final MultiblockManager<MetalElectrolysisChamberMultiblockData> metalElectrolysisChamberManager = new MultiblockManager<>("metalElectrolysisChamber", MultiblockCache::new, MetalElectrolysisChamberValidator::new);
 
     @SuppressWarnings("removal")
     public MekanismScience() {
