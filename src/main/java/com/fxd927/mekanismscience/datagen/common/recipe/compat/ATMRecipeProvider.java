@@ -82,13 +82,13 @@ public class ATMRecipeProvider implements IMSCompatRecipeProvider {
         FluidChemicalToFluidRecipeBuilder.extraction(
                         fluid().from(MSFluids.PROCESSED_LEACHATE_RESOURCES.get(ATMResource.VIB), 10),
                         gas().from(MSGases.P204, 5),
-                        MSFluids.PROCESSED_EXTRACT_RESOURCES.get(ATMResource.ATM).getFluidStack(15))
+                        MSFluids.PROCESSED_EXTRACT_RESOURCES.get(ATMResource.VIB).getFluidStack(15))
                 .addCondition(modLoaded)
                 .build(writer, rl(basePath + "vibranium/extraction"));
         FluidChemicalToFluidChemicalRecipeBuilder.antiExtraction(
                         fluid().from(MSFluids.PROCESSED_EXTRACT_RESOURCES.get(ATMResource.VIB), 15),
                         gas().from(MSGases.POTASSIUM_NITRATE, 5),
-                        MSFluids.PROCESSED_CONCENTRATE_RESOURCES.get(ATMResource.ATM).getFluidStack(5),
+                        MSFluids.PROCESSED_CONCENTRATE_RESOURCES.get(ATMResource.VIB).getFluidStack(5),
                         MSGases.P204.getStack(10))
                 .addCondition(modLoaded)
                 .build(writer, rl(basePath + "vibranium/anti_extraction"));
@@ -114,7 +114,7 @@ public class ATMRecipeProvider implements IMSCompatRecipeProvider {
         FluidChemicalToFluidRecipeBuilder.extraction(
                         fluid().from(MSFluids.PROCESSED_LEACHATE_RESOURCES.get(ATMResource.UNOB), 10),
                         gas().from(MSGases.P204, 5),
-                        MSFluids.PROCESSED_EXTRACT_RESOURCES.get(ATMResource.ATM).getFluidStack(15))
+                        MSFluids.PROCESSED_EXTRACT_RESOURCES.get(ATMResource.UNOB).getFluidStack(15))
                 .addCondition(modLoaded)
                 .build(writer, rl(basePath + "unobtainium/extraction"));
         FluidChemicalToFluidChemicalRecipeBuilder.antiExtraction(
@@ -130,6 +130,5 @@ public class ATMRecipeProvider implements IMSCompatRecipeProvider {
                         FloatingLong.createConst(250))
                 .addCondition(modLoaded)
                 .build(writer, rl(basePath + "unobtainium/electrolysis"));
-
     }
 }
