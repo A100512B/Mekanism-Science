@@ -26,11 +26,12 @@ public class ExtractionRecipeCategory extends BaseRecipeCategory<FluidGasToFluid
     private final GuiGauge<?> output;
 
     public ExtractionRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<FluidGasToFluidRecipe> recipeType) {
-        super(helper, recipeType, MSLang.EXTRACTING_PLANT.translate(), createIcon(helper, iconRL), 3, 10, 170, 62);
-        fluidInput = GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 48, 10);
-        gasInput = GuiGasGauge.getDummy(GaugeType.STANDARD, this, 69, 10);
-        addConstantProgress(ProgressType.LARGE_RIGHT, 74, 30);
-        output = GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 127, 10);
+        super(helper, recipeType, MSLang.EXTRACTING_PLANT.translate(), createIcon(helper, iconRL), 3, 12, 170, 62);
+        fluidInput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 25, 10));
+        gasInput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 133, 10));
+        output = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 79, 10));
+        addConstantProgress(ProgressType.SMALL_RIGHT, 47, 35);
+        addConstantProgress(ProgressType.SMALL_LEFT, 101, 35);
     }
 
     @Override

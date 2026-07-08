@@ -27,14 +27,16 @@ public class GuiExtractingPlant extends GuiMekanismTile<TileEntityExtractingPlan
     protected void addGuiElements() {
         super.addGuiElements();
         ExtractingPlantMultiblockData multiblock = tile.getMultiblock();
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.leachateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 48, 10))
+        addRenderableWidget(new GuiFluidGauge(() -> multiblock.leachateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 25, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 69, 10))
+        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 133, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.LARGE_RIGHT, this, 74, 30)).jeiCategory(tile)
-                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.outputTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 127, 10))
+        addRenderableWidget(new GuiFluidGauge(() -> multiblock.outputTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 79, 10))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
+        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.SMALL_RIGHT, this, 47, 35).jeiCategory(tile))
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
+        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.SMALL_LEFT, this, 101, 35).jeiCategory(tile))
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }
 
     private BooleanSupplier getWarningCheck(RecipeError error) {

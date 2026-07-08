@@ -30,7 +30,7 @@ public class MetalElectrolysisRecipeCategory extends BaseRecipeCategory<MetalEle
         addConstantProgress(ProgressType.LARGE_RIGHT, 64, 40);
         output = addSlot(SlotType.OUTPUT, 116, 36);
         addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
-        addSlot(SlotType.INPUT, 144, 35).with(SlotOverlay.POWER);
+        addSlot(SlotType.POWER, 144, 35).with(SlotOverlay.POWER);
     }
 
     @Override

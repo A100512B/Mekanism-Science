@@ -32,11 +32,12 @@ public class AntiExtractionRecipeCategory extends BaseRecipeCategory<FluidGasToF
 
     public AntiExtractionRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<FluidGasToFluidGasRecipe> recipeType) {
         super(helper, recipeType, MSLang.ANTI_EXTRACTING_PLANT.translate(), createIcon(helper, iconRL), 3, 10, 170, 62);
-        fluidInput = GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 27, 10);
-        gasInput = GuiGasGauge.getDummy(GaugeType.STANDARD, this, 48, 10);
-        addConstantProgress(ProgressType.LARGE_RIGHT, 53, 30);
-        fluidOutput = GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 110, 10);
-        gasOutput = GuiGasGauge.getDummy(GaugeType.STANDARD, this, 137, 10);
+        fluidInput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 15, 10));
+        gasInput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 145, 10));
+        addConstantProgress(ProgressType.SMALL_RIGHT, 36, 35);
+        addConstantProgress(ProgressType.SMALL_LEFT, 112, 35);
+        fluidOutput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 69, 10));
+        gasOutput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 91, 10));
     }
 
     @Override

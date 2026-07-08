@@ -294,7 +294,6 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
 
     private boolean notGasPort(Direction side, Vec3i offset) {
         Direction left = getLeftSide();
-        Direction back = getOppositeDirection();
         switch (getDirection()) {
             case NORTH, SOUTH -> {
                 if (offset.equals(new Vec3i(left.getStepX(), 0, 0)))

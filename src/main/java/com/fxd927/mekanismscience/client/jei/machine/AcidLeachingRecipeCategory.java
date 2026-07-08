@@ -35,7 +35,7 @@ public class AcidLeachingRecipeCategory extends BaseRecipeCategory<ItemStackGasT
         output = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 131, 13));
         addSlot(SlotType.OUTPUT, 152, 55).with(SlotOverlay.PLUS);
         addElement(new GuiHorizontalPowerBar(this, FULL_BAR, 115, 75));
-        addSlot(SlotType.INPUT, 152, 14).with(SlotOverlay.POWER);
+        addSlot(SlotType.POWER, 152, 14).with(SlotOverlay.POWER);
     }
 
     @Override

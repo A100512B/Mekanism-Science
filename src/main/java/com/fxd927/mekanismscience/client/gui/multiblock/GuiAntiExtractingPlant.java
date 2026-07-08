@@ -27,15 +27,17 @@ public class GuiAntiExtractingPlant extends GuiMekanismTile<TileEntityAntiExtrac
     protected void addGuiElements() {
         super.addGuiElements();
         AntiExtractingPlantMultiblockData multiblock = tile.getMultiblock();
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.extractTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 27, 10))
+        addRenderableWidget(new GuiFluidGauge(() -> multiblock.extractTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 15, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.antiExtractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 48, 10))
+        addRenderableWidget(new GuiGasGauge(() -> multiblock.antiExtractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 145, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.LARGE_RIGHT, this, 53, 30)).jeiCategory(tile)
+        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 36, 35)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.concentrateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 110, 10))
+        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 112, 35)).jeiCategory(tile)
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
+        addRenderableWidget(new GuiFluidGauge(() -> multiblock.concentrateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 69, 10))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 137, 10))
+        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 91, 10))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
     }
 
