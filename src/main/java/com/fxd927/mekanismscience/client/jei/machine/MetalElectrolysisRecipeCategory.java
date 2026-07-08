@@ -12,6 +12,7 @@ import mekanism.client.gui.element.slot.SlotType;
 import mekanism.client.jei.BaseRecipeCategory;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
+import mekanism.common.tile.component.config.DataType;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -25,7 +26,7 @@ public class MetalElectrolysisRecipeCategory extends BaseRecipeCategory<MetalEle
 
     public MetalElectrolysisRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<MetalElectrolysisRecipe> recipeType) {
         super(helper, recipeType, MSBlocks.METAL_ELECTROLYSIS_CHAMBER, 3, 12, 170, 62);
-        input = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 42, 13));
+        input = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 42, 13));
         addSlot(SlotType.INPUT, 21, 56).with(SlotOverlay.MINUS);
         addConstantProgress(ProgressType.LARGE_RIGHT, 64, 40);
         output = addSlot(SlotType.OUTPUT, 116, 36);

@@ -11,6 +11,7 @@ import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.jei.BaseRecipeCategory;
 import mekanism.client.jei.MekanismJEI;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.tile.component.config.DataType;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -32,12 +33,12 @@ public class AntiExtractionRecipeCategory extends BaseRecipeCategory<FluidGasToF
 
     public AntiExtractionRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<FluidGasToFluidGasRecipe> recipeType) {
         super(helper, recipeType, MSLang.ANTI_EXTRACTING_PLANT.translate(), createIcon(helper, iconRL), 3, 10, 170, 62);
-        fluidInput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 15, 10));
-        gasInput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 145, 10));
+        fluidInput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 15, 10));
+        gasInput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 145, 10));
         addConstantProgress(ProgressType.SMALL_RIGHT, 36, 35);
         addConstantProgress(ProgressType.SMALL_LEFT, 112, 35);
-        fluidOutput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 69, 10));
-        gasOutput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 91, 10));
+        fluidOutput = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.OUTPUT), this, 69, 10));
+        gasOutput = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.OUTPUT), this, 91, 10));
     }
 
     @Override
