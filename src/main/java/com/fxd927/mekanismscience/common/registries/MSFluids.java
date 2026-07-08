@@ -82,12 +82,12 @@ public class MSFluids {
         if (ModList.get().isLoaded("allthemodium")) {
             // ATM
             for (ATMResource resource : ATMResource.values()) {
-                registerProcessing(resource, resource.getTint());
+                registerProcessing(resource, 0xFF000000 | resource.getTint());
             }
         }
         if (ModList.get().isLoaded("alltheores")) {
             for (ATOResource resource : ATOResource.values()) {
-                registerProcessing(resource, resource.getTint());
+                registerProcessing(resource, 0xFF000000 | resource.getTint());
             }
         }
     }
