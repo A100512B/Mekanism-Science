@@ -11,8 +11,10 @@ import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BooleanSupplier;
 
@@ -21,27 +23,36 @@ public class GuiAntiExtractingPlant extends GuiMekanismTile<TileEntityAntiExtrac
     public GuiAntiExtractingPlant(MekanismTileContainer<TileEntityAntiExtractingPlantCasing> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
+        inventoryLabelY += 12;
+        imageHeight += 12;
     }
 
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
         AntiExtractingPlantMultiblockData multiblock = tile.getMultiblock();
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.extractTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 15, 10))
+        addRenderableWidget(new GuiFluidGauge(() -> multiblock.extractTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 15, 20))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.antiExtractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 145, 10))
+        addRenderableWidget(new GuiGasGauge(() -> multiblock.antiExtractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 145, 20))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 36, 35)).jeiCategory(tile)
+        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 36, 46)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 112, 35)).jeiCategory(tile)
+        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 112, 46)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.concentrateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 69, 10))
+        addRenderableWidget(new GuiFluidGauge(() -> multiblock.concentrateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 69, 20))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 91, 10))
+        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 91, 20))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
     }
 
     private BooleanSupplier getWarningCheck(RecipeError error) {
         return () -> tile.getMultiblock().hasWarning(error);
+    }
+
+    @Override
+    protected void drawForegroundText(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        renderTitleText(guiGraphics);
+        drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
+        super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
 }

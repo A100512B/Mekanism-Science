@@ -28,9 +28,9 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
     @Override
     protected CasingType getCasingType(BlockState state) {
         Block block = state.getBlock();
-        if (BlockType.is(block, MSBlockTypes.EXTRACTING_PLANT_CASING)) {
+        if (BlockType.is(block, MSBlockTypes.ANTI_EXTRACTING_PLANT_CASING)) {
             return CasingType.FRAME;
-        } else if (BlockType.is(block, MSBlockTypes.EXTRACTING_PLANT_PORT)) {
+        } else if (BlockType.is(block, MSBlockTypes.ANTI_EXTRACTING_PLANT_PORT)) {
             return CasingType.VALVE;
         }
         return CasingType.INVALID;
@@ -41,7 +41,7 @@ public class AntiExtractingPlantValidator extends CuboidStructureValidator<AntiE
         if (super.validateInner(state, chunkMap, pos)) {
             return true;
         }
-        return BlockType.is(state.getBlock(), MSBlockTypes.EXTRACTING_PILLAR);
+        return BlockType.is(state.getBlock(), MSBlockTypes.ANTI_EXTRACTING_PILLAR);
     }
 
     @Override
