@@ -157,6 +157,8 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
     }
 
     public void addMisc() {
+        // Mod Name
+        add(MSLang.MEKANISM_SCIENCE, "通用机械：科学");
         // Descriptions
         add(MSLang.DESCRIPTION_ACID_LEACHER, "一台巨大的化学惰性机器，可以安全存储大量危险的酸并用其浸出绝大多数金属。");
         add(MSLang.DESCRIPTION_ADSORPTION_SEPARATOR, "一台简单的机器，可以用指定的吸附剂吸附特定物质。");

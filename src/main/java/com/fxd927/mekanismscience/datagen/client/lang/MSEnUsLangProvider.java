@@ -152,6 +152,8 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
     }
 
     public void addMisc() {
+        // Mod Name
+        add(MSLang.MEKANISM_SCIENCE, "Mekanism: Science");
         // Descriptions
         add(MSLang.DESCRIPTION_ACID_LEACHER, "A giant and chemical-inert machine that can safely contain tons of dangerous acids and use them to leach most metals.");
         add(MSLang.DESCRIPTION_ADSORPTION_SEPARATOR, "A simple machine used to extract certain substances with specific adsorbents.");
