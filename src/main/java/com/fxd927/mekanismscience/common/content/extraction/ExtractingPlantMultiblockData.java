@@ -1,7 +1,6 @@
 package com.fxd927.mekanismscience.common.content.extraction;
 
 import com.fxd927.mekanismscience.api.MSNBTConstants;
-import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidRecipe;
 import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
@@ -17,7 +16,6 @@ import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.cache.TwoInputCachedRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
@@ -163,6 +161,10 @@ public class ExtractingPlantMultiblockData
             super.setVolume(volume);
             leachateTankCapacity = volume * MSConfig.generalConfig.extractionLeachatePerTank.get();
         }
+    }
+
+    public boolean handlesSound(TileEntityExtractingPlantCasing tile) {
+        return getBounds().isOnCorner(tile.getBlockPos());
     }
 
     @Override

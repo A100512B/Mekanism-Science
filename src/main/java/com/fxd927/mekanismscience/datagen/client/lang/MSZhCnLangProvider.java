@@ -176,6 +176,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         // Chemical Attributes
         add(MSLang.CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY, "萃取效率: %1$.2f");
         // Extracting Plant
+        add(MSLang.EXTRACTING_PLANT, "萃取工厂");
         add(MSLang.EXTRACTING_PLANT_INVALID_EVEN_LENGTH, "多方块结构无法成型，结构的长宽必须是奇数。");
         add(MSLang.EXTRACTING_PLANT_INVALID_MALFORMED_EXTRACTING_PILLARS, "多方块结构无法成型，发现错误的萃取柱位置。");
         add(MSLang.EXTRACTING_PLANT_INVALID_NOT_SQUARE, "多方块结构无法成型，结构的长宽必须相等。");
@@ -183,6 +184,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSLang.EXTRACTING_PLANT_PORT_MODE_INPUT_LEACHATE, "输入酸浸液");
         add(MSLang.EXTRACTING_PLANT_PORT_MODE_OUTPUT, "输出");
         // Anti-Extracting Plant
+        add(MSLang.ANTI_EXTRACTING_PLANT, "反萃取工厂");
         add(MSLang.ANTI_EXTRACTING_PLANT_INVALID_EVEN_LENGTH, "多方块结构无法成型，结构的长宽必须是奇数。");
         add(MSLang.ANTI_EXTRACTING_PLANT_INVALID_MALFORMED_ANTI_EXTRACTING_PILLARS, "多方块结构无法成型，发现错误的反萃取柱位置。");
         add(MSLang.ANTI_EXTRACTING_PLANT_INVALID_NOT_SQUARE, "多方块结构无法成型，结构的长宽必须相等。");

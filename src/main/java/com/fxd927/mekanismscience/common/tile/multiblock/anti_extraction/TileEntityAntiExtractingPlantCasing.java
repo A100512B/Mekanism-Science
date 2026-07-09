@@ -50,14 +50,13 @@ public class TileEntityAntiExtractingPlantCasing extends TileEntityMultiblock<An
     public CompoundTag getReducedUpdateTag() {
         CompoundTag tag = super.getReducedUpdateTag();
         AntiExtractingPlantMultiblockData multiblock = getMultiblock();
-        tag.putBoolean(NBTConstants.HANDLE_SOUND, multiblock.isFormed() && multiblock.handlesSound(this));
+        tag.putBoolean(NBTConstants.HANDLE_SOUND, multiblock.isFormed() && multiblock.handlesSound(this) && multiblock.lastGain > 0);
         return tag;
     }
 
     @Override
     public void handleUpdateTag(@NotNull CompoundTag tag) {
         super.handleUpdateTag(tag);
-        AntiExtractingPlantMultiblockData multiblock = getMultiblock();
         NBTUtils.setBooleanIfPresent(tag, NBTConstants.HANDLE_SOUND, value -> handleSound = value);
     }
 }

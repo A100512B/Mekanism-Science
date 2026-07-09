@@ -1,7 +1,6 @@
 package com.fxd927.mekanismscience.common.content.anti_extraction;
 
 import com.fxd927.mekanismscience.api.MSNBTConstants;
-import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe;
 import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe.FluidChemicalOutput;
 import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidGasRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
@@ -23,7 +22,6 @@ import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.cache.TwoInputCachedRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;

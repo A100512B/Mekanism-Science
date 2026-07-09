@@ -1,4 +1,5 @@
 {
+  "anti_extracting_plant.mekanismscience.anti_extracting_plant": "反萃取工厂",
   "anti_extracting_plant.mekanismscience.invalid_even_length": "多方块结构无法成型，结构的长宽必须是奇数。",
   "anti_extracting_plant.mekanismscience.invalid_malformed_anti_extracting_pillars": "多方块结构无法成型，发现错误的反萃取柱位置。",
   "anti_extracting_plant.mekanismscience.invalid_not_square": "多方块结构无法成型，结构的长宽必须相等。",
@@ -112,6 +113,7 @@
   "block.mekanismscience.zinc_leachate": "锌酸浸液",
   "block.mekanismscience.zinc_p204_extract": "锌 P204 萃取液",
   "chemical.mekanismscience.attribute.extraction_efficiency": "萃取效率: %1$.2f",
+  "constants.mekanismscience.mod_name": "通用机械：科学",
   "container.mekanismscience.acid_leacher": "酸浸室",
   "container.mekanismscience.adsorption_separator": "吸附分离机",
   "container.mekanismscience.air_compressor": "空气压缩机",
@@ -132,6 +134,7 @@
   "description.mekanismscience.metal_electrolysis_chamber": "一台用于强力电解溶液得到高纯金属的大型机器。",
   "description.mekanismscience.pressurized_polymerizing_chamber": "一台高级的用于高压聚合有机化合物的机器。",
   "description.mekanismscience.seawater_pump": "一台专为在海洋群系抽取海水而设计的泵。",
+  "extracting_plant.mekanismscience.extracting_plant": "萃取工厂",
   "extracting_plant.mekanismscience.invalid_even_length": "多方块结构无法成型，结构的长宽必须是奇数。",
   "extracting_plant.mekanismscience.invalid_malformed_extracting_pillars": "多方块结构无法成型，发现错误的萃取柱位置。",
   "extracting_plant.mekanismscience.invalid_not_square": "多方块结构无法成型，结构的长宽必须相等。",
