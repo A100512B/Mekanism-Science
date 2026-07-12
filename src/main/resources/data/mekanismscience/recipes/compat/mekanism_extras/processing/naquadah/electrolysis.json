@@ -1,0 +1,17 @@
+{
+  "type": "mekanismscience:metal_electrolysis",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism_extras"
+    }
+  ],
+  "energyRequired": 250,
+  "input": {
+    "amount": 10,
+    "fluid": "mekanismscience:naquadah_concentrate"
+  },
+  "output": {
+    "item": "mekanism_extras:dust_naquadah"
+  }
+}

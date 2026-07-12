@@ -71,6 +71,11 @@ public class MSFluids {
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> TETRAFLUOROETHYLENE = FLUIDS.registerLiquidChemical(MSChemicalConstants.TETRAFLUOROETHYLENE);
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> PTFE = FLUIDS.register("ptfe", UnaryOperator.identity(), props -> props.tint(0xFF86239F));
 
+    /**
+     * The virtual {@code IResource} for naquadah.
+     */
+    public static final IResource NAQUADAH = () -> "naquadah";
+
     static {
         for (PrimaryResource resource : EnumUtils.PRIMARY_RESOURCES) {
             registerProcessing(resource, resource.getTint());
@@ -89,6 +94,12 @@ public class MSFluids {
             for (ATOResource resource : ATOResource.values()) {
                 registerProcessing(resource, 0xFF000000 | resource.getTint());
             }
+        }
+        if (ModList.get().isLoaded("mekanism_extras")) {
+            // It crashes when running datagen with MekE loaded, so we have to create a virtual IResource
+            // Do not use ExtraResource.NAQUADAH when querying these processing fluids and use NAQUADAH
+            // in this class instead!
+            registerProcessing(NAQUADAH, 0xFF051602);
         }
     }
 
