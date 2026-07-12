@@ -836,7 +836,7 @@ public class MSRecipeProvider extends RecipeProvider {
     }
 
     private void bidirectionalRotary(Consumer<FinishedRecipe> writer, GasRegistryObject<Gas> gas, FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> fluid) {
-        String basePath = "rotary";
+        String basePath = "rotary/";
         RotaryRecipeBuilder.rotary(
                 fluid().from(fluid, 1),
                 gas().from(gas, 1),
