@@ -1,18 +1,11 @@
 package com.fxd927.mekanismscience.common.registries;
 
-import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.MekanismScience;
-import lombok.Getter;
-import mekanism.api.chemical.attribute.ChemicalAttribute;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.attribute.GasAttributes;
 import mekanism.api.math.FloatingLong;
-import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.GasDeferredRegister;
 import mekanism.common.registration.impl.GasRegistryObject;
-import net.minecraft.network.chat.Component;
-
-import java.util.List;
 
 public class MSGases {
 
@@ -36,7 +29,7 @@ public class MSGases {
     public static final GasRegistryObject<Gas> STRONTIUM = GASES.register(MSChemicalConstants.STRONTIUM);
     public static final GasRegistryObject<Gas> WHEY = GASES.register(MSChemicalConstants.WHEY);
     public static final GasRegistryObject<Gas> YTTRIUM = GASES.register(MSChemicalConstants.YTTRIUM);
-    public static final GasRegistryObject<Gas> P204 = GASES.register("p204", 0xFF9A6414, new Extractant(0.8));
+    public static final GasRegistryObject<Gas> P204 = GASES.register("p204", 0xFF9A6414);
     public static final GasRegistryObject<Gas> PHOSPHORYL_CHLORIDE = GASES.register(MSChemicalConstants.PHOSPHORYL_CHLORIDE);
     public static final GasRegistryObject<Gas> IMPURE_PHOSPHORYL_CHLORIDE = GASES.register("impure_phosphoryl_chloride", 0xFF46F675);
     public static final GasRegistryObject<Gas> ISOOCTANOL = GASES.register(MSChemicalConstants.ISOOCTANOL);
@@ -58,23 +51,6 @@ public class MSGases {
     public static final GasRegistryObject<Gas> POTASSIUM_NITRATE = GASES.register(MSChemicalConstants.POTASSIUM_NITRATE);
     public static final GasRegistryObject<Gas> TETRAFLUOROETHYLENE = GASES.register(MSChemicalConstants.TETRAFLUOROETHYLENE);
     public static final GasRegistryObject<Gas> PTFE = GASES.register("ptfe", 0xFF86239F);
-
-    @Getter
-    public static class Extractant extends ChemicalAttribute {
-
-        private final double extractionEfficiency;
-
-        public Extractant(double extractionEfficiency) {
-            this.extractionEfficiency = extractionEfficiency;
-        }
-
-        @Override
-        public List<Component> addTooltipText(List<Component> list) {
-            super.addTooltipText(list);
-            list.add(MSLang.CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY.translateColored(EnumColor.GRAY, EnumColor.PINK, extractionEfficiency));
-            return super.addTooltipText(list);
-        }
-    }
 
     private MSGases() {
     }

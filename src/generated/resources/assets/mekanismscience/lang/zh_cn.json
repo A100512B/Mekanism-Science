@@ -112,7 +112,6 @@
   "block.mekanismscience.zinc_concentrate": "锌浓缩液",
   "block.mekanismscience.zinc_leachate": "锌酸浸液",
   "block.mekanismscience.zinc_p204_extract": "锌 P204 萃取液",
-  "chemical.mekanismscience.attribute.extraction_efficiency": "萃取效率: %1$.2f",
   "constants.mekanismscience.mod_name": "通用机械：科学",
   "container.mekanismscience.acid_leacher": "酸浸室",
   "container.mekanismscience.adsorption_separator": "吸附分离机",

@@ -37,7 +37,7 @@ public class TileEntityAntiExtractingPlantCasing extends TileEntityMultiblock<An
 
     @Override
     public boolean canBeMaster() {
-        return false;
+        return worldPosition.equals(getMultiblock().getBounds().getMinPos());
     }
 
     @Override

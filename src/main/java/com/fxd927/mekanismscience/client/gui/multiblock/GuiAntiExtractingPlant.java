@@ -37,7 +37,7 @@ public class GuiAntiExtractingPlant extends GuiMekanismTile<TileEntityAntiExtrac
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
         addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 36, 46)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 112, 46)).jeiCategory(tile)
+        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_LEFT, this, 112, 46)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
         addRenderableWidget(new GuiFluidGauge(() -> multiblock.concentrateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 69, 20))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));

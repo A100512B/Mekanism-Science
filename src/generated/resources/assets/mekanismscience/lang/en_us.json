@@ -112,7 +112,6 @@
   "block.mekanismscience.zinc_concentrate": "Zinc Concentrate",
   "block.mekanismscience.zinc_leachate": "Zinc Leachate",
   "block.mekanismscience.zinc_p204_extract": "Zinc P204 Extract",
-  "chemical.mekanismscience.attribute.extraction_efficiency": "Extraction Efficiency: %1$.2f",
   "constants.mekanismscience.mod_name": "Mekanism: Science",
   "container.mekanismscience.acid_leacher": "Acid Leacher",
   "container.mekanismscience.adsorption_separator": "Adsorption Separator",

@@ -4,12 +4,10 @@ import com.fxd927.mekanismscience.api.MSNBTConstants;
 import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
-import com.fxd927.mekanismscience.common.registries.MSGases.Extractant;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import lombok.Setter;
 import mekanism.api.NBTConstants;
 import mekanism.api.chemical.ChemicalStack;
-import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
@@ -69,7 +67,7 @@ public class ExtractingPlantMultiblockData
 
     @ContainerSync
     public long lastGain;
-    private long expectToExtract = 0;
+    private int operations;
 
     private final RecipeCacheLookupMonitor<FluidGasToFluidRecipe> recipeCacheLookupMonitor;
     private final BooleanSupplier recheckAllRecipeErrors;
@@ -89,9 +87,9 @@ public class ExtractingPlantMultiblockData
         recipeCacheLookupMonitor = new RecipeCacheLookupMonitor<>(this);
         recheckAllRecipeErrors = TileEntityRecipeMachine.shouldRecheckAllErrors(tile);
         gasTanks.add(extractantTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> extractantTankCapacity,
-                this::containsRecipeB, ChemicalAttributeValidator.create(Extractant.class), this));
+                gas -> containsRecipeBA(leachateTank.getFluid(), gas), this));
         fluidTanks.add(leachateTank = VariableCapacityFluidTank.input(this, () -> leachateTankCapacity,
-                this::containsRecipeA, this));
+                fluid -> containsRecipeAB(fluid, extractantTank.getStack()), this));
         fluidTanks.add(outputTank = VariableCapacityFluidTank.output(this, () -> extractantTankCapacity,
                 fluid -> true, this));
         extractantInputHandler = InputHelper.getInputHandler(extractantTank, NOT_ENOUGH_GAS_INPUT);
@@ -102,20 +100,7 @@ public class ExtractingPlantMultiblockData
     @Override
     public boolean tick(Level world) {
         boolean needsPacket = super.tick(world);
-        int outputStored = outputTank.getFluidAmount();
-        long total = outputStored + leachateTank.getFluidAmount();
-        if ((double) outputStored / total < extractantTank.getType().get(Extractant.class).getExtractionEfficiency()) {
-            long waterPhaseAmount = leachateTank.getFluidAmount();
-            long organicPhaseAmount = extractantTank.getStored();
-            // Calculate how much output we get for this operation based on the extracting efficiency
-            double e = extractantTank.getType().get(Extractant.class).getExtractionEfficiency();
-            // for each operation, we extract 75% of the available leachate
-            // E = n_water / (n_water + n_organic)
-            // it solves n_organic_max = (E/(1-E)) * n_water
-            long maxOrganic = (long) (waterPhaseAmount * (e/(1-e)));
-            expectToExtract = (long) ((maxOrganic - organicPhaseAmount) * 0.75);
-            recipeCacheLookupMonitor.updateAndProcess();
-        }
+        recipeCacheLookupMonitor.updateAndProcess();
 
         float extractantScale = MekanismUtils.getScale(prevExtractantScale, extractantTank);
         float leachateScale = MekanismUtils.getScale(prevLeachateScale, leachateTank);
@@ -160,6 +145,7 @@ public class ExtractingPlantMultiblockData
         if (getVolume() != volume) {
             super.setVolume(volume);
             leachateTankCapacity = volume * MSConfig.generalConfig.extractionLeachatePerTank.get();
+            operations = volume / 5;
         }
     }
 
@@ -190,9 +176,9 @@ public class ExtractingPlantMultiblockData
                         trackedErrors[i] = errors.contains(TRACKED_ERROR_TYPES.get(i));
                     }
                 })
-                .setActive(active -> lastGain = active ? expectToExtract : 0)
+                .setActive(active -> lastGain = active ? (long) operations * recipe.getOutputDefinition().get(0).getAmount() : 0)
                 .setRequiredTicks(() -> 1)
-                .setBaselineMaxOperations(() -> Math.toIntExact(expectToExtract));
+                .setBaselineMaxOperations(() -> operations);
     }
 
     public boolean hasWarning(RecipeError error) {
@@ -202,5 +188,10 @@ public class ExtractingPlantMultiblockData
             return false;
         }
         return trackedErrors[errorIndex];
+    }
+
+    @Override
+    public Level getHandlerWorld() {
+        return getWorld();
     }
 }

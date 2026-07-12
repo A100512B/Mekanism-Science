@@ -168,8 +168,6 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER, "A machine used to efficiently electrolyze solutions to get highly pure metals.");
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "An advanced machine that polymerizes organic chemicals at a very high pressure.");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "A pump specifically made for extracting seawater from Ocean biomes.");
-        // Chemical Attributes
-        add(MSLang.CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY, "Extraction Efficiency: %1$.2f");
         // Extracting Plant
         add(MSLang.EXTRACTING_PLANT, "Extracting Plant");
         add(MSLang.EXTRACTING_PLANT_INVALID_EVEN_LENGTH, "Couldn't form, width and length of structure must be odd.");

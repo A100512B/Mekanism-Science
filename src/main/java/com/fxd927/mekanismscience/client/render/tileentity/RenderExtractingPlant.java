@@ -39,6 +39,6 @@ public class RenderExtractingPlant extends MultiblockTileEntityRenderer<Extracti
 
     @Override
     protected boolean shouldRender(TileEntityExtractingPlantCasing tile, ExtractingPlantMultiblockData multiblock, Vec3 camera) {
-        return super.shouldRender(tile, camera) && !multiblock.leachateTank.isEmpty();
+        return super.shouldRender(tile, multiblock, camera) && !multiblock.leachateTank.isEmpty();
     }
 }

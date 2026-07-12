@@ -173,8 +173,6 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSLang.DESCRIPTION_METAL_ELECTROLYSIS_CHAMBER, "一台用于强力电解溶液得到高纯金属的大型机器。");
         add(MSLang.DESCRIPTION_PRESSURIZED_POLYMERIZING_CHAMBER, "一台高级的用于高压聚合有机化合物的机器。");
         add(MSLang.DESCRIPTION_SEAWATER_PUMP, "一台专为在海洋群系抽取海水而设计的泵。");
-        // Chemical Attributes
-        add(MSLang.CHEMICAL_ATTRIBUTE_EXTRACTION_EFFICIENCY, "萃取效率: %1$.2f");
         // Extracting Plant
         add(MSLang.EXTRACTING_PLANT, "萃取工厂");
         add(MSLang.EXTRACTING_PLANT_INVALID_EVEN_LENGTH, "多方块结构无法成型，结构的长宽必须是奇数。");

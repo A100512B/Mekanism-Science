@@ -79,7 +79,7 @@ public class AntiExtractingPlantMultiblockData
 
     @ContainerSync
     public long lastGain;
-    private long expectToAntiExtract = 0;
+    private int operations;
 
     private final RecipeCacheLookupMonitor<FluidGasToFluidGasRecipe> recipeCacheLookupMonitor;
     private final BooleanSupplier recheckAllRecipeErrors;
@@ -100,12 +100,12 @@ public class AntiExtractingPlantMultiblockData
         recipeCacheLookupMonitor = new RecipeCacheLookupMonitor<>(this);
         recheckAllRecipeErrors = TileEntityRecipeMachine.shouldRecheckAllErrors(tile);
         gasTanks.add(antiExtractantTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> antiExtractantTankCapacity,
-                this::containsRecipeB, this));
+                gas -> containsRecipeBA(extractTank.getFluid(), gas), this));
         fluidTanks.add(extractTank = VariableCapacityFluidTank.input(this, () -> extractTankCapacity,
-                this::containsRecipeA, this));
+                fluid -> containsRecipeAB(fluid, antiExtractantTank.getStack()), this));
         gasTanks.add(extractantTank = MultiblockChemicalTankBuilder.GAS.output(this, () -> antiExtractantTankCapacity,
                 gas -> true, this));
-        fluidTanks.add(VariableCapacityFluidTank.output(this, () -> extractTankCapacity,
+        fluidTanks.add(concentrateTank = VariableCapacityFluidTank.output(this, () -> extractTankCapacity,
                 fluid -> true, this));
         antiExtractantInputHandler = InputHelper.getInputHandler(antiExtractantTank, NOT_ENOUGH_GAS_INPUT);
         extractInputHandler = InputHelper.getInputHandler(extractTank, NOT_ENOUGH_FLUID_INPUT);
@@ -141,6 +141,7 @@ public class AntiExtractingPlantMultiblockData
                 }
                 fluidTank.insert(new FluidStack(toOutput, toOutput.getAmount() * operations), Action.EXECUTE, AutomationType.INTERNAL);
             }
+
             static <STACK extends ChemicalStack<?>> void calculateOperationsCanSupport(OperationTracker tracker, RecipeError notEnoughSpace, IChemicalTank<?, STACK> tank,
                                                                                        STACK toOutput) {
                 //If our output is empty, we have nothing to add, so we treat it as being able to fit all
@@ -189,8 +190,6 @@ public class AntiExtractingPlantMultiblockData
     @Override
     public boolean tick(Level world) {
         boolean needsPacket = super.tick(world);
-        // Always anti-extract 5% of max capacity
-        expectToAntiExtract = (long) Math.max(extractTankCapacity * 0.05, extractTank.getFluidAmount());
         recipeCacheLookupMonitor.updateAndProcess();
 
         float antiExtractantScale = MekanismUtils.getScale(prevAntiExtractantScale, antiExtractantTank);
@@ -243,6 +242,7 @@ public class AntiExtractingPlantMultiblockData
         if (getVolume() != volume) {
             super.setVolume(volume);
             extractTankCapacity = volume * MSConfig.generalConfig.antiExtractionExtractPerTank.get();
+            operations = volume / 5;
         }
     }
 
@@ -273,9 +273,9 @@ public class AntiExtractingPlantMultiblockData
                         trackedErrors[i] = errors.contains(TRACKED_ERROR_TYPES.get(i));
                     }
                 })
-                .setActive(active -> lastGain = active ? expectToAntiExtract : 0)
+                .setActive(active -> lastGain = active ? (long) operations * recipe.getOutputDefinition().get(0).fluidOutput().getAmount() : 0)
                 .setRequiredTicks(() -> 1)
-                .setBaselineMaxOperations(() -> Math.toIntExact(expectToAntiExtract));
+                .setBaselineMaxOperations(() -> Math.toIntExact(operations));
     }
 
     public boolean hasWarning(RecipeError error) {
@@ -287,4 +287,8 @@ public class AntiExtractingPlantMultiblockData
         return trackedErrors[errorIndex];
     }
 
+    @Override
+    public Level getHandlerWorld() {
+        return getWorld();
+    }
 }
