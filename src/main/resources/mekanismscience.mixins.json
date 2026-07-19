@@ -2,13 +2,15 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.fxd927.mekanismscience.common.mixin",
-  "refmap": "${mod_id}.refmap.json",
+  "refmap": "mekanismscience.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "MekanismRecipeTypeInvoker",
+    "MixinServerGamePacketListenerImpl",
     "MixinTileEntityMekanism"
   ],
   "client": [
+    "MixinMultiPlayerGameMode"
   ],
   "server": [
   ],

@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.common.tile.multiblock.extraction;
 
+import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode;
 import com.fxd927.mekanismscience.common.block.attribute.AttributeStateExtractingPortMode.ExtractingPortMode;
 import com.fxd927.mekanismscience.common.content.extraction.ExtractingPlantMultiblockData;
@@ -16,10 +17,13 @@ import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.lib.multiblock.IMultiblockEjector;
 import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.util.FluidUtils;
+import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
@@ -70,6 +74,14 @@ public class TileEntityExtractingPlantPort
     }
 
     @Override
+    public boolean handles(SubstanceType type) {
+        if (type == SubstanceType.GAS || type == SubstanceType.FLUID) {
+            return true;
+        }
+        return super.handles(type);
+    }
+
+    @Override
     public void setEjectSides(Set<Direction> sides) {
         outputDirections = sides;
     }
@@ -92,6 +104,43 @@ public class TileEntityExtractingPlantPort
             player.displayClientMessage(MekanismLang.BOILER_VALVE_MODE_CHANGE.translateColored(EnumColor.GRAY, mode), true);
         }
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public InteractionResult onActivate(Player player, InteractionHand hand, ItemStack stack) {
+        if (player.isShiftKeyDown() || !getMultiblock().isFormed()) {
+            return super.onActivate(player, hand, stack);
+        } else if (isRemote()) {
+            return InteractionResult.SUCCESS;
+        }
+        TileEntityExtractingPlantCasing guiCasing = getGuiCasing();
+        if (guiCasing == null) {
+            MekanismScience.LOGGER.error("Unable to open Extracting Plant GUI from port at {}, no non-port casing was found in the formed multiblock.", worldPosition);
+            return InteractionResult.FAIL;
+        }
+        return guiCasing.openGui(player);
+    }
+
+    @Nullable
+    private TileEntityExtractingPlantCasing getGuiCasing() {
+        ExtractingPlantMultiblockData multiblock = getMultiblock();
+        BlockPos minPos = multiblock.getMinPos();
+        BlockPos maxPos = multiblock.getMaxPos();
+        for (int y = minPos.getY(); y <= maxPos.getY(); y++) {
+            for (int z = minPos.getZ(); z <= maxPos.getZ(); z++) {
+                for (int x = minPos.getX(); x <= maxPos.getX(); x++) {
+                    BlockPos pos = new BlockPos(x, y, z);
+                    if (!multiblock.locations.contains(pos)) {
+                        continue;
+                    }
+                    TileEntityExtractingPlantCasing tile = WorldUtils.getTileEntity(TileEntityExtractingPlantCasing.class, level, pos);
+                    if (tile != null && !(tile instanceof TileEntityExtractingPlantPort)) {
+                        return tile;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     @NotNull

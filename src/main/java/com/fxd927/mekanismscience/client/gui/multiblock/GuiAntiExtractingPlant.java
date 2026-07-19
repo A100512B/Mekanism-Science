@@ -1,6 +1,5 @@
 package com.fxd927.mekanismscience.client.gui.multiblock;
 
-import com.fxd927.mekanismscience.common.content.anti_extraction.AntiExtractingPlantMultiblockData;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiMekanismTile;
@@ -30,18 +29,17 @@ public class GuiAntiExtractingPlant extends GuiMekanismTile<TileEntityAntiExtrac
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
-        AntiExtractingPlantMultiblockData multiblock = tile.getMultiblock();
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.extractTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 15, 20))
+        addRenderableWidget(new GuiFluidGauge(() -> tile.getMultiblock().extractTank, () -> tile.getMultiblock().getFluidTanks(null), GaugeType.STANDARD, this, 15, 20))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.antiExtractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 145, 20))
+        addRenderableWidget(new GuiGasGauge(() -> tile.getMultiblock().antiExtractantTank, () -> tile.getMultiblock().getGasTanks(null), GaugeType.STANDARD, this, 145, 20))
                 .warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_RIGHT, this, 36, 46)).jeiCategory(tile)
+        addRenderableWidget(new GuiProgress(() -> tile.getMultiblock().lastGain != 0, ProgressType.SMALL_RIGHT, this, 36, 46)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiProgress(() -> multiblock.lastGain != 0, ProgressType.SMALL_LEFT, this, 112, 46)).jeiCategory(tile)
+        addRenderableWidget(new GuiProgress(() -> tile.getMultiblock().lastGain != 0, ProgressType.SMALL_LEFT, this, 112, 46)).jeiCategory(tile)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiFluidGauge(() -> multiblock.concentrateTank, () -> multiblock.getFluidTanks(null), GaugeType.STANDARD, this, 69, 20))
+        addRenderableWidget(new GuiFluidGauge(() -> tile.getMultiblock().concentrateTank, () -> tile.getMultiblock().getFluidTanks(null), GaugeType.STANDARD, this, 69, 20))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiGasGauge(() -> multiblock.extractantTank, () -> multiblock.getGasTanks(null), GaugeType.STANDARD, this, 91, 20))
+        addRenderableWidget(new GuiGasGauge(() -> tile.getMultiblock().extractantTank, () -> tile.getMultiblock().getGasTanks(null), GaugeType.STANDARD, this, 91, 20))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
     }
 

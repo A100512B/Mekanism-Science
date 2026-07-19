@@ -147,7 +147,7 @@ public class MSBlockTypes {
             .withCustomShape(MSBlockShapes.METAL_ELECTROLYSIS_CHAMBER)
             .withBounding((pos, state, builder) -> {
                 for (int x = -1; x <= 1; x++) {
-                    for (int y = 0; y <= 1; y++) {
+                    for (int y = 0; y <= 2; y++) {
                         for (int z = -1; z <= 1; z++) {
                             if (x != 0 || y != 0 || z != 0) {
                                 builder.add(pos.offset(x, y, z));

@@ -6,6 +6,7 @@ import com.fxd927.mekanismscience.common.capabilities.holder.chemical.SidedChemi
 import com.fxd927.mekanismscience.common.capabilities.holder.fluid.SidedFluidTankHelper;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
+import com.fxd927.mekanismscience.common.recipe.lookup.monitor.WorldReadyRecipeCacheLookupMonitor;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import lombok.Getter;
 import mekanism.api.IContentsListener;
@@ -47,6 +48,7 @@ import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
+import mekanism.common.recipe.lookup.monitor.RecipeCacheLookupMonitor;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.component.config.DataType;
@@ -142,7 +144,8 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
     @NotNull
     protected IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         SidedChemicalTankHelper<Gas, GasStack, IGasTank> builder = SidedChemicalTankHelper.forSideGas(this::getDirection, side -> side == RelativeSide.LEFT, side -> false);
-        builder.addTank(gasInputTank = ChemicalTankBuilder.GAS.input(MAX_GAS, gas -> containsRecipeBA(itemInputSlot.getStack(), gas), this::containsRecipeB, this));
+        builder.addTank(gasInputTank = ChemicalTankBuilder.GAS.input(MAX_GAS, gas -> containsRecipeBA(itemInputSlot.getStack(), gas),
+                this::containsRecipeB, recipeCacheListener));
         return builder.build();
     }
 
@@ -165,13 +168,14 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
     @Override
     @NotNull
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener) {
-        InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection, side -> side == RelativeSide.LEFT || side == RelativeSide.BACK, side -> side == RelativeSide.LEFT);
-        itemInputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.notExternal, (stack, automationType) -> containsRecipeAB(stack, gasInputTank.getStack()),
+        InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection, side -> side == RelativeSide.LEFT, side -> side == RelativeSide.LEFT);
+        itemInputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.notExternal,
+                (stack, automationType) -> containsRecipeAB(stack, gasInputTank.getStack()),
                 this::containsRecipeA, recipeCacheListener, 7, 36) {
         };
         itemInputSlot.setSlotType(ContainerSlotType.INPUT);
         itemInputSlot.tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
-        builder.addSlot(itemInputSlot);
+        builder.addSlot(itemInputSlot, RelativeSide.LEFT);
         builder.addSlot(inputGasSlot = GasInventorySlot.fillOrConvert(gasInputTank, this::getLevel, listener, 7, 55), RelativeSide.LEFT);
         builder.addSlot(outputFluidSlot = FluidInventorySlot.drain(outputTank, this, 152, 55), RelativeSide.BACK);
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
@@ -183,10 +187,23 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
+        if (!canLookupRecipes()) {
+            recipeCacheLookupMonitor.onChange();
+            return;
+        }
         inputGasSlot.fillTankOrConvert();
         outputFluidSlot.drainTank(outputFluidSlot);
         clientEnergyUsed = recipeCacheLookupMonitor.updateAndProcess(energyContainer);
         handleEject();
+    }
+
+    @Override
+    protected RecipeCacheLookupMonitor<ItemStackGasToFluidRecipe> createNewCacheMonitor() {
+        return new WorldReadyRecipeCacheLookupMonitor<>(this, this::canLookupRecipes);
+    }
+
+    private boolean canLookupRecipes() {
+        return getHandlerWorld() != null;
     }
 
     private void handleEject() {
@@ -270,13 +287,12 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
             // but it is one that normally should be disabled for offset capabilities, then expose it but only do so
             // via our ports for things like computer integration capabilities, then we treat the capability as
             // disabled if it is not against one of our ports
-            return notItemPort(side, offset);
+            return notAnyPort(side, offset);
         }
         return false;
     }
 
     private boolean notItemPort(Direction side, Vec3i offset) {
-        // Every port can interact with item ports
         Direction left = getLeftSide();
         Direction back = getOppositeDirection();
         switch (getDirection()) {
@@ -289,7 +305,11 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
                     return side != left;
             }
         }
-        return notFluidPort(side, offset) && notGasPort(side, offset) && notEnergyPort(side, offset);
+        return true;
+    }
+
+    private boolean notAnyPort(Direction side, Vec3i offset) {
+        return notItemPort(side, offset) && notFluidPort(side, offset) && notGasPort(side, offset) && notEnergyPort(side, offset);
     }
 
     private boolean notGasPort(Direction side, Vec3i offset) {

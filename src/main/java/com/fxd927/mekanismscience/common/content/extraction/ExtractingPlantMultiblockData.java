@@ -4,6 +4,7 @@ import com.fxd927.mekanismscience.api.MSNBTConstants;
 import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
+import com.fxd927.mekanismscience.common.recipe.lookup.monitor.WorldReadyRecipeCacheLookupMonitor;
 import com.fxd927.mekanismscience.common.tile.multiblock.extraction.TileEntityExtractingPlantCasing;
 import lombok.Setter;
 import mekanism.api.NBTConstants;
@@ -81,15 +82,17 @@ public class ExtractingPlantMultiblockData
     public float prevExtractantScale;
     public float prevLeachateScale;
     public float prevOutputScale;
+    @Nullable
+    private Level recipeLookupWorld;
 
     public ExtractingPlantMultiblockData(TileEntityExtractingPlantCasing tile) {
         super(tile);
-        recipeCacheLookupMonitor = new RecipeCacheLookupMonitor<>(this);
+        recipeCacheLookupMonitor = new WorldReadyRecipeCacheLookupMonitor<>(this, this::hasRecipeLookupWorld);
         recheckAllRecipeErrors = TileEntityRecipeMachine.shouldRecheckAllErrors(tile);
         gasTanks.add(extractantTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> extractantTankCapacity,
-                gas -> containsRecipeBA(leachateTank.getFluid(), gas), this));
+                gas -> containsRecipeBA(leachateTank.getFluid(), gas), recipeCacheLookupMonitor));
         fluidTanks.add(leachateTank = VariableCapacityFluidTank.input(this, () -> leachateTankCapacity,
-                fluid -> containsRecipeAB(fluid, extractantTank.getStack()), this));
+                fluid -> containsRecipeAB(fluid, extractantTank.getStack()), recipeCacheLookupMonitor));
         fluidTanks.add(outputTank = VariableCapacityFluidTank.output(this, () -> extractantTankCapacity,
                 fluid -> true, this));
         extractantInputHandler = InputHelper.getInputHandler(extractantTank, NOT_ENOUGH_GAS_INPUT);
@@ -100,7 +103,12 @@ public class ExtractingPlantMultiblockData
     @Override
     public boolean tick(Level world) {
         boolean needsPacket = super.tick(world);
-        recipeCacheLookupMonitor.updateAndProcess();
+        recipeLookupWorld = world;
+        try {
+            recipeCacheLookupMonitor.updateAndProcess();
+        } finally {
+            recipeLookupWorld = null;
+        }
 
         float extractantScale = MekanismUtils.getScale(prevExtractantScale, extractantTank);
         float leachateScale = MekanismUtils.getScale(prevLeachateScale, leachateTank);
@@ -190,8 +198,13 @@ public class ExtractingPlantMultiblockData
         return trackedErrors[errorIndex];
     }
 
+    private boolean hasRecipeLookupWorld() {
+        return recipeLookupWorld != null || getWorld() != null;
+    }
+
     @Override
+    @Nullable
     public Level getHandlerWorld() {
-        return getWorld();
+        return recipeLookupWorld == null ? getWorld() : recipeLookupWorld;
     }
 }

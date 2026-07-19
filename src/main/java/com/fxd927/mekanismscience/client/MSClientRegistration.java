@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -30,9 +31,11 @@ public class MSClientRegistration {
 
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
-        for (FluidRegistryObject<?, ?, ?, ?, ?> fluidRO : MSFluids.FLUIDS.getAllFluids()) {
-            ClientRegistrationUtil.setRenderLayer(RenderType.translucent(), fluidRO);
-        }
+        event.enqueueWork(() -> {
+            for (FluidRegistryObject<?, ?, ?, ?, ?> fluidRO : MSFluids.FLUIDS.getAllFluids()) {
+                ClientRegistrationUtil.setRenderLayer(RenderType.translucent(), fluidRO);
+            }
+        });
         addCustomModel(MSBlocks.ACID_LEACHER, (orig, evt) -> new AcidLeacherModel(orig));
         addCustomModel(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, (orig, evt) -> new MetalElectrolysisChamberModel(orig));
     }
@@ -50,6 +53,11 @@ public class MSClientRegistration {
             ClientRegistrationUtil.registerScreen(MSContainerTypes.IRRADIATOR, GuiIrradiator::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.METAL_ELECTROLYSIS_CHAMBER, GuiMetalElectrolysisChamber::new);
         });
+    }
+
+    @SubscribeEvent
+    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+        ClientRegistrationUtil.registerBucketColorHandler(event, MSFluids.FLUIDS);
     }
 
     @SubscribeEvent

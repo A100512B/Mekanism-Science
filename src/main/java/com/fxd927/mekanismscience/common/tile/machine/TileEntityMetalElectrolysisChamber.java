@@ -6,6 +6,7 @@ import com.fxd927.mekanismscience.common.capabilities.holder.energy.SidedEnergyC
 import com.fxd927.mekanismscience.common.capabilities.holder.fluid.SidedFluidTankHelper;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
+import com.fxd927.mekanismscience.common.recipe.lookup.monitor.WorldReadyRecipeCacheLookupMonitor;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import lombok.Getter;
 import mekanism.api.Action;
@@ -38,6 +39,7 @@ import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.FluidRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleFluid;
+import mekanism.common.recipe.lookup.monitor.RecipeCacheLookupMonitor;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.component.config.DataType;
@@ -123,7 +125,7 @@ public class TileEntityMetalElectrolysisChamber extends TileEntityRecipeMachine<
     @NotNull
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         SidedFluidTankHelper helper = SidedFluidTankHelper.forSide(this::getDirection, side -> side == RelativeSide.RIGHT, side -> false);
-        helper.addTank(inputTank = BasicFluidTank.input(MAX_FLUID, this::containsRecipe, listener));
+        helper.addTank(inputTank = BasicFluidTank.input(MAX_FLUID, this::containsRecipe, recipeCacheListener));
         return helper.build();
     }
 
@@ -151,10 +153,23 @@ public class TileEntityMetalElectrolysisChamber extends TileEntityRecipeMachine<
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
+        if (!canLookupRecipes()) {
+            recipeCacheLookupMonitor.onChange();
+            return;
+        }
         fluidInputSlot.fillTank();
         energyInputSlot.fillContainerOrConvert();
         clientUsage = recipeCacheLookupMonitor.updateAndProcess(energyContainer);
         handleEject();
+    }
+
+    @Override
+    protected RecipeCacheLookupMonitor<MetalElectrolysisRecipe> createNewCacheMonitor() {
+        return new WorldReadyRecipeCacheLookupMonitor<>(this, this::canLookupRecipes);
+    }
+
+    private boolean canLookupRecipes() {
+        return getHandlerWorld() != null;
     }
 
     private void handleEject() {

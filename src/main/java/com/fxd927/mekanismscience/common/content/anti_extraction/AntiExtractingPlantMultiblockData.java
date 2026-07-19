@@ -5,6 +5,7 @@ import com.fxd927.mekanismscience.api.recipes.FluidChemicalToFluidChemicalRecipe
 import com.fxd927.mekanismscience.api.recipes.FluidGasToFluidGasRecipe;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
+import com.fxd927.mekanismscience.common.recipe.lookup.monitor.WorldReadyRecipeCacheLookupMonitor;
 import com.fxd927.mekanismscience.common.tile.multiblock.anti_extraction.TileEntityAntiExtractingPlantCasing;
 import lombok.Setter;
 import mekanism.api.Action;
@@ -94,15 +95,17 @@ public class AntiExtractingPlantMultiblockData
     public float prevExtractScale;
     public float prevExtractantScale;
     public float prevConcentrateScale;
+    @Nullable
+    private Level recipeLookupWorld;
 
     public AntiExtractingPlantMultiblockData(TileEntityAntiExtractingPlantCasing tile) {
         super(tile);
-        recipeCacheLookupMonitor = new RecipeCacheLookupMonitor<>(this);
+        recipeCacheLookupMonitor = new WorldReadyRecipeCacheLookupMonitor<>(this, this::hasRecipeLookupWorld);
         recheckAllRecipeErrors = TileEntityRecipeMachine.shouldRecheckAllErrors(tile);
         gasTanks.add(antiExtractantTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> antiExtractantTankCapacity,
-                gas -> containsRecipeBA(extractTank.getFluid(), gas), this));
+                gas -> containsRecipeBA(extractTank.getFluid(), gas), recipeCacheLookupMonitor));
         fluidTanks.add(extractTank = VariableCapacityFluidTank.input(this, () -> extractTankCapacity,
-                fluid -> containsRecipeAB(fluid, antiExtractantTank.getStack()), this));
+                fluid -> containsRecipeAB(fluid, antiExtractantTank.getStack()), recipeCacheLookupMonitor));
         gasTanks.add(extractantTank = MultiblockChemicalTankBuilder.GAS.output(this, () -> antiExtractantTankCapacity,
                 gas -> true, this));
         fluidTanks.add(concentrateTank = VariableCapacityFluidTank.output(this, () -> extractTankCapacity,
@@ -190,7 +193,12 @@ public class AntiExtractingPlantMultiblockData
     @Override
     public boolean tick(Level world) {
         boolean needsPacket = super.tick(world);
-        recipeCacheLookupMonitor.updateAndProcess();
+        recipeLookupWorld = world;
+        try {
+            recipeCacheLookupMonitor.updateAndProcess();
+        } finally {
+            recipeLookupWorld = null;
+        }
 
         float antiExtractantScale = MekanismUtils.getScale(prevAntiExtractantScale, antiExtractantTank);
         float extractScale = MekanismUtils.getScale(prevExtractScale, extractTank);
@@ -287,8 +295,13 @@ public class AntiExtractingPlantMultiblockData
         return trackedErrors[errorIndex];
     }
 
+    private boolean hasRecipeLookupWorld() {
+        return recipeLookupWorld != null || getWorld() != null;
+    }
+
     @Override
+    @Nullable
     public Level getHandlerWorld() {
-        return getWorld();
+        return recipeLookupWorld == null ? getWorld() : recipeLookupWorld;
     }
 }
