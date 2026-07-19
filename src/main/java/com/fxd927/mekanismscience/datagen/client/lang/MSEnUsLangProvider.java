@@ -38,6 +38,9 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSItems.TABLET_IODINE, "Iodine Tablet");
         add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "Muscle Enhancement Tablet (WIP)");
         add(MSItems.TABLET_POISON, "Tablet Poison (WIP)");
+        MSFluids.PROCESSED_CONCENTRATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO.getBucket(), capitalize(resource.getRegistrySuffix()) + " Concentrate Bucket"));
+        MSFluids.PROCESSED_EXTRACT_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO.getBucket(), capitalize(resource.getRegistrySuffix()) + " P204-Extract Bucket"));
+        MSFluids.PROCESSED_LEACHATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO.getBucket(), capitalize(resource.getRegistrySuffix()) + " Leachate Bucket"));
     }
 
     private void addBlocks() {

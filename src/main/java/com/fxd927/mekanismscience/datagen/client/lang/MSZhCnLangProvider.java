@@ -43,6 +43,9 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSItems.TABLET_IODINE, "碘片");
         add(MSItems.TABLET_MUSCLE_ENHANCEMENT, "肌肉强化药片（WIP）");
         add(MSItems.TABLET_POISON, "毒药片（WIP）");
+        MSFluids.PROCESSED_CONCENTRATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO.getBucket(), translateResource(resource) + "浓缩液桶"));
+        MSFluids.PROCESSED_EXTRACT_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO.getBucket(), translateResource(resource) + " P204 萃取液桶"));
+        MSFluids.PROCESSED_LEACHATE_RESOURCES.forEach((resource, fluidRO) -> add(fluidRO.getBucket(), translateResource(resource) + "酸浸液桶"));
     }
 
     private void addBlocks() {
