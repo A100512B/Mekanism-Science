@@ -93,6 +93,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.NITROGEN_DIOXIDE, "液态二氧化氮");
         addFluid(MSFluids.P204, "液态 P204");
         addFluid(MSFluids.PHOSPHORYL_CHLORIDE, "液态三氯氧磷");
+        addFluid(MSFluids.POTASSIUM_NITRATE, "液态硝酸钾");
         addFluid(MSFluids.PROPYLENE, "液态丙烯");
         addFluid(MSFluids.PTFE, "液态聚四氟乙烯");
         addFluid(MSFluids.SEAWATER, "海水");
@@ -138,6 +139,7 @@ public class MSZhCnLangProvider extends MSBaseLangProvider {
         add(MSGases.NITROGEN_DIOXIDE, "二氧化氮");
         add(MSGases.P204, "P204");
         add(MSGases.PHOSPHORYL_CHLORIDE, "三氯氧磷");
+        add(MSGases.POTASSIUM_NITRATE, "硝酸钾");
         add(MSGases.PROPYLENE, "丙烯");
         add(MSGases.PTFE, "聚四氟乙烯");
         add(MSGases.SEAWATER, "海水");

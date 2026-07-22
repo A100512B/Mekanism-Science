@@ -1,8 +1,11 @@
 package com.fxd927.mekanismscience.common.tags;
 
+import com.fxd927.mekanismscience.common.MekanismScience;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluid;
 
 public class MSTags {
@@ -12,6 +15,17 @@ public class MSTags {
     }
 
     private MSTags() {
+    }
+
+    public static class Items {
+
+        private static void init() {
+        }
+
+        private Items() {
+        }
+
+        public static final TagKey<Item> CAN_BE_BURNT_TO_PLANT_ASH = ItemTags.create(MekanismScience.rl("can_be_burnt_to_plant_ash"));
     }
 
     public static class Fluids {

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:grass",
+    "minecraft:tall_grass",
+    "minecraft:seagrass",
+    "minecraft:dead_bush",
+    "#minecraft:saplings"
+  ]
+}

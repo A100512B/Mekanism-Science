@@ -9,6 +9,9 @@ import com.fxd927.mekanismscience.common.tags.MSTags;
 import mekanism.common.tags.MekanismTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +29,7 @@ public class MSTagProvider extends BaseTagProvider {
         addBoxBlacklist();
         addFluids();
         addItems();
+        addHarvestRequirements();
     }
 
     private void addBoxBlacklist() {
@@ -60,5 +64,25 @@ public class MSTagProvider extends BaseTagProvider {
         addToTag(Tags.Items.INGOTS, MSItems.REFINED_CALIFORNIUM_INGOT);
         addToTag(Tags.Items.DUSTS, MSItems.BONE_ASHES, MSItems.BONE_ASHES_WITH_CARBON,
                 MSItems.DUST_CALCIUM_CHLORIDE, MSItems.DUST_CALCIUM_OXIDE);
+        addToTag(MSTags.Items.CAN_BE_BURNT_TO_PLANT_ASH, Items.GRASS, Items.TALL_GRASS, Items.SEAGRASS,
+                Items.DEAD_BUSH);
+        getItemBuilder(MSTags.Items.CAN_BE_BURNT_TO_PLANT_ASH).add(ItemTags.SAPLINGS);
+    }
+
+    private void addHarvestRequirements() {
+        addToHarvestTag(BlockTags.MINEABLE_WITH_PICKAXE,
+                MSBlocks.ACID_LEACHER,
+                MSBlocks.ADSORPTION_SEPARATOR,
+                MSBlocks.AIR_COMPRESSOR,
+                MSBlocks.ANTI_EXTRACTING_PILLAR,
+                MSBlocks.ANTI_EXTRACTING_PLANT_CASING,
+                MSBlocks.ANTI_EXTRACTING_PLANT_PORT,
+                MSBlocks.EXTRACTING_PILLAR,
+                MSBlocks.EXTRACTING_PLANT_CASING,
+                MSBlocks.EXTRACTING_PLANT_PORT,
+                MSBlocks.IRRADIATOR,
+                MSBlocks.METAL_ELECTROLYSIS_CHAMBER,
+                MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER,
+                MSBlocks.SEAWATER_PUMP);
     }
 }

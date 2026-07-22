@@ -3,15 +3,14 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
             {
               "function": "minecraft:copy_nbt",
               "ops": [
@@ -32,8 +31,28 @@
                 },
                 {
                   "op": "replace",
+                  "source": "componentConfig",
+                  "target": "mekData.componentConfig"
+                },
+                {
+                  "op": "replace",
+                  "source": "componentEjector",
+                  "target": "mekData.componentEjector"
+                },
+                {
+                  "op": "replace",
                   "source": "controlType",
                   "target": "mekData.controlType"
+                },
+                {
+                  "op": "replace",
+                  "source": "EnergyContainers",
+                  "target": "mekData.EnergyContainers"
+                },
+                {
+                  "op": "replace",
+                  "source": "FluidTanks",
+                  "target": "mekData.FluidTanks"
                 },
                 {
                   "op": "replace",

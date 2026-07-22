@@ -8,6 +8,7 @@ import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.Item;
 
 public class MSItems {
@@ -31,6 +32,7 @@ public class MSItems {
     public static final ItemRegistryObject<Item> DUST_CALCIUM_CHLORIDE = ITEMS.register("dust_calcium_chloride");
     public static final ItemRegistryObject<Item> PTFE_PELLET = ITEMS.register("ptfe_pellet");
     public static final ItemRegistryObject<Item> PTFE_SHEET = ITEMS.register("ptfe_sheet");
+    public static final ItemRegistryObject<BoneMealItem> PLANT_ASH = ITEMS.register("plant_ash", BoneMealItem::new);
 
     private MSItems() {
     }

@@ -1,0 +1,17 @@
+{
+  "values": [
+    "mekanismscience:acid_leacher",
+    "mekanismscience:adsorption_separator",
+    "mekanismscience:air_compressor",
+    "mekanismscience:anti_extracting_pillar",
+    "mekanismscience:anti_extracting_plant_casing",
+    "mekanismscience:anti_extracting_plant_port",
+    "mekanismscience:extracting_pillar",
+    "mekanismscience:extracting_plant_casing",
+    "mekanismscience:extracting_plant_port",
+    "mekanismscience:irradiator",
+    "mekanismscience:metal_electrolysis_chamber",
+    "mekanismscience:pressurized_polymerizing_chamber",
+    "mekanismscience:seawater_pump"
+  ]
+}

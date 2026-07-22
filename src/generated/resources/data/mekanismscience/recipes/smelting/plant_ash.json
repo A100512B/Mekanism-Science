@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:smelting",
+  "input": {
+    "ingredient": {
+      "tag": "mekanismscience:can_be_burnt_to_plant_ash"
+    }
+  },
+  "output": {
+    "item": "mekanismscience:plant_ash"
+  }
+}

@@ -7,6 +7,7 @@ import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSFluids;
 import com.fxd927.mekanismscience.common.registries.MSGases;
 import com.fxd927.mekanismscience.common.registries.MSItems;
+import com.fxd927.mekanismscience.common.tags.MSTags;
 import com.fxd927.mekanismscience.datagen.common.recipe.compat.ATMRecipeProvider;
 import com.fxd927.mekanismscience.datagen.common.recipe.compat.ForgeRecipeProvider;
 import mekanism.api.annotations.NothingNullByDefault;
@@ -772,6 +773,13 @@ public class MSRecipeProvider extends RecipeProvider {
                         100,
                         MSGases.WATER_GAS.getStack(100))
                 .build(writer, rl(basePath + "water_gas"));
+        PressurizedReactionRecipeBuilder.reaction(
+                        item().from(MSItems.PLANT_ASH, 12),
+                        fluid().from(FluidTags.WATER, 100),
+                        gas().from(MSGases.NITRIC_ACID, 100),
+                        10,
+                        MSGases.POTASSIUM_NITRATE.getStack(100))
+                .build(writer, rl(basePath + "potassium_nitrate"));
     }
 
     private void rotary(Consumer<FinishedRecipe> writer) {
@@ -833,6 +841,10 @@ public class MSRecipeProvider extends RecipeProvider {
                 item().from(Tags.Items.BONES),
                 MSItems.BONE_ASHES.getItemStack(4)
         ).build(writer, rl(basePath + "bone_ashes"));
+        ItemStackToItemStackRecipeBuilder.smelting(
+                item().from(MSTags.Items.CAN_BE_BURNT_TO_PLANT_ASH),
+                MSItems.PLANT_ASH.getItemStack(1)
+        ).build(writer, rl(basePath + "plant_ash"));
     }
 
     private void bidirectionalRotary(Consumer<FinishedRecipe> writer, GasRegistryObject<Gas> gas, FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> fluid) {

@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:reaction",
+  "duration": 10,
+  "fluidInput": {
+    "amount": 100,
+    "tag": "minecraft:water"
+  },
+  "gasInput": {
+    "amount": 100,
+    "gas": "mekanismscience:nitric_acid"
+  },
+  "gasOutput": {
+    "amount": 100,
+    "gas": "mekanismscience:potassium_nitrate"
+  },
+  "itemInput": {
+    "amount": 12,
+    "ingredient": {
+      "item": "mekanismscience:plant_ash"
+    }
+  }
+}

@@ -84,7 +84,6 @@ legacyForge {
             args.addAll('--output', file('src/generated/resources/').getAbsolutePath())
             args.addAll('--existing', file('src/main/resources/').getAbsolutePath())
 
-            // 将 classpath 上所有 jar 都添加为资源来源，这样 Mekanism 的纹理就能被找到
             project.afterEvaluate {
                 project.configurations.runtimeClasspath.resolvedConfiguration.resolvedArtifacts.each { artifact ->
                     if (artifact.file.name.endsWith('.jar')) {

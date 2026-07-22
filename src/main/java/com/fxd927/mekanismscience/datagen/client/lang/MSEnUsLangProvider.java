@@ -88,6 +88,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         addFluid(MSFluids.NITROGEN_DIOXIDE, "Liquid Nitrogen Dioxide");
         addFluid(MSFluids.P204, "Liquid P204");
         addFluid(MSFluids.PHOSPHORYL_CHLORIDE, "Liquid Phosphoryl Chloride");
+        addFluid(MSFluids.POTASSIUM_NITRATE, "Liquid Potassium Nitrate");
         addFluid(MSFluids.PROPYLENE, "Liquid Propylene");
         addFluid(MSFluids.PTFE, "Liquid PTFE");
         addFluid(MSFluids.SEAWATER, "Seawater");
@@ -133,6 +134,7 @@ public class MSEnUsLangProvider extends MSBaseLangProvider {
         add(MSGases.NITROGEN_DIOXIDE, "Nitrogen Dioxide");
         add(MSGases.P204, "P204");
         add(MSGases.PHOSPHORYL_CHLORIDE, "Phosphoryl Chloride");
+        add(MSGases.POTASSIUM_NITRATE, "Potassium Nitrate");
         add(MSGases.PROPYLENE, "Propylene");
         add(MSGases.PTFE, "PTFE");
         add(MSGases.SEAWATER, "Seawater");

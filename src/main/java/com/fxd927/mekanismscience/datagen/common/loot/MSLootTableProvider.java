@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.datagen.common.loot;
 
+import com.fxd927.mekanismscience.datagen.common.loot.table.MSBlockLootSubProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
