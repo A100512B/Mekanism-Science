@@ -30,11 +30,11 @@ public class MSBlockStateProvider extends BlockStateProvider {
                 models().getBuilder(RegistryUtils.getPath(fluidRO.getBlock())).texture("particle", fluidRO.getFluidType().stillTexture)));
         final BooleanProperty activeProperty = BooleanProperty.create("active");
         // Block tiles
-        existingCustomItem(MSBlocks.ACID_LEACHER, activeProperty);
+        existing(MSBlocks.ACID_LEACHER, activeProperty);
         existingDirectional(MSBlocks.ADSORPTION_SEPARATOR);
         cubeMachine(MSBlocks.AIR_COMPRESSOR);
         existing(MSBlocks.IRRADIATOR, activeProperty);
-        existingCustomItem(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, activeProperty);
+        existing(MSBlocks.METAL_ELECTROLYSIS_CHAMBER, activeProperty);
         existingDirectional(MSBlocks.PRESSURIZED_POLYMERIZING_CHAMBER);
         existingDirectional(MSBlocks.SEAWATER_PUMP);
         // Extracting Plant

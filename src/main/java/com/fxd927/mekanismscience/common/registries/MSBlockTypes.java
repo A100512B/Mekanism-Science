@@ -92,6 +92,7 @@ public class MSBlockTypes {
     public static final MSMachine<TileEntityAcidLeacher> ACID_LEACHER = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.ACID_LEACHER, MSLang.DESCRIPTION_ACID_LEACHER)
             .withGui(() -> MSContainerTypes.ACID_LEACHER)
+            .withSound(MSSounds.ACID_LEACHER)
             .withEnergyConfig(MSConfig.usageConfig.acidLeacher, MSConfig.storageConfig.acidLeacher)
             .withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.GAS, Upgrade.ANCHOR, Upgrade.MUFFLING))
             .withCustomShape(MSBlockShapes.ACID_LEACHER)

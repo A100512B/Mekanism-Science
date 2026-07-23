@@ -172,6 +172,9 @@ public class TileEntityAcidLeacher extends TileEntityRecipeMachine<ItemStackGasT
         itemInputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.notExternal,
                 (stack, automationType) -> containsRecipeAB(stack, gasInputTank.getStack()),
                 this::containsRecipeA, recipeCacheListener, 7, 36) {
+            {
+                obeyStackLimit = false;
+            }
         };
         itemInputSlot.setSlotType(ContainerSlotType.INPUT);
         itemInputSlot.tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));

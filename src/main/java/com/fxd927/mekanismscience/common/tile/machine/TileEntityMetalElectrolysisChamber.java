@@ -29,11 +29,13 @@ import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
 import mekanism.common.integration.energy.EnergyCompatUtils;
 import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.slot.ContainerSlotType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.container.sync.SyncableFloatingLong;
 import mekanism.common.inventory.slot.BasicInventorySlot;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
+import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.inventory.TransitRequest;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
@@ -143,7 +145,13 @@ public class TileEntityMetalElectrolysisChamber extends TileEntityRecipeMachine<
         InventorySlotHelper helper = InventorySlotHelper.forSide(this::getDirection, side -> side == RelativeSide.LEFT || side == RelativeSide.RIGHT, side -> side == RelativeSide.BACK);
         helper.addSlot(outputSlot = new BasicInventorySlot(MAX_ITEM, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.internalOnly,
                 BasicInventorySlot.alwaysTrue, recipeCacheListener, 116, 36) {
+            {
+                obeyStackLimit = false;
+            }
         });
+        outputSlot.setSlotType(ContainerSlotType.OUTPUT);
+        outputSlot.setSlotOverlay(SlotOverlay.PLUS);
+        outputSlot.tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
         helper.addSlot(fluidInputSlot = FluidInventorySlot.fill(inputTank, listener, 21, 56));
         helper.addSlot(energyInputSlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 144, 35));
         fluidInputSlot.setSlotOverlay(SlotOverlay.MINUS);
