@@ -37,12 +37,12 @@ public class MSGeneralConfig extends BaseMekanismConfig {
 
         builder.comment("Metal Electrolysis Chamber Settings").push("metal_electrolysis_chamber");
         electrolysisRecipeMultiplier = CachedIntValue.wrap(this, builder.comment("How many recipes metal electrolysis chamber processes each operation.")
-                .define("recipeMultiplier", 36));
+                .define("recipeMultiplier", 4));
         builder.pop();
 
         builder.comment("Acid Leacher Settings").push("acid_leacher");
         acidLeacherRecipeMultiplier = CachedIntValue.wrap(this, builder.comment("How many recipes acid leacher processes each operation.")
-                .define("recipeMultiplier", 36));
+                .define("recipeMultiplier", 4));
         builder.pop();
 
         builder.pop();
