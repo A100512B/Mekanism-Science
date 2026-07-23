@@ -7,7 +7,7 @@
   },
   "gasInput": {
     "amount": 10,
-    "gas": "mekanismscience:californium"
+    "gas": "mekanism:plutonium"
   },
   "itemInput": {
     "amount": 2,

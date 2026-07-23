@@ -754,7 +754,7 @@ public class MSRecipeProvider extends RecipeProvider {
         PressurizedReactionRecipeBuilder.reaction(
                         item().from(MekanismItems.YELLOW_CAKE_URANIUM, 2),
                         fluid().from(MSFluids.BERYLLIUM, 50),
-                        gas().from(MSGases.CALIFORNIUM, 10),
+                        gas().from(MekanismGases.PLUTONIUM, 10),
                         50,
                         MSItems.NEUTRON_SOURCE_PELLET.getItemStack(1))
                 .build(writer, rl(basePath + "neutron_source_pellet"));
